@@ -103,7 +103,7 @@ function LogoCard({ partner, locale }: { partner: PartnerLogo; locale: "ar" | "e
   const name = locale === "ar" ? partner.name.ar : partner.name.en;
 
   const content = (
-    <div className="group relative flex items-center justify-center h-16 w-32 md:h-20 md:w-40 bg-white rounded-xl border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 hover:border-[#324198]/20 px-4">
+    <div className="group relative flex items-center justify-center h-16 w-32 md:h-20 md:w-40 bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#324198]/20 px-4">
       <div className="relative w-full h-10 md:h-12 flex items-center justify-center">
         <Image
           src={partner.logo}
