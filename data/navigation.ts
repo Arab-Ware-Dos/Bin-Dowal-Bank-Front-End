@@ -128,7 +128,7 @@ export const navigationData: NavItem[] = [
           { key: "expressRemittances", href: "/personal/fast-money-transfers", label: { ar: "الحوالات السريعة", en: "Express Remittances" }, icon: Plane },
         ]
       },
-         {
+      {
         title: { ar: "حساب المغتربين", en: "Expatriate Account" },
         links: [
           { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
@@ -162,7 +162,7 @@ export const navigationData: NavItem[] = [
       //     { key: "pos", href: "/personal/mushtarayati-network", label: { ar: "نقاط البيع شبكة مشترياتي", en: "POS Mushtarayati" }, icon: Monitor },
       //   ]
       // },
-     
+
     ]
   },
 
@@ -178,7 +178,7 @@ export const navigationData: NavItem[] = [
       {
         title: { ar: "الشركات الكبيرة والمتوسطة", en: "Large Corporate" },
         links: [
-          { key: "corpCurrent", href: "/business/corporate-current-account", label: { ar: "الحسابات الجارية", en: "Current Accounts" }, icon: Building2 },
+          { key: "corpCurrent", href: "/business/corporate-current-account", label: { ar: "حسابات مصرفية", en: "Bank Accounts" }, icon: Building2 },
           { key: "corpInvestments", href: "/business/corporate-investment-deposits", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
           { key: "corpFinance", href: "/business#finance", label: { ar: "التمويلات التجارية", en: "Commercial Financing" }, icon: BriefcaseBusiness },
           { key: "swift", href: "/business/swift-transfers", label: { ar: "حوالات السويفت", en: "SWIFT Transfers" }, icon: Globe2 },
@@ -226,7 +226,7 @@ export const navigationData: NavItem[] = [
       // {
       //   title: { ar: "حسابات الأفراد", en: "Individuals" },
       //   links: [
-      //     { key: "indvCurrent", href: "/personal/current-account", label: { ar: "حسابات جارية", en: "Current Accounts" }, icon: Wallet },
+      //     { key: "indvCurrent", href: "/personal/current-account", label: { ar: "حسابات جارية", en: "Bank Accounts" }, icon: Wallet },
       //     { key: "indvSavings", href: "/personal/savings-account", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
       //     { key: "indvInvestments", href: "/personal/investment-deposit", label: { ar: "حسابات الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
       //     { key: "indvDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
@@ -235,7 +235,7 @@ export const navigationData: NavItem[] = [
       {
         title: { ar: "حساب نور للسيدات", en: "Noor Account (Ladies)" },
         links: [
-          { key: "noorCurrent", href: "/accounts/noor", label: { ar: "حسابات الجارية", en: "Current Accounts" }, icon: Wallet },
+          { key: "noorCurrent", href: "/accounts/noor", label: { ar: "حسابات الجارية", en: "Bank Accounts" }, icon: Wallet },
           { key: "noorSavings", href: "/accounts/noor#savings", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
           { key: "noorInvestments", href: "/accounts/noor#investments", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
           { key: "noorCard", href: "/cards/noor-card", label: { ar: "بطاقة نور البنكية", en: "Noor Bank Card" }, icon: CreditCard },
@@ -258,12 +258,12 @@ export const navigationData: NavItem[] = [
       // {
       //   title: { ar: "حساب الشباب", en: "Youth Account" },
       //   links: [
-      //     { key: "youthCurrent", href: "/accounts/youth", label: { ar: "حسابات جارية", en: "Current Accounts" }, icon: Wallet },
+      //     { key: "youthCurrent", href: "/accounts/youth", label: { ar: "حسابات جارية", en: "Bank Accounts" }, icon: Wallet },
       //     { key: "youthEdu", href: "/accounts/youth#education", label: { ar: "تمويل التعليم", en: "Education Financing" }, icon: Building2 },
       //     { key: "youthDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Smartphone },
       //   ]
       // },
-    
+
 
     ]
   },

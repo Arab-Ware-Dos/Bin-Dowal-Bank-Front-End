@@ -2273,8 +2273,8 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "corporate-current-account",
     section: "business",
     title: {
-      ar: "الحسابات الجارية للشركات",
-      en: "Corporate Current Accounts"
+      ar: "حسابات مصرفية للشركات",
+      en: "Corporate Bank Accounts"
     },
     subtitle: {
       ar: "حساب عملي لإدارة عمليات الشركة اليومية والمدفوعات والتحصيلات بوضوح",
@@ -2289,8 +2289,8 @@ export const bankingServicesData: ServicePageData[] = [
       {
         labelKey: "nav.corporateCurrentAccount",
         label: {
-          ar: "الحسابات الجارية",
-          en: "Current Accounts"
+          ar: "حسابات مصرفية",
+          en: "Bank Accounts"
         }
       }
     ],
@@ -7258,7 +7258,7 @@ export const bankingServicesData: ServicePageData[] = [
   //       audience: {
   //         title: { ar: "العملاء المستهدفون", en: "Target Audience" },
   //         items: [
-  //           { id: "aud-dc-1", text: { ar: "جميع عملاء البنك أصحاب الحسابات الجارية وحسابات التوفير.", en: "All bank customers with current and savings accounts." } },
+  //           { id: "aud-dc-1", text: { ar: "جميع عملاء البنك أصحاب حسابات مصرفية وحسابات التوفير.", en: "All bank customers with current and savings accounts." } },
   //           { id: "aud-dc-2", text: { ar: "الأفراد الراغبون في إدارة نفقاتهم اليومية وتجنب تراكم الديون.", en: "Individuals wishing to manage their daily expenses and avoid debt accumulation." } },
   //           { id: "aud-dc-3", text: { ar: "المسافرون والطلاب المبتعثون الذين يحتاجون للوصول إلى أموالهم من الخارج.", en: "Travelers and students abroad who need access to their funds overseas." } },
   //         ],

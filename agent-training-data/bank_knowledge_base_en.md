@@ -372,7 +372,7 @@ The minors account helps guardians hold and manage children's funds within an or
 
 ---
 
-### Corporate Current Accounts
+### Corporate Bank Accounts
 **Type:** Business Banking
 
 > A practical account for managing daily company transactions, payments, and collections with clarity
