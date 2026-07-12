@@ -146,7 +146,7 @@ export function AboutSection() {
                 <div className="pointer-events-none absolute inset-y-0 start-0 w-24 bg-gradient-to-r from-[#0f172a]/18 to-transparent" />
                 <div className="pointer-events-none absolute inset-y-0 end-0 w-24 bg-gradient-to-l from-[#0f172a]/18 to-transparent" />
 
-                <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
+                {/* <div className="absolute inset-x-0 bottom-0 p-8 md:p-10">
                   <div className="mb-4 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/90 backdrop-blur">
                     {isAr ? "فيديو مؤسسي" : "Corporate Film"}
                   </div>
@@ -156,7 +156,7 @@ export function AboutSection() {
                       ? "مؤسسة مصرفية تنموية تسعى إلى توسيع أثر الخدمات المالية وتقديم حلول أكثر قربًا من احتياجات المجتمع."
                       : "A development-oriented banking institution that seeks to broaden the impact of financial services and provide solutions closer to community needs."}
                   </h3>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>
