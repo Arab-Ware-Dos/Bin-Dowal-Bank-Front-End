@@ -100,7 +100,16 @@ export const navigationData: NavItem[] = [
       {
         title: { ar: "الخدمات المالية", en: "Financial Services" },
         links: [
-          { key: "localTransfers", href: "/personal/local-transfers", label: { ar: "التحويلات المحلية", en: "Local Transfers" }, icon: Send },
+          {
+            key: "localTransfers",
+            href: "/personal/local-transfers",
+            label: { ar: "التحويلات المحلية", en: "Local Transfers" },
+            icon: Send,
+            subLinks: [
+              { key: "doolExpress", href: "/personal/dool-express", label: { ar: "دول إكسبرس", en: "Dool Express" } },
+              { key: "unifiedNetwork", href: "/personal/unified-network", label: { ar: "الشبكة الموحدة", en: "Unified Network" } },
+            ]
+          },
           {
             key: "intlTransfers",
             href: "/personal/international-transfers",

@@ -2,6 +2,247 @@ import { ServicePageData } from "@/types/banking-service-page";
 
 export const bankingServicesData: ServicePageData[] = [
   {
+    slug: "dool-express",
+    section: "personal",
+    title: {
+      ar: "دول إكسبرس",
+      en: "Dool Express"
+    },
+    subtitle: {
+      ar: "توصل بلمح البصر أرسل،استلم ووفر وقتك الحوالات أسهل وأسرع مع دول إكسبرس",
+      en: "Send and receive in a blink. Save your time with easier and faster transfers via Dool Express."
+    },
+    heroImage: "/images/customer-services/Local-transfers.jpg",
+    breadcrumbs: [
+      { labelKey: "nav.personalBanking", href: "/personal-banking" },
+      { labelKey: "nav.localTransfers", href: "/personal/local-transfers" },
+      { label: { ar: "دول إكسبرس", en: "Dool Express" } },
+    ],
+    tagline: { ar: "التحويلات المحلية", en: "Local Transfers" },
+    primaryCta: {
+      label: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
+      href: "/contact",
+    },
+    seoDescription: {
+      ar: "توصل بلمح البصر أرسل،استلم ووفر وقتك الحوالات أسهل وأسرع مع دول إكسبرس.",
+      en: "Send and receive in a blink. Save your time with easier and faster transfers via Dool Express.",
+    },
+    overview: {
+      title: { ar: "نبذة عن دول إكسبرس", en: "Overview of Dool Express" },
+      description: {
+        ar: "توصل بلمح البصر أرسل،استلم ووفر وقتك الحوالات أسهل وأسرع مع دول إكسبرس. نقدم لك خدمة حوالات محلية سريعة وموثوقة.",
+        en: "Send and receive in a blink. Save your time with easier and faster transfers via Dool Express. We offer fast and reliable local transfer services.",
+      },
+    },
+    why: {
+      title: { ar: "لماذا تختار دول إكسبرس؟", en: "Why Choose Dool Express?" },
+      items: [
+        { id: "why-dool-1", text: { ar: "سرعة فائقة في الإرسال والاستلام.", en: "Super fast sending and receiving." } },
+        { id: "why-dool-2", text: { ar: "توفير الوقت والجهد.", en: "Save time and effort." } },
+        { id: "why-dool-3", text: { ar: "موثوقية وأمان عالي.", en: "High reliability and security." } },
+      ],
+    },
+    featureCards: {
+      title: { ar: "مميزات دول إكسبرس", en: "Dool Express Features" },
+      items: [
+        {
+          id: "fc-dool-1",
+          title: { ar: "سرعة التحويل", en: "Transfer Speed" },
+          description: { ar: "تصل حوالتك بلمح البصر.", en: "Your transfer arrives in a blink." },
+        },
+        {
+          id: "fc-dool-2",
+          title: { ar: "سهولة الاستخدام", en: "Ease of Use" },
+          description: { ar: "إجراءات بسيطة وسريعة للإرسال والاستلام.", en: "Simple and fast procedures for sending and receiving." },
+        },
+        {
+          id: "fc-dool-3",
+          title: { ar: "توفير الوقت", en: "Time Saving" },
+          description: { ar: "وفر وقتك مع خدماتنا السريعة.", en: "Save your time with our fast services." },
+        },
+      ],
+    },
+    audience: {
+      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
+      items: [
+        { id: "aud-dool-1", text: { ar: "الأفراد الراغبون في إرسال الأموال محلياً.", en: "Individuals looking to send money locally." } },
+        { id: "aud-dool-2", text: { ar: "أصحاب الأعمال والشركات.", en: "Business owners and companies." } },
+      ],
+    },
+    requirementsSection: {
+      title: { ar: "متطلبات التحويل", en: "Transfer Requirements" },
+      items: [
+        { id: "req-dool-1", text: { ar: "هوية سارية المفعول.", en: "Valid ID." } },
+        { id: "req-dool-2", text: { ar: "رقم هاتف المستفيد.", en: "Beneficiary's phone number." } },
+        { id: "req-dool-3", text: { ar: "الاسم الرباعي للمستفيد.", en: "Beneficiary's full name." } },
+      ],
+    },
+    stepsSection: {
+      title: { ar: "خطوات الإرسال والاستلام", en: "Sending and Receiving Steps" },
+      steps: [
+        {
+          id: "step-dool-1",
+          title: { ar: "زيارة الفرع أو التطبيق", en: "Visit Branch or App" },
+          description: { ar: "تفضل بزيارة أقرب فرع أو استخدم التطبيق.", en: "Visit the nearest branch or use the app." },
+        },
+        {
+          id: "step-dool-2",
+          title: { ar: "تقديم البيانات", en: "Provide Details" },
+          description: { ar: "قدم بيانات المستفيد والمبلغ.", en: "Provide beneficiary details and amount." },
+        },
+        {
+          id: "step-dool-3",
+          title: { ar: "إتمام التحويل", en: "Complete Transfer" },
+          description: { ar: "استلم رقم الحوالة وشاركه مع المستفيد.", en: "Receive the transfer number and share it with the beneficiary." },
+        },
+      ],
+    },
+    ctaSection: {
+      title: { ar: "أرسل حوالتك الآن", en: "Send Your Transfer Now" },
+      description: { ar: "استفد من سرعة وسهولة دول إكسبرس.", en: "Take advantage of the speed and ease of Dool Express." },
+      primaryLabel: { ar: "ابدأ الآن", en: "Start Now" },
+      primaryHref: "/contact",
+      secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
+      secondaryHref: "tel:+967000000000"
+    },
+    faqs: {
+      title: { ar: "الأسئلة الشائعة", en: "FAQs" },
+      items: [
+        {
+          id: "faq-dool-1",
+          question: { ar: "كم تستغرق الحوالة للوصول؟", en: "How long does the transfer take?" },
+          answer: { ar: "تصل الحوالة بلمح البصر وبشكل فوري.", en: "The transfer arrives instantly in a blink." },
+        },
+        {
+          id: "faq-dool-2",
+          question: { ar: "ما هي المستندات المطلوبة للاستلام؟", en: "What documents are required for receiving?" },
+          answer: { ar: "رقم الحوالة وهوية سارية المفعول.", en: "The transfer number and a valid ID." },
+        },
+      ],
+    },
+    relatedServicesKeys: ["unified-network", "current-account"],
+  },
+  {
+    slug: "unified-network",
+    section: "personal",
+    title: {
+      ar: "الشبكة الموحدة",
+      en: "Unified Network"
+    },
+    subtitle: {
+      ar: "استلم حوالاتك بكل سهولة من أقرب وكيل معتمد للشبكة الموحدة للأموال",
+      en: "Receive your transfers with ease from the nearest authorized agent of the Unified Money Network."
+    },
+    heroImage: "/images/customer-services/Local-transfers.jpg",
+    breadcrumbs: [
+      { labelKey: "nav.personalBanking", href: "/personal-banking" },
+      { labelKey: "nav.localTransfers", href: "/personal/local-transfers" },
+      { label: { ar: "الشبكة الموحدة", en: "Unified Network" } },
+    ],
+    tagline: { ar: "التحويلات المحلية", en: "Local Transfers" },
+    primaryCta: {
+      label: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
+      href: "/contact",
+    },
+    seoDescription: {
+      ar: "استلم حوالاتك بكل سهولة من أقرب وكيل معتمد للشبكة الموحدة للأموال.",
+      en: "Receive your transfers with ease from the nearest authorized agent of the Unified Money Network.",
+    },
+    overview: {
+      title: { ar: "نبذة عن الشبكة الموحدة", en: "Overview of Unified Network" },
+      description: {
+        ar: "استلم حوالاتك بكل سهولة من أقرب وكيل معتمد للشبكة الموحدة للأموال. شبكة واسعة من الوكلاء لضمان وصولك السريع والمريح لأموالك.",
+        en: "Receive your transfers with ease from the nearest authorized agent of the Unified Money Network. A wide network of agents ensures fast and convenient access to your funds.",
+      },
+    },
+    why: {
+      title: { ar: "لماذا تختار الشبكة الموحدة؟", en: "Why Choose the Unified Network?" },
+      items: [
+        { id: "why-un-1", text: { ar: "انتشار واسع للوكلاء المعتمدين.", en: "Wide distribution of authorized agents." } },
+        { id: "why-un-2", text: { ar: "سهولة وسرعة في الاستلام.", en: "Ease and speed of receiving." } },
+        { id: "why-un-3", text: { ar: "أمان وموثوقية في المعاملات.", en: "Security and reliability in transactions." } },
+      ],
+    },
+    featureCards: {
+      title: { ar: "مميزات الشبكة الموحدة", en: "Unified Network Features" },
+      items: [
+        {
+          id: "fc-un-1",
+          title: { ar: "شبكة واسعة", en: "Wide Network" },
+          description: { ar: "آلاف الوكلاء في خدمتك.", en: "Thousands of agents at your service." },
+        },
+        {
+          id: "fc-un-2",
+          title: { ar: "سهولة الوصول", en: "Easy Access" },
+          description: { ar: "استلم أموالك من أقرب نقطة إليك.", en: "Receive your money from the nearest point to you." },
+        },
+        {
+          id: "fc-un-3",
+          title: { ar: "أمان مالي", en: "Financial Security" },
+          description: { ar: "نظام آمن وموثوق للحوالات.", en: "Secure and reliable transfer system." },
+        },
+      ],
+    },
+    audience: {
+      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
+      items: [
+        { id: "aud-un-1", text: { ar: "الأفراد المستفيدون من الحوالات المحلية.", en: "Individuals receiving local transfers." } },
+        { id: "aud-un-2", text: { ar: "التجار وأصحاب الأعمال.", en: "Merchants and business owners." } },
+      ],
+    },
+    requirementsSection: {
+      title: { ar: "متطلبات الاستلام", en: "Receiving Requirements" },
+      items: [
+        { id: "req-un-1", text: { ar: "رقم الحوالة.", en: "Transfer Number." } },
+        { id: "req-un-2", text: { ar: "هوية شخصية سارية المفعول.", en: "Valid personal ID." } },
+      ],
+    },
+    stepsSection: {
+      title: { ar: "خطوات الاستلام", en: "Receiving Steps" },
+      steps: [
+        {
+          id: "step-un-1",
+          title: { ar: "التوجه للوكيل", en: "Visit Agent" },
+          description: { ar: "تفضل بزيارة أقرب وكيل معتمد.", en: "Visit the nearest authorized agent." },
+        },
+        {
+          id: "step-un-2",
+          title: { ar: "تقديم البيانات", en: "Provide Details" },
+          description: { ar: "أعطِ الوكيل رقم الحوالة والهوية.", en: "Give the agent the transfer number and ID." },
+        },
+        {
+          id: "step-un-3",
+          title: { ar: "استلام المبلغ", en: "Receive Amount" },
+          description: { ar: "استلم مبلغك فوراً.", en: "Receive your amount immediately." },
+        },
+      ],
+    },
+    ctaSection: {
+      title: { ar: "استلم حوالتك الآن", en: "Receive Your Transfer Now" },
+      description: { ar: "توجه لأقرب وكيل معتمد واستلم حوالتك بسهولة.", en: "Head to the nearest authorized agent and receive your transfer easily." },
+      primaryLabel: { ar: "ابحث عن وكيل", en: "Find an Agent" },
+      primaryHref: "/atm-and-branches",
+      secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
+      secondaryHref: "tel:+967000000000"
+    },
+    faqs: {
+      title: { ar: "الأسئلة الشائعة", en: "FAQs" },
+      items: [
+        {
+          id: "faq-un-1",
+          question: { ar: "كيف أجد أقرب وكيل؟", en: "How do I find the nearest agent?" },
+          answer: { ar: "يمكنك البحث في صفحة الفروع والوكلاء على موقعنا.", en: "You can search on the branches and agents page on our website." },
+        },
+        {
+          id: "faq-un-2",
+          question: { ar: "هل توجد رسوم على الاستلام؟", en: "Are there receiving fees?" },
+          answer: { ar: "لا، استلام الحوالات عبر الشبكة الموحدة مجاني للمستفيد.", en: "No, receiving transfers via the unified network is free for the beneficiary." },
+        },
+      ],
+    },
+    relatedServicesKeys: ["dool-express", "current-account"],
+  },
+  {
     slug: "current-account",
     section: "personal",
     title: {
