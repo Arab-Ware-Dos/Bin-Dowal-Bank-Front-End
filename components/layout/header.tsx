@@ -84,7 +84,7 @@ export function Header() {
     () => [
        {
         key: "internetBankingAccess",
-        label: locale === "ar" ? "الانترنت البنكي" : "Internet banking",
+        label: locale === "ar" ? "منصة بن دول اعمال" : "Bindowal Business Platform",
         href: "/digital-channels#internet",
         icon: Monitor,
       },

@@ -4762,8 +4762,8 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "internet-banking",
     section: "e-services",
     title: {
-      ar: "الانترنت البنكي",
-      en: "Internet Banking"
+      ar: "منصة بن دول اعمال",
+      en: "Bindowal Business Platform"
     },
     subtitle: {
       ar: "منصة رقمية لإدارة الحسابات والخدمات المصرفية عبر الويب",
@@ -4778,8 +4778,8 @@ export const bankingServicesData: ServicePageData[] = [
       {
         labelKey: "nav.internetBank",
         label: {
-          ar: "الانترنت البنكي",
-          en: "Internet Banking"
+          ar: "منصة بن دول اعمال",
+          en: "Bindowal Business Platform"
         }
       }
     ],

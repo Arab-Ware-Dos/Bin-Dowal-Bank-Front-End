@@ -119,6 +119,23 @@ export const navigationData: NavItem[] = [
           { key: "expressRemittances", href: "/personal/fast-money-transfers", label: { ar: "الحوالات السريعة", en: "Express Remittances" }, icon: Plane },
         ]
       },
+         {
+        title: { ar: "حساب المغتربين", en: "Expatriate Account" },
+        links: [
+          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
+          { key: "expatSavings", href: "/accounts/expat#savings", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
+          { key: "expatIntl", href: "/accounts/expat#intl-transfers", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
+          { key: "expatLocal", href: "/accounts/expat#local-transfers", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
+          { key: "expatDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
+        ]
+      },
+      {
+        title: { ar: "حساب القاصر", en: "Minors Account" },
+        links: [
+          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب توفير", en: "Savings Account" }, icon: Baby },
+          { key: "minorInvestments", href: "/personal/minors-account#investments", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
+        ]
+      },
       // {
       //   title: { ar: "البطاقات", en: "Cards" },
       //   links: [
@@ -136,19 +153,7 @@ export const navigationData: NavItem[] = [
       //     { key: "pos", href: "/personal/mushtarayati-network", label: { ar: "نقاط البيع شبكة مشترياتي", en: "POS Mushtarayati" }, icon: Monitor },
       //   ]
       // },
-      {
-        title: { ar: "التمويلات", en: "Financing" },
-        links: [
-          // { key: "personalFinance", href: "/personal/financing-personal", label: { ar: "التمويل الشخصي", en: "Personal Financing" }, icon: UserCheck },
-          // { key: "realEstate", href: "/personal/financing-home", label: { ar: "التمويل العقاري", en: "Real Estate Financing" }, icon: Building },
-          // { key: "smallProjects", href: "/personal/financing-business", label: { ar: "تمويل المشاريع الصغيرة", en: "Small Projects Financing" }, icon: Briefcase },
-          { key: "financingTakamul", href: "/personal/financing-takamul", label: { ar: "تكامل", en: "Takamul" }, icon: Lightbulb },
-          { key: "financingThimar", href: "/personal/financing-thimar", label: { ar: "ثمار", en: "Thimar" }, icon: TrendingUp },
-          { key: "financingTaameer", href: "/personal/financing-taameer", label: { ar: "تعمير", en: "Ta'meer" }, icon: Building2 },
-          { key: "financingNoor", href: "/personal/financing-noor", label: { ar: "نور", en: "Noor" }, icon: HeartHandshake },
-          { key: "financingZad", href: "/personal/financing-zad", label: { ar: "زاد", en: "Zad" }, icon: GraduationCap },
-        ]
-      }
+     
     ]
   },
 
@@ -162,7 +167,7 @@ export const navigationData: NavItem[] = [
     imageLink: "/business",
     groups: [
       {
-        title: { ar: "الشركات الكبيرة", en: "Large Corporate" },
+        title: { ar: "الشركات الكبيرة والمتوسطة", en: "Large Corporate" },
         links: [
           { key: "corpCurrent", href: "/business/corporate-current-account", label: { ar: "الحسابات الجارية", en: "Current Accounts" }, icon: Building2 },
           { key: "corpInvestments", href: "/business/corporate-investment-deposits", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
@@ -170,20 +175,20 @@ export const navigationData: NavItem[] = [
           { key: "swift", href: "/business/swift-transfers", label: { ar: "حوالات السويفت", en: "SWIFT Transfers" }, icon: Globe2 },
           // { key: "credits", href: "/business#credits", label: { ar: "الاعتمادات المستندية", en: "Letters of Credit" }, icon: FileText },
           { key: "guarantees", href: "/business/bank-guarantees", label: { ar: "الضمانات البنكية", en: "Bank Guarantees" }, icon: ShieldCheck },
-          // { key: "cashManagement", href: "/business#cash", label: { ar: "إدارة النقد", en: "Cash Management" }, icon: Calculator },
+          { key: "cashManagement", href: "/business#cash", label: { ar: "إدارة النقد", en: "Cash Management" }, icon: Calculator },
           { key: "payroll", href: "/business#payroll", label: { ar: "تحويل الرواتب", en: "Payroll Management" }, icon: Users },
           // { key: "intlTrade", href: "/business#trade", label: { ar: "خدمات التجارة الدولية", en: "International Trade" }, icon: Plane },
         ]
       },
-      {
-        title: { ar: "الشركات المتوسطة", en: "Medium Enterprises" },
-        links: [
-          { key: "medFinance", href: "/business#med-finance", label: { ar: "التمويل التجاري", en: "Commercial Financing" }, icon: BriefcaseBusiness },
-          { key: "medGuarantees", href: "/business/bank-guarantees", label: { ar: "الضمانات", en: "Guarantees" }, icon: ShieldCheck },
-          { key: "medTransfers", href: "/business#transfers", label: { ar: "الحوالات", en: "Transfers" }, icon: Send },
-          { key: "medCash", href: "/business#cash", label: { ar: "إدارة النقد", en: "Cash Management" }, icon: Calculator },
-        ]
-      },
+      // {
+      //   title: { ar: "الشركات المتوسطة", en: "Medium Enterprises" },
+      //   links: [
+      //     { key: "medFinance", href: "/business#med-finance", label: { ar: "التمويل التجاري", en: "Commercial Financing" }, icon: BriefcaseBusiness },
+      //     { key: "medGuarantees", href: "/business/bank-guarantees", label: { ar: "الضمانات", en: "Guarantees" }, icon: ShieldCheck },
+      //     { key: "medTransfers", href: "/business#transfers", label: { ar: "الحوالات", en: "Transfers" }, icon: Send },
+      //     { key: "medCash", href: "/business#cash", label: { ar: "إدارة النقد", en: "Cash Management" }, icon: Calculator },
+      //   ]
+      // },
       {
         title: { ar: "الشركات الصغيرة", en: "Small Businesses" },
         links: [
@@ -229,30 +234,27 @@ export const navigationData: NavItem[] = [
         ]
       },
       {
-        title: { ar: "حساب الشباب", en: "Youth Account" },
+        title: { ar: "التمويلات", en: "Financing" },
         links: [
-          { key: "youthCurrent", href: "/accounts/youth", label: { ar: "حسابات جارية", en: "Current Accounts" }, icon: Wallet },
-          { key: "youthEdu", href: "/accounts/youth#education", label: { ar: "تمويل التعليم", en: "Education Financing" }, icon: Building2 },
-          { key: "youthDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Smartphone },
+          // { key: "personalFinance", href: "/personal/financing-personal", label: { ar: "التمويل الشخصي", en: "Personal Financing" }, icon: UserCheck },
+          // { key: "realEstate", href: "/personal/financing-home", label: { ar: "التمويل العقاري", en: "Real Estate Financing" }, icon: Building },
+          // { key: "smallProjects", href: "/personal/financing-business", label: { ar: "تمويل المشاريع الصغيرة", en: "Small Projects Financing" }, icon: Briefcase },
+          { key: "financingTakamul", href: "/personal/financing-takamul", label: { ar: "تكامل", en: "Takamul" }, icon: Lightbulb },
+          { key: "financingThimar", href: "/personal/financing-thimar", label: { ar: "ثمار", en: "Thimar" }, icon: TrendingUp },
+          { key: "financingTaameer", href: "/personal/financing-taameer", label: { ar: "تعمير", en: "Ta'meer" }, icon: Building2 },
+          { key: "financingNoor", href: "/personal/financing-noor", label: { ar: "نور", en: "Noor" }, icon: HeartHandshake },
+          { key: "financingZad", href: "/personal/financing-zad", label: { ar: "زاد", en: "Zad" }, icon: GraduationCap },
         ]
       },
-      {
-        title: { ar: "حساب المغتربين", en: "Expatriate Account" },
-        links: [
-          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
-          { key: "expatSavings", href: "/accounts/expat#savings", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
-          { key: "expatIntl", href: "/accounts/expat#intl-transfers", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
-          { key: "expatLocal", href: "/accounts/expat#local-transfers", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
-          { key: "expatDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
-        ]
-      },
-      {
-        title: { ar: "حساب القاصر", en: "Minors Account" },
-        links: [
-          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب توفير", en: "Savings Account" }, icon: Baby },
-          { key: "minorInvestments", href: "/personal/minors-account#investments", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
-        ]
-      }
+      // {
+      //   title: { ar: "حساب الشباب", en: "Youth Account" },
+      //   links: [
+      //     { key: "youthCurrent", href: "/accounts/youth", label: { ar: "حسابات جارية", en: "Current Accounts" }, icon: Wallet },
+      //     { key: "youthEdu", href: "/accounts/youth#education", label: { ar: "تمويل التعليم", en: "Education Financing" }, icon: Building2 },
+      //     { key: "youthDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Smartphone },
+      //   ]
+      // },
+    
 
     ]
   },
@@ -262,7 +264,7 @@ export const navigationData: NavItem[] = [
     label: { ar: "الخدمات الإلكترونية", en: "E-Services" },
     singleLinks: [
       { key: "bankApp", href: "/e-services/mobile-banking", label: { ar: "التطبيق البنكي", en: "Mobile Banking" }, icon: Smartphone },
-      { key: "internetBank", href: "/e-services/internet-banking", label: { ar: "الانترنت البنكي", en: "Internet Banking" }, icon: Monitor },
+      { key: "internetBank", href: "/e-services/bindawal-business", label: { ar: "منصة بن دول اعمال", en: "Internet Banking" }, icon: Monitor },
       { key: "eWallet", href: "/e-services/e-wallet", label: { ar: "المحفظة الإلكترونية", en: "e-Wallet" }, icon: ShieldCheck },
       { key: "posNet", href: "/e-services/mushtarayati-network", label: { ar: "شبكة مشترياتي", en: "Mushtarayati Network" }, icon: Monitor },
       { key: "bankCards", href: "/cards", label: { ar: "البطاقات البنكية", en: "Bank Cards" }, icon: CreditCard },
