@@ -219,7 +219,8 @@ export function AppPromoSection() {
   ] as const
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-24">
+    // <section className="relative overflow-hidden py-20 md:py-24">
+      <section className="relative overflow-hidden">
       <div className="absolute inset-0 -z-30 bg-[linear-gradient(180deg,#ffffff_0%,#fbf6f8_42%,#f5edf2_100%)]" />
       <div className="absolute inset-0 -z-20 opacity-50 [background-image:radial-gradient(circle_at_1px_1px,rgba(24,39,112,0.05)_1px,transparent_0)] [background-size:24px_24px]" />
 
