@@ -521,7 +521,7 @@ export default function NewsPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-16 text-white">
+      {/* <section className="bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-16 text-white">
         <div className="container mx-auto px-4">
           <motion.div {...fadeInUp} className="mx-auto max-w-3xl text-center">
             <p className="mb-3 text-sm font-medium tracking-[0.18em] uppercase text-white/80">
@@ -569,7 +569,7 @@ export default function NewsPage() {
             )}
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
