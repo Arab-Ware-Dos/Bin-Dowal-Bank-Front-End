@@ -1,12 +1,3 @@
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 100; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Thin.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 200; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-ExtraLight.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 300; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Light.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 400; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Regular.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 500; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Medium.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 600; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-SemiBold.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 700; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Bold.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 800; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-ExtraBold.woff') format('woff'); }
-@font-face { font-family: 'Somar Sans'; font-style: normal; font-weight: 900; font-display: swap; src: url('https://fonts.cdnfonts.com/s/90887/SomarSans-Black.woff') format('woff'); }
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
@@ -86,8 +77,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Somar Sans', sans-serif;
-  --font-mono: 'Somar Sans', monospace;
+  --font-sans: var(--font-somar-sans), sans-serif;
+  --font-mono: var(--font-somar-sans), monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);

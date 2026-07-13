@@ -1,11 +1,27 @@
 import type { Metadata, Viewport } from 'next'
+import dynamic from 'next/dynamic'
 import { Analytics } from '@vercel/analytics/next'
 import { I18nProvider } from '@/lib/i18n-context'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { PageLoader } from '@/components/layout/page-loader'
-import { Chatbot } from '@/components/layout/chatbot'
+const Chatbot = dynamic(() => import('@/components/layout/chatbot').then(mod => mod.Chatbot))
 import './globals.css'
+import localFont from 'next/font/local'
+
+const somarSans = localFont({
+  src: [
+    { path: '../public/fonts/SomarSans-Light.woff', weight: '300', style: 'normal' },
+    { path: '../public/fonts/SomarSans-Regular.woff', weight: '400', style: 'normal' },
+    { path: '../public/fonts/SomarSans-Medium.woff', weight: '500', style: 'normal' },
+    { path: '../public/fonts/SomarSans-SemiBold.woff', weight: '600', style: 'normal' },
+    { path: '../public/fonts/SomarSans-Bold.woff', weight: '700', style: 'normal' },
+    { path: '../public/fonts/SomarSans-ExtraBold.woff', weight: '800', style: 'normal' },
+  ],
+  variable: '--font-somar-sans',
+  display: 'swap',
+  fallback: ['Arial', 'sans-serif'],
+})
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://bdbankui.arabwaredos.com'),
   title: {
@@ -69,9 +85,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning className="font-sans">
+    <html lang="ar" dir="rtl" suppressHydrationWarning className={`${somarSans.variable} font-sans`}>
       <body className="font-sans antialiased min-h-screen flex flex-col">
-        <PageLoader />
         <I18nProvider>
           <Header />
           <main className="flex-1">

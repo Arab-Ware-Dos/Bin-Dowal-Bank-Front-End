@@ -1,21 +1,13 @@
-"use client"
-
+import dynamic from "next/dynamic"
 import { HeroSection } from "@/components/home/hero-section"
-// import { AdsSlider } from "@/components/home/ads-slider"
-// import { QuickActions } from "@/components/home/quick-actions"
-import { AppPromoSection } from "@/components/home/app-promo-section"
-// import { StatsSection } from "@/components/home/stats-section"
-import { NewsSection } from "@/components/home/news-section"
-import { DiscoverProductsSection } from "@/components/home/discover-products-section"
-import { FinancingServices } from "@/components/home/financing-services"
-import { CardsSection } from "@/components/home/cards-section"
-// import { OffersSection } from "@/components/home/offers-section"
-// import { UpdateSlider } from "@/components/home/update-slider"
-// import { PartnershipsSection } from "@/components/home/partnerships-section"
-import { PartnersLogoCarousel } from "@/components/home/partners-logo-carousel"
 import { AboutSection } from "@/components/home/about-section"
-// import { BinDowalPayApp } from "@/components/home/bin-dowal-pay-app"
-// import { UnifiedAppsShowcaseSection } from "@/components/home/UnifiedAppsShowcaseSection"
+
+const DiscoverProductsSection = dynamic(() => import("@/components/home/discover-products-section").then(mod => mod.DiscoverProductsSection))
+const AppPromoSection = dynamic(() => import("@/components/home/app-promo-section").then(mod => mod.AppPromoSection))
+const CardsSection = dynamic(() => import("@/components/home/cards-section").then(mod => mod.CardsSection))
+const FinancingServices = dynamic(() => import("@/components/home/financing-services").then(mod => mod.FinancingServices))
+const PartnersLogoCarousel = dynamic(() => import("@/components/home/partners-logo-carousel").then(mod => mod.PartnersLogoCarousel))
+const NewsSection = dynamic(() => import("@/components/home/news-section").then(mod => mod.NewsSection))
 
 export default function HomePage() {
   return (
