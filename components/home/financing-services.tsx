@@ -10,12 +10,12 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 
 const services = [
-  { id: "tameer", icon: "/images/financing-services/6.png" },
-  { id: "takamul", icon: "/images/financing-services/1.png" },
-  { id: "thimar", icon: "/images/financing-services/2.png" },
-  { id: "solar", icon: "/images/financing-services/3.png" },
-  { id: "zad", icon: "/images/financing-services/5.png" },
-  { id: "noor", icon: "/images/financing-services/4.png" },
+  { id: "tameer", icon: "/images/financing-services/6.png", href: "/personal/financing-taameer" },
+  { id: "takamul", icon: "/images/financing-services/1.png", href: "/personal/financing-takamul" },
+  { id: "thimar", icon: "/images/financing-services/2.png", href: "/personal/financing-thimar" },
+  { id: "solar", icon: "/images/financing-services/3.png", href: "/financing" },
+  { id: "zad", icon: "/images/financing-services/5.png", href: "/personal/financing-zad" },
+  { id: "noor", icon: "/images/financing-services/4.png", href: "/personal/financing-noor" },
 ]
 
 // Returns position index relative to active: -1 0 1 (side cards), ±2 (hidden)
@@ -189,7 +189,7 @@ export function FinancingServices() {
                         {t(`financingServices.${service.id}.desc`)}
                       </p>
                       <Link
-                        href="/financing"
+                        href={service.href}
                         className="inline-flex items-center gap-2 self-start rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/18 hover:border-white/30 font-cairo"
                       >
                         <span>{isRTL ? "اعرف المزيد" : "Learn More"}</span>
