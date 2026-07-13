@@ -2,7 +2,7 @@
 
 import { HeroSection } from "@/components/home/hero-section"
 // import { AdsSlider } from "@/components/home/ads-slider"
-import { QuickActions } from "@/components/home/quick-actions"
+// import { QuickActions } from "@/components/home/quick-actions"
 import { AppPromoSection } from "@/components/home/app-promo-section"
 // import { StatsSection } from "@/components/home/stats-section"
 import { NewsSection } from "@/components/home/news-section"
@@ -23,7 +23,7 @@ export default function HomePage() {
       <HeroSection />
       {/* <UpdateSlider /> */}
       <AboutSection />
-      <QuickActions />
+      {/* <QuickActions /> */}
       <DiscoverProductsSection />
       <AppPromoSection />
       {/* <BinDowalPayApp /> */}

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState, type MouseEvent, type ComponentType } from "react"
 import {
   motion,
@@ -394,379 +395,52 @@ export function AppPromoSection() {
             className="relative flex justify-center"
           >
             <motion.div
-              className="relative"
-              onMouseMove={handleParallax}
-              onMouseLeave={resetParallax}
-              style={
-                reduceMotion
-                  ? { perspective: 1200 }
-                  : {
-                    perspective: 1200,
-                    rotateX,
-                    rotateY,
-                    x: translateX,
-                    y: translateY,
-                    transformStyle: "preserve-3d",
-                  }
-              }
+              className="group relative"
             >
-              <motion.div
-                aria-hidden="true"
-                className="absolute inset-0 -z-20 rounded-full bg-[#3C44FF]/10 blur-3xl"
-                style={reduceMotion ? undefined : { x: glowX, y: glowY }}
-              />
+              <div className="relative overflow-hidden">
+                <div className="absolute inset-0" />
+                <div className="absolute inset-x-10 top-0 h-px" />
+                <div className="absolute bottom-0 left-0 right-0 h-24" />
 
-              <div className="relative h-[728px] w-[364px] rounded-[46px] bg-[linear-gradient(180deg,rgba(255,255,255,0.75),rgba(255,255,255,0.42))] p-[1px] shadow-[0_36px_100px_rgba(24,39,112,0.16)]">
-                <div className="absolute inset-[1px] rounded-[45px] bg-[linear-gradient(180deg,rgba(255,255,255,0.46),rgba(255,255,255,0.14))]" />
-
-                <div className="relative h-full overflow-hidden rounded-[45px] border border-white/75 bg-[linear-gradient(180deg,#F7F6FB_0%,#F8EEF2_100%)] p-4">
-                  <div className="absolute inset-x-10 top-0 h-20 rounded-b-full bg-white/60 blur-2xl" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.5),transparent_35%)]" />
-
+                <div className="relative z-10 flex flex-col items-center justify-center overflow-visible py-8">
                   <motion.div
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="relative mb-4 flex items-center justify-between px-2 pt-2"
+                    animate={reduceMotion ? { y: 0 } : { y: [0, -8, 0, 8, 0] }}
+                    transition={{
+                      duration: 7,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="relative z-10 flex items-center justify-center"
                   >
-                    <motion.button
-                      variants={fadeUp}
-                      type="button"
-                      className="flex h-11 w-11 items-center justify-center rounded-2xl text-[#2F37F0]"
-                      aria-label={isArabic ? "القائمة" : "Menu"}
-                    >
-                      <Menu className="h-7 w-7" />
-                    </motion.button>
-
-                    <motion.div
-                      variants={fadeUp}
-                      className="text-[18px] font-extrabold text-[#111B4D]"
-                    >
-                      {phoneText.home}
-                    </motion.div>
-
-                    <div className="h-11 w-11" />
+                    <Image
+                      src="/images/mockup-mobile-apps.png"
+                      alt="Digital banking applications"
+                      width={500}
+                      height={500}
+                      className="h-auto w-[70%] object-contain drop-shadow-2xl"
+                    />
                   </motion.div>
 
-                  <div className="relative pb-24">
-                    <motion.div
-                      initial={{
-                        opacity: 0,
-                        y: reduceMotion ? 0 : 22,
-                        scale: reduceMotion ? 1 : 0.98,
-                      }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true, amount: 0.25 }}
-                      transition={{ duration: 0.65, ease: "easeOut" }}
-                    >
-                      <motion.div
-                        animate={
-                          reduceMotion
-                            ? undefined
-                            : {
-                              y: [0, -4, 0],
-                            }
-                        }
-                        transition={{
-                          duration: 4.4,
-                          repeat: Infinity,
-                          ease: "easeInOut",
-                        }}
-                        className="relative overflow-visible rounded-[30px] bg-[linear-gradient(135deg,#232AF3_0%,#2F37F0_42%,#5649FF_100%)] px-5 pb-16 pt-6 text-white shadow-[0_26px_55px_rgba(47,55,240,0.34)] ring-1 ring-white/20"
-                      >
-                        {!reduceMotion && (
-                          <>
-                            <motion.div
-                              aria-hidden="true"
-                              className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/2 skew-x-[-22deg] bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.14),transparent)]"
-                              animate={{ x: ["-20%", "240%"] }}
-                              transition={{
-                                duration: 3.8,
-                                repeat: Infinity,
-                                repeatDelay: 1.8,
-                                ease: "easeInOut",
-                              }}
-                            />
-                            <motion.div
-                              aria-hidden="true"
-                              className="absolute end-6 top-6 h-24 w-24 rounded-full bg-white/10 blur-2xl"
-                              animate={{ opacity: [0.45, 0.75, 0.45] }}
-                              transition={{
-                                duration: 3.4,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                              }}
-                            />
-                          </>
-                        )}
-
-                        <div className="absolute inset-0 overflow-hidden rounded-[30px]">
-                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_45%)]" />
-                          <div className="absolute inset-0 opacity-30">
-                            <div className="absolute -start-10 top-14 h-[220px] w-[240px] rounded-full border border-white/25" />
-                            <div className="absolute -start-16 top-16 h-[250px] w-[280px] rounded-full border border-white/20" />
-                            <div className="absolute -start-24 top-20 h-[290px] w-[330px] rounded-full border border-white/15" />
-                            <div className="absolute -start-32 top-24 h-[330px] w-[380px] rounded-full border border-white/10" />
-                          </div>
-                        </div>
-
-                        <motion.div
-                          variants={staggerContainer}
-                          initial="hidden"
-                          whileInView="visible"
-                          viewport={{ once: true }}
-                          className="relative z-10"
-                        >
-                          <motion.div
-                            variants={fadeUp}
-                            className="flex items-start justify-between"
-                          >
-                            <div className="text-base font-bold">{phoneText.cardTitle}</div>
-                            <div className="text-lg font-black tracking-tight">
-                              {isArabic ? "ر.ي" : "RI"}
-                            </div>
-                          </motion.div>
-
-                          <motion.div
-                            variants={fadeUp}
-                            className="mt-10 text-center text-[30px] font-bold tracking-[0.18em]"
-                          >
-                            51,200.00
-                          </motion.div>
-
-                          <motion.div
-                            variants={fadeUp}
-                            className="mt-6 text-center text-lg tracking-[0.18em] opacity-90"
-                          >
-                            1234 5678 9012 3456
-                          </motion.div>
-                        </motion.div>
-
-                        <motion.div
-                          initial={{ opacity: 0, y: reduceMotion ? 0 : 24, scale: 0.97 }}
-                          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                          viewport={{ once: true, amount: 0.25 }}
-                          transition={{
-                            duration: 0.55,
-                            ease: "easeOut",
-                            delay: reduceMotion ? 0 : 0.15,
-                          }}
-                          whileHover={
-                            reduceMotion ? undefined : { y: -4, transition: { duration: 0.2 } }
+                  <motion.div
+                    animate={
+                      reduceMotion
+                        ? { opacity: 0.25, scale: 1 }
+                        : {
+                            scale: [1, 0.85, 1, 1.15, 1],
+                            opacity: [0.25, 0.15, 0.25, 0.4, 0.25],
                           }
-                          className="absolute inset-x-4 -bottom-7 z-20 rounded-[24px] border border-white/95 bg-white/94 px-4 py-4 text-[#18265F] shadow-[0_22px_34px_rgba(24,39,112,0.12)] backdrop-blur"
-                        >
-                          <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#7B87FF]/60 to-transparent" />
-
-                          <div className="grid grid-cols-3">
-                            {panelItems.map((item, index) => {
-                              const Icon = item.icon
-
-                              return (
-                                <div
-                                  key={item.label}
-                                  className={`flex flex-col items-center justify-center gap-1.5 px-2 text-center ${index !== 2 ? "border-e border-[#E7EAF8]" : ""
-                                    }`}
-                                >
-                                  <span className="text-[11px] font-semibold text-[#6D7599]">
-                                    {item.label}
-                                  </span>
-
-                                  <motion.div
-                                    className="flex h-9 w-9 items-center justify-center rounded-2xl bg-[#EEF1FF] text-[#2F37F0] ring-1 ring-[#DCE2FF]"
-                                    animate={
-                                      reduceMotion
-                                        ? undefined
-                                        : {
-                                          scale: [1, 1.03, 1],
-                                          opacity: [1, 0.92, 1],
-                                        }
-                                    }
-                                    transition={{
-                                      duration: 2.5,
-                                      repeat: Infinity,
-                                      ease: "easeInOut",
-                                      delay: index * 0.2,
-                                    }}
-                                  >
-                                    <Icon className="h-4 w-4" />
-                                  </motion.div>
-                                </div>
-                              )
-                            })}
-                          </div>
-                        </motion.div>
-                      </motion.div>
-                    </motion.div>
-
-                    <motion.div
-                      initial={{ opacity: 0, y: reduceMotion ? 0 : 10 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.2 }}
-                      className="mt-14 flex items-center justify-center gap-2"
-                    >
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#D7DCEF]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#D7DCEF]" />
-                      <motion.span
-                        className="h-2.5 w-9 rounded-full bg-[#2F37F0]"
-                        animate={reduceMotion ? undefined : { opacity: [0.7, 1, 0.7] }}
-                        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                    </motion.div>
-
-                    <motion.div
-                      variants={staggerContainer}
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.15 }}
-                      className="mt-6 grid grid-cols-2 gap-3"
-                    >
-                      {actionIcons.map((item, index) => {
-                        const Icon = item.icon
-                        const isActive = activeAction === index
-
-                        return (
-                          <motion.div
-                            key={item.ar}
-                            variants={fadeUp}
-                            onHoverStart={() => setActiveAction(index)}
-                            onHoverEnd={() => setActiveAction(null)}
-                            whileHover={
-                              reduceMotion
-                                ? undefined
-                                : {
-                                  y: -4,
-                                  scale: 1.01,
-                                  transition: { duration: 0.2 },
-                                }
-                            }
-                            className={`group relative overflow-hidden rounded-[24px] border p-4 backdrop-blur transition-all duration-300 ${isActive
-                                ? "border-[#DDE2FF] bg-white shadow-[0_16px_38px_rgba(47,55,240,0.10)]"
-                                : "border-white/85 bg-white/84 shadow-[0_12px_30px_rgba(24,39,112,0.05)]"
-                              }`}
-                          >
-                            <motion.div
-                              aria-hidden="true"
-                              className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#5E6BFF]/65 to-transparent"
-                              animate={
-                                reduceMotion
-                                  ? undefined
-                                  : {
-                                    opacity: isActive ? 1 : 0.35,
-                                    scaleX: isActive ? 1 : 0.86,
-                                  }
-                              }
-                              transition={{ duration: 0.22 }}
-                            />
-
-                            <motion.div
-                              aria-hidden="true"
-                              className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(47,55,240,0.08),transparent_55%)]"
-                              animate={
-                                reduceMotion
-                                  ? undefined
-                                  : { opacity: isActive ? 1 : 0.55 }
-                              }
-                              transition={{ duration: 0.22 }}
-                            />
-
-                            <div className="relative z-10 mb-4 flex items-start justify-between">
-                              <motion.div
-                                animate={
-                                  reduceMotion
-                                    ? undefined
-                                    : { x: isActive ? -3 : 0, opacity: isActive ? 1 : 0.75 }
-                                }
-                                transition={{ duration: 0.2 }}
-                              >
-                                <ArrowLeft className="h-4 w-4 text-[#42507D]" />
-                              </motion.div>
-
-                              <motion.div
-                                className={`flex h-9 w-9 items-center justify-center rounded-2xl ${isActive
-                                    ? "bg-[#EEF1FF] text-[#2F37F0] ring-1 ring-[#DCE2FF]"
-                                    : "text-[#2F37F0]"
-                                  }`}
-                                animate={
-                                  reduceMotion
-                                    ? undefined
-                                    : {
-                                      scale: isActive ? 1.08 : 1,
-                                      rotate: isActive ? -4 : 0,
-                                    }
-                                }
-                                transition={{ duration: 0.22 }}
-                              >
-                                <motion.div
-                                  animate={
-                                    reduceMotion
-                                      ? undefined
-                                      : {
-                                        scale: [1, 1.03, 1],
-                                      }
-                                  }
-                                  transition={{
-                                    duration: 2.3,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: index * 0.12,
-                                  }}
-                                >
-                                  <Icon className="h-6 w-6 stroke-[1.8]" />
-                                </motion.div>
-                              </motion.div>
-                            </div>
-
-                            <motion.div
-                              animate={
-                                reduceMotion
-                                  ? undefined
-                                  : {
-                                    x: isActive ? -2 : 0,
-                                  }
-                              }
-                              transition={{ duration: 0.2 }}
-                              className="relative z-10 text-right text-sm font-bold leading-6 text-[#111B4D]"
-                            >
-                              {isArabic ? item.ar : item.en}
-                            </motion.div>
-                          </motion.div>
-                        )
-                      })}
-                    </motion.div>
-                  </div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: reduceMotion ? 0 : 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.15 }}
-                    className="absolute inset-x-0 bottom-0 rounded-b-[45px] border-t border-white/75 bg-white/76 px-6 py-3 backdrop-blur-xl"
-                  >
-                    <div className="grid grid-cols-4 items-center gap-3 text-center text-[10px]">
-                      <div className="text-[#8A92B2]">
-                        <div className="mx-auto mb-1 h-5 w-5 rounded-md border border-[#C8D0E8]" />
-                        {isArabic ? "التحويلات" : "Transfers"}
-                      </div>
-                      <div className="text-[#8A92B2]">
-                        <div className="mx-auto mb-1 h-5 w-5 rounded-md border border-[#C8D0E8]" />
-                        {isArabic ? "الميزات" : "Benefits"}
-                      </div>
-                      <div className="text-[#8A92B2]">
-                        <div className="mx-auto mb-1 h-5 w-5 rounded-md border border-[#C8D0E8]" />
-                        {isArabic ? "البطاقات" : "Cards"}
-                      </div>
-                      <div className="font-bold text-[#2F37F0]">
-                        <div className="mx-auto mb-1 h-5 w-5 rounded-md border border-[#2F37F0]" />
-                        {isArabic ? "الرئيسية" : "Home"}
-                      </div>
-                    </div>
-                  </motion.div>
+                    }
+                    transition={{
+                      duration: 7,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="z-0 mt-4 h-5 w-[45%] rounded-[100%] bg-black/40 blur-xl md:mt-6 md:w-[35%]"
+                  />
                 </div>
               </div>
             </motion.div>
+
           </motion.div>
         </div>
 
