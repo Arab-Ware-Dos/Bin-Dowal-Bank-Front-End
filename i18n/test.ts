@@ -123,20 +123,27 @@ async function runTests() {
     { input: ["/ar/contact", "en"], expected: "/en/contact" },
     { input: ["/en/contact", "ar"], expected: "/ar/contact" },
 
-    // C. Unmigrated plain paths
-    { input: ["/about/annual-reports", "en"], expected: "/about/annual-reports" },
+    // C. Migrated sub-routes from Batch 2
+    { input: ["/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
+    { input: ["/en/about/annual-reports", "ar"], expected: "/ar/about/annual-reports" },
+    { input: ["/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
+    { input: ["/ar/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
+    { input: ["/about/partners", "ar"], expected: "/ar/about/partners" },
+    { input: ["/en/about/partners", "ar"], expected: "/ar/about/partners" },
+    { input: ["/about/social-responsibility", "en"], expected: "/en/about/social-responsibility" },
+
+    // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
     { input: ["/cards", "ar"], expected: "/cards" },
 
-    // D. Unmigrated paths with existing Locale
-    { input: ["/en/about/annual-reports", "ar"], expected: "/about/annual-reports" },
-    { input: ["/ar/about/board-of-directors", "en"], expected: "/about/board-of-directors" },
+    // E. Unmigrated paths with existing Locale
     { input: ["/en/news", "ar"], expected: "/news" },
     { input: ["/ar/cards", "en"], expected: "/cards" },
+    { input: ["/ar/business/swift-transfers", "en"], expected: "/business/swift-transfers" },
 
-    // E. Query and Hash
+    // F. Query and Hash
     { input: ["/en/about?tab=history#board", "ar"], expected: "/ar/about?tab=history#board" },
-    { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/about/annual-reports?year=2025#download" },
+    { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/ar/about/annual-reports?year=2025#download" },
 
     // F. Locale-like pathnames
     { input: ["/arab-bank", "en"], expected: "/arab-bank" },

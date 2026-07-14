@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useI18n } from "@/lib/i18n-context"
 import { ChevronLeft, ChevronRight, Home } from "lucide-react"
+import { getLocalizedHref } from "@/lib/localized-routes"
 
 interface BreadcrumbItem {
   labelKey: string
@@ -14,7 +15,7 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const { t, direction } = useI18n()
+  const { t, direction, mode, locale } = useI18n()
   const Chevron = direction === "rtl" ? ChevronLeft : ChevronRight
 
   return (
@@ -22,7 +23,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       <ol className="flex items-center gap-2 text-sm text-white/60 flex-wrap">
         <li>
           <Link
-            href="/"
+            href={mode === "url" ? getLocalizedHref("/", locale) : "/"}
             className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
             <Home className="h-3.5 w-3.5" />
@@ -34,7 +35,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             <Chevron className="h-3.5 w-3.5 text-white/30" />
             {item.href ? (
               <Link
-                href={item.href}
+                href={mode === "url" ? getLocalizedHref(item.href, locale) : item.href}
                 className="hover:text-white transition-colors text-white/60"
               >
                 {t(item.labelKey)}

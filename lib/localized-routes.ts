@@ -3,7 +3,11 @@ import { Locale } from "@/i18n/config";
 export const LOCALIZED_STATIC_ROUTES = [
   "/",
   "/about",
-  "/contact"
+  "/contact",
+  "/about/annual-reports",
+  "/about/board-of-directors",
+  "/about/partners",
+  "/about/social-responsibility"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];
