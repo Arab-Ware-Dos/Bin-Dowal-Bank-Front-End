@@ -111,10 +111,10 @@ export const navigationData: NavItem[] = [
             ]
           },
           {
-            key: "intlTransfers",
-            href: "/personal/international-transfers",
-            label: { ar: "التحويلات الدولية", en: "International Transfers" },
-            icon: Globe2,
+           key: "expressRemittances",
+             href: "/personal/fast-money-transfers",
+            label: { ar: "الحوالات السريعة", en: "Express Remittances" },
+            icon: Plane,
             subLinks: [
               { key: "moneygram", href: "/personal/moneygram", label: { ar: "موني جرام", en: "MoneyGram" } },
               { key: "shift", href: "/personal/shift", label: { ar: "شفت", en: "Shift" } },
@@ -125,26 +125,10 @@ export const navigationData: NavItem[] = [
               { key: "swift", href: "/personal/swift", label: { ar: "سويفت", en: "Swift" } },
             ]
           },
-          { key: "expressRemittances", href: "/personal/fast-money-transfers", label: { ar: "الحوالات السريعة", en: "Express Remittances" }, icon: Plane },
+          // { key: "expressRemittances", href: "/personal/fast-money-transfers", label: { ar: "الحوالات السريعة", en: "Express Remittances" }, icon: Plane },
         ]
       },
-      {
-        title: { ar: "حساب المغتربين", en: "Expatriate Account" },
-        links: [
-          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
-          { key: "expatSavings", href: "/accounts/expat#savings", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
-          { key: "expatIntl", href: "/accounts/expat#intl-transfers", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
-          { key: "expatLocal", href: "/accounts/expat#local-transfers", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
-          { key: "expatDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
-        ]
-      },
-      {
-        title: { ar: "حساب القاصر", en: "Minors Account" },
-        links: [
-          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب توفير", en: "Savings Account" }, icon: Baby },
-          { key: "minorInvestments", href: "/personal/minors-account#investments", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
-        ]
-      },
+      
       // {
       //   title: { ar: "البطاقات", en: "Cards" },
       //   links: [
@@ -213,25 +197,23 @@ export const navigationData: NavItem[] = [
     href: "/custom-services",
     label: { ar: "خدمات مخصصة", en: "Custom Services" },
     groups: [
-      // {
-      //   title: { ar: "كبار العملاء", en: "VIP Customers" },
-      //   links: [
-      //     { key: "premiumServices", href: "/accounts/vip", label: { ar: "خدمات مصرفية مميزة", en: "Premium Services" }, icon: BadgeCheck },
-      //     { key: "financialConsulting", href: "/accounts/vip#consulting", label: { ar: "استشارات مالية", en: "Financial Consulting" }, icon: HeartHandshake },
-      //     { key: "specialCards", href: "/accounts/vip#cards", label: { ar: "بطاقات خاصة", en: "Special Cards" }, icon: CreditCard },
-      //     { key: "financingFacilities", href: "/accounts/vip#financing", label: { ar: "تسهيلات تمويلية", en: "Financing Facilities" }, icon: Building2 },
-      //     { key: "digitalVIP", href: "/accounts/vip#digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
-      //   ]
-      // },
-      // {
-      //   title: { ar: "حسابات الأفراد", en: "Individuals" },
-      //   links: [
-      //     { key: "indvCurrent", href: "/personal/current-account", label: { ar: "حسابات جارية", en: "Bank Accounts" }, icon: Wallet },
-      //     { key: "indvSavings", href: "/personal/savings-account", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
-      //     { key: "indvInvestments", href: "/personal/investment-deposit", label: { ar: "حسابات الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
-      //     { key: "indvDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
-      //   ]
-      // },
+      {
+        title: { ar: "حساب المغتربين", en: "Expatriate Account" },
+        links: [
+          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
+          { key: "expatSavings", href: "/accounts/expat#savings", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
+          { key: "expatIntl", href: "/accounts/expat#intl-transfers", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
+          { key: "expatLocal", href: "/accounts/expat#local-transfers", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
+          { key: "expatDigital", href: "/digital", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
+        ]
+      },
+      {
+        title: { ar: "حساب القاصر", en: "Minors Account" },
+        links: [
+          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب توفير", en: "Savings Account" }, icon: Baby },
+          { key: "minorInvestments", href: "/personal/minors-account#investments", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
+        ]
+      },
       {
         title: { ar: "حساب نور للسيدات", en: "Noor Account (Ladies)" },
         links: [
