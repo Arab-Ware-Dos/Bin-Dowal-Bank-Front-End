@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { I18nProvider } from '@/lib/i18n-context'
 import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import '../globals.css'
 import { somarSans } from '@/lib/fonts'
 
 export const metadata: Metadata = {

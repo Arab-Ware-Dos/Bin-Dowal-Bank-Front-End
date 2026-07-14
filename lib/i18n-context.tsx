@@ -504,13 +504,31 @@ const translations: Record<Locale, Record<string, string>> = {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
-interface I18nProviderProps {
-  children: ReactNode
-  mode?: I18nMode
-  initialLocale?: Locale
-}
+type BaseI18nProviderProps = {
+  children: ReactNode;
+};
 
-export function I18nProvider({ children, mode = "legacy", initialLocale = "ar" }: I18nProviderProps) {
+type LegacyI18nProviderProps = BaseI18nProviderProps & {
+  mode?: "legacy";
+  initialLocale?: Locale;
+};
+
+type UrlI18nProviderProps = BaseI18nProviderProps & {
+  mode: "url";
+  initialLocale: Locale;
+};
+
+export type I18nProviderProps = LegacyI18nProviderProps | UrlI18nProviderProps;
+
+export function I18nProvider(props: I18nProviderProps) {
+  if (props.mode === "url" && !props.initialLocale) {
+    throw new Error("I18nProvider requires initialLocale when mode is 'url'.");
+  }
+
+  const mode = props.mode || "legacy";
+  const initialLocale = props.initialLocale || "ar";
+  const { children } = props;
+
   const [legacyLocale, setLegacyLocale] = useState<Locale>(initialLocale)
   
   const currentLocale = mode === "url" ? initialLocale : legacyLocale

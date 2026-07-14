@@ -6,6 +6,7 @@ import Link from "next/link";
 import { buildLocalizedPath } from "@/i18n/pathname";
 import { I18nProvider } from "@/lib/i18n-context";
 import { UrlLocaleProviderProbe } from "@/components/providers/url-locale-provider-probe";
+import { Header } from "@/components/layout/header";
 
 interface Props {
   params: Promise<{ locale: string }> | { locale: string };
@@ -45,6 +46,14 @@ export default async function I18nPocPage({ params }: Props) {
           <Suspense fallback={<div style={{ padding: "0.5rem 1rem", background: "#ccc", borderRadius: "4px" }}>...</div>}>
             <LocaleSwitcherPoc currentLocale={locale} />
           </Suspense>
+        </div>
+
+        <div style={{ border: "2px solid green", padding: "1rem", borderRadius: "8px" }}>
+          <h2>{locale === "ar" ? "اختبار Header URL Mode" : "Header URL Mode Test"}</h2>
+          <div style={{ position: "relative", zIndex: 10 }}>
+            {/* Using Header directly as a harness to avoid double-footer from SharedSiteShell */}
+            <Header localeMode="url" locale={locale} />
+          </div>
         </div>
 
         <UrlLocaleProviderProbe />

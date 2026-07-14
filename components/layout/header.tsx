@@ -41,8 +41,26 @@ type DesktopMenuPosition = {
   width: number
 }
 
-export function Header() {
-  const { locale, setLocale, t } = useI18n()
+import { Locale } from "@/i18n/config"
+import { UrlLanguageSwitcher } from "@/components/i18n/url-language-switcher"
+import { Suspense } from "react"
+
+export type HeaderProps =
+  | {
+      localeMode?: "legacy";
+      locale?: never;
+    }
+  | {
+      localeMode: "url";
+      locale: Locale;
+    };
+
+export function Header(props: HeaderProps) {
+  const { localeMode = "legacy", locale: urlLocale } = props;
+  const { locale: contextLocale, setLocale, t } = useI18n()
+  
+  const locale = localeMode === "url" ? urlLocale : contextLocale;
+  const targetLocale = locale === "ar" ? "en" : "ar";
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null)
@@ -284,15 +302,26 @@ export function Header() {
                 </a>
                 <span className="mx-4 hidden h-4 w-px bg-slate-300 sm:block" />
 
-                <button
-                  type="button"
-                  onClick={toggleLanguage}
-                  aria-label={t("topbar.language")}
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
-                >
-                  <Globe className="h-4 w-4" />
-                  <span className="hidden sm:inline">{t("topbar.language")}</span>
-                </button>
+                {localeMode === "url" ? (
+                  <Suspense fallback={
+                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                      <Globe className="h-4 w-4" />
+                      <span className="hidden sm:inline">{targetLocale === "ar" ? "العربية" : "English"}</span>
+                    </div>
+                  }>
+                    <UrlLanguageSwitcher locale={urlLocale as Locale} />
+                  </Suspense>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={toggleLanguage}
+                    aria-label={t("topbar.language")}
+                    className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
+                  >
+                    <Globe className="h-4 w-4" />
+                    <span className="hidden sm:inline">{t("topbar.language")}</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
