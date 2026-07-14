@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useMemo } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react"
 
@@ -107,7 +108,7 @@ export function AboutSection() {
                 size="lg"
                 className="h-14 rounded-2xl bg-[#2d3185] px-8 text-[15px] font-bold text-white hover:bg-[#23276f]"
               >
-                <Link href="/about" className="flex items-center gap-2">
+                <Link href={getLocalizedHref("/about", locale)} className="flex items-center gap-2">
                   <span>{isAr ? "اكتشف البنك" : "Discover the Bank"}</span>
                   <ArrowIcon className="h-4.5 w-4.5" />
                 </Link>
@@ -115,11 +116,9 @@ export function AboutSection() {
 
               <Button
                 asChild
-                variant="outline"
-                size="lg"
-                className="h-14 rounded-2xl border-slate-300 bg-white px-8 text-[15px] font-bold text-slate-800 hover:bg-slate-50"
+                className="group h-[3.4rem] min-w-[140px] rounded-full border border-slate-200 bg-white font-bold text-[#0b0d36] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-[#262b80]/20 hover:bg-slate-50 hover:shadow-md hover:shadow-[#262b80]/5 md:min-w-[160px]"
               >
-                <Link href="/contact" className="flex items-center gap-2">
+                <Link href={getLocalizedHref("/contact", locale)} className="flex items-center gap-2">
                   <span>{isAr ? "تواصل معنا" : "Contact Us"}</span>
                   <ArrowUpRight className="h-4.5 w-4.5" />
                 </Link>

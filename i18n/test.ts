@@ -103,6 +103,47 @@ async function runTests() {
     console.error("Dictionary test failed:", e.message);
     process.exit(1);
   }
+
+  console.log("Running getLocalizedHref tests...");
+  const { getLocalizedHref } = await import("../lib/localized-routes");
+  const hrefTests = [
+    { input: ["/", "ar"], expected: "/ar" },
+    { input: ["/", "en"], expected: "/en" },
+    { input: ["/about", "ar"], expected: "/ar/about" },
+    { input: ["/about", "en"], expected: "/en/about" },
+    { input: ["/contact", "ar"], expected: "/ar/contact" },
+    { input: ["/contact", "en"], expected: "/en/contact" },
+    { input: ["/ar/about", "en"], expected: "/en/about" },
+    { input: ["/en/contact", "ar"], expected: "/ar/contact" },
+    { input: ["/about/annual-reports", "en"], expected: "/about/annual-reports" },
+    { input: ["/about/board-of-directors", "en"], expected: "/about/board-of-directors" },
+    { input: ["/about/partners", "ar"], expected: "/about/partners" },
+    { input: ["/about/social-responsibility", "en"], expected: "/about/social-responsibility" },
+    { input: ["/news", "en"], expected: "/news" },
+    { input: ["/cards", "en"], expected: "/cards" },
+    { input: ["/about?tab=history#board", "en"], expected: "/en/about?tab=history#board" },
+    { input: ["/about/annual-reports?year=2025#download", "en"], expected: "/about/annual-reports?year=2025#download" },
+    { input: ["https://example.com", "en"], expected: "https://example.com" },
+    { input: ["mailto:test@example.com", "en"], expected: "mailto:test@example.com" },
+    { input: ["tel:+967000000", "ar"], expected: "tel:+967000000" },
+    { input: ["#section", "en"], expected: "#section" },
+    { input: ["?tab=about", "en"], expected: "?tab=about" },
+    { input: ["/arab-bank", "en"], expected: "/arab-bank" },
+    { input: ["/enquiry", "ar"], expected: "/enquiry" }
+  ];
+
+  for (let i = 0; i < hrefTests.length; i++) {
+    const { input, expected } = hrefTests[i];
+    const result = getLocalizedHref(input[0] as string, input[1] as any);
+    try {
+      assert.strictEqual(result, expected, `Href Test ${i + 1} Failed`);
+      console.log(`Href Test ${i + 1} Passed: getLocalizedHref("${input[0]}", "${input[1]}") -> "${result}"`);
+    } catch (e: any) {
+      console.error(e.message, `| Got: "${result}", Expected: "${expected}"`);
+      process.exit(1);
+    }
+  }
+  console.log("All getLocalizedHref tests passed!");
 }
 
 runTests();

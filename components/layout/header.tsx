@@ -31,6 +31,7 @@ import {
 
 // استيراد بيانات القائمة الهيكلية الجديدة
 import { navigationData, NavItem } from "@/data/navigation"
+import { getLocalizedHref } from "@/lib/localized-routes"
 
 const DESKTOP_MEGA_MENU_MAX_WIDTH = 1000
 const DESKTOP_MEGA_MENU_MIN_WIDTH = 800
@@ -61,6 +62,10 @@ export function Header(props: HeaderProps) {
   
   const locale = localeMode === "url" ? urlLocale : contextLocale;
   const targetLocale = locale === "ar" ? "en" : "ar";
+
+  const resolveHref = (href: string) => {
+    return localeMode === "url" ? getLocalizedHref(href, locale as Locale) : href;
+  };
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDesktopMenu, setActiveDesktopMenu] = useState<string | null>(null)
@@ -272,7 +277,7 @@ export function Header(props: HeaderProps) {
             <div className="flex h-11 items-center justify-between text-slate-600">
               <div className="flex items-center">
                 <Link
-                  href="/atm-and-branches"
+                  href={resolveHref("/atm-and-branches")}
                   className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
                 >
                   <MapPin className="h-4 w-4" />
@@ -282,7 +287,7 @@ export function Header(props: HeaderProps) {
                 <span className="mx-4 hidden h-4 w-px bg-slate-300 sm:block" />
 
                 <Link
-                  href="/contact"
+                  href={resolveHref("/contact")}
                   className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
                 >
                   <Phone className="h-4 w-4" />
@@ -330,7 +335,7 @@ export function Header(props: HeaderProps) {
         <nav className="relative">
           <div className="container mx-auto px-4">
             <div className={`flex h-[80px] items-center justify-between gap-4 ${locale === "ar" ? "flex-row-reverse" : ""}`}>
-              <Link href="/" className="relative items-center flex shrink-0">
+              <Link href={resolveHref("/")} className="relative items-center flex shrink-0">
                 <Image
                   src="/images/logo.png"
                   alt="Bin Dowal Islamic Microfinance Bank"
@@ -366,7 +371,7 @@ export function Header(props: HeaderProps) {
                         ].join(" ")}
                       >
                         <Link
-                          href={item.href}
+                          href={resolveHref(item.href)}
                           className="relative inline-flex items-center px-2 lg:px-3 py-2 font-semibold sm:font-medium md:font-bold lg:font-bold xl:font-medium 2xl:font-medium text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[18px] sm:text-[18px] md:text-[18px] lg:text-[22px] xl:text-[13px] 2xl:text-[18px]"
                         >
                           {locale === "ar" ? item.label.ar : item.label.en}
@@ -456,7 +461,7 @@ export function Header(props: HeaderProps) {
                                   {locale === "ar" ? activeDesktopItem.imageDesc?.ar : activeDesktopItem.imageDesc?.en}
                                 </p>
                                 <Button asChild variant="secondary" className="rounded-full px-6 font-semibold w-full bg-white/20 backdrop-blur-md hover:bg-white text-white hover:text-slate-900 border-0">
-                                  <Link href={activeDesktopItem.imageLink || activeDesktopItem.href}>
+                                  <Link href={resolveHref(activeDesktopItem.imageLink || activeDesktopItem.href)}>
                                     <span>{copy.exploreAll}</span>
                                     <ArrowUpRight className="ms-2 h-4 w-4" />
                                   </Link>
@@ -484,7 +489,7 @@ export function Header(props: HeaderProps) {
                                         return (
                                           <div key={link.key} className="flex flex-col">
                                             <Link 
-                                              href={link.href} 
+                                              href={resolveHref(link.href)} 
                                               className="group/link flex items-start gap-3 rounded-lg py-2 px-2 -mx-2 transition-colors hover:bg-slate-50 text-slate-600 hover:text-slate-900"
                                             >
                                               {Icon && (
@@ -510,7 +515,7 @@ export function Header(props: HeaderProps) {
                                                 {link.subLinks.map((sub) => (
                                                   <Link
                                                     key={sub.key}
-                                                    href={sub.href}
+                                                    href={resolveHref(sub.href)}
                                                     className="text-[13px] font-medium text-slate-500 hover:text-[#2d3185] transition-colors py-1"
                                                   >
                                                     {locale === "ar" ? sub.label.ar : sub.label.en}
@@ -542,7 +547,7 @@ export function Header(props: HeaderProps) {
                                     return (
                                       <Link
                                         key={subItem.key}
-                                        href={subItem.href}
+                                        href={resolveHref(subItem.href)}
                                         className="group rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-slate-200 hover:bg-white hover:shadow-[0_12px_30px_rgba(15,23,42,0.06)]"
                                       >
                                         <div className="flex items-start gap-4">
@@ -636,7 +641,7 @@ export function Header(props: HeaderProps) {
                                 return (
                                   <Link
                                     key={item.key}
-                                    href={item.href}
+                                    href={resolveHref(item.href)}
                                     onClick={() => setLoginMenuOpen(false)}
                                     className="group flex items-center justify-between rounded-2xl border border-slate-100 bg-slate-50/50 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-slate-200 hover:bg-white hover:shadow-[0_12px_30px_rgba(15,23,42,0.06)]"
                                   >
@@ -699,7 +704,7 @@ export function Header(props: HeaderProps) {
                     {/* Mobile Menu Header */}
                     <div dir="ltr" className="border-b border-slate-200 bg-white px-6 py-5 shrink-0 z-10 relative flex justify-start">
                       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
-                      <Link href="/" onClick={() => setMobileMenuOpen(false)} className="inline-flex transition-transform hover:scale-105 active:scale-95">
+                      <Link href={resolveHref("/")} onClick={() => setMobileMenuOpen(false)} className="inline-flex transition-transform hover:scale-105 active:scale-95">
                         <Image
                           src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bank%20Logo-sQ4ejPvlaY9DvzUZ11CkmGwd9hycOG.png"
                           alt="Bin Dowal Islamic Microfinance Bank"
@@ -733,7 +738,7 @@ export function Header(props: HeaderProps) {
                               >
                                 <div className="flex items-center justify-between px-5 py-4">
                                   <Link
-                                    href={item.href}
+                                    href={resolveHref(item.href)}
                                     onClick={() => setMobileMenuOpen(false)}
                                     className={`text-[15.5px] font-bold ${isOpen ? 'text-[#2d3185]' : 'text-slate-800'}`}
                                   >
@@ -803,7 +808,7 @@ export function Header(props: HeaderProps) {
                                                             return (
                                                               <div key={link.key} className="flex flex-col">
                                                                 <Link
-                                                                  href={link.href}
+                                                                  href={resolveHref(link.href)}
                                                                   onClick={() => setMobileMenuOpen(false)}
                                                                   className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 active:bg-[#2d3185]/5 active:text-[#2d3185] transition-colors"
                                                                 >
@@ -817,7 +822,7 @@ export function Header(props: HeaderProps) {
                                                                     {link.subLinks.map((sub) => (
                                                                       <Link
                                                                         key={sub.key}
-                                                                        href={sub.href}
+                                                                        href={resolveHref(sub.href)}
                                                                         onClick={() => setMobileMenuOpen(false)}
                                                                         className="text-[12.5px] font-semibold text-slate-500 active:text-[#2d3185]"
                                                                       >
@@ -847,7 +852,7 @@ export function Header(props: HeaderProps) {
                                               return (
                                                 <Link
                                                   key={subItem.key}
-                                                  href={subItem.href}
+                                                  href={resolveHref(subItem.href)}
                                                   onClick={() => setMobileMenuOpen(false)}
                                                   className="flex items-center gap-3.5 rounded-xl bg-white px-4 py-3.5 text-sm text-slate-700 shadow-sm border border-slate-100 transition-all active:scale-[0.98]"
                                                 >
@@ -908,7 +913,7 @@ export function Header(props: HeaderProps) {
                                   return (
                                     <Link
                                       key={item.key}
-                                      href={item.href}
+                                      href={resolveHref(item.href)}
                                       onClick={() => setMobileMenuOpen(false)}
                                       className="flex items-center gap-4 rounded-xl px-4 py-3.5 bg-white border border-slate-100 shadow-sm active:bg-slate-50 transition-colors"
                                     >
