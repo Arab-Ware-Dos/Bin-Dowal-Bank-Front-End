@@ -107,29 +107,56 @@ async function runTests() {
   console.log("Running getLocalizedHref tests...");
   const { getLocalizedHref } = await import("../lib/localized-routes");
   const hrefTests = [
+    // A. Migrated plain paths
     { input: ["/", "ar"], expected: "/ar" },
     { input: ["/", "en"], expected: "/en" },
     { input: ["/about", "ar"], expected: "/ar/about" },
     { input: ["/about", "en"], expected: "/en/about" },
     { input: ["/contact", "ar"], expected: "/ar/contact" },
     { input: ["/contact", "en"], expected: "/en/contact" },
+
+    // B. Migrated paths with existing Locale
+    { input: ["/ar", "en"], expected: "/en" },
+    { input: ["/en", "ar"], expected: "/ar" },
     { input: ["/ar/about", "en"], expected: "/en/about" },
+    { input: ["/en/about", "ar"], expected: "/ar/about" },
+    { input: ["/ar/contact", "en"], expected: "/en/contact" },
     { input: ["/en/contact", "ar"], expected: "/ar/contact" },
+
+    // C. Unmigrated plain paths
     { input: ["/about/annual-reports", "en"], expected: "/about/annual-reports" },
-    { input: ["/about/board-of-directors", "en"], expected: "/about/board-of-directors" },
-    { input: ["/about/partners", "ar"], expected: "/about/partners" },
-    { input: ["/about/social-responsibility", "en"], expected: "/about/social-responsibility" },
     { input: ["/news", "en"], expected: "/news" },
-    { input: ["/cards", "en"], expected: "/cards" },
-    { input: ["/about?tab=history#board", "en"], expected: "/en/about?tab=history#board" },
-    { input: ["/about/annual-reports?year=2025#download", "en"], expected: "/about/annual-reports?year=2025#download" },
-    { input: ["https://example.com", "en"], expected: "https://example.com" },
-    { input: ["mailto:test@example.com", "en"], expected: "mailto:test@example.com" },
-    { input: ["tel:+967000000", "ar"], expected: "tel:+967000000" },
-    { input: ["#section", "en"], expected: "#section" },
-    { input: ["?tab=about", "en"], expected: "?tab=about" },
+    { input: ["/cards", "ar"], expected: "/cards" },
+
+    // D. Unmigrated paths with existing Locale
+    { input: ["/en/about/annual-reports", "ar"], expected: "/about/annual-reports" },
+    { input: ["/ar/about/board-of-directors", "en"], expected: "/about/board-of-directors" },
+    { input: ["/en/news", "ar"], expected: "/news" },
+    { input: ["/ar/cards", "en"], expected: "/cards" },
+
+    // E. Query and Hash
+    { input: ["/en/about?tab=history#board", "ar"], expected: "/ar/about?tab=history#board" },
+    { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/about/annual-reports?year=2025#download" },
+
+    // F. Locale-like pathnames
     { input: ["/arab-bank", "en"], expected: "/arab-bank" },
-    { input: ["/enquiry", "ar"], expected: "/enquiry" }
+    { input: ["/enquiry", "ar"], expected: "/enquiry" },
+    { input: ["/ar-about", "en"], expected: "/ar-about" },
+
+    // G. Special links
+    { input: ["https://example.com", "en"], expected: "https://example.com" },
+    { input: ["mailto:test@example.com", "ar"], expected: "mailto:test@example.com" },
+    { input: ["tel:+967000000", "en"], expected: "tel:+967000000" },
+    { input: ["#section", "ar"], expected: "#section" },
+    { input: ["?tab=about", "en"], expected: "?tab=about" },
+    { input: ["about", "en"], expected: "about" },
+    { input: ["images/logo.svg", "ar"], expected: "images/logo.svg" },
+    { input: ["//cdn.example.com/file", "en"], expected: "//cdn.example.com/file" },
+    
+    // Additional tests from user
+    { input: ["/files/report.pdf", "ar"], expected: "/files/report.pdf" },
+    { input: ["/downloads/document.docx", "en"], expected: "/downloads/document.docx" },
+    { input: ["/ar/news?page=2#latest", "en"], expected: "/news?page=2#latest" }
   ];
 
   for (let i = 0; i < hrefTests.length; i++) {

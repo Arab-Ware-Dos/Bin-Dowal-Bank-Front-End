@@ -9,15 +9,8 @@ export const LOCALIZED_STATIC_ROUTES = [
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];
 
 export function getLocalizedHref(href: string, locale: Locale): string {
-  // Don't modify external links, anchors, or mailto/tel
-  if (
-    href.startsWith("http") ||
-    href.startsWith("//") ||
-    href.startsWith("mailto:") ||
-    href.startsWith("tel:") ||
-    href.startsWith("#") ||
-    href.startsWith("?")
-  ) {
+  // Don't modify external links, anchors, mailto/tel, or relative paths
+  if (!href.startsWith("/") || href.startsWith("//")) {
     return href;
   }
 
@@ -50,6 +43,6 @@ export function getLocalizedHref(href: string, locale: Locale): string {
     return newPath + urlObj.search + urlObj.hash;
   }
 
-  // Return unchanged legacy route (with original search/hash if it was passed in href)
-  return href;
+  // Return unchanged legacy route but with stripped locale if it had one
+  return pathname + urlObj.search + urlObj.hash;
 }
