@@ -15,24 +15,26 @@ function getLocaleDirection(locale: Locale) {
   return locale === "ar" ? "rtl" : "ltr";
 }
 
-export default function LocalizedRootLayout({
+export default async function LocalizedRootLayout({
   children,
-  params: { locale }
+  params
 }: Readonly<{
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }>) {
+  const { locale } = await params;
+
   if (!isLocale(locale)) {
     notFound();
   }
 
-  const validatedLocale = locale as Locale;
+  const direction = getLocaleDirection(locale);
 
   return (
-    <html lang={validatedLocale} dir={getLocaleDirection(validatedLocale)} suppressHydrationWarning className={`${somarSans.variable} font-sans`}>
+    <html lang={locale} dir={direction} suppressHydrationWarning className={`${somarSans.variable} font-sans`}>
       <body className="font-sans antialiased min-h-screen flex flex-col">
-        <I18nProvider mode="url" initialLocale={validatedLocale}>
-          <SharedSiteShell localeMode="url" locale={validatedLocale}>
+        <I18nProvider mode="url" initialLocale={locale}>
+          <SharedSiteShell localeMode="url" locale={locale}>
             {children}
           </SharedSiteShell>
         </I18nProvider>
