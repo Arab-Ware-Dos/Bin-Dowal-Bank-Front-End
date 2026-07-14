@@ -1,26 +1,8 @@
 import type { Metadata, Viewport } from 'next'
-import dynamic from 'next/dynamic'
-import { Analytics } from '@vercel/analytics/next'
 import { I18nProvider } from '@/lib/i18n-context'
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
-const Chatbot = dynamic(() => import('@/components/layout/chatbot').then(mod => mod.Chatbot))
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import localFont from 'next/font/local'
-
-const somarSans = localFont({
-  src: [
-    { path: '../public/fonts/SomarSans-Light.woff', weight: '300', style: 'normal' },
-    { path: '../public/fonts/SomarSans-Regular.woff', weight: '400', style: 'normal' },
-    { path: '../public/fonts/SomarSans-Medium.woff', weight: '500', style: 'normal' },
-    { path: '../public/fonts/SomarSans-SemiBold.woff', weight: '600', style: 'normal' },
-    { path: '../public/fonts/SomarSans-Bold.woff', weight: '700', style: 'normal' },
-    { path: '../public/fonts/SomarSans-ExtraBold.woff', weight: '800', style: 'normal' },
-  ],
-  variable: '--font-somar-sans',
-  display: 'swap',
-  fallback: ['Arial', 'sans-serif'],
-})
+import { somarSans } from '@/lib/fonts'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://bdbankui.arabwaredos.com'),
@@ -79,6 +61,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { SharedSiteShell } from '@/components/layout/shared-site-shell'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -88,12 +72,9 @@ export default function RootLayout({
     <html lang="ar" dir="rtl" suppressHydrationWarning className={`${somarSans.variable} font-sans`}>
       <body className="font-sans antialiased min-h-screen flex flex-col">
         <I18nProvider>
-          <Header />
-          <main className="flex-1">
+          <SharedSiteShell>
             {children}
-          </main>
-          <Footer />
-          <Chatbot />
+          </SharedSiteShell>
         </I18nProvider>
         <Analytics />
       </body>

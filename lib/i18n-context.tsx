@@ -5,11 +5,14 @@ import { createContext, useContext, useState, useCallback, useEffect, type React
 type Locale = "ar" | "en"
 type Direction = "rtl" | "ltr"
 
+export type I18nMode = "legacy" | "url"
+
 interface I18nContextType {
   locale: Locale
   direction: Direction
   setLocale: (locale: Locale) => void
   t: (key: string) => string
+  mode: I18nMode
 }
 
 const translations: Record<Locale, Record<string, string>> = {
@@ -501,28 +504,42 @@ const translations: Record<Locale, Record<string, string>> = {
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined)
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("ar")
-  const direction: Direction = locale === "ar" ? "rtl" : "ltr"
+interface I18nProviderProps {
+  children: ReactNode
+  mode?: I18nMode
+  initialLocale?: Locale
+}
+
+export function I18nProvider({ children, mode = "legacy", initialLocale = "ar" }: I18nProviderProps) {
+  const [legacyLocale, setLegacyLocale] = useState<Locale>(initialLocale)
+  
+  const currentLocale = mode === "url" ? initialLocale : legacyLocale
+  const direction: Direction = currentLocale === "ar" ? "rtl" : "ltr"
 
   useEffect(() => {
-    document.documentElement.lang = locale
-    document.documentElement.dir = direction
-  }, [locale, direction])
+    if (mode === "legacy") {
+      document.documentElement.lang = currentLocale
+      document.documentElement.dir = direction
+    }
+  }, [currentLocale, direction, mode])
 
   const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale)
-  }, [])
+    if (mode === "url") {
+      console.warn("setLocale is disabled in URL mode. Please use URL-based navigation.")
+      return
+    }
+    setLegacyLocale(newLocale)
+  }, [mode])
 
   const t = useCallback(
     (key: string): string => {
-      return translations[locale][key] || key
+      return translations[currentLocale][key] || key
     },
-    [locale]
+    [currentLocale]
   )
 
   return (
-    <I18nContext.Provider value={{ locale, direction, setLocale, t }}>
+    <I18nContext.Provider value={{ locale: currentLocale, direction, setLocale, t, mode }}>
       {children}
     </I18nContext.Provider>
   )
