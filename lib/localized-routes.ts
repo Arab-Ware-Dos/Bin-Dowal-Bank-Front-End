@@ -7,7 +7,11 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/about/annual-reports",
   "/about/board-of-directors",
   "/about/partners",
-  "/about/social-responsibility"
+  "/about/social-responsibility",
+  "/business-banking",
+  "/personal-banking",
+  "/financing",
+  "/digital-channels"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

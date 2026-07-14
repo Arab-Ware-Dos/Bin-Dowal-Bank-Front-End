@@ -132,14 +132,29 @@ async function runTests() {
     { input: ["/en/about/partners", "ar"], expected: "/ar/about/partners" },
     { input: ["/about/social-responsibility", "en"], expected: "/en/about/social-responsibility" },
 
+    // C.2 Migrated Hubs from Batch 3
+    { input: ["/business-banking", "en"], expected: "/en/business-banking" },
+    { input: ["/en/business-banking", "ar"], expected: "/ar/business-banking" },
+    { input: ["/personal-banking", "en"], expected: "/en/personal-banking" },
+    { input: ["/financing", "ar"], expected: "/ar/financing" },
+    { input: ["/digital-channels", "en"], expected: "/en/digital-channels" },
+
     // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
     { input: ["/cards", "ar"], expected: "/cards" },
+    { input: ["/branches", "en"], expected: "/branches" },
+    { input: ["/calculator", "ar"], expected: "/calculator" },
 
-    // E. Unmigrated paths with existing Locale
+    // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
     { input: ["/en/news", "ar"], expected: "/news" },
     { input: ["/ar/cards", "en"], expected: "/cards" },
     { input: ["/ar/business/swift-transfers", "en"], expected: "/business/swift-transfers" },
+    { input: ["/en/business/product", "ar"], expected: "/business/product" },
+    { input: ["/ar/personal/product", "en"], expected: "/personal/product" },
+    { input: ["/en/e-services/mobile", "ar"], expected: "/e-services/mobile" },
+    
+    // E.2 Query and Hash with Batch 3
+    { input: ["/en/financing?type=business#products", "ar"], expected: "/ar/financing?type=business#products" },
 
     // F. Query and Hash
     { input: ["/en/about?tab=history#board", "ar"], expected: "/ar/about?tab=history#board" },
