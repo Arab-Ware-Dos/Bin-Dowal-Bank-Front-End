@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useI18n } from "@/lib/i18n-context";
+import { getLocalizedHref } from "@/lib/localized-routes";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -47,6 +49,7 @@ const offers = [
 ];
 
 export function OffersSection() {
+  const { mode, locale } = useI18n();
   const swiperRef = useRef<SwiperType | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
   const controlsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -329,7 +332,7 @@ export function OffersSection() {
                         </h3>
 
                         <Link
-                          href={offer.linkUrl}
+                          href={mode === "url" ? getLocalizedHref(offer.linkUrl, locale) : offer.linkUrl}
                           className="mt-auto inline-flex items-center gap-2 text-white font-medium transition-colors hover:text-red-200"
                         >
                           <span>{offer.linkText}</span>

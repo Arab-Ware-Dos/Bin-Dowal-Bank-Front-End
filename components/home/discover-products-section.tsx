@@ -3,6 +3,8 @@
 import { useMemo, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
+import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 
@@ -93,6 +95,7 @@ const products: readonly Product[] = [
 const MAX_VISIBLE_PRODUCTS = 4
 
 export function DiscoverProductsSection() {
+  const { mode, locale } = useI18n()
   const [activeCategory, setActiveCategory] =
     useState<Category>("خدمات الافراد")
 
@@ -231,7 +234,7 @@ export function DiscoverProductsSection() {
         {shouldShowViewAll && (
           <ViewAllButton
             label="عرض جميع المنتجات"
-            href={activeMeta.link}
+            href={mode === "url" ? getLocalizedHref(activeMeta.link, locale) : activeMeta.link}
           />
         )}
       </div>

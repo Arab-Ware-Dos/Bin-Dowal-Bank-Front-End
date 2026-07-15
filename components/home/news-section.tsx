@@ -4,6 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { useMemo } from "react"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 import { Button } from "@/components/ui/button"
@@ -59,7 +60,7 @@ function getArticleHref(article: NewsArticle) {
 }
 
 export function NewsSection() {
-  const { t, locale, direction } = useI18n()
+  const { t, locale, direction, mode } = useI18n()
   const Arrow = direction === "rtl" ? ArrowLeft : ArrowRight
 
   const displayedNews = useMemo(() => {
@@ -114,7 +115,7 @@ export function NewsSection() {
             return (
               <motion.article key={news.id} variants={item} className="h-full">
                 <Link
-                  href={getArticleHref(news)}
+                  href={mode === "url" ? getLocalizedHref(getArticleHref(news), locale) : getArticleHref(news)}
                   className="group block h-full rounded-[28px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
                   aria-label={title}
                 >
@@ -184,7 +185,7 @@ export function NewsSection() {
 
         <ViewAllButton
           label={t("news.viewAll")}
-          href="/news"
+          href={mode === "url" ? getLocalizedHref("/news", locale) : "/news"}
         />
       </div>
     </section>

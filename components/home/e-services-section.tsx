@@ -4,6 +4,7 @@ import Link from "next/link"
 import type { ComponentType } from "react"
 import { motion, useReducedMotion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { products } from "@/data/mock-data"
 import {
   Wallet,
@@ -22,7 +23,7 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
 }
 
 export function EServicesSection() {
-  const { locale, direction } = useI18n()
+  const { locale, direction, mode } = useI18n()
   const reduceMotion = useReducedMotion()
   const isArabic = locale === "ar"
   const Arrow = direction === "rtl" ? ArrowLeft : ArrowRight
@@ -95,7 +96,7 @@ export function EServicesSection() {
                 className="h-full"
               >
                 <Link
-                  href={product.href}
+                  href={mode === "url" ? getLocalizedHref(product.href, locale) : product.href}
                   className="group relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-[30px] border border-white/85 bg-white/88 p-6 shadow-[0_14px_34px_rgba(24,39,112,0.06)] backdrop-blur transition-all duration-300 hover:border-[#DDE2FF] hover:shadow-[0_18px_44px_rgba(24,39,112,0.10)]"
                 >
                   <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#7380FF]/70 to-transparent" />

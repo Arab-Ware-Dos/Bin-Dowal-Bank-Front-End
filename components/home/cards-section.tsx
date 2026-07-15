@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
 
 const cards = [
@@ -62,6 +64,7 @@ const cards = [
 ]
 
 export function CardsSection() {
+  const { mode, locale } = useI18n()
   const [active, setActive] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
 
@@ -170,7 +173,7 @@ export function CardsSection() {
                 {/* CTA */}
                 <div className="flex items-center gap-4 pt-2">
                   <Link
-                    href="/customer-service/bank-cards-request"
+                    href={mode === "url" ? getLocalizedHref("/customer-service/bank-cards-request", locale) : "/customer-service/bank-cards-request"}
                     className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 font-cairo text-sm font-bold text-white transition-all duration-300"
                     style={{
                       background: `linear-gradient(135deg, ${card.color}cc, ${card.color}66)`,
@@ -184,7 +187,7 @@ export function CardsSection() {
                     <div className="absolute inset-0 translate-x-full bg-white/15 transition-transform duration-500 group-hover:translate-x-0" />
                   </Link>
                   <Link
-                    href="/cards"
+                    href={mode === "url" ? getLocalizedHref("/cards", locale) : "/cards"}
                     className="font-cairo text-sm font-medium text-white/50 underline underline-offset-4 transition-colors duration-200 hover:text-white/90"
                   >
                     تعرف على المزيد

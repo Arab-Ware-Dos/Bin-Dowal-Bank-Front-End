@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Slider } from "@/components/ui/slider"
@@ -211,7 +212,7 @@ function calculateIndicativeFinancing(
 }
 
 export function CalculatorSection() {
-  const { locale } = useI18n()
+  const { locale, mode } = useI18n()
   const localeKey: LocaleKey = locale === "ar" ? "ar" : "en"
   const isArabic = localeKey === "ar"
   const text = copy[localeKey]
@@ -566,7 +567,7 @@ export function CalculatorSection() {
                       size="lg"
                       className="h-12 w-full rounded-2xl bg-[linear-gradient(135deg,#1d4ed8_0%,#1e40af_50%,#7f1d3a_180%)] text-sm font-medium text-white shadow-[0_18px_40px_rgba(15,23,42,0.18)] transition-all hover:opacity-95 md:h-14 md:text-base"
                     >
-                      <Link href={config.href}>
+                      <Link href={mode === "url" ? getLocalizedHref(config.href, locale) : config.href}>
                         <Calculator className="me-2 h-5 w-5" />
                         {text.apply}
                       </Link>

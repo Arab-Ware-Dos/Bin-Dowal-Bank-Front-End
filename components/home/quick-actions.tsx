@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
 import {
   UserPlus,
@@ -97,7 +98,7 @@ function getToneClasses(tone: ActionTone) {
 }
 
 export function QuickActions() {
-  const { t, direction } = useI18n()
+  const { t, direction, mode, locale } = useI18n()
   const ArrowIcon = direction === "rtl" ? ArrowLeft : ArrowRight
 
   return (
@@ -137,7 +138,7 @@ export function QuickActions() {
             return (
               <motion.article key={action.key} variants={item} className="h-full">
                 <Link
-                  href={action.href}
+                  href={mode === "url" ? getLocalizedHref(action.href, locale) : action.href}
                   aria-label={t(`quickActions.${action.key}`)}
                   className="group relative flex h-full min-h-[200px] flex-col justify-between overflow-hidden rounded-[28px] border border-white/18 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(248,250,252,0.92))] p-5 shadow-[0_18px_50px_-28px_rgba(15,23,42,0.45)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-white/35 hover:shadow-[0_28px_80px_-34px_rgba(15,23,42,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:p-6"
                 >

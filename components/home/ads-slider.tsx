@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, CreditCard, Car, Shield, FileText } from "lucide-react"
 
@@ -98,7 +99,7 @@ const quickServices = [
 ]
 
 export function AdsSlider() {
-  const { locale, direction } = useI18n()
+  const { locale, direction, mode } = useI18n()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
@@ -180,7 +181,7 @@ export function AdsSlider() {
                     size="lg"
                     className="bg-[#1e3a5f] hover:bg-[#2a4a72] text-white px-8 py-6 text-base font-semibold font-cairo rounded-lg shadow-lg hover:shadow-xl transition-all"
                   >
-                    <Link href={slide.primaryLink}>
+                    <Link href={mode === "url" ? getLocalizedHref(slide.primaryLink, locale) : slide.primaryLink}>
                       {locale === "ar" ? slide.ctaPrimaryAr : slide.ctaPrimaryEn}
                     </Link>
                   </Button>
@@ -190,7 +191,7 @@ export function AdsSlider() {
                     size="lg"
                     className="border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white px-8 py-6 text-base font-semibold rounded-lg transition-all"
                   >
-                    <Link href={slide.secondaryLink}>
+                    <Link href={mode === "url" ? getLocalizedHref(slide.secondaryLink, locale) : slide.secondaryLink}>
                       {locale === "ar" ? slide.ctaSecondaryAr : slide.ctaSecondaryEn}
                     </Link>
                   </Button>

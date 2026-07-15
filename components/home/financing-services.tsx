@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useState, useCallback, useEffect } from "react"
@@ -27,7 +28,7 @@ function getPosition(index: number, active: number, total: number) {
 }
 
 export function FinancingServices() {
-  const { t, direction } = useI18n()
+  const { t, direction, mode, locale } = useI18n()
   const isRTL = direction === "rtl"
 
   const [active, setActive] = useState(0)
@@ -189,7 +190,7 @@ export function FinancingServices() {
                         {t(`financingServices.${service.id}.desc`)}
                       </p>
                       <Link
-                        href={service.href}
+                        href={mode === "url" ? getLocalizedHref(service.href, locale) : service.href}
                         className="inline-flex items-center gap-2 self-start rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 hover:bg-white/18 hover:border-white/30 font-cairo"
                       >
                         <span>{isRTL ? "اعرف المزيد" : "Learn More"}</span>
@@ -254,7 +255,7 @@ export function FinancingServices() {
 
         <ViewAllButton
           label={isRTL ? "استكشف جميع الخدمات" : "Explore All Services"}
-          href="/financing"
+          href={mode === "url" ? getLocalizedHref("/financing", locale) : "/financing"}
           buttonClassName="border-[#324198]/12 text-[#324198] hover:border-[#324198]/20 hover:bg-[#324198]/[0.02]"
         />
       </div>

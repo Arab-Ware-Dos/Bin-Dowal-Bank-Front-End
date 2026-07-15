@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { Button } from "@/components/ui/button"
 import { heroSlides } from "@/data/mock-data"
 
@@ -92,7 +93,7 @@ const fallbackSlides: HeroSlide[] = [
 ]
 
 export function HeroSection() {
-  const { t, locale, direction } = useI18n()
+  const { t, locale, direction, mode } = useI18n()
   const shouldReduceMotion = useReducedMotion()
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -228,7 +229,7 @@ export function HeroSection() {
                   size="lg"
                   className="h-12 rounded-2xl bg-white px-6 text-base font-semibold text-primary shadow-xl shadow-black/10 hover:bg-white/90"
                 >
-                  <Link href={slide.primaryHref ?? "/personal-banking"}>
+                  <Link href={mode === "url" ? getLocalizedHref(slide.primaryHref ?? "/personal-banking", locale) : (slide.primaryHref ?? "/personal-banking")}>
                     {primaryCta}
                     <ArrowUpRight className="ms-2 h-4 w-4 rtl:rotate-[-90deg]" />
                   </Link>
@@ -240,7 +241,7 @@ export function HeroSection() {
                   size="lg"
                   className="h-12 rounded-2xl border-white/20 bg-white/10 px-6 text-base font-semibold text-white backdrop-blur-md hover:bg-white/15 hover:text-white"
                 >
-                  <Link href={slide.secondaryHref ?? "/digital-channels"}>
+                  <Link href={mode === "url" ? getLocalizedHref(slide.secondaryHref ?? "/digital-channels", locale) : (slide.secondaryHref ?? "/digital-channels")}>
                     {secondaryCta}
                     <ArrowUpRight className="ms-2 h-4 w-4 rtl:rotate-[-90deg]" />
                   </Link>

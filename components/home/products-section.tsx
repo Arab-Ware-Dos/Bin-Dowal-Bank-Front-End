@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Button } from "@/components/ui/button"
 import { products } from "@/data/mock-data"
@@ -31,7 +32,7 @@ const item = {
 }
 
 export function ProductsSection() {
-  const { t, locale, direction } = useI18n()
+  const { t, locale, direction, mode } = useI18n()
   const Arrow = direction === "rtl" ? ArrowLeft : ArrowRight
 
   return (
@@ -76,7 +77,7 @@ export function ProductsSection() {
                     variant="ghost"
                     className="w-fit p-0 h-auto text-primary hover:text-primary/80 group/btn"
                   >
-                    <Link href={product.href} className="flex items-center gap-2">
+                    <Link href={mode === "url" ? getLocalizedHref(product.href, locale) : product.href} className="flex items-center gap-2">
                       {t("products.learnMore")}
                       <Arrow className="h-4 w-4 group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform" />
                     </Link>
