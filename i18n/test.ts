@@ -176,11 +176,23 @@ async function runTests() {
     { input: ["/en/branches?city=mukalla#results", "ar"], expected: "/ar/branches?city=mukalla#results" },
     { input: ["/en/atm-and-branches?type=atm#map", "ar"], expected: "/ar/atm-and-branches?type=atm#map" },
 
+    // C.7 Migrated Batch 8 (News)
+    { input: ["/news", "en"], expected: "/en/news" },
+    { input: ["/en/news", "ar"], expected: "/ar/news" },
+    { input: ["/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut", "en"], expected: "/en/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut" },
+    { input: ["/ar/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut", "en"], expected: "/en/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut" },
+    { input: ["/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance", "en"], expected: "/en/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance" },
+    { input: ["/ar/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance", "en"], expected: "/en/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance" },
+    { input: ["/news/conclusion-of-the-financial-and-credit-analysis-course", "en"], expected: "/en/news/conclusion-of-the-financial-and-credit-analysis-course" },
+    { input: ["/ar/news/conclusion-of-the-financial-and-credit-analysis-course", "en"], expected: "/en/news/conclusion-of-the-financial-and-credit-analysis-course" },
+    { input: ["/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis", "en"], expected: "/en/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis" },
+    { input: ["/ar/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis", "en"], expected: "/en/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis" },
+    { input: ["/news/unknown", "en"], expected: "/news/unknown" },
+    { input: ["/en/news/unknown", "ar"], expected: "/news/unknown" },
+
     // D. Unmigrated plain paths
-    { input: ["/news", "en"], expected: "/news" },
 
     // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
-    { input: ["/en/news", "ar"], expected: "/news" },
     { input: ["/ar/business/swift-transfers", "en"], expected: "/business/swift-transfers" },
     { input: ["/en/business/product", "ar"], expected: "/business/product" },
     { input: ["/ar/personal/product", "en"], expected: "/personal/product" },
@@ -215,7 +227,8 @@ async function runTests() {
     // Additional tests from user
     { input: ["/files/report.pdf", "ar"], expected: "/files/report.pdf" },
     { input: ["/downloads/document.docx", "en"], expected: "/downloads/document.docx" },
-    { input: ["/ar/news?page=2#latest", "en"], expected: "/news?page=2#latest" }
+    { input: ["/ar/news?page=2#latest", "en"], expected: "/en/news?page=2#latest" },
+    { input: ["/en/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article", "ar"], expected: "/ar/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article" }
   ];
 
   for (let i = 0; i < hrefTests.length; i++) {

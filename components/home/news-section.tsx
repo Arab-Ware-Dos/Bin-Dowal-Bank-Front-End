@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { useMemo } from "react"
+import { useMemo, useCallback } from "react"
 import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -11,27 +11,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { newsItems } from "@/data/news"
 import {
-  ArrowLeft,
-  ArrowRight,
   Calendar,
   Newspaper,
   MoveRight,
+  MoveLeft,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 
-type NewsArticle = {
-  id: string | number
-  slug?: string
-  titleAr: string
-  titleEn: string
-  excerptAr: string
-  excerptEn: string
-  date: string
-  image?: string
-  categoryAr?: string
-  categoryEn?: string
-  categorySlug?: string
-  isFeatured?: boolean
-}
+import { NewsArticle } from "@/types/news-article"
 
 const container = {
   hidden: { opacity: 0 },
@@ -61,7 +49,16 @@ function getArticleHref(article: NewsArticle) {
 
 export function NewsSection() {
   const { t, locale, direction, mode } = useI18n()
-  const Arrow = direction === "rtl" ? ArrowLeft : ArrowRight
+  
+  const resolveHref = useCallback(
+    (target: string) => {
+      if (!target.startsWith("/") || target.startsWith("//")) {
+        return target
+      }
+      return mode === "url" ? getLocalizedHref(target, locale) : target
+    },
+    [mode, locale]
+  )
 
   const displayedNews = useMemo(() => {
     return [...(newsItems as NewsArticle[])]
@@ -115,7 +112,7 @@ export function NewsSection() {
             return (
               <motion.article key={news.id} variants={item} className="h-full">
                 <Link
-                  href={mode === "url" ? getLocalizedHref(getArticleHref(news), locale) : getArticleHref(news)}
+                  href={resolveHref(getArticleHref(news))}
                   className="group block h-full rounded-[28px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-4"
                   aria-label={title}
                 >
@@ -183,10 +180,17 @@ export function NewsSection() {
           })}
         </motion.div>
 
-        <ViewAllButton
-          label={t("news.viewAll")}
-          href={mode === "url" ? getLocalizedHref("/news", locale) : "/news"}
-        />
+        <div className="mt-12 flex justify-center">
+          <Button asChild size="lg" className="h-14 rounded-full px-8 text-base">
+            <Link
+              href={resolveHref("/news")}
+              className="inline-flex items-center gap-2"
+            >
+              {t("news.viewAll")}
+              <MoveRight className="h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
       </div>
     </section>
   )

@@ -23,7 +23,12 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/customer-service/service-request",
   "/customer-service/bank-cards-request",
   "/branches",
-  "/atm-and-branches"
+  "/atm-and-branches",
+  "/news",
+  "/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut",
+  "/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
+  "/news/conclusion-of-the-financial-and-credit-analysis-course",
+  "/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

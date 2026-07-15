@@ -1,6 +1,6 @@
 import { newsItems } from "@/data/news"
 import { notFound } from "next/navigation"
-import NewsArticleClient from "./news-article-client"
+import NewsArticleClient from "@/components/news/news-article-client"
 
 export function generateStaticParams() {
   return newsItems.map((item) => ({
@@ -8,10 +8,8 @@ export function generateStaticParams() {
   }))
 }
 
-export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
-  // Await the params resolution for compatibility across Next 14 and Next 15
-  const resolvedParams = await Promise.resolve(params)
-  const slug = resolvedParams.slug
+export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   
   const article = newsItems.find(
     (item) => item.slug === slug || item.id.toString() === slug

@@ -1,4 +1,6 @@
-export const newsItems = [
+import { NewsArticle } from "@/types/news-article";
+
+export const newsItems: NewsArticle[] = [
   {
     id: "1",
     slug: "bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut",
