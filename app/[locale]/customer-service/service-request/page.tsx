@@ -3,20 +3,29 @@ import { isLocale } from "@/i18n/config"
 import { ServiceRequestPageContent } from "@/components/customer-service/service-request-page-content"
 import type { Metadata } from "next"
 
+type LocalizedCustomerServicePageProps = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps): Promise<Metadata> {
+  const { locale } = await params
 
   if (!isLocale(locale)) return {}
 
   const title = locale === "ar" ? "طلب خدمة" : "Service Request"
 
+  const description =
+    locale === "ar"
+      ? "قدّم طلب خدمة مصرفية إلى بنك بن دول من خلال نموذج طلب الخدمة."
+      : "Submit a banking service request to Bin Dowal Bank through the dedicated request form."
+
   return {
     title,
+    description,
     robots: {
       index: false,
       follow: false,
@@ -26,11 +35,8 @@ export async function generateMetadata({
 
 export default async function ServiceRequestPageLocalized({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}) {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
     notFound()

@@ -187,7 +187,7 @@ export function ComplaintsPageContent() {
         }
         breadcrumbs={[
           { labelKey: locale === 'ar' ? 'الرئيسية' : 'Home', href: '/' },
-          { labelKey: locale === 'ar' ? 'خدمة العملاء' : 'Customer Service' },
+          { labelKey: locale === 'ar' ? 'خدمة العملاء' : 'Customer Service', href: resolveHref('/contact') },
           { labelKey: locale === 'ar' ? 'تقديم شكوى' : 'Submit a Complaint' }
         ]}
       />

@@ -188,7 +188,7 @@ export function ServiceRequestPageContent() {
         }
         breadcrumbs={[
           { labelKey: locale === 'ar' ? 'الرئيسية' : 'Home', href: '/' },
-          { labelKey: locale === 'ar' ? 'خدمة العملاء' : 'Customer Service' },
+          { labelKey: locale === 'ar' ? 'خدمة العملاء' : 'Customer Service', href: resolveHref('/contact') },
           { labelKey: locale === 'ar' ? 'طلب خدمة' : 'Service Request' }
         ]}
       />

@@ -3,20 +3,29 @@ import { isLocale } from "@/i18n/config"
 import { BankCardsRequestPageContent } from "@/components/customer-service/bank-cards-request-page-content"
 import type { Metadata } from "next"
 
+type LocalizedCustomerServicePageProps = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps): Promise<Metadata> {
+  const { locale } = await params
 
   if (!isLocale(locale)) return {}
 
   const title = locale === "ar" ? "طلب بطاقة بنكية" : "Bank Card Request"
 
+  const description =
+    locale === "ar"
+      ? "قدّم طلب الحصول على بطاقة بنكية من بنك بن دول من خلال النموذج المخصص."
+      : "Apply for a Bin Dowal Bank card using the dedicated bank card request form."
+
   return {
     title,
+    description,
     robots: {
       index: false,
       follow: false,
@@ -26,11 +35,8 @@ export async function generateMetadata({
 
 export default async function BankCardsRequestPageLocalized({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}) {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
     notFound()

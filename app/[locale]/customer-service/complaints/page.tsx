@@ -3,20 +3,29 @@ import { isLocale } from "@/i18n/config"
 import { ComplaintsPageContent } from "@/components/customer-service/complaints-page-content"
 import type { Metadata } from "next"
 
+type LocalizedCustomerServicePageProps = {
+  params: Promise<{
+    locale: string;
+  }>;
+};
+
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps): Promise<Metadata> {
+  const { locale } = await params
 
   if (!isLocale(locale)) return {}
 
   const title = locale === "ar" ? "الشكاوى والملاحظات" : "Complaints and Feedback"
 
+  const description =
+    locale === "ar"
+      ? "قدّم شكوى أو ملاحظة إلى بنك بن دول وتابع تفاصيلها من خلال النموذج المخصص."
+      : "Submit a complaint or feedback to Bin Dowal Bank using the dedicated customer service form."
+
   return {
     title,
+    description,
     robots: {
       index: false,
       follow: false,
@@ -26,11 +35,8 @@ export async function generateMetadata({
 
 export default async function ComplaintsPageLocalized({
   params,
-}: {
-  params: Promise<{ locale: string }> | { locale: string }
-}) {
-  const resolvedParams = await Promise.resolve(params)
-  const locale = resolvedParams.locale
+}: LocalizedCustomerServicePageProps) {
+  const { locale } = await params
 
   if (!isLocale(locale)) {
     notFound()
