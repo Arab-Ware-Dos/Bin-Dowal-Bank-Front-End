@@ -75,13 +75,19 @@ const createItem = (reduced: boolean) => ({
 })
 
 export function Footer() {
-  const { t, locale, direction } = useI18n()
+  const { t, locale, direction, mode } = useI18n()
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const shouldReduceMotion = useReducedMotion()
 
   const isArabic = locale === "ar"
+
+  const resolveHref = (target: string) => {
+    if (!target.startsWith("/") || target.startsWith("//")) return target;
+    return mode === "url" ? `/${locale}${target}` : target;
+  }
+
 
   const containerVariants = createContainer(Boolean(shouldReduceMotion))
   const itemVariants = createItem(Boolean(shouldReduceMotion))
@@ -204,7 +210,7 @@ export function Footer() {
                   transition={{ delay: index * 0.02 }}
                 >
                   <Link
-                    href={link.href}
+                    href={resolveHref(link.href)}
                     className="group inline-flex items-center text-sm text-white/70 transition-all duration-300 hover:text-white"
                   >
                     <span className="h-[1px] w-0 bg-white transition-all duration-300 group-hover:me-2 group-hover:w-4" />
@@ -231,7 +237,7 @@ export function Footer() {
                   transition={{ delay: index * 0.02 }}
                 >
                   <Link
-                    href={link.href}
+                    href={resolveHref(link.href)}
                     className="group inline-flex items-center text-sm text-white/70 transition-all duration-300 hover:text-white"
                   >
                     <span className="h-[1px] w-0 bg-white transition-all duration-300 group-hover:me-2 group-hover:w-4" />
@@ -258,7 +264,7 @@ export function Footer() {
                   transition={{ delay: index * 0.02 }}
                 >
                   <Link
-                    href={link.href}
+                    href={resolveHref(link.href)}
                     className="group inline-flex items-center text-sm text-white/70 transition-all duration-300 hover:text-white"
                   >
                     <span className="h-[1px] w-0 bg-white transition-all duration-300 group-hover:me-2 group-hover:w-4" />

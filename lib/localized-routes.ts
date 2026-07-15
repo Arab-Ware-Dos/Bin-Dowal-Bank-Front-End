@@ -21,7 +21,9 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/knowledge-center/faq",
   "/customer-service/complaints",
   "/customer-service/service-request",
-  "/customer-service/bank-cards-request"
+  "/customer-service/bank-cards-request",
+  "/branches",
+  "/atm-and-branches"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

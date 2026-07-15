@@ -166,9 +166,18 @@ async function runTests() {
     { input: ["/customer-service", "en"], expected: "/customer-service" },
     { input: ["/customer-service/unknown", "en"], expected: "/customer-service/unknown" },
 
+    // C.6 Migrated Batch 7
+    { input: ["/branches", "en"], expected: "/en/branches" },
+    { input: ["/en/branches", "ar"], expected: "/ar/branches" },
+    { input: ["/atm-and-branches", "en"], expected: "/en/atm-and-branches" },
+    { input: ["/ar/atm-and-branches", "en"], expected: "/en/atm-and-branches" },
+    { input: ["/branches/unknown", "en"], expected: "/branches/unknown" },
+    { input: ["/atm-and-branches/unknown", "en"], expected: "/atm-and-branches/unknown" },
+    { input: ["/en/branches?city=mukalla#results", "ar"], expected: "/ar/branches?city=mukalla#results" },
+    { input: ["/en/atm-and-branches?type=atm#map", "ar"], expected: "/ar/atm-and-branches?type=atm#map" },
+
     // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
-    { input: ["/branches", "en"], expected: "/branches" },
 
     // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
     { input: ["/en/news", "ar"], expected: "/news" },
