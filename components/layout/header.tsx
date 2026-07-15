@@ -474,7 +474,7 @@ export function Header(props: HeaderProps) {
                           <div className={`p-8 w-full ${activeDesktopItem.image ? 'w-[calc(100%-300px)]' : 'w-full'} bg-white`}>
                             {/* Groups Layout */}
                             {activeDesktopItem.groups && (
-                              <div className={`grid gap-8 ${activeDesktopItem.groups.length > 3 ? 'grid-cols-2 md:grid-cols-3' : 'grid-cols-2 lg:grid-cols-3'}`}>
+                              <div className={`grid gap-8 ${activeDesktopItem.groups.length > 3 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3'}`}>
                                 {activeDesktopItem.groups.map((group, idx) => (
                                   <div key={idx} className="flex flex-col space-y-4">
                                     <div className="flex items-center gap-2">
