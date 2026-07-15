@@ -11,7 +11,12 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/business-banking",
   "/personal-banking",
   "/financing",
-  "/digital-channels"
+  "/digital-channels",
+  "/cards",
+  "/cards/credit-card",
+  "/cards/debit-card",
+  "/cards/noor-card",
+  "/cards/prepaid-card"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

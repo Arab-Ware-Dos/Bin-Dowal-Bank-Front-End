@@ -139,15 +139,22 @@ async function runTests() {
     { input: ["/financing", "ar"], expected: "/ar/financing" },
     { input: ["/digital-channels", "en"], expected: "/en/digital-channels" },
 
+    // C.3 Migrated Cards Hub from Batch 4
+    { input: ["/cards", "en"], expected: "/en/cards" },
+    { input: ["/en/cards", "ar"], expected: "/ar/cards" },
+    { input: ["/cards/credit-card", "en"], expected: "/en/cards/credit-card" },
+    { input: ["/en/cards/debit-card", "ar"], expected: "/ar/cards/debit-card" },
+    { input: ["/cards/noor-card", "en"], expected: "/en/cards/noor-card" },
+    { input: ["/ar/cards/prepaid-card", "en"], expected: "/en/cards/prepaid-card" },
+    { input: ["/cards/unknown", "en"], expected: "/cards/unknown" },
+
     // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
-    { input: ["/cards", "ar"], expected: "/cards" },
     { input: ["/branches", "en"], expected: "/branches" },
     { input: ["/calculator", "ar"], expected: "/calculator" },
 
     // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
     { input: ["/en/news", "ar"], expected: "/news" },
-    { input: ["/ar/cards", "en"], expected: "/cards" },
     { input: ["/ar/business/swift-transfers", "en"], expected: "/business/swift-transfers" },
     { input: ["/en/business/product", "ar"], expected: "/business/product" },
     { input: ["/ar/personal/product", "en"], expected: "/personal/product" },
