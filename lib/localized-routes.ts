@@ -16,7 +16,9 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/cards/credit-card",
   "/cards/debit-card",
   "/cards/noor-card",
-  "/cards/prepaid-card"
+  "/cards/prepaid-card",
+  "/calculator",
+  "/knowledge-center/faq"
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

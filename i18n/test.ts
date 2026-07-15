@@ -148,10 +148,18 @@ async function runTests() {
     { input: ["/ar/cards/prepaid-card", "en"], expected: "/en/cards/prepaid-card" },
     { input: ["/cards/unknown", "en"], expected: "/cards/unknown" },
 
+    // C.4 Migrated Batch 5
+    { input: ["/calculator", "en"], expected: "/en/calculator" },
+    { input: ["/en/calculator", "ar"], expected: "/ar/calculator" },
+    { input: ["/knowledge-center/faq", "en"], expected: "/en/knowledge-center/faq" },
+    { input: ["/ar/knowledge-center/faq", "en"], expected: "/en/knowledge-center/faq" },
+    { input: ["/calculator/unknown", "en"], expected: "/calculator/unknown" },
+    { input: ["/knowledge-center/article", "en"], expected: "/knowledge-center/article" },
+    { input: ["/knowledge-center", "en"], expected: "/knowledge-center" },
+
     // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
     { input: ["/branches", "en"], expected: "/branches" },
-    { input: ["/calculator", "ar"], expected: "/calculator" },
 
     // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
     { input: ["/en/news", "ar"], expected: "/news" },
@@ -166,6 +174,8 @@ async function runTests() {
     // F. Query and Hash
     { input: ["/en/about?tab=history#board", "ar"], expected: "/ar/about?tab=history#board" },
     { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/ar/about/annual-reports?year=2025#download" },
+    { input: ["/en/calculator?type=personal#result", "ar"], expected: "/ar/calculator?type=personal#result" },
+    { input: ["/en/knowledge-center/faq?category=cards#question-3", "ar"], expected: "/ar/knowledge-center/faq?category=cards#question-3" },
 
     // F. Locale-like pathnames
     { input: ["/arab-bank", "en"], expected: "/arab-bank" },
