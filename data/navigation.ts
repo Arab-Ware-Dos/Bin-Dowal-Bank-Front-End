@@ -41,11 +41,14 @@ export type NavLink = {
   label: { ar: string; en: string };
   desc?: { ar: string; en: string };
   icon?: any;
+  cols?: number;
   subLinks?: NavLink[];
 };
 
 export type NavSubGroup = {
   title: { ar: string; en: string };
+  cols?: number;
+  rows?: number;
   links: NavLink[];
 };
 
@@ -99,6 +102,7 @@ export const navigationData: NavItem[] = [
       },
       {
         title: { ar: "الخدمات المالية", en: "Financial Services" },
+        cols: 2,
         links: [
           {
             key: "localTransfers",
@@ -115,17 +119,17 @@ export const navigationData: NavItem[] = [
              href: "/personal/fast-money-transfers",
             label: { ar: "الحوالات السريعة", en: "Express Remittances" },
             icon: Plane,
+            cols: 2,
             subLinks: [
               { key: "moneygram", href: "/personal/moneygram", label: { ar: "موني جرام", en: "MoneyGram" } },
               { key: "shift", href: "/personal/shift", label: { ar: "شفت", en: "Shift" } },
               { key: "upt", href: "/personal/upt", label: { ar: "يو بي تي UPT", en: "UPT" } },
               { key: "bin-yaala", href: "/personal/bin-yaala", label: { ar: "بن يعلا", en: "Bin Yaala" } },
-              { key: "alawneh", href: "/personal/alawneh", label: { ar: "العلاونة - الأردن", en: "Alawneh - Jordan" } },
-              { key: "zamzam", href: "/personal/zamzam", label: { ar: "زمزم - الأردن", en: "Zamzam - Jordan" } },
+              { key: "alawneh", href: "/personal/alawneh", label: { ar: "العلاونة", en: "Alawneh" } },
+              { key: "zamzam", href: "/personal/zamzam", label: { ar: "زمزم", en: "Zamzam" } },
               { key: "swift", href: "/personal/swift", label: { ar: "سويفت", en: "Swift" } },
             ]
           },
-          // { key: "expressRemittances", href: "/personal/fast-money-transfers", label: { ar: "الحوالات السريعة", en: "Express Remittances" }, icon: Plane },
         ]
       },
       
@@ -161,6 +165,8 @@ export const navigationData: NavItem[] = [
     groups: [
       {
         title: { ar: "الشركات الكبيرة والمتوسطة", en: "Large Corporate" },
+        cols: 2,
+        rows: 5,
         links: [
           { key: "corpCurrent", href: "/business/corporate-current-account", label: { ar: "حسابات مصرفية", en: "Bank Accounts" }, icon: Building2 },
           { key: "corpInvestments", href: "/business/corporate-investment-deposits", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },

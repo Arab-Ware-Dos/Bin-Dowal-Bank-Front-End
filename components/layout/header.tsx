@@ -476,14 +476,14 @@ export function Header(props: HeaderProps) {
                             {activeDesktopItem.groups && (
                               <div className={`grid gap-8 ${activeDesktopItem.groups.length > 3 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3'}`}>
                                 {activeDesktopItem.groups.map((group, idx) => (
-                                  <div key={idx} className="flex flex-col space-y-4">
+                                  <div key={idx} className={`flex flex-col space-y-4 ${group.cols === 2 ? 'lg:col-span-2' : ''}`}>
                                     <div className="flex items-center gap-2">
                                       <h4 className="text-[14px] lg:text-[15px] xl:text-base font-bold text-[#ed1c24]">
                                         {locale === "ar" ? group.title.ar : group.title.en}
                                       </h4>
                                       <div className="h-px flex-1 bg-slate-100" />
                                     </div>
-                                    <div className="flex flex-col space-y-1">
+                                    <div className={group.cols === 2 ? `grid grid-cols-2 gap-x-12 ${group.rows === 5 ? 'grid-rows-5 grid-flow-col gap-y-2' : 'gap-y-4'}` : "flex flex-col space-y-1"}>
                                       {group.links.map((link) => {
                                         const Icon = link.icon;
                                         return (
@@ -511,12 +511,12 @@ export function Header(props: HeaderProps) {
                                             
                                             {/* Sub-links nested under the parent link */}
                                             {link.subLinks && (
-                                              <div className={`mt-1 mb-2 flex flex-col space-y-1 ${locale === "ar" ? "pr-8 border-r" : "pl-8 border-l"} border-slate-100`}>
+                                              <div className={`mt-3 mb-4 ${link.cols === 2 ? 'columns-2 gap-x-8' : 'flex flex-col space-y-1'} ${locale === "ar" ? "pr-8 border-r" : "pl-8 border-l"} border-slate-100`}>
                                                 {link.subLinks.map((sub) => (
                                                   <Link
                                                     key={sub.key}
                                                     href={resolveHref(sub.href)}
-                                                    className="text-[13px] font-medium text-slate-500 hover:text-[#2d3185] transition-colors py-1"
+                                                    className={`${link.cols === 2 ? 'block break-inside-avoid mb-2.5' : ''} text-[13px] font-medium text-slate-500 hover:text-[#2d3185] transition-colors py-1`}
                                                   >
                                                     {locale === "ar" ? sub.label.ar : sub.label.en}
                                                   </Link>
