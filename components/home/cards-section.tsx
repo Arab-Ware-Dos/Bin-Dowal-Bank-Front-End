@@ -83,7 +83,7 @@ export function CardsSection() {
   const card = cards[active]
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-24" dir="rtl">
+    <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-10" dir="rtl">
       <div className="relative z-10 mx-auto max-w-[1320px]">
         <SectionHeader
           badge="بطاقاتنا المصرفية"

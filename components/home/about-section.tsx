@@ -55,7 +55,7 @@ export function AboutSection() {
   return (
     <section
       dir={direction}
-      className="relative overflow-hidden bg-white py-24 md:py-32 xl:py-36"
+      className="relative overflow-hidden bg-white py-10 md:py-10 xl:py-10"
     >
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 -z-10">

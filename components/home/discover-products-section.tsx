@@ -109,7 +109,7 @@ export function DiscoverProductsSection() {
     <section
       dir="rtl"
       aria-labelledby="discover-products-heading"
-      className="relative w-full overflow-hidden bg-[#f7f8fb] py-16 md:py-24"
+      className="relative w-full overflow-hidden bg-[#f7f8fb] py-16 md:py-10"
     >
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(30,42,79,0.05),transparent_32%)]" />

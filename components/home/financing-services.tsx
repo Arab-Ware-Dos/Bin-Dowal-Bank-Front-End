@@ -98,7 +98,7 @@ export function FinancingServices() {
   }
 
   return (
-    <section className="relative py-20 bg-white overflow-hidden" dir={direction}>
+    <section className="relative py-10 bg-white overflow-hidden" dir={direction}>
       <div className="container mx-auto px-4">
         <SectionHeader
           badge={isRTL ? "برامج التمويل الإسلامي" : "Islamic Financing"}
