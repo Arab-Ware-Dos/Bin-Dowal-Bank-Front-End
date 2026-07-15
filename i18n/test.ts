@@ -156,6 +156,15 @@ async function runTests() {
     { input: ["/calculator/unknown", "en"], expected: "/calculator/unknown" },
     { input: ["/knowledge-center/article", "en"], expected: "/knowledge-center/article" },
     { input: ["/knowledge-center", "en"], expected: "/knowledge-center" },
+    // C.5 Migrated Batch 6
+    { input: ["/customer-service/complaints", "en"], expected: "/en/customer-service/complaints" },
+    { input: ["/en/customer-service/complaints", "ar"], expected: "/ar/customer-service/complaints" },
+    { input: ["/customer-service/service-request", "en"], expected: "/en/customer-service/service-request" },
+    { input: ["/ar/customer-service/service-request", "en"], expected: "/en/customer-service/service-request" },
+    { input: ["/customer-service/bank-cards-request", "en"], expected: "/en/customer-service/bank-cards-request" },
+    { input: ["/en/customer-service/bank-cards-request", "ar"], expected: "/ar/customer-service/bank-cards-request" },
+    { input: ["/customer-service", "en"], expected: "/customer-service" },
+    { input: ["/customer-service/unknown", "en"], expected: "/customer-service/unknown" },
 
     // D. Unmigrated plain paths
     { input: ["/news", "en"], expected: "/news" },
@@ -176,6 +185,8 @@ async function runTests() {
     { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/ar/about/annual-reports?year=2025#download" },
     { input: ["/en/calculator?type=personal#result", "ar"], expected: "/ar/calculator?type=personal#result" },
     { input: ["/en/knowledge-center/faq?category=cards#question-3", "ar"], expected: "/ar/knowledge-center/faq?category=cards#question-3" },
+    { input: ["/en/customer-service/complaints?source=faq#form", "ar"], expected: "/ar/customer-service/complaints?source=faq#form" },
+    { input: ["/en/customer-service/bank-cards-request?card=credit#application", "ar"], expected: "/ar/customer-service/bank-cards-request?card=credit#application" },
 
     // F. Locale-like pathnames
     { input: ["/arab-bank", "en"], expected: "/arab-bank" },
