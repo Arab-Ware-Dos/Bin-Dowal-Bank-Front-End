@@ -193,7 +193,7 @@ async function runTests() {
     // D. Unmigrated plain paths
 
     // E. Unmigrated paths with existing Locale (Dynamic Child Routes remain Legacy)
-    { input: ["/ar/business/swift-transfers", "en"], expected: "/business/swift-transfers" },
+    { input: ["/ar/business/swift-transfers", "en"], expected: "/en/business/swift-transfers" },
     { input: ["/en/business/product", "ar"], expected: "/business/product" },
     { input: ["/ar/personal/product", "en"], expected: "/personal/product" },
     { input: ["/en/e-services/mobile", "ar"], expected: "/e-services/mobile" },
@@ -257,6 +257,20 @@ async function runTests() {
     { input: ["/en/e-services/bindawal-business", "ar"], expected: "/e-services/bindawal-business" },
     { input: ["/en/e-services/internet-banking?source=header#overview", "ar"], expected: "/ar/e-services/internet-banking?source=header#overview" },
     { input: ["/ar/e-services/mobile-banking?source=digital#download", "en"], expected: "/en/e-services/mobile-banking?source=digital#download" },
+
+    // H. Business Dynamic Routes
+    { input: ["/business/corporate-current-account", "en"], expected: "/en/business/corporate-current-account" },
+    { input: ["/ar/business/corporate-current-account", "en"], expected: "/en/business/corporate-current-account" },
+    { input: ["/business/corporate-investment-deposits", "en"], expected: "/en/business/corporate-investment-deposits" },
+    { input: ["/ar/business/corporate-investment-deposits", "en"], expected: "/en/business/corporate-investment-deposits" },
+    { input: ["/business/swift-transfers", "en"], expected: "/en/business/swift-transfers" },
+    { input: ["/ar/business/swift-transfers", "en"], expected: "/en/business/swift-transfers" },
+    { input: ["/business/bank-guarantees", "en"], expected: "/en/business/bank-guarantees" },
+    { input: ["/ar/business/bank-guarantees", "en"], expected: "/en/business/bank-guarantees" },
+    { input: ["/business/unknown", "en"], expected: "/business/unknown" },
+    { input: ["/en/business/unknown", "ar"], expected: "/business/unknown" },
+    { input: ["/en/business/swift-transfers?source=header#requirements", "ar"], expected: "/ar/business/swift-transfers?source=header#requirements" },
+    { input: ["/ar/business/corporate-current-account?source=hub#overview", "en"], expected: "/en/business/corporate-current-account?source=hub#overview" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {

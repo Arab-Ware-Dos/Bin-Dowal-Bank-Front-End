@@ -2284,7 +2284,7 @@ export const bankingServicesData: ServicePageData[] = [
     breadcrumbs: [
       {
         labelKey: "nav.businessBanking",
-        href: "/business"
+        href: "/business-banking"
       },
       {
         labelKey: "nav.corporateCurrentAccount",
@@ -2587,7 +2587,7 @@ export const bankingServicesData: ServicePageData[] = [
     breadcrumbs: [
       {
         labelKey: "nav.businessBanking",
-        href: "/business"
+        href: "/business-banking"
       },
       {
         labelKey: "nav.corporateInvestmentDeposits",
@@ -2889,7 +2889,7 @@ export const bankingServicesData: ServicePageData[] = [
     breadcrumbs: [
       {
         labelKey: "nav.businessBanking",
-        href: "/business"
+        href: "/business-banking"
       },
       {
         labelKey: "nav.swiftTransfers",
@@ -3192,7 +3192,7 @@ export const bankingServicesData: ServicePageData[] = [
     breadcrumbs: [
       {
         labelKey: "nav.businessBanking",
-        href: "/business"
+        href: "/business-banking"
       },
       {
         labelKey: "nav.bankGuarantees",
