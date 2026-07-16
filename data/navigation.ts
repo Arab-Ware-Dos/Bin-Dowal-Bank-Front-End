@@ -261,7 +261,7 @@ export const navigationData: NavItem[] = [
     label: { ar: "الخدمات الإلكترونية", en: "E-Services" },
     singleLinks: [
       { key: "bankApp", href: "/e-services/mobile-banking", label: { ar: "التطبيق البنكي", en: "Mobile Banking" }, icon: Smartphone },
-      { key: "internetBank", href: "/e-services/bindawal-business", label: { ar: "منصة بن دول اعمال", en: "Internet Banking" }, icon: Monitor },
+      { key: "internetBank", href: "/e-services/internet-banking", label: { ar: "منصة بن دول اعمال", en: "Internet Banking" }, icon: Monitor },
       { key: "eWallet", href: "/e-services/e-wallet", label: { ar: "المحفظة الإلكترونية", en: "e-Wallet" }, icon: ShieldCheck },
       { key: "posNet", href: "/e-services/mushtarayati-network", label: { ar: "شبكة مشترياتي", en: "Mushtarayati Network" }, icon: Monitor },
       { key: "bankCards", href: "/cards", label: { ar: "البطاقات البنكية", en: "Bank Cards" }, icon: CreditCard },

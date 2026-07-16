@@ -243,6 +243,20 @@ async function runTests() {
     { input: ["/en/accounts/unknown", "ar"], expected: "/accounts/unknown" },
     { input: ["/en/accounts/vip?source=header#overview", "ar"], expected: "/ar/accounts/vip?source=header#overview" },
     { input: ["/ar/accounts/noor?source=personal#requirements", "en"], expected: "/en/accounts/noor?source=personal#requirements" },
+
+    // G. E-Services Dynamic Routes
+    { input: ["/e-services/mobile-banking", "en"], expected: "/en/e-services/mobile-banking" },
+    { input: ["/ar/e-services/mobile-banking", "en"], expected: "/en/e-services/mobile-banking" },
+    { input: ["/e-services/internet-banking", "en"], expected: "/en/e-services/internet-banking" },
+    { input: ["/ar/e-services/internet-banking", "en"], expected: "/en/e-services/internet-banking" },
+    { input: ["/e-services/e-wallet", "en"], expected: "/en/e-services/e-wallet" },
+    { input: ["/ar/e-services/e-wallet", "en"], expected: "/en/e-services/e-wallet" },
+    { input: ["/e-services/mushtarayati-network", "en"], expected: "/en/e-services/mushtarayati-network" },
+    { input: ["/ar/e-services/mushtarayati-network", "en"], expected: "/en/e-services/mushtarayati-network" },
+    { input: ["/e-services/unknown", "en"], expected: "/e-services/unknown" },
+    { input: ["/en/e-services/bindawal-business", "ar"], expected: "/e-services/bindawal-business" },
+    { input: ["/en/e-services/internet-banking?source=header#overview", "ar"], expected: "/ar/e-services/internet-banking?source=header#overview" },
+    { input: ["/ar/e-services/mobile-banking?source=digital#download", "en"], expected: "/en/e-services/mobile-banking?source=digital#download" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {

@@ -1,5 +1,6 @@
 import { Locale } from "@/i18n/config";
 import { ACCOUNT_ROUTE_PATHS } from "./account-routes";
+import { E_SERVICE_ROUTE_PATHS } from "./e-service-routes";
 
 export const LOCALIZED_STATIC_ROUTES = [
   "/",
@@ -30,7 +31,8 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
   "/news/conclusion-of-the-financial-and-credit-analysis-course",
   "/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis",
-  ...ACCOUNT_ROUTE_PATHS
+  ...ACCOUNT_ROUTE_PATHS,
+  ...E_SERVICE_ROUTE_PATHS
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

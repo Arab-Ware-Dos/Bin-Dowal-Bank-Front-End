@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: PageProps) {
   }
 
   return {
-    title: `${service.title.en} | Bin Dowal Bank`,
-    description: service.subtitle.en,
+    title: `${service.title.ar} | Bin Dowal Bank`,
+    description: service.subtitle.ar,
   }
 }
 
