@@ -271,6 +271,30 @@ async function runTests() {
     { input: ["/en/business/unknown", "ar"], expected: "/business/unknown" },
     { input: ["/en/business/swift-transfers?source=header#requirements", "ar"], expected: "/ar/business/swift-transfers?source=header#requirements" },
     { input: ["/ar/business/corporate-current-account?source=hub#overview", "en"], expected: "/en/business/corporate-current-account?source=hub#overview" },
+
+    // I. Personal Financing Dynamic Routes (Batch 12)
+    { input: ["/personal/financing-personal", "en"], expected: "/en/personal/financing-personal" },
+    { input: ["/ar/personal/financing-personal", "en"], expected: "/en/personal/financing-personal" },
+    { input: ["/personal/financing-home", "en"], expected: "/en/personal/financing-home" },
+    { input: ["/ar/personal/financing-home", "en"], expected: "/en/personal/financing-home" },
+    { input: ["/personal/financing-business", "en"], expected: "/en/personal/financing-business" },
+    { input: ["/ar/personal/financing-business", "en"], expected: "/en/personal/financing-business" },
+    { input: ["/personal/financing-takamul", "en"], expected: "/en/personal/financing-takamul" },
+    { input: ["/ar/personal/financing-takamul", "en"], expected: "/en/personal/financing-takamul" },
+    { input: ["/personal/financing-thimar", "en"], expected: "/en/personal/financing-thimar" },
+    { input: ["/ar/personal/financing-thimar", "en"], expected: "/en/personal/financing-thimar" },
+    { input: ["/personal/financing-taameer", "en"], expected: "/en/personal/financing-taameer" },
+    { input: ["/ar/personal/financing-taameer", "en"], expected: "/en/personal/financing-taameer" },
+    { input: ["/personal/financing-noor", "en"], expected: "/en/personal/financing-noor" },
+    { input: ["/ar/personal/financing-noor", "en"], expected: "/en/personal/financing-noor" },
+    { input: ["/personal/financing-zad", "en"], expected: "/en/personal/financing-zad" },
+    { input: ["/ar/personal/financing-zad", "en"], expected: "/en/personal/financing-zad" },
+    { input: ["/personal/unknown", "en"], expected: "/personal/unknown" },
+    { input: ["/en/personal/unknown", "ar"], expected: "/personal/unknown" },
+    { input: ["/en/personal/financing-home?source=header#requirements", "ar"], expected: "/ar/personal/financing-home?source=header#requirements" },
+    { input: ["/ar/personal/financing-personal?source=hub#overview", "en"], expected: "/en/personal/financing-personal?source=hub#overview" },
+    { input: ["/personal/local-transfers", "en"], expected: "/personal/local-transfers" },
+    { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
