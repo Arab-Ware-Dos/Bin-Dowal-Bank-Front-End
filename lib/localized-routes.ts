@@ -3,6 +3,7 @@ import { ACCOUNT_ROUTE_PATHS } from "./account-routes";
 import { E_SERVICE_ROUTE_PATHS } from "./e-service-routes";
 import { BUSINESS_ROUTE_PATHS } from "./business-routes";
 import { PERSONAL_FINANCING_ROUTE_PATHS } from "./personal-financing-routes";
+import { PERSONAL_REMITTANCE_ROUTE_PATHS } from "./personal-remittance-routes";
 
 export const LOCALIZED_STATIC_ROUTES = [
   "/",
@@ -36,7 +37,8 @@ export const LOCALIZED_STATIC_ROUTES = [
   ...ACCOUNT_ROUTE_PATHS,
   ...E_SERVICE_ROUTE_PATHS,
   ...BUSINESS_ROUTE_PATHS,
-  ...PERSONAL_FINANCING_ROUTE_PATHS
+  ...PERSONAL_FINANCING_ROUTE_PATHS,
+  ...PERSONAL_REMITTANCE_ROUTE_PATHS
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

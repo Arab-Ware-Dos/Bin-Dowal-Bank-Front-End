@@ -295,6 +295,28 @@ async function runTests() {
     { input: ["/ar/personal/financing-personal?source=hub#overview", "en"], expected: "/en/personal/financing-personal?source=hub#overview" },
     { input: ["/personal/local-transfers", "en"], expected: "/personal/local-transfers" },
     { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
+
+    // J. Personal Remittance Dynamic Routes (Batch 13)
+    { input: ["/personal/moneygram", "en"], expected: "/en/personal/moneygram" },
+    { input: ["/ar/personal/moneygram", "en"], expected: "/en/personal/moneygram" },
+    { input: ["/personal/shift", "en"], expected: "/en/personal/shift" },
+    { input: ["/ar/personal/shift", "en"], expected: "/en/personal/shift" },
+    { input: ["/personal/upt", "en"], expected: "/en/personal/upt" },
+    { input: ["/ar/personal/upt", "en"], expected: "/en/personal/upt" },
+    { input: ["/personal/bin-yaala", "en"], expected: "/en/personal/bin-yaala" },
+    { input: ["/ar/personal/bin-yaala", "en"], expected: "/en/personal/bin-yaala" },
+    { input: ["/personal/alawneh", "en"], expected: "/en/personal/alawneh" },
+    { input: ["/ar/personal/alawneh", "en"], expected: "/en/personal/alawneh" },
+    { input: ["/personal/zamzam", "en"], expected: "/en/personal/zamzam" },
+    { input: ["/ar/personal/zamzam", "en"], expected: "/en/personal/zamzam" },
+    { input: ["/personal/swift", "en"], expected: "/en/personal/swift" },
+    { input: ["/ar/personal/swift", "en"], expected: "/en/personal/swift" },
+    { input: ["/personal/remittance-unknown", "en"], expected: "/personal/remittance-unknown" },
+    { input: ["/en/personal/remittance-unknown", "ar"], expected: "/personal/remittance-unknown" },
+    { input: ["/en/personal/moneygram?source=header#requirements", "ar"], expected: "/ar/personal/moneygram?source=header#requirements" },
+    { input: ["/ar/personal/swift?source=hub#overview", "en"], expected: "/en/personal/swift?source=hub#overview" },
+    { input: ["/personal/fast-money-transfers", "en"], expected: "/personal/fast-money-transfers" },
+    { input: ["/en/personal/swift-transfers", "ar"], expected: "/personal/swift-transfers" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
