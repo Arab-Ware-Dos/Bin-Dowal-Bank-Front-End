@@ -5,6 +5,8 @@ import Link from "next/link"
 import { motion, useReducedMotion } from "framer-motion"
 import { PageHero } from "@/components/ui/page-hero"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
+import { useCallback } from "react"
 import {
   ArrowLeft,
   ArrowRight,
@@ -90,11 +92,21 @@ function SectionLabel({ children }: { children: string }) {
 }
 
 export function BankingServicePageTemplate({ data }: { data: ServicePageData }) {
-  const { locale } = useI18n()
+  const { locale, mode } = useI18n()
   const shouldReduceMotion = useReducedMotion()
   const isArabic = locale === "ar"
   const CTAArrow = isArabic ? ArrowLeft : ArrowRight
   const sideBorderClass = isArabic ? "lg:border-l" : "lg:border-r"
+
+  const resolveHref = useCallback(
+    (target: string) => {
+      if (!target.startsWith("/") || target.startsWith("//")) {
+        return target;
+      }
+      return mode === "url" ? getLocalizedHref(target, locale) : target;
+    },
+    [locale, mode]
+  );
 
   const relatedServices = data.relatedServicesKeys 
     ? allRelatedServices.filter((s) => data.relatedServicesKeys?.includes(s.id.toString()))
@@ -129,7 +141,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
         {data.primaryCta && (
           <div className="flex flex-wrap gap-4">
             <Link
-              href={data.primaryCta.href}
+              href={resolveHref(data.primaryCta.href)}
               className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#172048] shadow-[0_14px_34px_rgba(10,18,45,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(10,18,45,0.24)]"
             >
               {getText(data.primaryCta.label, isArabic)}
@@ -711,7 +723,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                       </p>
                       <div className="flex flex-wrap items-center justify-center gap-4">
                         <Link
-                          href={data.ctaSection.primaryHref}
+                          href={resolveHref(data.ctaSection.primaryHref)}
                           className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#324198] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:bg-slate-50"
                         >
                           {getText(data.ctaSection.primaryLabel, isArabic)}
@@ -719,7 +731,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                         </Link>
                         {data.ctaSection.secondaryLabel && data.ctaSection.secondaryHref && (
                            <Link
-                             href={data.ctaSection.secondaryHref}
+                             href={resolveHref(data.ctaSection.secondaryHref)}
                              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-transparent px-8 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/10"
                            >
                              <Phone className="h-4 w-4" />
@@ -755,7 +767,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
 
                       <div className="flex flex-wrap gap-3">
                         <Link
-                          href="/contact"
+                          href={resolveHref("/contact")}
                           className="inline-flex items-center justify-center gap-2 rounded-full bg-[#324198] px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-[#2b387f]"
                         >
                           {isArabic ? "تواصل الآن" : "Contact Us"}

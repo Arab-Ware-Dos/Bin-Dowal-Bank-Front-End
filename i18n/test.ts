@@ -228,8 +228,22 @@ async function runTests() {
     { input: ["/files/report.pdf", "ar"], expected: "/files/report.pdf" },
     { input: ["/downloads/document.docx", "en"], expected: "/downloads/document.docx" },
     { input: ["/ar/news?page=2#latest", "en"], expected: "/en/news?page=2#latest" },
-    { input: ["/en/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article", "ar"], expected: "/ar/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article" }
-  ];
+    { input: ["/en/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article", "ar"], expected: "/ar/news/conclusion-of-the-financial-and-credit-analysis-course?source=home#article" },
+  
+    // F. Accounts Dynamic Routes
+    { input: ["/accounts/vip", "en"], expected: "/en/accounts/vip" },
+    { input: ["/ar/accounts/vip", "en"], expected: "/en/accounts/vip" },
+    { input: ["/accounts/noor", "en"], expected: "/en/accounts/noor" },
+    { input: ["/ar/accounts/noor", "en"], expected: "/en/accounts/noor" },
+    { input: ["/accounts/youth", "en"], expected: "/en/accounts/youth" },
+    { input: ["/ar/accounts/youth", "en"], expected: "/en/accounts/youth" },
+    { input: ["/accounts/expat", "en"], expected: "/en/accounts/expat" },
+    { input: ["/ar/accounts/expat", "en"], expected: "/en/accounts/expat" },
+    { input: ["/accounts/unknown", "en"], expected: "/accounts/unknown" },
+    { input: ["/en/accounts/unknown", "ar"], expected: "/accounts/unknown" },
+    { input: ["/en/accounts/vip?source=header#overview", "ar"], expected: "/ar/accounts/vip?source=header#overview" },
+    { input: ["/ar/accounts/noor?source=personal#requirements", "en"], expected: "/en/accounts/noor?source=personal#requirements" },
+];
 
   for (let i = 0; i < hrefTests.length; i++) {
     const { input, expected } = hrefTests[i];

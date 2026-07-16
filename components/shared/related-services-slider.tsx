@@ -11,6 +11,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { motion, useAnimation, useReducedMotion, type PanInfo } from "framer-motion"
 import { ChevronLeft, ChevronRight, ArrowRight, ArrowLeft } from "lucide-react"
 
@@ -44,9 +45,19 @@ export function RelatedServicesSlider({
   subtitleAr = "اكتشف المزيد من الحلول المصرفية المصممة خصيصاً لتلبية احتياجاتك",
   subtitleEn = "Discover more banking solutions tailored specifically to your needs",
 }: RelatedServicesSliderProps) {
-  const { direction } = useI18n()
+  const { direction, locale, mode } = useI18n()
   const isRTL = direction === "rtl"
   const shouldReduceMotion = useReducedMotion()
+
+  const resolveHref = useCallback(
+    (target: string) => {
+      if (!target.startsWith("/") || target.startsWith("//")) {
+        return target;
+      }
+      return mode === "url" ? getLocalizedHref(target, locale) : target;
+    },
+    [locale, mode]
+  );
 
   const viewportRef = useRef<HTMLDivElement>(null)
   const controls = useAnimation()
@@ -340,7 +351,7 @@ export function RelatedServicesSlider({
                   </p>
 
                   <Link
-                    href={service.href}
+                    href={resolveHref(service.href)}
                     className="inline-flex items-center gap-3 font-cairo text-[15px] font-bold text-[#324198]"
                     aria-label={`${labels.viewDetails}: ${
                       isRTL ? service.titleAr : service.titleEn
