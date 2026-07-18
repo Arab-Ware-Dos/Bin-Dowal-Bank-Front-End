@@ -293,7 +293,6 @@ async function runTests() {
     { input: ["/en/personal/unknown", "ar"], expected: "/personal/unknown" },
     { input: ["/en/personal/financing-home?source=header#requirements", "ar"], expected: "/ar/personal/financing-home?source=header#requirements" },
     { input: ["/ar/personal/financing-personal?source=hub#overview", "en"], expected: "/en/personal/financing-personal?source=hub#overview" },
-    { input: ["/personal/local-transfers", "en"], expected: "/personal/local-transfers" },
     { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
 
     // J. Personal Remittance Dynamic Routes (Batch 13)
@@ -315,7 +314,6 @@ async function runTests() {
     { input: ["/en/personal/remittance-unknown", "ar"], expected: "/personal/remittance-unknown" },
     { input: ["/en/personal/moneygram?source=header#requirements", "ar"], expected: "/ar/personal/moneygram?source=header#requirements" },
     { input: ["/ar/personal/swift?source=hub#overview", "en"], expected: "/en/personal/swift?source=hub#overview" },
-    { input: ["/personal/fast-money-transfers", "en"], expected: "/personal/fast-money-transfers" },
     { input: ["/en/personal/swift-transfers", "ar"], expected: "/personal/swift-transfers" },
 
     // K. Personal E-Channel Compatibility (Batch 14C)
@@ -347,8 +345,24 @@ async function runTests() {
     { input: ["/en/personal/dool-express?source=header#details", "ar"], expected: "/ar/personal/dool-express?source=header#details" },
     { input: ["/ar/personal/unified-network?source=hub#overview", "en"], expected: "/en/personal/unified-network?source=hub#overview" },
     // Boundaries - 2
-    { input: ["/personal/local-transfers", "en"], expected: "/personal/local-transfers" },
+    { input: ["/personal/current-account", "en"], expected: "/personal/current-account" },
     { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
+
+    // M. Personal Core Transfers (Batch 15C)
+    // Known - 3
+    { input: ["/personal/local-transfers", "en"], expected: "/en/personal/local-transfers" },
+    { input: ["/ar/personal/local-transfers", "en"], expected: "/en/personal/local-transfers" },
+    { input: ["/personal/international-transfers", "en"], expected: "/en/personal/international-transfers" },
+    { input: ["/ar/personal/international-transfers", "en"], expected: "/en/personal/international-transfers" },
+    { input: ["/personal/fast-money-transfers", "en"], expected: "/en/personal/fast-money-transfers" },
+    { input: ["/ar/personal/fast-money-transfers", "en"], expected: "/en/personal/fast-money-transfers" },
+    // Query and Hash - 3
+    { input: ["/en/personal/local-transfers?source=header#channels", "ar"], expected: "/ar/personal/local-transfers?source=header#channels" },
+    { input: ["/ar/personal/international-transfers?source=hub#steps", "en"], expected: "/en/personal/international-transfers?source=hub#steps" },
+    { input: ["/en/personal/fast-money-transfers?source=related#faq", "ar"], expected: "/ar/personal/fast-money-transfers?source=related#faq" },
+    // Boundaries - 2
+    { input: ["/personal/core-transfer-unknown", "en"], expected: "/personal/core-transfer-unknown" },
+    { input: ["/en/personal/core-transfer-unknown", "ar"], expected: "/personal/core-transfer-unknown" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {

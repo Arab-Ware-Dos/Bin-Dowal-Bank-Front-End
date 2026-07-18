@@ -6,6 +6,8 @@ import { isLocale, locales } from "@/i18n/config";
 import { PERSONAL_FINANCING_SLUGS, isPersonalFinancingSlug } from "@/lib/personal-financing-routes";
 import { PERSONAL_REMITTANCE_SLUGS, isPersonalRemittanceSlug } from "@/lib/personal-remittance-routes";
 import { PERSONAL_INDEPENDENT_TRANSFER_SLUGS, isPersonalIndependentTransferSlug } from "@/lib/personal-independent-transfer-routes";
+import { PERSONAL_CORE_TRANSFER_SLUGS, isPersonalCoreTransferSlug } from "@/lib/personal-core-transfer-routes";
+import { TransferServicePage } from "@/components/personal/transfers/transfer-service-page";
 
 type LocalizedPersonalFinancingPageProps = {
   params: Promise<{
@@ -27,6 +29,9 @@ export async function generateStaticParams() {
     for (const slug of PERSONAL_INDEPENDENT_TRANSFER_SLUGS) {
       params.push({ locale, slug });
     }
+    for (const slug of PERSONAL_CORE_TRANSFER_SLUGS) {
+      params.push({ locale, slug });
+    }
   }
   
   return params;
@@ -42,8 +47,9 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
   const isFinancing = isPersonalFinancingSlug(slug);
   const isRemittance = isPersonalRemittanceSlug(slug);
   const isIndependent = isPersonalIndependentTransferSlug(slug);
+  const isCoreTransfer = isPersonalCoreTransferSlug(slug);
 
-  if (!isFinancing && !isRemittance && !isIndependent) {
+  if (!isFinancing && !isRemittance && !isIndependent && !isCoreTransfer) {
     return { title: "Not Found" };
   }
 
@@ -79,10 +85,24 @@ export default async function LocalizedPersonalFinancingPage({ params }: Localiz
       ? "remittance"
       : isPersonalIndependentTransferSlug(slug)
         ? "independent-transfer"
-        : null;
+        : isPersonalCoreTransferSlug(slug)
+          ? "core-transfer"
+          : null;
 
   if (!personalSegment) {
     notFound();
+  }
+
+  if (isPersonalCoreTransferSlug(slug)) {
+    return (
+      <div
+        data-localized-route="personal/[slug]"
+        data-personal-segment={personalSegment}
+        data-locale={locale}
+      >
+        <TransferServicePage slug={slug} locale={locale as "ar" | "en"} />
+      </div>
+    );
   }
 
   const service = await getBankingServiceBySlug("personal", slug);
