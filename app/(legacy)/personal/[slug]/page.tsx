@@ -8,6 +8,12 @@ import {
   getPersonalEChannelCompatibilityService,
   PERSONAL_E_CHANNEL_COMPATIBILITY_SLUGS
 } from "@/lib/personal-e-channel-compatibility"
+import {
+  isPersonalCoreTransferSlug,
+  PERSONAL_CORE_TRANSFER_SLUGS
+} from "@/lib/personal-core-transfer-routes"
+import { getPersonalCoreTransferService } from "@/data/personal-transfers/core-transfer-services"
+import { TransferServicePage } from "@/components/personal/transfers/transfer-service-page"
 
 // Next.js 15+: params is a Promise
 interface PageProps {
@@ -21,6 +27,7 @@ export async function generateStaticParams() {
   const combined = [
     ...personalSlugs,
     ...PERSONAL_E_CHANNEL_COMPATIBILITY_SLUGS,
+    ...PERSONAL_CORE_TRANSFER_SLUGS,
   ]
   const uniqueSlugs = Array.from(new Set(combined))
   return uniqueSlugs.map((slug) => ({ slug }))
@@ -28,6 +35,15 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
+
+  if (isPersonalCoreTransferSlug(slug)) {
+    const service = getPersonalCoreTransferService(slug)
+    return {
+      title: `${service.metadata.title.ar} | Bin Dowal Bank`,
+      description: service.metadata.description.ar,
+    }
+  }
+
   const service = isPersonalEChannelCompatibilitySlug(slug)
     ? await getPersonalEChannelCompatibilityService(slug)
     : await getBankingServiceBySlug("personal", slug)
@@ -56,6 +72,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PersonalServicePage({ params }: PageProps) {
   const { slug } = await params
+
+  if (isPersonalCoreTransferSlug(slug)) {
+    return <TransferServicePage slug={slug} locale="ar" />
+  }
+
   const service = isPersonalEChannelCompatibilitySlug(slug)
     ? await getPersonalEChannelCompatibilityService(slug)
     : await getBankingServiceBySlug("personal", slug)
