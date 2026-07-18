@@ -7,6 +7,7 @@ import { PERSONAL_FINANCING_SLUGS, isPersonalFinancingSlug } from "@/lib/persona
 import { PERSONAL_REMITTANCE_SLUGS, isPersonalRemittanceSlug } from "@/lib/personal-remittance-routes";
 import { PERSONAL_INDEPENDENT_TRANSFER_SLUGS, isPersonalIndependentTransferSlug } from "@/lib/personal-independent-transfer-routes";
 import { PERSONAL_CORE_TRANSFER_SLUGS, isPersonalCoreTransferSlug } from "@/lib/personal-core-transfer-routes";
+import { PERSONAL_ACCOUNT_DEPOSIT_SLUGS, isPersonalAccountDepositSlug } from "@/lib/personal-account-deposit-routes";
 import { TransferServicePage } from "@/components/personal/transfers/transfer-service-page";
 
 type LocalizedPersonalFinancingPageProps = {
@@ -32,6 +33,9 @@ export async function generateStaticParams() {
     for (const slug of PERSONAL_CORE_TRANSFER_SLUGS) {
       params.push({ locale, slug });
     }
+    for (const slug of PERSONAL_ACCOUNT_DEPOSIT_SLUGS) {
+      params.push({ locale, slug });
+    }
   }
   
   return params;
@@ -48,8 +52,9 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
   const isRemittance = isPersonalRemittanceSlug(slug);
   const isIndependent = isPersonalIndependentTransferSlug(slug);
   const isCoreTransfer = isPersonalCoreTransferSlug(slug);
+  const isAccountDeposit = isPersonalAccountDepositSlug(slug);
 
-  if (!isFinancing && !isRemittance && !isIndependent && !isCoreTransfer) {
+  if (!isFinancing && !isRemittance && !isIndependent && !isCoreTransfer && !isAccountDeposit) {
     return { title: "Not Found" };
   }
 
@@ -87,7 +92,9 @@ export default async function LocalizedPersonalFinancingPage({ params }: Localiz
         ? "independent-transfer"
         : isPersonalCoreTransferSlug(slug)
           ? "core-transfer"
-          : null;
+          : isPersonalAccountDepositSlug(slug)
+            ? "account-deposit"
+            : null;
 
   if (!personalSegment) {
     notFound();

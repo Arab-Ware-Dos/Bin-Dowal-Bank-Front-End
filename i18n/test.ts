@@ -344,8 +344,7 @@ async function runTests() {
     // Query and Hash - 2
     { input: ["/en/personal/dool-express?source=header#details", "ar"], expected: "/ar/personal/dool-express?source=header#details" },
     { input: ["/ar/personal/unified-network?source=hub#overview", "en"], expected: "/en/personal/unified-network?source=hub#overview" },
-    // Boundaries - 2
-    { input: ["/personal/current-account", "en"], expected: "/personal/current-account" },
+    { input: ["/personal/account-product-unknown", "en"], expected: "/personal/account-product-unknown" },
     { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
 
     // M. Personal Core Transfers (Batch 15C)
@@ -363,6 +362,24 @@ async function runTests() {
     // Boundaries - 2
     { input: ["/personal/core-transfer-unknown", "en"], expected: "/personal/core-transfer-unknown" },
     { input: ["/en/personal/core-transfer-unknown", "ar"], expected: "/personal/core-transfer-unknown" },
+
+    // N. Personal Accounts and Deposits (Batch 16A)
+    // Known - 4
+    { input: ["/personal/current-account", "en"], expected: "/en/personal/current-account" },
+    { input: ["/ar/personal/current-account", "en"], expected: "/en/personal/current-account" },
+    { input: ["/personal/savings-account", "en"], expected: "/en/personal/savings-account" },
+    { input: ["/ar/personal/savings-account", "en"], expected: "/en/personal/savings-account" },
+    { input: ["/personal/minors-account", "en"], expected: "/en/personal/minors-account" },
+    { input: ["/ar/personal/minors-account", "en"], expected: "/en/personal/minors-account" },
+    { input: ["/personal/investment-deposit", "en"], expected: "/en/personal/investment-deposit" },
+    { input: ["/ar/personal/investment-deposit", "en"], expected: "/en/personal/investment-deposit" },
+    // Query and Hash - 3
+    { input: ["/en/personal/current-account?source=header#features", "ar"], expected: "/ar/personal/current-account?source=header#features" },
+    { input: ["/ar/personal/savings-account?source=hub#requirements", "en"], expected: "/en/personal/savings-account?source=hub#requirements" },
+    { input: ["/en/personal/investment-deposit?source=related#faq", "ar"], expected: "/ar/personal/investment-deposit?source=related#faq" },
+    // Boundaries - 2
+    { input: ["/personal/account-product-unknown", "en"], expected: "/personal/account-product-unknown" },
+    { input: ["/en/personal/account-product-unknown", "ar"], expected: "/personal/account-product-unknown" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
