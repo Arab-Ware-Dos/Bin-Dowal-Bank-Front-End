@@ -5,6 +5,7 @@ import { ServicePageData } from "@/types/banking-service-page";
 import { isLocale, locales } from "@/i18n/config";
 import { PERSONAL_FINANCING_SLUGS, isPersonalFinancingSlug } from "@/lib/personal-financing-routes";
 import { PERSONAL_REMITTANCE_SLUGS, isPersonalRemittanceSlug } from "@/lib/personal-remittance-routes";
+import { PERSONAL_INDEPENDENT_TRANSFER_SLUGS, isPersonalIndependentTransferSlug } from "@/lib/personal-independent-transfer-routes";
 
 type LocalizedPersonalFinancingPageProps = {
   params: Promise<{
@@ -23,6 +24,9 @@ export async function generateStaticParams() {
     for (const slug of PERSONAL_REMITTANCE_SLUGS) {
       params.push({ locale, slug });
     }
+    for (const slug of PERSONAL_INDEPENDENT_TRANSFER_SLUGS) {
+      params.push({ locale, slug });
+    }
   }
   
   return params;
@@ -37,8 +41,9 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
 
   const isFinancing = isPersonalFinancingSlug(slug);
   const isRemittance = isPersonalRemittanceSlug(slug);
+  const isIndependent = isPersonalIndependentTransferSlug(slug);
 
-  if (!isFinancing && !isRemittance) {
+  if (!isFinancing && !isRemittance && !isIndependent) {
     return { title: "Not Found" };
   }
 
@@ -72,7 +77,9 @@ export default async function LocalizedPersonalFinancingPage({ params }: Localiz
     ? "financing"
     : isPersonalRemittanceSlug(slug)
       ? "remittance"
-      : null;
+      : isPersonalIndependentTransferSlug(slug)
+        ? "independent-transfer"
+        : null;
 
   if (!personalSegment) {
     notFound();

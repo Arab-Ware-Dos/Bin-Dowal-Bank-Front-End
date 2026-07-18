@@ -333,6 +333,22 @@ async function runTests() {
     { input: ["/en/personal/mushtarayati-network", "ar"], expected: "/personal/mushtarayati-network" },
     // Domain preservation
     { input: ["/ar/e-services/mobile-banking", "en"], expected: "/en/e-services/mobile-banking" },
+
+    // L. Personal Independent Transfers (Batch 15A)
+    // Known - 4
+    { input: ["/personal/dool-express", "en"], expected: "/en/personal/dool-express" },
+    { input: ["/ar/personal/dool-express", "en"], expected: "/en/personal/dool-express" },
+    { input: ["/personal/unified-network", "en"], expected: "/en/personal/unified-network" },
+    { input: ["/ar/personal/unified-network", "en"], expected: "/en/personal/unified-network" },
+    // Unknown - 2
+    { input: ["/personal/independent-transfer-unknown", "en"], expected: "/personal/independent-transfer-unknown" },
+    { input: ["/en/personal/independent-transfer-unknown", "ar"], expected: "/personal/independent-transfer-unknown" },
+    // Query and Hash - 2
+    { input: ["/en/personal/dool-express?source=header#details", "ar"], expected: "/ar/personal/dool-express?source=header#details" },
+    { input: ["/ar/personal/unified-network?source=hub#overview", "en"], expected: "/en/personal/unified-network?source=hub#overview" },
+    // Boundaries - 2
+    { input: ["/personal/local-transfers", "en"], expected: "/personal/local-transfers" },
+    { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {

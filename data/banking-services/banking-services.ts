@@ -15,7 +15,6 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/customer-services/Local-transfers.jpg",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.localTransfers", href: "/personal/local-transfers" },
       { label: { ar: "دول إكسبرس", en: "Dool Express" } },
     ],
     tagline: { ar: "التحويلات المحلية", en: "Local Transfers" },
@@ -136,7 +135,6 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/customer-services/Local-transfers.jpg",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.localTransfers", href: "/personal/local-transfers" },
       { label: { ar: "الشبكة الموحدة", en: "Unified Network" } },
     ],
     tagline: { ar: "التحويلات المحلية", en: "Local Transfers" },
