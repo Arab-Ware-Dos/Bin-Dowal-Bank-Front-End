@@ -51,7 +51,7 @@ export function PartnershipsSection() {
         initial: { opacity: 0, y: 24 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true, margin: "-80px" },
-        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as const },
+        transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] },
       }
 
   const gridVariants = {
@@ -82,7 +82,7 @@ export function PartnershipsSection() {
       scale: 1,
       transition: {
         duration: shouldReduceMotion ? 0.18 : 0.45,
-        ease: [0.22, 1, 0.36, 1] as const,
+        ease: [0.22, 1, 0.36, 1],
       },
     },
   }

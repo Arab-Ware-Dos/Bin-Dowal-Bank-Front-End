@@ -92,6 +92,13 @@ const cardTypeMeta: Record<string, CardTypeMeta> = {
 
 const filterOrder = ["debit", "credit", "prepaid", "virtual"];
 
+const CARD_CATEGORIES = ["debit", "credit", "prepaid"] as const;
+type CardCategory = typeof CARD_CATEGORIES[number];
+
+function isCardCategory(value: string): value is CardCategory {
+  return (CARD_CATEGORIES as readonly string[]).includes(value);
+}
+
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -248,7 +255,7 @@ export function CardsPageContent() {
     );
 
     const orderedTypes = filterOrder.filter((type) =>
-      existingTypes.includes(type),
+      isCardCategory(type) ? existingTypes.includes(type) : false,
     );
 
     const extraTypes = existingTypes.filter(

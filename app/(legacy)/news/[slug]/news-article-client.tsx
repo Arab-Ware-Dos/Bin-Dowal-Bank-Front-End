@@ -40,7 +40,7 @@ type ArticleBlock =
       items: string[]
     }
 
-type ArticleContent = string | string[] | ArticleBlock[]
+type ArticleContent = string | (string | ArticleBlock)[]
 
 export interface NewsArticle {
   slug?: string
@@ -142,7 +142,7 @@ function normalizeContent(content: ArticleContent | null | undefined): ArticleBl
 
   if (!Array.isArray(content)) return []
 
-  return content.flatMap((item) => {
+  return content.flatMap((item): ArticleBlock[] => {
     if (typeof item === "string") {
       const parts = item
         .split(/\n\s*\n/g)
