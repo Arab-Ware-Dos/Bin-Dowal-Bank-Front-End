@@ -317,6 +317,22 @@ async function runTests() {
     { input: ["/ar/personal/swift?source=hub#overview", "en"], expected: "/en/personal/swift?source=hub#overview" },
     { input: ["/personal/fast-money-transfers", "en"], expected: "/personal/fast-money-transfers" },
     { input: ["/en/personal/swift-transfers", "ar"], expected: "/personal/swift-transfers" },
+
+    // K. Personal E-Channel Compatibility (Batch 14C)
+    // Canonical E-Services
+    { input: ["/e-services/mobile-banking", "en"], expected: "/en/e-services/mobile-banking" },
+    { input: ["/e-services/e-wallet", "en"], expected: "/en/e-services/e-wallet" },
+    { input: ["/e-services/mushtarayati-network", "en"], expected: "/en/e-services/mushtarayati-network" },
+    // Personal compatibility negatives
+    { input: ["/personal/mobile-banking", "en"], expected: "/personal/mobile-banking" },
+    { input: ["/personal/e-wallet", "en"], expected: "/personal/e-wallet" },
+    { input: ["/personal/mushtarayati-network", "en"], expected: "/personal/mushtarayati-network" },
+    // Localized personal fallback
+    { input: ["/en/personal/mobile-banking", "ar"], expected: "/personal/mobile-banking" },
+    { input: ["/en/personal/e-wallet", "ar"], expected: "/personal/e-wallet" },
+    { input: ["/en/personal/mushtarayati-network", "ar"], expected: "/personal/mushtarayati-network" },
+    // Domain preservation
+    { input: ["/ar/e-services/mobile-banking", "en"], expected: "/en/e-services/mobile-banking" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
