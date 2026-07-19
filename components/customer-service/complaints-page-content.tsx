@@ -25,6 +25,7 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { FormUnavailableNotice } from './form-unavailable-notice';
 import {
   MonitorSmartphone,
   Building2,
@@ -56,7 +57,6 @@ export function ComplaintsPageContent() {
     if (!target.startsWith('/') || target.startsWith('//')) return target;
     return mode === 'url' ? getLocalizedHref(target, locale) : target;
   };
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const inputClassName =
     'h-12 rounded-xl border-slate-200/80 bg-white/90 shadow-none transition-all duration-300 placeholder:text-slate-400 focus-visible:border-[#262b80]/40 focus-visible:ring-[3px] focus-visible:ring-[#262b80]/10';
@@ -172,8 +172,6 @@ export function ComplaintsPageContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   return (
@@ -271,28 +269,8 @@ export function ComplaintsPageContent() {
                 </CardHeader>
 
                 <CardContent className="relative">
-                  {formSubmitted ? (
-                    <motion.div
-                      className="rounded-[24px] border border-emerald-100 bg-emerald-50/70 px-6 py-12 text-center"
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                    >
-                      <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-sm">
-                        <CheckCircle className="h-10 w-10 text-emerald-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#0b0d36]">
-                        {locale === 'ar'
-                          ? 'تم استلام شكواك بنجاح'
-                          : 'Complaint Received Successfully'}
-                      </h3>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">
-                        {locale === 'ar'
-                          ? 'سنقوم بمراجعتها والتواصل معك في أقرب وقت.'
-                          : 'We will review it and contact you as soon as possible.'}
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                  <FormUnavailableNotice locale={locale} contactHref={resolveHref('/contact')} />
+                  <form onSubmit={handleSubmit} className="space-y-6 opacity-60">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2.5">
                           <Label
@@ -304,6 +282,7 @@ export function ComplaintsPageContent() {
                           <Input
                             id="name"
                             required
+                            disabled
                             className={inputClassName}
                           />
                         </div>
@@ -317,7 +296,7 @@ export function ComplaintsPageContent() {
                               ? 'رقم العميل أو الحساب'
                               : 'Customer or Account Number'}
                           </Label>
-                          <Input id="account" className={inputClassName} />
+                          <Input id="account" disabled className={inputClassName} />
                         </div>
                       </div>
 
@@ -333,6 +312,7 @@ export function ComplaintsPageContent() {
                             id="phone"
                             type="tel"
                             required
+                            disabled
                             className={inputClassName}
                           />
                         </div>
@@ -350,6 +330,7 @@ export function ComplaintsPageContent() {
                             id="email"
                             type="email"
                             required
+                            disabled
                             className={inputClassName}
                           />
                         </div>
@@ -363,8 +344,8 @@ export function ComplaintsPageContent() {
                           >
                             {locale === 'ar' ? 'نوع الشكوى' : 'Complaint Type'}
                           </Label>
-                          <Select required>
-                            <SelectTrigger className={inputClassName}>
+                          <Select required disabled>
+                            <SelectTrigger className={inputClassName} disabled>
                               <SelectValue
                                 placeholder={
                                   locale === 'ar'
@@ -403,8 +384,8 @@ export function ComplaintsPageContent() {
                               ? 'وسيلة التواصل المفضلة'
                               : 'Preferred Contact Method'}
                           </Label>
-                          <Select required>
-                            <SelectTrigger className={inputClassName}>
+                          <Select required disabled>
+                            <SelectTrigger className={inputClassName} disabled>
                               <SelectValue
                                 placeholder={
                                   locale === 'ar'
@@ -437,6 +418,7 @@ export function ComplaintsPageContent() {
                         <Input
                           id="subject"
                           required
+                          disabled
                           className={inputClassName}
                         />
                       </div>
@@ -454,6 +436,7 @@ export function ComplaintsPageContent() {
                           id="details"
                           rows={5}
                           required
+                          disabled
                           className={textareaClassName}
                         />
                       </div>
@@ -471,6 +454,7 @@ export function ComplaintsPageContent() {
                           <Input
                             id="attachment"
                             type="file"
+                            disabled
                             className={`pt-2.5 file:mr-4 file:rounded-full file:border-0 file:bg-[#262b80]/10 file:px-4 file:py-1 file:text-sm file:font-semibold file:text-[#262b80] hover:file:bg-[#262b80]/20 ${inputClassName}`}
                           />
                         </div>
@@ -479,13 +463,13 @@ export function ComplaintsPageContent() {
                       <Button
                         type="submit"
                         size="lg"
-                        className="h-13 w-full rounded-xl bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#2e3697] text-white shadow-[0_20px_40px_-20px_rgba(38,43,128,0.7)] transition-all duration-300 hover:scale-[1.01] hover:from-[#090b2d] hover:via-[#1d2370] hover:to-[#262b80]"
+                        disabled
+                        className="h-13 w-full rounded-xl bg-slate-300 text-slate-500 shadow-none"
                       >
-                        <Send className="me-2 h-4 w-4" />
-                        {locale === 'ar' ? 'تقديم الشكوى' : 'Submit Complaint'}
+                        <Send className="me-2 h-4 w-4 opacity-50" />
+                        {locale === 'ar' ? 'الإرسال غير متاح حاليًا' : 'Submission currently unavailable'}
                       </Button>
                     </form>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>

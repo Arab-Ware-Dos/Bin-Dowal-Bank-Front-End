@@ -24,6 +24,7 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import Link from 'next/link';
+import { FormUnavailableNotice } from './form-unavailable-notice';
 import {
   CreditCard,
   Send,
@@ -50,7 +51,6 @@ export function BankCardsRequestPageContent() {
     if (!target.startsWith('/') || target.startsWith('//')) return target;
     return mode === 'url' ? getLocalizedHref(target, locale) : target;
   };
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const inputClassName =
     'h-12 rounded-xl border-slate-200/80 bg-white/90 shadow-none transition-all duration-300 placeholder:text-slate-400 focus-visible:border-[#262b80]/40 focus-visible:ring-[3px] focus-visible:ring-[#262b80]/10';
@@ -120,8 +120,6 @@ export function BankCardsRequestPageContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 5000);
   };
 
   return (
@@ -174,28 +172,8 @@ export function BankCardsRequestPageContent() {
                 </CardHeader>
 
                 <CardContent className="relative">
-                  {formSubmitted ? (
-                    <motion.div
-                      className="rounded-[24px] border border-emerald-100 bg-emerald-50/70 px-6 py-12 text-center"
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                    >
-                      <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-sm">
-                        <CheckCircle className="h-10 w-10 text-emerald-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#0b0d36]">
-                        {locale === 'ar'
-                          ? 'تم استلام طلبك بنجاح'
-                          : 'Application Received Successfully'}
-                      </h3>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">
-                        {locale === 'ar'
-                          ? 'سيقوم أحد ممثلينا بالتواصل معك في الوقت المفضل.'
-                          : 'One of our representatives will contact you at your preferred time.'}
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-8">
+                  <FormUnavailableNotice locale={locale} contactHref={resolveHref('/contact')} />
+                  <form onSubmit={handleSubmit} className="space-y-8 opacity-60">
                       {/* Personal Information */}
                       <div className="space-y-4">
                         <div className="flex items-center gap-2 border-b border-slate-100 pb-2">
@@ -218,6 +196,7 @@ export function BankCardsRequestPageContent() {
                             <Input
                               id="name"
                               required
+                              disabled
                               className={inputClassName}
                             />
                           </div>
@@ -234,6 +213,7 @@ export function BankCardsRequestPageContent() {
                             <Input
                               id="idNumber"
                               required
+                              disabled
                               className={inputClassName}
                             />
                           </div>
@@ -249,8 +229,8 @@ export function BankCardsRequestPageContent() {
                                 ? 'مهتم في اي بطاقة'
                                 : 'Interested in which card'}
                             </Label>
-                            <Select required>
-                              <SelectTrigger className={inputClassName}>
+                            <Select required disabled>
+                              <SelectTrigger className={inputClassName} disabled>
                                 <SelectValue
                                   placeholder={
                                     locale === 'ar'
@@ -291,8 +271,8 @@ export function BankCardsRequestPageContent() {
                                 ? 'لغة التواصل المفضلة'
                                 : 'Preferred Communication Language'}
                             </Label>
-                            <Select required>
-                              <SelectTrigger className={inputClassName}>
+                            <Select required disabled>
+                              <SelectTrigger className={inputClassName} disabled>
                                 <SelectValue
                                   placeholder={
                                     locale === 'ar'
@@ -335,8 +315,8 @@ export function BankCardsRequestPageContent() {
                                 ? 'هل لديك حساب بنكي في بنك بن دول؟'
                                 : 'Do you have an account in Bin Dowal Bank?'}
                             </Label>
-                            <Select required>
-                              <SelectTrigger className={inputClassName}>
+                            <Select required disabled>
+                              <SelectTrigger className={inputClassName} disabled>
                                 <SelectValue
                                   placeholder={
                                     locale === 'ar' ? 'اختر' : 'Select'
@@ -363,8 +343,8 @@ export function BankCardsRequestPageContent() {
                                 ? 'هل يتم تحويل راتبك إلى بنك بن دول؟'
                                 : 'Is your salary transferred to Bin Dowal Bank?'}
                             </Label>
-                            <Select required>
-                              <SelectTrigger className={inputClassName}>
+                            <Select required disabled>
+                              <SelectTrigger className={inputClassName} disabled>
                                 <SelectValue
                                   placeholder={
                                     locale === 'ar' ? 'اختر' : 'Select'
@@ -392,8 +372,8 @@ export function BankCardsRequestPageContent() {
                               ? 'كم الراتب الشهري؟'
                               : 'What is your monthly salary?'}
                           </Label>
-                          <Select required>
-                            <SelectTrigger className={inputClassName}>
+                          <Select required disabled>
+                            <SelectTrigger className={inputClassName} disabled>
                               <SelectValue
                                 placeholder={
                                   locale === 'ar' ? 'اختر' : 'Select'
@@ -449,6 +429,7 @@ export function BankCardsRequestPageContent() {
                               id="phone"
                               type="tel"
                               required
+                              disabled
                               className={inputClassName}
                             />
                           </div>
@@ -466,6 +447,7 @@ export function BankCardsRequestPageContent() {
                               id="email"
                               type="email"
                               required
+                              disabled
                               className={inputClassName}
                             />
                           </div>
@@ -480,8 +462,8 @@ export function BankCardsRequestPageContent() {
                               ? 'أفضل وقت للاتصال بي'
                               : 'Best time to contact me'}
                           </Label>
-                          <Select required>
-                            <SelectTrigger className={inputClassName}>
+                          <Select required disabled>
+                            <SelectTrigger className={inputClassName} disabled>
                               <SelectValue
                                 placeholder={
                                   locale === 'ar'
@@ -519,13 +501,13 @@ export function BankCardsRequestPageContent() {
                       <Button
                         type="submit"
                         size="lg"
-                        className="h-13 w-full rounded-xl bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#2e3697] text-white shadow-[0_20px_40px_-20px_rgba(38,43,128,0.7)] transition-all duration-300 hover:scale-[1.01] hover:from-[#090b2d] hover:via-[#1d2370] hover:to-[#262b80]"
+                        disabled
+                        className="h-13 w-full rounded-xl bg-slate-300 text-slate-500 shadow-none"
                       >
-                        <Send className="me-2 h-4 w-4" />
-                        {locale === 'ar' ? 'تقدم الآن' : 'Apply Now'}
+                        <Send className="me-2 h-4 w-4 opacity-50" />
+                        {locale === 'ar' ? 'الإرسال غير متاح حاليًا' : 'Submission currently unavailable'}
                       </Button>
                     </form>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { PageHero } from "@/components/ui/page-hero"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -23,6 +24,7 @@ import {
   Globe,
   ArrowUpRight,
 } from "lucide-react"
+import { FormUnavailableNotice } from "../customer-service/form-unavailable-notice"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -32,8 +34,12 @@ const fadeInUp = {
 }
 
 export function ContactPageContent() {
-  const { locale } = useI18n()
-  const [formSubmitted, setFormSubmitted] = useState(false)
+  const { locale, mode } = useI18n()
+  
+  const resolveHref = (target: string) => {
+    if (!target.startsWith('/') || target.startsWith('//')) return target;
+    return mode === 'url' ? getLocalizedHref(target, locale) : target;
+  }
 
   const inputClassName =
     "h-12 rounded-xl border-slate-200/80 bg-white/90 shadow-none transition-all duration-300 placeholder:text-slate-400 focus-visible:border-[#262b80]/40 focus-visible:ring-[3px] focus-visible:ring-[#262b80]/10"
@@ -121,8 +127,6 @@ export function ContactPageContent() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setFormSubmitted(true)
-    setTimeout(() => setFormSubmitted(false), 5000)
   }
 
   return (
@@ -232,37 +236,21 @@ export function ContactPageContent() {
                 </CardHeader>
 
                 <CardContent className="relative">
-                  {formSubmitted ? (
-                    <motion.div
-                      className="rounded-[24px] border border-emerald-100 bg-emerald-50/70 px-6 py-12 text-center"
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                    >
-                      <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-sm">
-                        <CheckCircle className="h-10 w-10 text-emerald-500" />
-                      </div>
-                      <h3 className="text-xl font-bold text-[#0b0d36]">
-                        {locale === "ar" ? "تم إرسال رسالتك بنجاح!" : "Message Sent Successfully!"}
-                      </h3>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">
-                        {locale === "ar" ? "سنتواصل معك قريبًا." : "We will contact you soon."}
-                      </p>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                  <FormUnavailableNotice locale={locale} contactHref={resolveHref('/contact')} />
+                  <form onSubmit={handleSubmit} className="space-y-6 opacity-60">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2.5">
                           <Label htmlFor="name" className="text-sm font-medium text-[#0b0d36]">
                             {locale === "ar" ? "الاسم الكامل" : "Full Name"}
                           </Label>
-                          <Input id="name" required className={inputClassName} />
+                          <Input id="name" required disabled className={inputClassName} />
                         </div>
 
                         <div className="space-y-2.5">
                           <Label htmlFor="phone" className="text-sm font-medium text-[#0b0d36]">
                             {locale === "ar" ? "رقم الجوال" : "Phone Number"}
                           </Label>
-                          <Input id="phone" type="tel" required className={inputClassName} />
+                          <Input id="phone" type="tel" required disabled className={inputClassName} />
                         </div>
                       </div>
 
@@ -270,33 +258,33 @@ export function ContactPageContent() {
                         <Label htmlFor="email" className="text-sm font-medium text-[#0b0d36]">
                           {locale === "ar" ? "البريد الإلكتروني" : "Email Address"}
                         </Label>
-                        <Input id="email" type="email" required className={inputClassName} />
+                        <Input id="email" type="email" required disabled className={inputClassName} />
                       </div>
 
                       <div className="space-y-2.5">
                         <Label htmlFor="subject" className="text-sm font-medium text-[#0b0d36]">
                           {locale === "ar" ? "الموضوع" : "Subject"}
                         </Label>
-                        <Input id="subject" required className={inputClassName} />
+                        <Input id="subject" required disabled className={inputClassName} />
                       </div>
 
                       <div className="space-y-2.5">
                         <Label htmlFor="message" className="text-sm font-medium text-[#0b0d36]">
                           {locale === "ar" ? "الرسالة" : "Message"}
                         </Label>
-                        <Textarea id="message" rows={6} required className={textareaClassName} />
+                        <Textarea id="message" rows={6} required disabled className={textareaClassName} />
                       </div>
 
                       <Button
                         type="submit"
                         size="lg"
-                        className="h-13 w-full rounded-xl bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#2e3697] text-white shadow-[0_20px_40px_-20px_rgba(38,43,128,0.7)] transition-all duration-300 hover:scale-[1.01] hover:from-[#090b2d] hover:via-[#1d2370] hover:to-[#262b80]"
+                        disabled
+                        className="h-13 w-full rounded-xl bg-slate-300 text-slate-500 shadow-none"
                       >
-                        <Send className="me-2 h-4 w-4" />
-                        {locale === "ar" ? "إرسال الرسالة" : "Send Message"}
+                        <Send className="me-2 h-4 w-4 opacity-50" />
+                        {locale === "ar" ? "الإرسال غير متاح حاليًا" : "Submission currently unavailable"}
                       </Button>
                     </form>
-                  )}
                 </CardContent>
               </Card>
             </motion.div>

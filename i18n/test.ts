@@ -385,11 +385,16 @@ async function runTests() {
     { input: ["/ar/custom-services", "en"], expected: "/en/custom-services" },
     { input: ["/knowledge", "en"], expected: "/en/knowledge" },
     { input: ["/en/knowledge", "ar"], expected: "/ar/knowledge" },
-    { input: ["/ar/knowledge?source=header#top", "en"], expected: "/en/knowledge?source=header#top" },
-
-    // P. Business Banking hashes preservation
-    { input: ["/business-banking#payroll", "en"], expected: "/en/business-banking#payroll" },
+    { input: ["/en/knowledge?source=header#top", "ar"], expected: "/ar/knowledge?source=header#top" },
+    { input: ["/ar/business-banking#payroll", "en"], expected: "/en/business-banking#payroll" },
     { input: ["/en/business-banking#finance", "ar"], expected: "/ar/business-banking#finance" },
+
+    // L. Contact Route Tests
+    { input: ["/contact", "en"], expected: "/en/contact" },
+    { input: ["/ar/contact", "en"], expected: "/en/contact" },
+    { input: ["/en/contact", "ar"], expected: "/ar/contact" },
+    { input: ["/contact?source=footer", "en"], expected: "/en/contact?source=footer" },
+    { input: ["/en/contact?source=header#form", "ar"], expected: "/ar/contact?source=header#form" }
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
