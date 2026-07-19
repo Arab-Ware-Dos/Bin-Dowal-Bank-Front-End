@@ -17,8 +17,8 @@ function runTests() {
   let wildcardVercelSources = 0;
   let rulesUsingPermanent = 0;
   let rulesUsing301 = 0;
-  let rulesPreservingQueryParams = 0;
-  let rulesNotPreservingQueryParams = 0;
+  let rulesContainingPreserveQueryParams = 0;
+  let rulesWithUnsupportedProperties = 0;
 
   for (let i = 0; i < mapRules.length; i++) {
     const mapRule = mapRules[i];
@@ -57,10 +57,14 @@ function runTests() {
       rulesUsing301++;
     }
 
-    if (vercelRule.preserveQueryParams === true) {
-      rulesPreservingQueryParams++;
-    } else {
-      rulesNotPreservingQueryParams++;
+    if ('preserveQueryParams' in vercelRule) {
+      rulesContainingPreserveQueryParams++;
+    }
+
+    const allowedKeys = ['source', 'destination', 'statusCode'];
+    const unsupportedKeys = Object.keys(vercelRule).filter(k => !allowedKeys.includes(k));
+    if (unsupportedKeys.length > 0) {
+      rulesWithUnsupportedProperties++;
     }
   }
 
@@ -77,15 +81,15 @@ function runTests() {
   console.log(`Wildcard Vercel sources: ${wildcardVercelSources}`);
   console.log(`Rules using permanent: ${rulesUsingPermanent}`);
   console.log(`Rules using statusCode 301: ${rulesUsing301}`);
-  console.log(`Rules with preserveQueryParams true: ${rulesPreservingQueryParams}`);
-  console.log(`Rules missing preserveQueryParams: ${rulesNotPreservingQueryParams}`);
-  console.log(`Rules with preserveQueryParams false: 0`);
+  console.log(`Rules containing preserveQueryParams: ${rulesContainingPreserveQueryParams}`);
+  console.log(`Unsupported redirect properties: ${rulesWithUnsupportedProperties}`);
+  console.log(`Config schema validation: ${rulesWithUnsupportedProperties === 0 ? 'Pass' : 'Fail'}`);
 
   if (
     missingRules > 0 || extraRules > 0 || sourceMismatches > 0 ||
     destinationMismatches > 0 || statusMismatches > 0 || absoluteVercelDestinations > 0 ||
     wildcardVercelSources > 0 || rulesUsingPermanent > 0 || rulesUsing301 !== 69 ||
-    rulesPreservingQueryParams !== 69 || rulesNotPreservingQueryParams > 0
+    rulesContainingPreserveQueryParams > 0 || rulesWithUnsupportedProperties > 0
   ) {
     process.exit(1);
   }

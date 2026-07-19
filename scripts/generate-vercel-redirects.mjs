@@ -15,8 +15,7 @@ if (!Array.isArray(rules) || rules.length !== 69) {
 const vercelRules = rules.map((r) => ({
   source: r.source,
   destination: r.destination,
-  statusCode: r.statusCode,
-  preserveQueryParams: true
+  statusCode: r.statusCode
 }));
 
 const vercelConfig = {
