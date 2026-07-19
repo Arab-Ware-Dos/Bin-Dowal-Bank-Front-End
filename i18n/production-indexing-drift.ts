@@ -47,8 +47,8 @@ function runDriftTest() {
         return fileList;
     }
 
-    const arFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'ar')).filter(f => !f.includes('root-proof.html') && !f.includes('i18n-poc'));
-    const enFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'en')).filter(f => !f.includes('root-proof.html') && !f.includes('i18n-poc'));
+    const arFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'ar')).filter(f => !f.includes('root-proof.html'));
+    const enFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'en')).filter(f => !f.includes('root-proof.html'));
 
     const arFiles = [...arFilesDir, path.join(OUT_DIR, 'ar.html')].filter(fs.existsSync);
     const enFiles = [...enFilesDir, path.join(OUT_DIR, 'en.html')].filter(fs.existsSync);
@@ -76,9 +76,7 @@ function runDriftTest() {
     // Proof routes
     const proofRoutes = [
         path.join(OUT_DIR, 'ar/root-proof.html'),
-        path.join(OUT_DIR, 'en/root-proof.html'),
-        path.join(OUT_DIR, 'i18n-poc/ar.html'),
-        path.join(OUT_DIR, 'i18n-poc/en.html')
+        path.join(OUT_DIR, 'en/root-proof.html')
     ];
 
     let proofNoIndex = 0;
@@ -104,7 +102,7 @@ function runDriftTest() {
     console.log(`Arabic noindex routes: ${arNoindex}`);
     console.log(`\nEnglish production routes scanned: ${enFiles.length}`);
     console.log(`English noindex routes: ${enNoindex}`);
-    console.log(`\nProof routes scanned: 4`);
+    console.log(`\nProof routes scanned: 2`);
     console.log(`Proof routes with noindex: ${proofNoIndex}`);
     console.log(`Proof routes with nofollow: ${proofNoFollow}\n`);
 
@@ -116,8 +114,8 @@ function runDriftTest() {
         console.error(`❌ FAILED: Expected exactly 66 English production routes, but found ${enFiles.length}`);
         hasErrors = true;
     }
-    if (proofNoIndex !== 4 || proofNoFollow !== 4) {
-        console.error(`❌ FAILED: Expected exactly 4 proof routes with noindex and nofollow`);
+    if (proofNoIndex !== 2 || proofNoFollow !== 2) {
+        console.error(`❌ FAILED: Expected exactly 2 proof routes with noindex and nofollow`);
         hasErrors = true;
     }
     

@@ -8,6 +8,7 @@ import { PageHero } from "@/components/ui/page-hero"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Card, CardContent } from "@/components/ui/card"
 import type { LucideIcon } from "lucide-react"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import Image from "next/image"
 import {
   ArrowLeft,
@@ -549,7 +550,7 @@ export function AboutPageContent() {
       >
         <div className="flex flex-wrap gap-4">
           <Link
-            href="/contact"
+            href={getLocalizedHref("/contact", locale)}
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0b0d36] shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
           >
             {text.contactUs}
@@ -1103,7 +1104,7 @@ export function AboutPageContent() {
 
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
-                href="/services"
+                href={getLocalizedHref("/digital-channels", locale)}
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#262b80] px-8 py-4 font-bold text-white transition-colors hover:bg-[#0b0d36]"
               >
                 {text.exploreServices}
@@ -1115,7 +1116,7 @@ export function AboutPageContent() {
               </Link>
 
               <Link
-                href="/contact"
+                href={getLocalizedHref("/contact", locale)}
                 className="inline-flex items-center justify-center rounded-xl border border-border bg-white px-8 py-4 font-bold text-foreground transition-colors hover:bg-muted/50"
               >
                 {text.contactUs}

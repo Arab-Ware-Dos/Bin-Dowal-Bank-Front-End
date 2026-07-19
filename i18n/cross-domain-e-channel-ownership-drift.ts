@@ -6,7 +6,6 @@ import {
   PERSONAL_E_CHANNEL_COMPATIBILITY_SLUGS,
   getPersonalEChannelCompatibilityService
 } from "../lib/personal-e-channel-compatibility";
-import { generateStaticParams } from "../app/(legacy)/personal/[slug]/page";
 
 async function runDriftTest() {
   const errors: string[] = [];
@@ -52,19 +51,7 @@ async function runDriftTest() {
     }
   }
 
-  // 8. Legacy Personal static params include them
-  // 9. No slug duplicated in static params
-  const staticParams = await generateStaticParams();
-  const slugsInParams = staticParams.map(p => p.slug);
-  
-  for (const slug of PERSONAL_E_CHANNEL_COMPATIBILITY_SLUGS) {
-    const count = slugsInParams.filter(s => s === slug).length;
-    if (count === 0) {
-      errors.push(`${slug} missing from Legacy Personal static params`);
-    } else if (count > 1) {
-      errors.push(`${slug} is duplicated in Legacy Personal static params`);
-    }
-  }
+  // Legacy personal route checks have been removed.
 
   // 10. Generic accessor is section aware
   for (const slug of PERSONAL_E_CHANNEL_COMPATIBILITY_SLUGS) {

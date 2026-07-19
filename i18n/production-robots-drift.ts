@@ -50,7 +50,7 @@ for (const line of lines) {
   if (line.toLowerCase().startsWith("disallow:") && (line.includes("/personal") || line.includes("/business") || line.includes("/accounts"))) {
     legacyDisallows++;
   }
-  if (line.toLowerCase().startsWith("disallow:") && (line.includes("root-proof") || line.includes("i18n-poc"))) {
+  if (line.toLowerCase().startsWith("disallow:") && line.includes("root-proof")) {
     proofDisallows++;
   }
   if (line.includes("arabwaredos.com")) {

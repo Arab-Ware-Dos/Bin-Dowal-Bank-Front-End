@@ -212,7 +212,7 @@ export function TransferServicePage({
       >
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
-            href="/digital#mobile"
+            href={getLocalizedHref("/digital-channels", locale)}
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#1e2d72] shadow-[0_14px_34px_rgba(7,10,30,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(7,10,30,0.22)]"
           >
             {pickLocal(sharedTransferContent.startApp, locale)}
@@ -220,7 +220,7 @@ export function TransferServicePage({
           </Link>
 
           <Link
-            href="/atm-and-branches"
+            href={getLocalizedHref("/atm-and-branches", locale)}
             className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/16"
           >
             <MapPin className="h-4 w-4" />
@@ -478,7 +478,7 @@ export function TransferServicePage({
                 </Link>
 
                 <Link
-                  href="/atm-and-branches"
+                  href={getLocalizedHref("/atm-and-branches", locale)}
                   className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#324198]/15 hover:text-[#324198]"
                 >
                   {pickLocal(sharedTransferContent.nearestBranch, locale)}

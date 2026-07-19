@@ -161,16 +161,14 @@ function runDriftTest() {
       const rel = f.replace(OUT_DIR, '').replace(/\\/g, '/');
       if (rel.startsWith('/ar/') || rel === '/ar.html') return false;
       if (rel.startsWith('/en/') || rel === '/en.html') return false;
-      if (rel.includes('root-proof.html') || rel.includes('i18n-poc')) return false;
+      if (rel.includes('root-proof.html')) return false;
       if (rel.includes('_not-found.html')) return false;
       return true;
     });
 
     const proofRoutes = [
         path.join(OUT_DIR, 'ar/root-proof.html'),
-        path.join(OUT_DIR, 'en/root-proof.html'),
-        path.join(OUT_DIR, 'i18n-poc/ar.html'),
-        path.join(OUT_DIR, 'i18n-poc/en.html')
+        path.join(OUT_DIR, 'en/root-proof.html')
     ].filter(fs.existsSync);
 
     // Convert absolute path to routeName
@@ -182,8 +180,11 @@ function runDriftTest() {
 
     arFiles.forEach(f => validateRoute(f, getRouteName(f), "ar"));
     enFiles.forEach(f => validateRoute(f, getRouteName(f), "en"));
-    legacyFiles.forEach(f => validateRoute(f, getRouteName(f), "legacy"));
     proofRoutes.forEach(f => validateRoute(f, getRouteName(f), "proof"));
+
+    // Legacy Redirect Contracts Checked
+    const mapPath = path.join(process.cwd(), 'config', 'legacy-redirect-map.json');
+    const legacyContracts = JSON.parse(fs.readFileSync(mapPath, 'utf-8'));
 
     // Check News Symmetrical constraint
     const arNews = arFiles.map(getRouteName).filter(r => r.startsWith('/ar/news/') && r !== '/ar/news');
@@ -202,20 +203,17 @@ function runDriftTest() {
        }
     });
 
-    console.log(`Arabic production routes checked: ${arFiles.length}`);
-    console.log(`English production routes checked: ${enFiles.length}`);
-    console.log(`Legacy production/compatibility routes checked: ${legacyFiles.length}`);
-    console.log(`Proof routes checked: ${proofRoutes.length}`);
+    console.log(`Arabic pages checked: ${arFiles.length}`);
+    console.log(`English pages checked: ${enFiles.length}`);
+    console.log(`Localized canonical mismatches: ${incorrectLocalizedCanonical}`);
+    console.log(`Localized hreflang mismatches: ${missingArAlternate + missingEnAlternate + reciprocityErrors + duplicateHreflangTags}`);
+    console.log(`Legacy HTML pages expected: 0`);
+    console.log(`Legacy redirect contracts checked: ${legacyContracts.length}`);
     console.log("");
+    console.log(`Proof routes checked: ${proofRoutes.length}`);
     console.log(`Missing canonical: ${missingCanonical}`);
-    console.log(`Incorrect localized canonical: ${incorrectLocalizedCanonical}`);
-    console.log(`Incorrect legacy canonical: ${incorrectLegacyCanonical}`);
-    console.log(`Missing Arabic alternate: ${missingArAlternate}`);
-    console.log(`Missing English alternate: ${missingEnAlternate}`);
-    console.log(`Reciprocity errors: ${reciprocityErrors}`);
     console.log(`Compatibility mapping errors: ${compatibilityMappingErrors}`);
     console.log(`Duplicate canonical tags: ${duplicateCanonicalTags}`);
-    console.log(`Duplicate hreflang tags: ${duplicateHreflangTags}`);
     console.log(`Invalid-domain URLs: ${invalidDomainUrls}`);
     console.log(`Preview-domain references: ${previewDomainReferences}`);
     console.log(`Proof routes exposing alternates: ${proofRoutesExposingAlternates}`);
@@ -223,7 +221,6 @@ function runDriftTest() {
     if (
       missingCanonical > 0 ||
       incorrectLocalizedCanonical > 0 ||
-      incorrectLegacyCanonical > 0 ||
       missingArAlternate > 0 ||
       missingEnAlternate > 0 ||
       reciprocityErrors > 0 ||
@@ -235,7 +232,8 @@ function runDriftTest() {
       proofRoutesExposingAlternates > 0 ||
       arFiles.length !== 66 ||
       enFiles.length !== 66 ||
-      legacyFiles.length !== 69
+      legacyFiles.length !== 0 ||
+      legacyContracts.length !== 69
     ) {
       process.exit(1);
     }

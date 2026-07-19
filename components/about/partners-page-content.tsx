@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { PartnershipsSection } from "@/components/home/partnerships-section"
 import { ArrowRight, MessageSquare } from "lucide-react"
 import Link from "next/link"
@@ -103,7 +104,7 @@ export function PartnersPageContent() {
               </p>
               
               <Link
-                href="/contact"
+                href={getLocalizedHref("/contact", locale)}
                 className="group inline-flex items-center gap-3 bg-white text-[#0b0d36] hover:bg-slate-50 px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1"
               >
                 <span>{text.ctaButton}</span>

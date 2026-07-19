@@ -102,7 +102,7 @@ async function runTests() {
 
   // Proof routes
   const proofRoutes = [
-    "/ar/root-proof", "/en/root-proof", "/i18n-poc/ar", "/i18n-poc/en"
+    "/ar/root-proof", "/en/root-proof"
   ];
   let proofUnexpectedRedirects = 0;
   for (const pr of proofRoutes) {

@@ -102,7 +102,7 @@ export function getProductionSitemapFamilies(): SitemapRouteFamily[] {
 
   return productionPaths.map((pathname) => {
     // Failsafe checks
-    if (pathname.includes("root-proof") || pathname.includes("i18n-poc")) {
+    if (pathname.includes("root-proof")) {
       throw new Error(`Proof route leaked into sitemap: ${pathname}`);
     }
     if (pathname.startsWith("/ar") || pathname.startsWith("/en")) {

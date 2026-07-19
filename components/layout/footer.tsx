@@ -281,7 +281,7 @@ export function Footer() {
               whileHover={shouldReduceMotion ? undefined : { y: -2 }}
               transition={{ duration: 0.25 }}
             >
-              <Link href="/" className="inline-flex items-center">
+              <Link href={resolveHref("/")} className="inline-flex items-center">
                 <Image
                   src="/images/logo-white.png"
                   alt="Bin Dowal Islamic Microfinance Bank"

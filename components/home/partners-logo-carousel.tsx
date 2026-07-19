@@ -7,6 +7,7 @@ import { partnersLogoCarouselData, PartnerLogo } from "@/data/partners-logo-caro
 import { useReducedMotion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ViewAllButton } from "@/components/ui/view-all-button";
+import { getLocalizedHref } from "@/lib/localized-routes";
 
 export function PartnersLogoCarousel() {
   const { t, locale, direction } = useI18n();
@@ -70,7 +71,7 @@ export function PartnersLogoCarousel() {
 
       <ViewAllButton
         label={t("partnerships.viewAll")}
-        href="/about/partners"
+        href={getLocalizedHref("/about/partners", locale)}
       />
 
       <style jsx>{`

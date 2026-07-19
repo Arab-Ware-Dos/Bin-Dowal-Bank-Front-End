@@ -45,31 +45,7 @@ async function runTests() {
 
   console.log("All path builder tests passed!");
 
-  console.log("Running POC Switcher Utils tests...");
-  // Dynamic import since it's a new file and we want to keep test.ts clean
-  const { buildLocaleSwitchTarget } = await import("../components/i18n/locale-switcher-poc.utils");
 
-  const pocTests = [
-    { input: { pathname: "/i18n-poc/ar", search: "", hash: "", targetLocale: "en" }, expected: "/i18n-poc/en" },
-    { input: { pathname: "/i18n-poc/en", search: "", hash: "", targetLocale: "ar" }, expected: "/i18n-poc/ar" },
-    { input: { pathname: "/i18n-poc/ar", search: "x=1", hash: "", targetLocale: "en" }, expected: "/i18n-poc/en?x=1" },
-    { input: { pathname: "/i18n-poc/ar", search: "x=1", hash: "#top", targetLocale: "en" }, expected: "/i18n-poc/en?x=1#top" },
-    { input: { pathname: "/i18n-poc/en", search: "", hash: "#services", targetLocale: "ar" }, expected: "/i18n-poc/ar#services" },
-    { input: { pathname: "/i18n-poc/ar", search: "a=1&b=2", hash: "#section", targetLocale: "en" }, expected: "/i18n-poc/en?a=1&b=2#section" },
-  ];
-
-  for (let i = 0; i < pocTests.length; i++) {
-    const { input, expected } = pocTests[i];
-    const result = buildLocaleSwitchTarget(input as any);
-    try {
-      assert.strictEqual(result, expected, `POC Test ${i + 1} Failed`);
-      console.log(`POC Test ${i + 1} Passed: ${JSON.stringify(input)} -> "${result}"`);
-    } catch (e: any) {
-      console.error(e.message, `| Got: "${result}", Expected: "${expected}"`);
-      process.exit(1);
-    }
-  }
-  console.log("All POC Switcher Utils tests passed!");
 
   console.log("Running Dictionary Loader tests...");
   try {

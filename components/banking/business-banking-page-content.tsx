@@ -9,6 +9,7 @@ import { FAQAccordion } from "@/components/ui/faq-accordion"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { faqs } from "@/data/mock-data"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import {
   Building2,
   Briefcase,
@@ -17,7 +18,11 @@ import {
   Check,
   ArrowRight,
   ArrowLeft,
+  ArrowUpRight,
   TrendingUp,
+  ShieldCheck,
+  ChevronRight,
+  Download,
   Shield,
   Clock,
 } from "lucide-react"
@@ -283,7 +288,7 @@ export function BusinessBankingPageContent() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" variant="secondary" className="rounded-xl">
-                <Link href="/contact">{t("nav.contact")}</Link>
+                <Link href={getLocalizedHref("/contact", locale)}>{t("nav.contact")}</Link>
               </Button>
               <Button
                 asChild
@@ -291,7 +296,7 @@ export function BusinessBankingPageContent() {
                 variant="outline"
                 className="rounded-xl border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <Link href="/atm-and-branches">{t("nav.branches")}</Link>
+                <Link href={getLocalizedHref("/atm-and-branches", locale)}>{t("nav.branches")}</Link>
               </Button>
             </div>
           </motion.div>

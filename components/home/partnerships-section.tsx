@@ -2,6 +2,8 @@
 
 import React, { useMemo, useState } from "react"
 import Image from "next/image"
+import Link from "next/link"
+import { getLocalizedHref } from "@/lib/localized-routes"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
@@ -234,18 +236,18 @@ export function PartnershipsSection() {
         </motion.div>
 
         {/* View all */}
-        {/* <motion.div
+        <motion.div
           className="mt-10 text-center md:mt-14"
           {...sectionReveal}
         >
-          <a
-            href="#"
+          <Link
+            href={getLocalizedHref("/about/partners", locale)}
             className="group inline-flex items-center gap-2 rounded-full border border-[#081a36]/10 bg-white px-6 py-3 font-cairo text-sm font-semibold text-[#081a36] shadow-[0_10px_30px_rgba(8,26,54,0.05)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#081a36]/20 hover:bg-[#081a36]/[0.02]"
           >
             <span>{t("partnerships.viewAll")}</span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
-        </motion.div> */}
+          </Link>
+        </motion.div>
       </div>
     </section>
   )
