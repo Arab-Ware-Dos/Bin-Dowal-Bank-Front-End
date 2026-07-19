@@ -20,8 +20,8 @@ export function generateStaticParams() {
   return locales.flatMap((locale) =>
     E_SERVICE_SLUGS.map((slug) => ({
       locale,
-      slug,
-    }))
+      slug
+}))
   );
 }
 
@@ -40,12 +40,8 @@ export async function generateMetadata({ params }: LocalizedEServicePageProps) {
 
   return {
     title: `${locale === "ar" ? service.title.ar : service.title.en} | Bin Dowal Bank`,
-    description: locale === "ar" ? service.subtitle.ar : service.subtitle.en,
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
+    description: locale === "ar" ? service.subtitle.ar : service.subtitle.en
+};
 }
 
 export default async function LocalizedEServicePage({ params }: LocalizedEServicePageProps) {

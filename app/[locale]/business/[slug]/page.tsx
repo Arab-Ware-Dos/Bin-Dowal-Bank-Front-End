@@ -17,8 +17,8 @@ export function generateStaticParams() {
   return locales.flatMap((locale: string) =>
     BUSINESS_SLUGS.map((slug) => ({
       locale,
-      slug,
-    }))
+      slug
+}))
   );
 }
 
@@ -27,18 +27,16 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
 
   if (!isLocale(locale) || !isBusinessSlug(slug)) {
     return {
-      title: "Not Found",
-      robots: { index: false, follow: false },
-    };
+      title: "Not Found"
+};
   }
 
   const service = await getBankingServiceBySlug("business", slug);
 
   if (!service || service.section !== "business") {
     return {
-      title: "Not Found",
-      robots: { index: false, follow: false },
-    };
+      title: "Not Found"
+};
   }
 
   const isArabic = locale === "ar";
@@ -47,9 +45,8 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
 
   return {
     title,
-    description,
-    robots: { index: false, follow: false },
-  };
+    description
+};
 }
 
 export default async function LocalizedBusinessPage({ params }: LocalizedBusinessPageProps) {

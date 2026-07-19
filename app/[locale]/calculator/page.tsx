@@ -9,7 +9,7 @@ type LocalizedCalculatorPageProps = {
 }
 
 export async function generateMetadata({
-  params,
+  params
 }: LocalizedCalculatorPageProps) {
   const { locale } = await params
 
@@ -25,16 +25,12 @@ export async function generateMetadata({
     description:
       locale === "ar"
         ? "قدّر قيمة القسط الشهري التقديري لتمويل السيارات أو التمويل السكني أو التمويل الشخصي بخطوات واضحة وسريعة."
-        : "Estimate your monthly installment for auto, home, or personal financing in a few simple steps.",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  }
+        : "Estimate your monthly installment for auto, home, or personal financing in a few simple steps."
+}
 }
 
 export default async function LocalizedCalculatorPage({
-  params,
+  params
 }: LocalizedCalculatorPageProps) {
   const { locale } = await params
 

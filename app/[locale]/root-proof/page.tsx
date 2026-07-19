@@ -12,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     robots: {
       index: false,
       follow: false,
+      nocache: true,
     }
   }
 }

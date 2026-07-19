@@ -16,16 +16,12 @@ export async function generateMetadata({ params }: LocalizedSocialResponsibility
     title: isAr ? "المسؤولية الاجتماعية | بنك بن دول" : "Social Responsibility | Bin Dowal Bank",
     description: isAr 
       ? "مبادرات بنك بن دول في مجال المسؤولية الاجتماعية وتنمية المجتمع"
-      : "Bin Dowal Bank's initiatives in social responsibility and community development",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Bin Dowal Bank's initiatives in social responsibility and community development"
   };
 }
 
 export default async function LocalizedSocialResponsibilityPage({
-  params,
+  params
 }: LocalizedSocialResponsibilityPageProps) {
   const { locale } = await params;
 

@@ -16,16 +16,12 @@ export async function generateMetadata({ params }: LocalizedBoardOfDirectorsPage
     title: isAr ? "مجلس الإدارة | بنك بن دول" : "Board of Directors | Bin Dowal Bank",
     description: isAr 
       ? "تعرف على أعضاء مجلس إدارة بنك بن دول للتمويل الأصغر الإسلامي"
-      : "Meet the Board of Directors of Bin Dowal Islamic Microfinance Bank",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Meet the Board of Directors of Bin Dowal Islamic Microfinance Bank"
   };
 }
 
 export default async function LocalizedBoardOfDirectorsPage({
-  params,
+  params
 }: LocalizedBoardOfDirectorsPageProps) {
   const { locale } = await params;
 

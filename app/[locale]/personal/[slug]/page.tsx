@@ -69,11 +69,7 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
 
   return {
     title: `${title} | Bin Dowal Bank`,
-    description,
-    robots: {
-      index: false,
-      follow: false,
-    }
+    description
   };
 }
 

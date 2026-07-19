@@ -11,12 +11,8 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
-    title: locale === "ar" ? "بطاقة الخصم الفوري" : "Debit Card",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
+    title: locale === "ar" ? "بطاقة الخصم الفوري" : "Debit Card"
+};
 }
 
 export default async function LocalizedDebitCardPage({ params }: Props) {

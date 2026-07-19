@@ -16,16 +16,12 @@ export async function generateMetadata({ params }: LocalizedPartnersPageProps) {
     title: isAr ? "شركاؤنا | بنك بن دول" : "Our Partners | Bin Dowal Bank",
     description: isAr 
       ? "تعرف على شركاء بنك بن دول للتمويل الأصغر الإسلامي"
-      : "Discover the partners of Bin Dowal Islamic Microfinance Bank",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Discover the partners of Bin Dowal Islamic Microfinance Bank"
   };
 }
 
 export default async function LocalizedPartnersPage({
-  params,
+  params
 }: LocalizedPartnersPageProps) {
   const { locale } = await params;
 

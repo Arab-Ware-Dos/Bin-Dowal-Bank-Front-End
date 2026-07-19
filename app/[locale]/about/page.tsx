@@ -10,7 +10,7 @@ type LocalizedAboutPageProps = {
 };
 
 export async function generateMetadata({
-  params,
+  params
 }: LocalizedAboutPageProps): Promise<Metadata> {
   const { locale } = await params;
 
@@ -23,24 +23,22 @@ export async function generateMetadata({
       title: "About Us - Bin Dowal Islamic Microfinance Bank",
       description: "A national Islamic microfinance bank delivering trusted financial and banking solutions that combine Islamic values with innovation.",
       openGraph: {
-        title: "About Us - Bin Dowal Islamic Microfinance Bank",
-      },
-      robots: { index: false, follow: false },
-    }
+        title: "About Us - Bin Dowal Islamic Microfinance Bank"
+}
+}
   }
 
   return {
     title: "عن البنك - بنك بن دول للتمويل الأصغر الإسلامي",
     description: "بنك وطني للتمويل الأصغر الإسلامي، نقدّم حلولاً مالية ومصرفية موثوقة تجمع بين القيم الإسلامية والابتكار، وتدعم الأفراد والأعمال وتعزز الشمول المالي في اليمن.",
     openGraph: {
-      title: "عن البنك - بنك بن دول للتمويل الأصغر الإسلامي",
-    },
-    robots: { index: false, follow: false },
-  }
+      title: "عن البنك - بنك بن دول للتمويل الأصغر الإسلامي"
+}
+}
 }
 
 export default async function LocalizedAboutPage({
-  params,
+  params
 }: LocalizedAboutPageProps) {
   const { locale } = await params;
 

@@ -11,12 +11,8 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
-    title: locale === "ar" ? "بطاقة نور" : "Noor Card",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
+    title: locale === "ar" ? "بطاقة نور" : "Noor Card"
+};
 }
 
 export default async function LocalizedNoorCardPage({ params }: Props) {

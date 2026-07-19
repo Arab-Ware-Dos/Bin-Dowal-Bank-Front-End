@@ -11,8 +11,8 @@ export function generateStaticParams() {
   return locales.flatMap((locale) =>
     newsItems.map((article) => ({
       locale,
-      slug: article.slug || article.id.toString(),
-    }))
+      slug: article.slug || article.id.toString()
+}))
   );
 }
 
@@ -44,13 +44,12 @@ export async function generateMetadata({ params }: LocalizedNewsArticlePageProps
   return {
     title,
     description,
-    robots: { index: false, follow: false },
     openGraph: {
       title,
       description,
-      images: article.image ? [article.image] : [],
-    },
-  };
+      images: article.image ? [article.image] : []
+}
+};
 }
 
 export default async function LocalizedNewsArticlePage({ params }: LocalizedNewsArticlePageProps) {

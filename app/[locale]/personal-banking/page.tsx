@@ -3,7 +3,7 @@ import { isLocale } from "@/i18n/config"
 import { PersonalBankingPageContent } from "@/components/banking/personal-banking-page-content"
 
 export async function generateMetadata({
-  params,
+  params
 }: {
   params: Promise<{ locale: string }>
 }) {
@@ -14,11 +14,7 @@ export async function generateMetadata({
     title: locale === "ar" ? "الخدمات الشخصية | بنك بن دول" : "Personal Services | Bin Dowal Bank",
     description: locale === "ar" 
       ? "استكشف الخدمات الشخصية المقدمة من بنك بن دول للتمويل الأصغر الإسلامي."
-      : "Explore Personal Services provided by Bin Dowal Islamic Microfinance Bank.",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Explore Personal Services provided by Bin Dowal Islamic Microfinance Bank."
   }
 }
 
@@ -29,7 +25,7 @@ type LocalizedPersonalBankingPageProps = {
 }
 
 export default async function LocalizedPersonalBankingPage({
-  params,
+  params
 }: LocalizedPersonalBankingPageProps) {
   const { locale } = await params
 

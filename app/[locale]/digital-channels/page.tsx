@@ -3,7 +3,7 @@ import { isLocale } from "@/i18n/config"
 import { DigitalChannelsPageContent } from "@/components/banking/digital-channels-page-content"
 
 export async function generateMetadata({
-  params,
+  params
 }: {
   params: Promise<{ locale: string }>
 }) {
@@ -14,11 +14,7 @@ export async function generateMetadata({
     title: locale === "ar" ? "القنوات الرقمية | بنك بن دول" : "Digital Channels | Bin Dowal Bank",
     description: locale === "ar" 
       ? "استكشف القنوات الرقمية المقدمة من بنك بن دول للتمويل الأصغر الإسلامي."
-      : "Explore Digital Channels provided by Bin Dowal Islamic Microfinance Bank.",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Explore Digital Channels provided by Bin Dowal Islamic Microfinance Bank."
   }
 }
 
@@ -29,7 +25,7 @@ type LocalizedDigitalChannelsPageProps = {
 }
 
 export default async function LocalizedDigitalChannelsPage({
-  params,
+  params
 }: LocalizedDigitalChannelsPageProps) {
   const { locale } = await params
 

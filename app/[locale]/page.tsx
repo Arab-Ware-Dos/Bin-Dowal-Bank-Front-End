@@ -15,19 +15,15 @@ export async function generateMetadata({ params }: LocalizedHomePageProps) {
   return {
     title: locale === 'ar' ? 'بنك بن دول للتمويل الأصغر الإسلامي | Bin Dowal Islamic Microfinance Bank' : 'Bin Dowal Islamic Microfinance Bank',
     description: locale === 'ar' ? 'البنك الرائد في التمويل الأصغر الإسلامي.' : 'The leading Islamic microfinance bank.',
-    robots: {
-      index: false,
-      follow: false,
-    },
     openGraph: {
       title: locale === 'ar' ? 'بنك بن دول للتمويل الأصغر الإسلامي' : 'Bin Dowal Islamic Microfinance Bank',
-      description: locale === 'ar' ? 'البنك الرائد في التمويل الأصغر الإسلامي.' : 'The leading Islamic microfinance bank.',
-    }
+      description: locale === 'ar' ? 'البنك الرائد في التمويل الأصغر الإسلامي.' : 'The leading Islamic microfinance bank.'
+}
   }
 }
 
 export default async function LocalizedHomePage({
-  params,
+  params
 }: LocalizedHomePageProps) {
   const { locale } = await params;
 

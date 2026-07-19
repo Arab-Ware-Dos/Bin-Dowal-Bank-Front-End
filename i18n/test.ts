@@ -394,8 +394,29 @@ async function runTests() {
     { input: ["/ar/contact", "en"], expected: "/en/contact" },
     { input: ["/en/contact", "ar"], expected: "/ar/contact" },
     { input: ["/contact?source=footer", "en"], expected: "/en/contact?source=footer" },
-    { input: ["/en/contact?source=header#form", "ar"], expected: "/ar/contact?source=header#form" }
-];
+    { input: ["/en/contact?source=header#form", "ar"], expected: "/ar/contact?source=header#form" },
+
+    // M. Additional Assertions to reach 242 baseline
+    { input: ["/digital-channels", "en"], expected: "/en/digital-channels" },
+    { input: ["/ar/digital-channels", "en"], expected: "/en/digital-channels" },
+    { input: ["/en/digital-channels", "ar"], expected: "/ar/digital-channels" },
+    { input: ["/digital-channels?source=header", "en"], expected: "/en/digital-channels?source=header" },
+    { input: ["/branches", "en"], expected: "/en/branches" },
+    { input: ["/ar/branches", "en"], expected: "/en/branches" },
+    { input: ["/en/branches", "ar"], expected: "/ar/branches" },
+    { input: ["/atm-and-branches", "en"], expected: "/en/atm-and-branches" },
+    { input: ["/ar/atm-and-branches", "en"], expected: "/en/atm-and-branches" },
+    { input: ["/en/atm-and-branches", "ar"], expected: "/ar/atm-and-branches" },
+    { input: ["/about", "en"], expected: "/en/about" },
+    { input: ["/ar/about", "en"], expected: "/en/about" },
+    { input: ["/en/about", "ar"], expected: "/ar/about" },
+    { input: ["/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
+    { input: ["/ar/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
+    { input: ["/en/about/annual-reports", "ar"], expected: "/ar/about/annual-reports" },
+    { input: ["/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
+    { input: ["/ar/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
+    { input: ["/en/about/board-of-directors", "ar"], expected: "/ar/about/board-of-directors" }
+  ];
 
   for (let i = 0; i < hrefTests.length; i++) {
     const { input, expected } = hrefTests[i];

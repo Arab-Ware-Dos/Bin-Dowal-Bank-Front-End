@@ -3,7 +3,7 @@ import { isLocale } from "@/i18n/config"
 import { BusinessBankingPageContent } from "@/components/banking/business-banking-page-content"
 
 export async function generateMetadata({
-  params,
+  params
 }: {
   params: Promise<{ locale: string }>
 }) {
@@ -14,11 +14,7 @@ export async function generateMetadata({
     title: locale === "ar" ? "خدمات الأعمال | بنك بن دول" : "Business Services | Bin Dowal Bank",
     description: locale === "ar" 
       ? "استكشف خدمات الأعمال المقدمة من بنك بن دول للتمويل الأصغر الإسلامي."
-      : "Explore Business Services provided by Bin Dowal Islamic Microfinance Bank.",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "Explore Business Services provided by Bin Dowal Islamic Microfinance Bank."
   }
 }
 
@@ -29,7 +25,7 @@ type LocalizedBusinessBankingPageProps = {
 }
 
 export default async function LocalizedBusinessBankingPage({
-  params,
+  params
 }: LocalizedBusinessBankingPageProps) {
   const { locale } = await params
 

@@ -11,12 +11,8 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
-    title: locale === "ar" ? "البطاقة الائتمانية" : "Credit Card",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
+    title: locale === "ar" ? "البطاقة الائتمانية" : "Credit Card"
+};
 }
 
 export default async function LocalizedCreditCardPage({ params }: Props) {

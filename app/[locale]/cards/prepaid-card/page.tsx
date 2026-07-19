@@ -11,12 +11,8 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
-    title: locale === "ar" ? "بطاقة الدفع المسبق" : "Prepaid Card",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  };
+    title: locale === "ar" ? "بطاقة الدفع المسبق" : "Prepaid Card"
+};
 }
 
 export default async function LocalizedPrepaidCardPage({ params }: Props) {

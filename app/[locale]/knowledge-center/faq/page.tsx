@@ -9,7 +9,7 @@ type LocalizedFaqPageProps = {
 }
 
 export async function generateMetadata({
-  params,
+  params
 }: LocalizedFaqPageProps) {
   const { locale } = await params
 
@@ -25,16 +25,12 @@ export async function generateMetadata({
     description:
       locale === "ar"
         ? "نجمع في هذه الصفحة أكثر الاستفسارات شيوعًا من عملائنا مع إجابات واضحة ومنظمة تساعدك على إيجاد ما تحتاجه بسرعة."
-        : "We gather the most common customer questions in one organized place to help you find answers quickly.",
-    robots: {
-      index: false,
-      follow: false,
-    },
-  }
+        : "We gather the most common customer questions in one organized place to help you find answers quickly."
+}
 }
 
 export default async function LocalizedFaqPage({
-  params,
+  params
 }: LocalizedFaqPageProps) {
   const { locale } = await params
 

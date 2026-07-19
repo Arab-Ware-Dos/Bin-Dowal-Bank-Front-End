@@ -10,7 +10,7 @@ type LocalizedCustomerServicePageProps = {
 };
 
 export async function generateMetadata({
-  params,
+  params
 }: LocalizedCustomerServicePageProps): Promise<Metadata> {
   const { locale } = await params
 
@@ -25,16 +25,12 @@ export async function generateMetadata({
 
   return {
     title,
-    description,
-    robots: {
-      index: false,
-      follow: false,
-    },
-  }
+    description
+}
 }
 
 export default async function ComplaintsPageLocalized({
-  params,
+  params
 }: LocalizedCustomerServicePageProps) {
   const { locale } = await params
 

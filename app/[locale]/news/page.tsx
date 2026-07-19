@@ -12,16 +12,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (locale === "ar") {
     return {
       title: "الأخبار | بنك بن دول",
-      description: "تابع أحدث أخبار وأنشطة وفعاليات بنك بن دول.",
-      robots: { index: false, follow: false },
-    };
+      description: "تابع أحدث أخبار وأنشطة وفعاليات بنك بن دول."
+};
   }
 
   return {
     title: "News | Bin Dowal Bank",
-    description: "Follow the latest news, activities, and events from Bin Dowal Bank.",
-    robots: { index: false, follow: false },
-  };
+    description: "Follow the latest news, activities, and events from Bin Dowal Bank."
+};
 }
 
 export default async function LocalizedNewsPage({ params }: { params: Promise<{ locale: string }> }) {

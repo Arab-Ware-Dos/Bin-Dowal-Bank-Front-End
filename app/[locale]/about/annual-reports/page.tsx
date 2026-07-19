@@ -16,16 +16,12 @@ export async function generateMetadata({ params }: LocalizedAnnualReportsPagePro
     title: isAr ? "التقارير السنوية | بنك بن دول" : "Annual Reports | Bin Dowal Bank",
     description: isAr 
       ? "أرشيف التقارير السنوية لبنك بن دول للتمويل الأصغر الإسلامي"
-      : "The annual reports archive of Bin Dowal Islamic Microfinance Bank",
-    robots: {
-      index: false,
-      follow: false,
-    }
+      : "The annual reports archive of Bin Dowal Islamic Microfinance Bank"
   };
 }
 
 export default async function LocalizedAnnualReportsPage({
-  params,
+  params
 }: LocalizedAnnualReportsPageProps) {
   const { locale } = await params;
 

@@ -20,7 +20,12 @@ export async function generateMetadata({ params }: Props) {
   }
   const locale = rawLocale;
   return {
-    title: locale === "ar" ? "تجربة الترجمة العربية" : "English i18n POC"
+    title: locale === "ar" ? "تجربة الترجمة العربية" : "English i18n POC",
+    robots: {
+      index: false,
+      follow: false,
+      nocache: true,
+    }
   };
 }
 

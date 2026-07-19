@@ -10,7 +10,7 @@ type LocalizedLocationPageProps = {
 };
 
 export async function generateMetadata({
-  params,
+  params
 }: LocalizedLocationPageProps): Promise<Metadata> {
   const { locale } = await params
 
@@ -24,16 +24,12 @@ export async function generateMetadata({
 
   return {
     title,
-    description,
-    robots: {
-      index: false,
-      follow: false,
-    },
-  }
+    description
+}
 }
 
 export default async function BranchesPageLocalized({
-  params,
+  params
 }: LocalizedLocationPageProps) {
   const { locale } = await params
 
