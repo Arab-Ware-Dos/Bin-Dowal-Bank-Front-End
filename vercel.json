@@ -1,0 +1,419 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/ar",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/e-wallet",
+      "destination": "/ar/e-services/e-wallet",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/mobile-banking",
+      "destination": "/ar/e-services/mobile-banking",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/mushtarayati-network",
+      "destination": "/ar/e-services/mushtarayati-network",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/about",
+      "destination": "/ar/about",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/about/annual-reports",
+      "destination": "/ar/about/annual-reports",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/about/board-of-directors",
+      "destination": "/ar/about/board-of-directors",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/about/partners",
+      "destination": "/ar/about/partners",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/about/social-responsibility",
+      "destination": "/ar/about/social-responsibility",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/accounts/expat",
+      "destination": "/ar/accounts/expat",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/accounts/noor",
+      "destination": "/ar/accounts/noor",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/accounts/vip",
+      "destination": "/ar/accounts/vip",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/accounts/youth",
+      "destination": "/ar/accounts/youth",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/atm-and-branches",
+      "destination": "/ar/atm-and-branches",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/branches",
+      "destination": "/ar/branches",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/business-banking",
+      "destination": "/ar/business-banking",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/business/bank-guarantees",
+      "destination": "/ar/business/bank-guarantees",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/business/corporate-current-account",
+      "destination": "/ar/business/corporate-current-account",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/business/corporate-investment-deposits",
+      "destination": "/ar/business/corporate-investment-deposits",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/business/swift-transfers",
+      "destination": "/ar/business/swift-transfers",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/calculator",
+      "destination": "/ar/calculator",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/cards",
+      "destination": "/ar/cards",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/cards/credit-card",
+      "destination": "/ar/cards/credit-card",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/cards/debit-card",
+      "destination": "/ar/cards/debit-card",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/cards/noor-card",
+      "destination": "/ar/cards/noor-card",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/cards/prepaid-card",
+      "destination": "/ar/cards/prepaid-card",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/ar/contact",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/custom-services",
+      "destination": "/ar/custom-services",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/customer-service/bank-cards-request",
+      "destination": "/ar/customer-service/bank-cards-request",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/customer-service/complaints",
+      "destination": "/ar/customer-service/complaints",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/customer-service/service-request",
+      "destination": "/ar/customer-service/service-request",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/digital-channels",
+      "destination": "/ar/digital-channels",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/e-services/e-wallet",
+      "destination": "/ar/e-services/e-wallet",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/e-services/internet-banking",
+      "destination": "/ar/e-services/internet-banking",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/e-services/mobile-banking",
+      "destination": "/ar/e-services/mobile-banking",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/e-services/mushtarayati-network",
+      "destination": "/ar/e-services/mushtarayati-network",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/financing",
+      "destination": "/ar/financing",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/knowledge",
+      "destination": "/ar/knowledge",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/knowledge-center/faq",
+      "destination": "/ar/knowledge-center/faq",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/news",
+      "destination": "/ar/news",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut",
+      "destination": "/ar/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/news/conclusion-of-the-financial-and-credit-analysis-course",
+      "destination": "/ar/news/conclusion-of-the-financial-and-credit-analysis-course",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis",
+      "destination": "/ar/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
+      "destination": "/ar/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal-banking",
+      "destination": "/ar/personal-banking",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/alawneh",
+      "destination": "/ar/personal/alawneh",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/bin-yaala",
+      "destination": "/ar/personal/bin-yaala",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/current-account",
+      "destination": "/ar/personal/current-account",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/dool-express",
+      "destination": "/ar/personal/dool-express",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/fast-money-transfers",
+      "destination": "/ar/personal/fast-money-transfers",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-business",
+      "destination": "/ar/personal/financing-business",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-home",
+      "destination": "/ar/personal/financing-home",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-noor",
+      "destination": "/ar/personal/financing-noor",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-personal",
+      "destination": "/ar/personal/financing-personal",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-taameer",
+      "destination": "/ar/personal/financing-taameer",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-takamul",
+      "destination": "/ar/personal/financing-takamul",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-thimar",
+      "destination": "/ar/personal/financing-thimar",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/financing-zad",
+      "destination": "/ar/personal/financing-zad",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/international-transfers",
+      "destination": "/ar/personal/international-transfers",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/investment-deposit",
+      "destination": "/ar/personal/investment-deposit",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/local-transfers",
+      "destination": "/ar/personal/local-transfers",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/minors-account",
+      "destination": "/ar/personal/minors-account",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/moneygram",
+      "destination": "/ar/personal/moneygram",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/savings-account",
+      "destination": "/ar/personal/savings-account",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/shift",
+      "destination": "/ar/personal/shift",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/swift",
+      "destination": "/ar/personal/swift",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/unified-network",
+      "destination": "/ar/personal/unified-network",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/upt",
+      "destination": "/ar/personal/upt",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    },
+    {
+      "source": "/personal/zamzam",
+      "destination": "/ar/personal/zamzam",
+      "statusCode": 301,
+      "preserveQueryParams": true
+    }
+  ]
+}
