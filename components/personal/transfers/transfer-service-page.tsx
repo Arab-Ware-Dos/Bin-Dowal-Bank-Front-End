@@ -27,7 +27,9 @@ import type { PersonalCoreTransferSlug } from "@/lib/personal-core-transfer-rout
 import {
   getPersonalCoreTransferService,
   coreTransferServicesData,
+  sharedTransferContent,
 } from "@/data/personal-transfers/core-transfer-services";
+import type { DictionaryKey as TranslationKey } from "@/i18n/types";
 import { TransferTabsClient } from "./transfer-tabs-client";
 import { TransferFaqClient } from "./transfer-faq-client";
 import type { TransferIconKey } from "@/types/personal-transfer-service";
@@ -50,13 +52,10 @@ const ICON_MAP: Record<TransferIconKey, LucideIcon> = {
   "file-check": FileCheck2,
 };
 
-function pickLocal<T>(
-  obj: { ar: T; en: T } | undefined,
-  locale: "ar" | "en"
-): T {
-  if (!obj) return "" as any;
-  return locale === "ar" ? obj.ar : obj.en;
-}
+const pickLocal = <T,>(obj: { ar: T; en: T } | undefined, lang: string): T => {
+  if (!obj) return "" as unknown as T;
+  return lang === "ar" ? obj.ar : obj.en;
+};
 
 type Locale = "ar" | "en";
 
@@ -202,19 +201,21 @@ export function TransferServicePage({
         breadcrumbs={[
           { labelKey: "nav.personalBanking", href: "/personal-banking" },
           {
-            labelKey: `nav.${service.slug.replace(/-./g, (x) =>
-              x[1].toUpperCase()
-            )}` as any,
+            labelKey: (slug === "international-transfers" 
+              ? "nav.intlTransfers" 
+              : slug === "fast-money-transfers" 
+              ? "nav.expressRemittances" 
+              : "nav.localTransfers") as TranslationKey,
           },
         ]}
-        tagline={isAr ? "الخدمات المالية" : "Financial Services"}
+        tagline={pickLocal(sharedTransferContent.tagline, locale)}
       >
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/digital#mobile"
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#1e2d72] shadow-[0_14px_34px_rgba(7,10,30,0.18)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_rgba(7,10,30,0.22)]"
           >
-            {isAr ? "ابدأ عبر التطبيق" : "Start via App"}
+            {pickLocal(sharedTransferContent.startApp, locale)}
             <CTAArrow className="h-4 w-4" />
           </Link>
 
@@ -223,7 +224,7 @@ export function TransferServicePage({
             className="inline-flex items-center gap-2 rounded-full border border-white/18 bg-white/10 px-7 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/16"
           >
             <MapPin className="h-4 w-4" />
-            {isAr ? "الفروع والصرافات" : "Branches & ATMs"}
+            {pickLocal(sharedTransferContent.branchesAtms, locale)}
           </Link>
         </div>
       </PageHero>
@@ -235,7 +236,7 @@ export function TransferServicePage({
               const familyService = coreTransferServicesData[familySlug];
               const isActive = familySlug === slug;
               const title = pickLocal(familyService.title, locale);
-              const systemLabel = isAr ? "نظام الحوالات" : "Transfer System";
+              const systemLabel = pickLocal(sharedTransferContent.systemLabel, locale);
               
               // Map static icons just for these 3 for simplicity, or use iconMap
               let FamilyIcon = Landmark;
@@ -289,7 +290,7 @@ export function TransferServicePage({
       <SectionShell className="bg-white pt-8">
         <div className="mb-10">
           <SectionHeading
-            eyebrow={isAr ? "ملخص الخدمة" : "Service Snapshot"}
+            eyebrow={pickLocal(sharedTransferContent.serviceSnapshot, locale)}
             title={pickLocal(service.title, locale)}
             description={pickLocal(
               service.overview || service.description,
@@ -334,9 +335,9 @@ export function TransferServicePage({
       {service.channels && service.channels.length > 0 && (
         <SectionShell className="bg-[linear-gradient(180deg,#f8faff_0%,#ffffff_100%)]">
           <TransferTabsClient
-            title={isAr ? "اختر طريقة تنفيذ الحوالة" : "Choose how to execute the transfer"}
-            description={isAr ? "بدلاً من عرض معلومات عامة، يتغير هذا القسم بحسب قناة التنفيذ ليعطي المستخدم صورة أوضح عما سيحتاجه قبل البدء." : "Instead of showing generic information, this section changes by execution channel to give the user a clearer view of what will be needed before getting started."}
-            eyebrow={pickLocal(service.labels?.channels, locale) || (isAr ? "قنوات التنفيذ" : "Execution Channels")}
+            title={pickLocal(sharedTransferContent.channelsTitle, locale)}
+            description={pickLocal(sharedTransferContent.channelsDesc, locale)}
+            eyebrow={pickLocal(service.labels?.channels, locale) || pickLocal(sharedTransferContent.channelsEyebrow, locale)}
             tabs={service.channels.map((c) => ({
               id: c.id,
               label: pickLocal(c.label, locale),
@@ -364,17 +365,9 @@ export function TransferServicePage({
           <div className="container relative z-10 mx-auto px-4">
             <div className="mb-14">
               <SectionHeading
-                eyebrow={pickLocal(service.labels?.steps, locale) || (isAr ? "مسار العملية" : "Process Flow")}
-                title={
-                  isAr
-                    ? "رحلة تحويل أوضح ويمكن تكرارها على بقية الصفحات"
-                    : "A clearer transfer journey that can be reused across the rest of the pages"
-                }
-                description={
-                  isAr
-                    ? "تم تخفيف الطابع البصري الثقيل للكروت وتحويل الرحلة إلى مسار خطوات أكثر نظامية وملاءمة لصفحات الحوالات."
-                    : "The heavy card treatment has been reduced and replaced with a more structured step flow better suited for transfer pages."
-                }
+                eyebrow={pickLocal(service.labels?.steps, locale) || pickLocal(sharedTransferContent.processFlow, locale)}
+                title={pickLocal(sharedTransferContent.processTitle, locale)}
+                description={pickLocal(sharedTransferContent.processDesc, locale)}
                 dark
               />
             </div>
@@ -410,17 +403,9 @@ export function TransferServicePage({
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <SectionHeading
-                eyebrow={pickLocal(service.labels?.requirements, locale) || (isAr ? "الرسوم والحدود" : "Fees & Limits")}
-                title={
-                  isAr
-                    ? "صياغة تشغيلية أوضح للسياسات والمتطلبات"
-                    : "A clearer operational presentation of policies and requirements"
-                }
-                description={
-                  isAr
-                    ? "بدلاً من الاكتفاء ببطاقات عامة، يعرض هذا القسم قواعد تشغيلية مختصرة بصياغة أوضح وأقرب إلى تجربة عميل بنكي فعلية."
-                    : "Instead of relying on generic cards, this section presents brief operational rules in a clearer way, closer to a real banking customer experience."
-                }
+                eyebrow={pickLocal(service.labels?.requirements, locale) || pickLocal(sharedTransferContent.feesLimits, locale)}
+                title={pickLocal(sharedTransferContent.reqTitle, locale)}
+                description={pickLocal(sharedTransferContent.reqDesc, locale)}
                 centered={false}
               />
             </div>
@@ -446,12 +431,8 @@ export function TransferServicePage({
         <SectionShell className="bg-slate-50/70">
           <div className="mb-14">
             <SectionHeading
-              eyebrow={pickLocal(service.labels?.faqs, locale) || (isAr ? "الأسئلة الشائعة" : "FAQ")}
-              title={
-                isAr
-                  ? "الأسئلة الأكثر ارتباطًا بتنفيذ الحوالة"
-                  : "The most relevant questions about transfer execution"
-              }
+              eyebrow={pickLocal(service.labels?.faqs, locale) || pickLocal(sharedTransferContent.faqEyebrow, locale)}
+              title={pickLocal(sharedTransferContent.faqTitle, locale)}
             />
           </div>
 
@@ -477,7 +458,7 @@ export function TransferServicePage({
             <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
               <div>
                 <SectionEyebrow>
-                  {isAr ? "ابدأ الآن" : "Get Started"}
+                  {pickLocal(sharedTransferContent.getStarted, locale)}
                 </SectionEyebrow>
                 <h2 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
                   {pickLocal(service.title, locale)}
@@ -500,7 +481,7 @@ export function TransferServicePage({
                   href="/atm-and-branches"
                   className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-7 py-3.5 text-sm font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#324198]/15 hover:text-[#324198]"
                 >
-                  {isAr ? "ابحث عن أقرب فرع" : "Find the Nearest Branch"}
+                  {pickLocal(sharedTransferContent.nearestBranch, locale)}
                 </Link>
               </div>
             </div>
@@ -511,8 +492,8 @@ export function TransferServicePage({
       {relatedServices.length > 0 && (
         <RelatedServicesSlider
           services={relatedServices}
-          titleAr="خدمات أخرى مرتبطة"
-          titleEn="Related Services"
+          titleAr={sharedTransferContent.relatedServicesTitle.ar}
+          titleEn={sharedTransferContent.relatedServicesTitle.en}
         />
       )}
     </div>

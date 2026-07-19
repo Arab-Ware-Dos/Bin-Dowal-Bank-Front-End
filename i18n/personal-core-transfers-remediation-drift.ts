@@ -117,9 +117,9 @@ function runDriftTest() {
       }
     }
 
-    // 7. Should NOT be in LOCALIZED_STATIC_ROUTES (Remediation phase before localization)
-    if (LOCALIZED_STATIC_ROUTES.includes(`/personal/${slug}` as any)) {
-      errors.push(`Slug ${slug} is prematurely mapped in LOCALIZED_STATIC_ROUTES`);
+    // 7. MUST BE in LOCALIZED_STATIC_ROUTES (Localization completed)
+    if (!LOCALIZED_STATIC_ROUTES.includes(`/personal/${slug}` as any)) {
+      errors.push(`Slug ${slug} is NOT mapped in LOCALIZED_STATIC_ROUTES`);
     }
 
     // 8. No collision with Independent Personal Transfers
