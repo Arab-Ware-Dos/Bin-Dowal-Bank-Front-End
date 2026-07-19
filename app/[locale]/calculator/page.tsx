@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { CalculatorPageContent } from "@/components/self-service/calculator-page-content"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedCalculatorPageProps = {
   params: Promise<{
@@ -18,6 +19,7 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/calculator", locale: locale as "ar" | "en" }),
     title:
       locale === "ar"
         ? "حاسبة التمويل | بنك بن دول"

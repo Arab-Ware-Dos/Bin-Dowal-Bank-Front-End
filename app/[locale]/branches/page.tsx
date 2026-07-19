@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { BranchesPageContent } from "@/components/locations/branches-page-content"
 import type { Metadata } from "next"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedLocationPageProps = {
   params: Promise<{
@@ -23,6 +24,7 @@ export async function generateMetadata({
       : "Find Bin Dowal Bank branches, working hours, and the services available at each location."
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/branches", locale: locale as "ar" | "en" }),
     title,
     description
 }

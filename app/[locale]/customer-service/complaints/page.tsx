@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { ComplaintsPageContent } from "@/components/customer-service/complaints-page-content"
 import type { Metadata } from "next"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedCustomerServicePageProps = {
   params: Promise<{
@@ -24,6 +25,7 @@ export async function generateMetadata({
       : "Submit a complaint or feedback to Bin Dowal Bank using the dedicated customer service form."
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/customer-service/complaints", locale: locale as "ar" | "en" }),
     title,
     description
 }

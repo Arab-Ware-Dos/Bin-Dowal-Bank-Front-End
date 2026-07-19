@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { BankCardsRequestPageContent } from "@/components/customer-service/bank-cards-request-page-content"
 import type { Metadata } from "next"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedCustomerServicePageProps = {
   params: Promise<{
@@ -24,6 +25,7 @@ export async function generateMetadata({
       : "Apply for a Bin Dowal Bank card using the dedicated bank card request form."
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/customer-service/bank-cards-request", locale: locale as "ar" | "en" }),
     title,
     description
 }

@@ -1,3 +1,4 @@
+import { buildLegacyAlternates } from "@/lib/seo/alternates"
 import { notFound } from "next/navigation"
 import { getBankingServiceBySlug, getAllBankingServicesSlugs } from "@/services/banking-service-pages"
 import { BankingServicePageTemplate } from "@/components/service-page/BankingServicePageTemplate"
@@ -20,10 +21,12 @@ export async function generateMetadata({ params }: PageProps) {
   const service = await getBankingServiceBySlug("business", slug)
 
   if (!service) {
-    return { title: "Service Not Found" }
+    return { alternates: buildLegacyAlternates({ pathname: `/business/${slug}` }),
+    title: "Service Not Found" }
   }
 
   return {
+    alternates: buildLegacyAlternates({ pathname: `/business/${slug}` }),
     title: `${service.title.ar} | Bin Dowal Bank`,
     description: service.subtitle.ar,
   }

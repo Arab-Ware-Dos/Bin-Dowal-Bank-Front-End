@@ -1,3 +1,4 @@
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { SocialResponsibilityPageContent } from "@/components/about/social-responsibility-page-content"
 import { isLocale } from "@/i18n/config"
 import { notFound } from "next/navigation"
@@ -13,6 +14,7 @@ export async function generateMetadata({ params }: LocalizedSocialResponsibility
   const isAr = locale === "ar";
   
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/about/social-responsibility", locale: locale as "ar" | "en" }),
     title: isAr ? "المسؤولية الاجتماعية | بنك بن دول" : "Social Responsibility | Bin Dowal Bank",
     description: isAr 
       ? "مبادرات بنك بن دول في مجال المسؤولية الاجتماعية وتنمية المجتمع"

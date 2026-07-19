@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { FaqPageContent } from "@/components/knowledge-center/faq-page-content"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedFaqPageProps = {
   params: Promise<{
@@ -18,6 +19,7 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/knowledge-center/faq", locale: locale as "ar" | "en" }),
     title:
       locale === "ar"
         ? "الأسئلة الشائعة | مركز المعرفة | بنك بن دول"

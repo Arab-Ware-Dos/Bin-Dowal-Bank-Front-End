@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { PersonalBankingPageContent } from "@/components/banking/personal-banking-page-content"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 export async function generateMetadata({
   params
@@ -11,6 +12,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {}
   
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/personal-banking", locale: locale as "ar" | "en" }),
     title: locale === "ar" ? "الخدمات الشخصية | بنك بن دول" : "Personal Services | Bin Dowal Bank",
     description: locale === "ar" 
       ? "استكشف الخدمات الشخصية المقدمة من بنك بن دول للتمويل الأصغر الإسلامي."

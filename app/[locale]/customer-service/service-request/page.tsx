@@ -2,6 +2,7 @@ import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { ServiceRequestPageContent } from "@/components/customer-service/service-request-page-content"
 import type { Metadata } from "next"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedCustomerServicePageProps = {
   params: Promise<{
@@ -24,6 +25,7 @@ export async function generateMetadata({
       : "Submit a banking service request to Bin Dowal Bank through the dedicated request form."
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/customer-service/service-request", locale: locale as "ar" | "en" }),
     title,
     description
 }

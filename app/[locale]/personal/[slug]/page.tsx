@@ -9,6 +9,7 @@ import { PERSONAL_INDEPENDENT_TRANSFER_SLUGS, isPersonalIndependentTransferSlug 
 import { PERSONAL_CORE_TRANSFER_SLUGS, isPersonalCoreTransferSlug } from "@/lib/personal-core-transfer-routes";
 import { PERSONAL_ACCOUNT_DEPOSIT_SLUGS, isPersonalAccountDepositSlug } from "@/lib/personal-account-deposit-routes";
 import { TransferServicePage } from "@/components/personal/transfers/transfer-service-page";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedPersonalFinancingPageProps = {
   params: Promise<{
@@ -45,7 +46,8 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
   const { locale, slug } = await params;
 
   if (!isLocale(locale)) {
-    return { title: "Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found" };
   }
 
   const isFinancing = isPersonalFinancingSlug(slug);
@@ -55,19 +57,22 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
   const isAccountDeposit = isPersonalAccountDepositSlug(slug);
 
   if (!isFinancing && !isRemittance && !isIndependent && !isCoreTransfer && !isAccountDeposit) {
-    return { title: "Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found" };
   }
 
   const service = await getBankingServiceBySlug("personal", slug);
 
   if (!service || service.section !== "personal") {
-    return { title: "Service Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Service Not Found" };
   }
 
   const title = locale === "ar" ? service.title.ar : service.title.en;
   const description = locale === "ar" ? service.subtitle.ar : service.subtitle.en;
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
     title: `${title} | Bin Dowal Bank`,
     description
   };

@@ -3,9 +3,10 @@ import { I18nProvider } from '@/lib/i18n-context'
 import { Analytics } from '@vercel/analytics/next'
 import '../globals.css'
 import { somarSans } from '@/lib/fonts'
+import { baseMetadata } from '@/lib/seo/site-config'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://bdbankui.arabwaredos.com'),
+  ...baseMetadata,
   title: {
     default: 'بنك بن دول للتمويل الأصغر الإسلامي | Bin Dowal Islamic Microfinance Bank',
     template: '%s | بنك بن دول',

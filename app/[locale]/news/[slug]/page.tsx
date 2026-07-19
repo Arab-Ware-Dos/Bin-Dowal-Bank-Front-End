@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { newsItems } from "@/data/news";
 import NewsArticleClient from "@/components/news/news-article-client";
 import { Locale, locales } from "@/i18n/config";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 function isLocale(locale: string): locale is Locale {
   return locale === "ar" || locale === "en";
@@ -42,6 +43,7 @@ export async function generateMetadata({ params }: LocalizedNewsArticlePageProps
   const description = locale === "ar" ? article.excerptAr : article.excerptEn;
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: `/news/${slug}`, locale: locale as "ar" | "en" }),
     title,
     description,
     openGraph: {

@@ -4,6 +4,7 @@ import { BankingServicePageTemplate } from "@/components/service-page/BankingSer
 import { ServicePageData } from "@/types/banking-service-page";
 import { locales, isLocale } from "@/i18n/config";
 import { ACCOUNT_SLUGS, isAccountSlug } from "@/lib/account-routes";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedAccountPageProps = {
   params: Promise<{
@@ -25,16 +26,19 @@ export async function generateMetadata({ params }: LocalizedAccountPageProps) {
   const { locale, slug } = await params;
 
   if (!isLocale(locale) || !isAccountSlug(slug)) {
-    return { title: "Service Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: `/accounts/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Service Not Found" };
   }
 
   const service = await getBankingServiceBySlug("accounts", slug);
 
   if (!service) {
-    return { title: "Service Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: `/accounts/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Service Not Found" };
   }
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: `/accounts/${slug}`, locale: locale as "ar" | "en" }),
     title: `${locale === "ar" ? service.title.ar : service.title.en} | Bin Dowal Bank`,
     description: locale === "ar" ? service.subtitle.ar : service.subtitle.en
 };

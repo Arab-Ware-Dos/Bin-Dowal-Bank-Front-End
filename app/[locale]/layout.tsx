@@ -3,7 +3,10 @@ import { somarSans } from '@/lib/fonts'
 import { SharedSiteShell } from '@/components/layout/shared-site-shell'
 import { isLocale, locales, Locale } from '@/i18n/config'
 import { notFound } from 'next/navigation'
+import { baseMetadata } from '@/lib/seo/site-config'
 import '../globals.css'
+
+export const metadata = baseMetadata;
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

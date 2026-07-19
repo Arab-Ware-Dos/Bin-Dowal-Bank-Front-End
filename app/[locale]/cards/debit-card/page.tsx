@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { isLocale } from "@/i18n/config";
 import { DebitCardPageContent } from "@/components/cards/debit-card-page-content";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type Props = {
   params: Promise<{
@@ -11,6 +12,7 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/cards/debit-card", locale: locale as "ar" | "en" }),
     title: locale === "ar" ? "بطاقة الخصم الفوري" : "Debit Card"
 };
 }

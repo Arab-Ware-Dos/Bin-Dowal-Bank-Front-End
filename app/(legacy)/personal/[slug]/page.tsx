@@ -1,3 +1,4 @@
+import { buildLegacyAlternates } from "@/lib/seo/alternates"
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 import { getBankingServiceBySlug, getAllBankingServicesSlugs } from "@/services/banking-service-pages"
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (isPersonalCoreTransferSlug(slug)) {
     const service = getPersonalCoreTransferService(slug)
     return {
-      title: `${service.metadata.title.ar} | Bin Dowal Bank`,
+      alternates: buildLegacyAlternates({ pathname: `/personal/${slug}` }),
+    title: `${service.metadata.title.ar} | Bin Dowal Bank`,
       description: service.metadata.description.ar,
     }
   }
@@ -49,7 +51,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : await getBankingServiceBySlug("personal", slug)
 
   if (!service) {
-    return { title: "Service Not Found" }
+    return { alternates: buildLegacyAlternates({ pathname: `/personal/${slug}` }),
+    title: "Service Not Found" }
   }
 
   const baseMetadata: Metadata = {
@@ -59,7 +62,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (isPersonalEChannelCompatibilitySlug(slug)) {
     return {
-      ...baseMetadata,
+      alternates: buildLegacyAlternates({ pathname: `/personal/${slug}` }),
+    ...baseMetadata,
       robots: {
         index: false,
         follow: true,
@@ -67,7 +71,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
   }
 
-  return baseMetadata
+  return {
+    alternates: buildLegacyAlternates({ pathname: `/personal/${slug}` }),
+    ...baseMetadata,
+  }
 }
 
 export default async function PersonalServicePage({ params }: PageProps) {

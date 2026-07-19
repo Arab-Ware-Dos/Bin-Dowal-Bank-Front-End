@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { locales, isLocale } from "@/i18n/config";
 import { KnowledgeCenterPageContent } from "@/components/knowledge-center/knowledge-center-page-content";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedPageProps = {
   params: Promise<{
@@ -16,11 +17,13 @@ export async function generateMetadata({ params }: LocalizedPageProps) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
-    return { title: "Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: "/knowledge", locale: locale as "ar" | "en" }),
+    title: "Not Found" };
   }
 
   const isAr = locale === "ar";
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/knowledge", locale: locale as "ar" | "en" }),
     title: `${isAr ? "مركز المعرفة" : "Knowledge Center"} | Bin Dowal Bank`,
     description: isAr 
       ? "مصدرك الأول لفهم الخدمات المصرفية، وتعزيز وعيك المالي" 

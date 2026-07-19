@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { DigitalChannelsPageContent } from "@/components/banking/digital-channels-page-content"
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 export async function generateMetadata({
   params
@@ -11,6 +12,7 @@ export async function generateMetadata({
   if (!isLocale(locale)) return {}
   
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/digital-channels", locale: locale as "ar" | "en" }),
     title: locale === "ar" ? "القنوات الرقمية | بنك بن دول" : "Digital Channels | Bin Dowal Bank",
     description: locale === "ar" 
       ? "استكشف القنوات الرقمية المقدمة من بنك بن دول للتمويل الأصغر الإسلامي."

@@ -1,3 +1,4 @@
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { AboutPageContent } from "@/components/about/about-page-content"
 import { isLocale } from "@/i18n/config"
 import { notFound } from "next/navigation"
@@ -20,7 +21,8 @@ export async function generateMetadata({
 
   if (locale === "en") {
     return {
-      title: "About Us - Bin Dowal Islamic Microfinance Bank",
+      alternates: buildLocalizedAlternates({ pathname: "/about", locale: locale as "ar" | "en" }),
+    title: "About Us - Bin Dowal Islamic Microfinance Bank",
       description: "A national Islamic microfinance bank delivering trusted financial and banking solutions that combine Islamic values with innovation.",
       openGraph: {
         title: "About Us - Bin Dowal Islamic Microfinance Bank"
@@ -29,6 +31,7 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/about", locale: locale as "ar" | "en" }),
     title: "عن البنك - بنك بن دول للتمويل الأصغر الإسلامي",
     description: "بنك وطني للتمويل الأصغر الإسلامي، نقدّم حلولاً مالية ومصرفية موثوقة تجمع بين القيم الإسلامية والابتكار، وتدعم الأفراد والأعمال وتعزز الشمول المالي في اليمن.",
     openGraph: {

@@ -1,3 +1,4 @@
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { PartnersPageContent } from "@/components/about/partners-page-content"
 import { isLocale } from "@/i18n/config"
 import { notFound } from "next/navigation"
@@ -13,6 +14,7 @@ export async function generateMetadata({ params }: LocalizedPartnersPageProps) {
   const isAr = locale === "ar";
   
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/about/partners", locale: locale as "ar" | "en" }),
     title: isAr ? "شركاؤنا | بنك بن دول" : "Our Partners | Bin Dowal Bank",
     description: isAr 
       ? "تعرف على شركاء بنك بن دول للتمويل الأصغر الإسلامي"

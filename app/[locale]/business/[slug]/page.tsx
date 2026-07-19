@@ -5,6 +5,7 @@ import { getBankingServiceBySlug } from "@/services/banking-service-pages";
 import { BankingServicePageTemplate } from "@/components/service-page/BankingServicePageTemplate";
 import { ServicePageData } from "@/types/banking-service-page";
 import { Metadata } from "next";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedBusinessPageProps = {
   params: Promise<{
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
 
   if (!isLocale(locale) || !isBusinessSlug(slug)) {
     return {
-      title: "Not Found"
+      alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found"
 };
   }
 
@@ -35,7 +37,8 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
 
   if (!service || service.section !== "business") {
     return {
-      title: "Not Found"
+      alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found"
 };
   }
 
@@ -44,6 +47,7 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
   const description = isArabic ? service.subtitle.ar : service.subtitle.en;
 
   return {
+    alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
     title,
     description
 };

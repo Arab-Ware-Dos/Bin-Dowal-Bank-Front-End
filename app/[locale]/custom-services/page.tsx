@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { locales, isLocale } from "@/i18n/config";
 import { CustomServicesPageContent } from "@/components/custom-services/custom-services-page-content";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedPageProps = {
   params: Promise<{
@@ -16,11 +17,13 @@ export async function generateMetadata({ params }: LocalizedPageProps) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
-    return { title: "Not Found" };
+    return { alternates: buildLocalizedAlternates({ pathname: "/custom-services", locale: locale as "ar" | "en" }),
+    title: "Not Found" };
   }
 
   const isAr = locale === "ar";
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/custom-services", locale: locale as "ar" | "en" }),
     title: `${isAr ? "خدمات مخصصة" : "Custom Services"} | Bin Dowal Bank`,
     description: isAr 
       ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة" 

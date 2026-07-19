@@ -1,3 +1,4 @@
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { BoardOfDirectorsPageContent } from "@/components/about/board-of-directors-page-content"
 import { isLocale } from "@/i18n/config"
 import { notFound } from "next/navigation"
@@ -13,6 +14,7 @@ export async function generateMetadata({ params }: LocalizedBoardOfDirectorsPage
   const isAr = locale === "ar";
   
   return {
+    alternates: buildLocalizedAlternates({ pathname: "/about/board-of-directors", locale: locale as "ar" | "en" }),
     title: isAr ? "مجلس الإدارة | بنك بن دول" : "Board of Directors | Bin Dowal Bank",
     description: isAr 
       ? "تعرف على أعضاء مجلس إدارة بنك بن دول للتمويل الأصغر الإسلامي"
