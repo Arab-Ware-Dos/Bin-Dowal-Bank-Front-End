@@ -20,6 +20,8 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/personal-banking",
   "/financing",
   "/digital-channels",
+  "/custom-services",
+  "/knowledge",
   "/cards",
   "/cards/credit-card",
   "/cards/debit-card",

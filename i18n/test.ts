@@ -380,6 +380,16 @@ async function runTests() {
     // Boundaries - 2
     { input: ["/personal/account-product-unknown", "en"], expected: "/personal/account-product-unknown" },
     { input: ["/en/personal/account-product-unknown", "ar"], expected: "/personal/account-product-unknown" },
+    // O. Custom Services and Knowledge Hubs (Batch 18B)
+    { input: ["/custom-services", "en"], expected: "/en/custom-services" },
+    { input: ["/ar/custom-services", "en"], expected: "/en/custom-services" },
+    { input: ["/knowledge", "en"], expected: "/en/knowledge" },
+    { input: ["/en/knowledge", "ar"], expected: "/ar/knowledge" },
+    { input: ["/ar/knowledge?source=header#top", "en"], expected: "/en/knowledge?source=header#top" },
+
+    // P. Business Banking hashes preservation
+    { input: ["/business-banking#payroll", "en"], expected: "/en/business-banking#payroll" },
+    { input: ["/en/business-banking#finance", "ar"], expected: "/ar/business-banking#finance" },
 ];
 
   for (let i = 0; i < hrefTests.length; i++) {
