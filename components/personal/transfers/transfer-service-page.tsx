@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { type ReactNode } from "react";
+import { getLocalizedHref } from "@/lib/localized-routes";
 import { PageHero } from "@/components/ui/page-hero";
 import { RelatedServicesSlider } from "@/components/shared/related-services-slider";
 import { allRelatedServices } from "@/data/related-services";

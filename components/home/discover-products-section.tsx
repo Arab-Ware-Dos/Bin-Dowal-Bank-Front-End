@@ -38,56 +38,56 @@ const products: readonly Product[] = [
     id: 1,
     title: "الحساب الجاري",
     category: "خدمات الافراد",
-    image: "/images/customer-services/Current-account.jpg",
+    image: "/images/customer-services/Current-account.webp",
     href: "/products/personal-finance",
   },
   {
     id: 2,
     title: "حساب التوفير",
     category: "خدمات الافراد",
-    image: "/images/customer-services/Savings.jpg",
+    image: "/images/customer-services/Savings.webp",
     href: "/products/home-finance",
   },
   {
     id: 3,
     title: "حساب الوديعة الاستثمارية",
     category: "خدمات الافراد",
-    image: "/images/customer-services/Investment-deposits.jpg",
+    image: "/images/customer-services/Investment-deposits.webp",
     href: "/products/car-lease",
   },
   {
     id: 4,
     title: "حساب القصر",
     category: "خدمات الافراد",
-    image: "/images/customer-services/minors-account.jpg",
+    image: "/images/customer-services/minors-account.webp",
     href: "/cards",
   },
   {
     id: 5,
     title: "الحساب الجاري للشركات",
     category: "بن دول أعمال",
-    image: "/images/business-services/Corporate-current-account.jpg",
+    image: "/images/business-services/Corporate-current-account.webp",
     href: "/cards",
   },
   {
     id: 6,
     title: "الودائع الاستثمارية للشركات",
     category: "بن دول أعمال",
-    image: "/images/business-services/Investment-deposits.jpg",
+    image: "/images/business-services/Investment-deposits.webp",
     href: "/cards",
   },
   {
     id: 7,
     title: "حوالة السويفت",
     category: "بن دول أعمال",
-    image: "/images/business-services/SWIFT-transfer.jpg",
+    image: "/images/business-services/SWIFT-transfer.webp",
     href: "/cards",
   },
   {
     id: 8,
     title: "خطابات الضمان",
     category: "بن دول أعمال",
-    image: "/images/business-services/Letter-of-guarantee.jpg",
+    image: "/images/business-services/Letter-of-guarantee.webp",
     href: "/cards",
   },
 ]
@@ -197,7 +197,7 @@ export function DiscoverProductsSection() {
                   </div>
 
                   <div className="flex flex-1 flex-col pt-5">
-                   
+
 
                     <h3 className="mt-2 font-cairo text-xl font-bold leading-snug text-[#324198] md:text-[22px]">
                       {product.title}

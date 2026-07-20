@@ -33,7 +33,7 @@ import {
 import { navigationData, NavItem } from "@/data/navigation"
 import { getLocalizedHref } from "@/lib/localized-routes"
 
-const DESKTOP_MEGA_MENU_MAX_WIDTH = 1000
+const DESKTOP_MEGA_MENU_MAX_WIDTH = 1150
 const DESKTOP_MEGA_MENU_MIN_WIDTH = 800
 const VIEWPORT_SAFE_PADDING = 16
 
@@ -474,51 +474,70 @@ export function Header(props: HeaderProps) {
                           <div className={`p-8 w-full ${activeDesktopItem.image ? 'w-[calc(100%-300px)]' : 'w-full'} bg-white`}>
                             {/* Groups Layout */}
                             {activeDesktopItem.groups && (
-                              <div className={`grid gap-8 ${activeDesktopItem.groups.length > 3 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3'}`}>
+                              <div className={`grid gap-8 ${activeDesktopItem.groups.some(g => g.cols === 3) ? 'grid-cols-2 lg:grid-cols-4' : activeDesktopItem.groups.length > 3 ? 'grid-cols-2 lg:grid-cols-4' : 'grid-cols-2 lg:grid-cols-3'}`}>
                                 {activeDesktopItem.groups.map((group, idx) => (
-                                  <div key={idx} className={`flex flex-col space-y-4 ${group.cols === 2 ? 'lg:col-span-2' : ''}`}>
-                                    <div className="flex items-center gap-2">
+                                  <div key={idx} className={`relative flex flex-col space-y-4 ${group.cols === 3 ? 'lg:col-span-3' : group.cols === 2 ? 'lg:col-span-2' : ''} ${idx !== 0 ? `before:absolute before:top-1 before:bottom-1 before:w-px before:bg-gradient-to-b before:from-transparent before:via-[#ed1c24]/20 before:to-transparent ${locale === 'ar' ? 'before:-right-4' : 'before:-left-4'}` : ''}`}>
+                                    <div className="flex items-center gap-3">
                                       <h4 className="text-[14px] lg:text-[15px] xl:text-base font-bold text-[#ed1c24]">
                                         {locale === "ar" ? group.title.ar : group.title.en}
                                       </h4>
-                                      <div className="h-px flex-1 bg-slate-100" />
+                                      <div className={`h-[1px] flex-1 bg-gradient-to-r ${locale === "ar" ? "from-transparent to-[#ed1c24]/20" : "from-[#ed1c24]/20 to-transparent"}`} />
                                     </div>
-                                    <div className={group.cols === 2 ? `grid grid-cols-2 gap-x-12 ${group.rows === 5 ? 'grid-rows-5 grid-flow-col gap-y-2' : 'gap-y-4'}` : "flex flex-col space-y-1"}>
+                                    <div className={group.cols ? `grid gap-x-12 ${group.cols === 3 ? 'grid-cols-1 lg:grid-cols-3' : group.cols === 2 ? 'grid-cols-1 lg:grid-cols-2' : 'grid-cols-1'} ${group.rows === 5 ? 'grid-rows-5 grid-flow-col gap-y-2' : 'gap-y-4'}` : "flex flex-col space-y-1"}>
                                       {group.links.map((link) => {
                                         const Icon = link.icon;
                                         return (
-                                          <div key={link.key} className="flex flex-col">
+                                          <div key={link.key} className={`flex flex-col ${link.cols === 2 && group.cols === 3 ? 'lg:col-span-2' : ''}`}>
                                             <Link 
                                               href={resolveHref(link.href)} 
-                                              className="group/link flex items-start gap-3 rounded-lg py-2 px-2 -mx-2 transition-colors hover:bg-slate-50 text-slate-600 hover:text-slate-900"
+                                              className="group/link flex items-start gap-3 rounded-lg py-2 px-2 -mx-2 transition-all duration-300 hover:-translate-y-1 hover:bg-slate-50 text-slate-600 hover:text-slate-900"
                                             >
                                               {Icon && (
-                                                <span className="flex h-7 w-7 mt-0.5 shrink-0 items-center justify-center rounded-md bg-[#2d3185]/5 text-[#2d3185] transition-colors group-hover/link:bg-[#2d3185] group-hover/link:text-white group-hover/link:shadow-sm">
+                                                <span className="flex h-7 w-7 mt-0.5 shrink-0 items-center justify-center rounded-md bg-[#2d3185]/5 text-[#2d3185] transition-all duration-300 group-hover/link:bg-[#2d3185] group-hover/link:text-white group-hover/link:shadow-md group-hover/link:scale-110">
                                                   <Icon className="h-4 w-4" />
                                                 </span>
                                               )}
-                                              <div className="flex flex-col gap-0.5">
-                                                <span className="text-[14px] font-semibold transition-colors">
-                                                  {locale === "ar" ? link.label.ar : link.label.en}
-                                                </span>
+                                              <div className="flex flex-col flex-1 min-w-0">
+                                                <div className="flex items-center gap-2">
+                                                  <span className="text-[14px] font-semibold transition-colors leading-tight">
+                                                    {locale === "ar" ? link.label.ar : link.label.en}
+                                                  </span>
+                                                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-slate-300 opacity-0 transition-all duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:opacity-100 group-hover/link:text-[#ed1c24]" />
+                                                </div>
                                                 {link.desc && (
-                                                  <span className="text-[12px] leading-[1.3] text-slate-500 transition-colors group-hover/link:text-slate-600 font-medium">
+                                                  <span className="text-[12px] leading-[1.3] text-slate-500 transition-colors group-hover/link:text-slate-600 font-medium mt-1">
                                                     {locale === "ar" ? link.desc.ar : link.desc.en}
                                                   </span>
                                                 )}
+                                                <div className="mt-2.5 h-px w-6 bg-slate-200 transition-all duration-300 group-hover/link:w-10 group-hover/link:bg-[#ed1c24]/70" />
                                               </div>
                                             </Link>
                                             
                                             {/* Sub-links nested under the parent link */}
                                             {link.subLinks && (
-                                              <div className={`mt-3 mb-4 ${link.cols === 2 ? 'columns-2 gap-x-8' : 'flex flex-col space-y-1'} ${locale === "ar" ? "pr-8 border-r" : "pl-8 border-l"} border-slate-100`}>
+                                              <div className={`mt-3 mb-2 ${link.cols === 2 ? 'grid grid-cols-2 gap-y-1 gap-x-10' : 'flex flex-col space-y-1'} ${locale === "ar" ? "pr-6" : "pl-6"}`}>
                                                 {link.subLinks.map((sub) => (
                                                   <Link
                                                     key={sub.key}
                                                     href={resolveHref(sub.href)}
-                                                    className={`${link.cols === 2 ? 'block break-inside-avoid mb-2.5' : ''} text-[13px] font-medium text-slate-500 hover:text-[#2d3185] transition-colors py-1`}
+                                                    className="group/sublink flex items-center py-2 text-[14px] font-medium text-slate-600 hover:text-[#2d3185] transition-all duration-200"
                                                   >
-                                                    {locale === "ar" ? sub.label.ar : sub.label.en}
+                                                    {sub.logo ? (
+                                                      <div className={`relative h-6 w-9 shrink-0 overflow-hidden transition-transform duration-300 group-hover/sublink:scale-110 flex items-center justify-center ${locale === "ar" ? "ml-2.5" : "mr-2.5"}`}>
+                                                        <Image src={sub.logo} alt={sub.key} fill sizes="36px" className="object-contain p-0.5" />
+                                                      </div>
+                                                    ) : (
+                                                      <span className={`w-1.5 h-1.5 shrink-0 rounded-full bg-slate-300 group-hover/sublink:bg-[#ed1c24] group-hover/sublink:scale-125 transition-all duration-300 ${locale === "ar" ? "ml-2.5" : "mr-2.5"}`} />
+                                                    )}
+                                                    <div className="flex flex-col flex-1 min-w-0">
+                                                      <div className="flex items-center gap-1.5">
+                                                        <span className="transition-all duration-200 font-semibold group-hover/sublink:text-[#2d3185] whitespace-nowrap">
+                                                          {locale === "ar" ? sub.label.ar : sub.label.en}
+                                                        </span>
+                                                        <ArrowUpRight className="h-3 w-3 shrink-0 text-slate-300 opacity-0 transition-all duration-200 group-hover/sublink:-translate-y-0.5 group-hover/sublink:translate-x-0.5 group-hover/sublink:opacity-100 group-hover/sublink:text-[#ed1c24]" />
+                                                      </div>
+                                                      <div className="mt-1 h-px w-5 bg-slate-200 transition-all duration-300 group-hover/sublink:w-8 group-hover/sublink:bg-[#ed1c24]/70" />
+                                                    </div>
                                                   </Link>
                                                 ))}
                                               </div>
@@ -818,14 +837,21 @@ export function Header(props: HeaderProps) {
                                                                 
                                                                 {/* Mobile sub-links */}
                                                                 {link.subLinks && (
-                                                                  <div className={`flex flex-col gap-1.5 py-1.5 mb-2 ${locale === "ar" ? "pr-8 border-r" : "pl-8 border-l"} border-slate-200/60`}>
+                                                                  <div className={`flex flex-col gap-3 py-2 mb-2 ${locale === "ar" ? "pr-6" : "pl-6"}`}>
                                                                     {link.subLinks.map((sub) => (
                                                                       <Link
                                                                         key={sub.key}
                                                                         href={resolveHref(sub.href)}
                                                                         onClick={() => setMobileMenuOpen(false)}
-                                                                        className="text-[12.5px] font-semibold text-slate-500 active:text-[#2d3185]"
+                                                                        className="flex items-center text-[13.5px] font-medium text-slate-600 active:text-[#2d3185] transition-colors"
                                                                       >
+                                                                        {sub.logo ? (
+                                                                          <div className={`relative h-6 w-9 shrink-0 overflow-hidden rounded-[4px] bg-white border border-slate-100 shadow-sm flex items-center justify-center ${locale === "ar" ? "ml-3" : "mr-3"}`}>
+                                                                            <Image src={sub.logo} alt={sub.key} fill sizes="36px" className="object-contain p-0.5" />
+                                                                          </div>
+                                                                        ) : (
+                                                                          <span className={`w-1.5 h-1.5 shrink-0 rounded-full bg-slate-300 ${locale === "ar" ? "ml-3" : "mr-3"}`} />
+                                                                        )}
                                                                         {locale === "ar" ? sub.label.ar : sub.label.en}
                                                                       </Link>
                                                                     ))}

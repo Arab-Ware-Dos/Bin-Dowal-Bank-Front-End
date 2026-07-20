@@ -7,17 +7,13 @@ import { getLocalizedHref } from "@/lib/localized-routes"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
-import { partnerships, Partner } from "@/data/partnerships"
+import { partnersData } from "@/data/partners"
+import type { Partner, PartnerCategory } from "@/data/partners"
 
-type Category = "local" | "international" | "correspondent"
-
-type PartnerExt = Partner & {
-  nameAr?: string
-  href?: string
-}
+type Category = PartnerCategory;
 
 export function PartnershipsSection() {
-  const { t, direction } = useI18n()
+  const { t, direction, locale } = useI18n()
   const shouldReduceMotion = useReducedMotion()
   const [activeCategory, setActiveCategory] = useState<Category>("local")
 
@@ -26,24 +22,24 @@ export function PartnershipsSection() {
       {
         id: "local" as const,
         label: t("partnerships.local"),
-        count: partnerships.filter((p) => p.category === "local").length,
+        count: partnersData.filter((p) => p.category === "local").length,
       },
       {
         id: "international" as const,
         label: t("partnerships.international"),
-        count: partnerships.filter((p) => p.category === "international").length,
+        count: partnersData.filter((p) => p.category === "international").length,
       },
       {
         id: "correspondent" as const,
         label: t("partnerships.correspondent"),
-        count: partnerships.filter((p) => p.category === "correspondent").length,
+        count: partnersData.filter((p) => p.category === "correspondent").length,
       },
     ],
     [t]
   )
 
   const filteredPartners = useMemo(
-    () => partnerships.filter((p) => p.category === activeCategory),
+    () => partnersData.filter((p) => p.category === activeCategory),
     [activeCategory]
   )
 
@@ -275,11 +271,11 @@ function LogoCard({
 }) {
   const [imgError, setImgError] = useState(false)
 
-  const partnerData = partner as PartnerExt
+  const partnerData = partner;
   const displayName =
     direction === "rtl"
-      ? partnerData.nameAr || partnerData.nameEn
-      : partnerData.nameEn || partnerData.nameAr || ""
+      ? partnerData.name.ar || partnerData.name.en
+      : partnerData.name.en || partnerData.name.ar || ""
 
   const shortLabel = getShortLabel(displayName)
 

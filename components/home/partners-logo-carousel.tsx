@@ -3,7 +3,8 @@
 import React, { useMemo } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n-context";
-import { partnersLogoCarouselData, PartnerLogo } from "@/data/partners-logo-carousel";
+import { partnersData } from "@/data/partners";
+import type { Partner } from "@/data/partners";
 import { useReducedMotion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ViewAllButton } from "@/components/ui/view-all-button";
@@ -15,9 +16,13 @@ export function PartnersLogoCarousel() {
 
   // Filter and sort partners
   const activePartners = useMemo(() => {
-    return partnersLogoCarouselData
-      .filter((p) => p.isActive !== false)
-      .sort((a, b) => (a.order || 0) - (b.order || 0));
+    return partnersData
+      .filter((p) => p.showInCarousel)
+      .sort(
+        (a, b) =>
+          (a.carouselOrder ?? Number.MAX_SAFE_INTEGER) -
+          (b.carouselOrder ?? Number.MAX_SAFE_INTEGER)
+      );
   }, []);
 
   // Triple the items to ensure enough coverage for the infinite scroll
@@ -59,7 +64,7 @@ export function PartnersLogoCarousel() {
           <div 
             className="flex items-center gap-6 md:gap-10 animate-scroll hover:[animation-play-state:paused] py-2"
             style={{
-              animation: `scroll-${direction} 40s linear infinite`,
+              animation: `scroll-${direction} 105s linear infinite`,
             }}
           >
             {duplicatedPartners.map((partner, index) => (
@@ -100,7 +105,7 @@ export function PartnersLogoCarousel() {
   );
 }
 
-function LogoCard({ partner, locale }: { partner: PartnerLogo; locale: "ar" | "en" }) {
+function LogoCard({ partner, locale }: { partner: Partner; locale: "ar" | "en" }) {
   const name = locale === "ar" ? partner.name.ar : partner.name.en;
 
   const content = (

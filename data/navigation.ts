@@ -41,6 +41,7 @@ export type NavLink = {
   label: { ar: string; en: string };
   desc?: { ar: string; en: string };
   icon?: any;
+  logo?: string;
   cols?: number;
   subLinks?: NavLink[];
 };
@@ -110,29 +111,29 @@ export const navigationData: NavItem[] = [
             label: { ar: "التحويلات المحلية", en: "Local Transfers" },
             icon: Send,
             subLinks: [
-              { key: "doolExpress", href: "/personal/dool-express", label: { ar: "دول إكسبرس", en: "Dool Express" } },
-              { key: "unifiedNetwork", href: "/personal/unified-network", label: { ar: "الشبكة الموحدة", en: "Unified Network" } },
+              { key: "doolExpress", href: "/personal/dool-express", label: { ar: "دول إكسبرس", en: "Dool Express" }, logo: "/images/partners/local/dool-express.png" },
+              { key: "unifiedNetwork", href: "/personal/unified-network", label: { ar: "الشبكة الموحدة", en: "UNMoney" }, logo: "/images/partners/local/unmoney.png" },
             ]
           },
           {
-           key: "expressRemittances",
-             href: "/personal/fast-money-transfers",
+            key: "expressRemittances",
+            href: "/personal/fast-money-transfers",
             label: { ar: "الحوالات السريعة", en: "Express Remittances" },
             icon: Plane,
             cols: 2,
             subLinks: [
-              { key: "moneygram", href: "/personal/moneygram", label: { ar: "موني جرام", en: "MoneyGram" } },
-              { key: "shift", href: "/personal/shift", label: { ar: "شفت", en: "Shift" } },
-              { key: "upt", href: "/personal/upt", label: { ar: "يو بي تي UPT", en: "UPT" } },
-              { key: "bin-yaala", href: "/personal/bin-yaala", label: { ar: "بن يعلا", en: "Bin Yaala" } },
-              { key: "alawneh", href: "/personal/alawneh", label: { ar: "العلاونة", en: "Alawneh" } },
-              { key: "zamzam", href: "/personal/zamzam", label: { ar: "زمزم", en: "Zamzam" } },
-              { key: "swift", href: "/personal/swift", label: { ar: "سويفت", en: "Swift" } },
+              { key: "moneygram", href: "/personal/moneygram", label: { ar: "موني جرام", en: "MoneyGram" }, logo: "/images/partners/international/Asset 43@3x.png" },
+              { key: "shift", href: "/personal/shift", label: { ar: "شفت", en: "Shift" }, logo: "/images/partners/international/Shift-logo.png" },
+              { key: "upt", href: "/personal/upt", label: { ar: "UPT", en: "UPT" }, logo: "/images/partners/international/Asset 44@3x.png" },
+              { key: "bin-yaala", href: "/personal/bin-yaala", label: { ar: "بن يعلا", en: "Bin Yaala" }, logo: "/images/partners/international/Asset 46@3x.png" },
+              { key: "alawneh", href: "/personal/alawneh", label: { ar: "العلاونة", en: "Alawneh" }, logo: "/images/partners/international/Asset 53@3x.png" },
+              { key: "zamzam", href: "/personal/zamzam", label: { ar: "زمزم", en: "Zamzam" }, logo: "/images/partners/international/Asset 49@3x.png" },
+              { key: "swift", href: "/personal/swift", label: { ar: "سويفت", en: "Swift" }, logo: "/images/partners/international/Asset 48@3x.png" },
             ]
           },
         ]
       },
-      
+
       // {
       //   title: { ar: "البطاقات", en: "Cards" },
       //   links: [

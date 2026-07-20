@@ -11,12 +11,12 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 
 const services = [
-  { id: "tameer", icon: "/images/financing-services/6.png", href: "/personal/financing-taameer" },
-  { id: "takamul", icon: "/images/financing-services/1.png", href: "/personal/financing-takamul" },
-  { id: "thimar", icon: "/images/financing-services/2.png", href: "/personal/financing-thimar" },
-  { id: "solar", icon: "/images/financing-services/3.png", href: "/financing" },
-  { id: "zad", icon: "/images/financing-services/5.png", href: "/personal/financing-zad" },
-  { id: "noor", icon: "/images/financing-services/4.png", href: "/personal/financing-noor" },
+  { id: "tameer", icon: "/images/financing-services/6.webp", href: "/personal/financing-taameer" },
+  { id: "takamul", icon: "/images/financing-services/1.webp", href: "/personal/financing-takamul" },
+  { id: "thimar", icon: "/images/financing-services/2.webp", href: "/personal/financing-thimar" },
+  { id: "solar", icon: "/images/financing-services/3.webp", href: "/financing" },
+  { id: "zad", icon: "/images/financing-services/5.webp", href: "/personal/financing-zad" },
+  { id: "noor", icon: "/images/financing-services/4.webp", href: "/personal/financing-noor" },
 ]
 
 // Returns position index relative to active: -1 0 1 (side cards), ±2 (hidden)
@@ -244,11 +244,10 @@ export function FinancingServices() {
               key={i}
               onClick={() => setActive(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`rounded-full transition-all duration-400 ${
-                i === active
-                  ? "w-8 h-2.5 bg-[#324198]"
-                  : "w-2.5 h-2.5 bg-[#324198]/25 hover:bg-[#324198]/50"
-              }`}
+              className={`rounded-full transition-all duration-400 ${i === active
+                ? "w-8 h-2.5 bg-[#324198]"
+                : "w-2.5 h-2.5 bg-[#324198]/25 hover:bg-[#324198]/50"
+                }`}
             />
           ))}
         </div>

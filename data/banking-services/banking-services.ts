@@ -414,7 +414,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "ادّخر اليوم… وامنح مستقبلك استقراراً أكبر",
       en: "Save today... and give your future greater stability"
     },
-    heroImage: "/images/customer-services/Savings.jpg",
+    heroImage: "/images/customer-services/Savings.webp",
     breadcrumbs: [
       {
         labelKey: "nav.personalBanking",
@@ -620,7 +620,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حل ادخاري استثماري متوافق مع الضوابط المعتمدة لتنمية أموالك على فترات محددة",
       en: "A structured Sharia-compliant saving and investment solution for growing funds over defined periods"
     },
-    heroImage: "/images/customer-services/Investment-deposits.jpg",
+    heroImage: "/images/customer-services/Investment-deposits.webp",
     breadcrumbs: [
       {
         labelKey: "nav.personalBanking",
@@ -1227,7 +1227,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "أرسل واستقبل أموالك حول العالم… بسهولة وثقة",
       en: "Send and receive your money around the world... with ease and confidence"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       {
         labelKey: "nav.personalBanking",
@@ -1972,7 +1972,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حساب مخصص لتنظيم أموال الأبناء وتعزيز ثقافة الادخار منذ وقت مبكر",
       en: "An account designed to organize children’s funds and encourage saving habits from an early stage"
     },
-    heroImage: "/images/customer-services/minors-account.jpg",
+    heroImage: "/images/customer-services/minors-account.webp",
     breadcrumbs: [
       {
         labelKey: "nav.personalBanking",
@@ -5943,7 +5943,7 @@ export const bankingServicesData: ServicePageData[] = [
   //             ar: "مرونة شرائية أوسع لإدارة المدفوعات اليومية والسفر والاحتياجات الطارئة بثقة",
   //             en: "Wider purchasing flexibility for daily payments, travel, and urgent needs with confidence"
   //       },
-  //       heroImage: "/images/cards/debit_desert.png",
+  //       heroImage: "/images/cards/debit_desert-compressed.webp",
   //       breadcrumbs: [
   //             {
   //                   labelKey: "nav.personalBanking",
@@ -6249,7 +6249,7 @@ export const bankingServicesData: ServicePageData[] = [
   //             ar: "ادفع واسحب مباشرة من رصيد حسابك بطريقة عملية وآمنة",
   //             en: "Pay and withdraw directly from your account balance in a practical and secure way"
   //       },
-  //       heroImage: "/images/cards/shopping-prepaid.png",
+  //       heroImage: "/images/cards/shopping-prepaid.webp",
   //       breadcrumbs: [
   //             {
   //                   labelKey: "nav.personalBanking",
@@ -6555,7 +6555,7 @@ export const bankingServicesData: ServicePageData[] = [
   //             ar: "بطاقة مرنة للشراء والتحكم بالمصروفات من خلال رصيد يتم شحنه مسبقًا",
   //             en: "A flexible card for purchases and spending control through a preloaded balance"
   //       },
-  //       heroImage: "/images/cards/front.png",
+  //       heroImage: "/images/cards/front.webp",
   //       breadcrumbs: [
   //             {
   //                   labelKey: "nav.personalBanking",
@@ -6861,7 +6861,7 @@ export const bankingServicesData: ServicePageData[] = [
   //             ar: "بطاقة رقمية للتسوق الإلكتروني والمدفوعات عبر الإنترنت بإدارة أسهل من القنوات الرقمية",
   //             en: "A digital card for online shopping and internet payments with easier management through digital channels"
   //       },
-  //       heroImage: "/images/cards/gold-credit.png",
+  //       heroImage: "/images/cards/gold-credit.webp",
   //       breadcrumbs: [
   //             {
   //                   labelKey: "nav.personalBanking",
@@ -8710,7 +8710,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حوالات موني جرام من أي مكان بالعالم إلى عندك بسرعة وأمان عبر بنك بن دول",
       en: "MoneyGram transfers from anywhere in the world to you, fast and secure via Bindowal Bank"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -8833,7 +8833,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "خدمة توصلك لأهلك وتوصلهم فيك مهما كانوا بعيد سرعة وأمان وانتشار عالمي تحول عبر شفت وتستلم في اليمن عبر بنك بن دول في أي لحظة",
       en: "A service that connects you with your loved ones wherever they are. Fast, secure, and globally widespread, send via Shift and receive in Yemen via Bindowal Bank at any moment"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -8955,7 +8955,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "الآن تقدر ترسل وتستقبل حوالاتك بكل سهولة وأمان مع خدمة UPT - يو بي تي العالمية أموالك تعبر الحدود بكل ثقة💸",
       en: "Now you can send and receive your remittances with complete ease and security. With UPT global service, your money crosses borders with confidence 💸"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9078,7 +9078,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "المصاريف ما تتحمل التأخير حول أموالك عبر بن يعلا في السعودية واستلمها فوراً في حسابك بتطبيق بن دول أو خلي أهلك يستلموها من أي فرع أو وكيل من شبكتنا الواسعة في اليمن",
       en: "Expenses cannot afford delay. Transfer your money via Bin Yaala in Saudi Arabia and receive it instantly in your account on Bindowal Bank app, or let your family pick it up from any branch or agent across Yemen"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9199,7 +9199,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "لأهلك واصحابك ولكل شركاء عملك في الاردن حوالاتهم توصلك بكل أمان وسرعة مع العلاونة للصرافة وبنك بن دول نختصر المسافات، ونضمن لك وصول أموالك للوجهة الصح بثقة تامة",
       en: "For your family, friends, and all business partners in Jordan, their transfers reach you in complete security and speed. With Alawneh Exchange and Bindowal Bank, we shorten distances and guarantee your money reaches the right destination with total confidence"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/partners/international/Asset 53@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9322,7 +9322,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حوالاتك المالية توصل أسرع من اليمن إلى الأردن والعكس عبر بنك بن دول وشركة زمزم للصرافة مافي بين اليمن والأردن مسافات",
       en: "Your financial transfers arrive faster from Yemen to Jordan and vice versa. Via Bindowal Bank and Zamzam Exchange, there are no distances between Yemen and Jordan"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9445,7 +9445,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "نبني جسور الثقة حول العالم مع خدمة سويفت لتحويل الاموال بسرعة وامان",
       en: "Building bridges of trust around the world. With SWIFT money transfer service, send and receive with speed and safety"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.jpg",
+    heroImage: "/images/business-services/SWIFT-transfer.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },

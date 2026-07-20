@@ -11,7 +11,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 const cards = [
   {
     id: 1,
-    front: "/images/cards/debit_desert.png",
+    front: "/images/cards/debit_desert-compressed.webp",
     title: "بطاقة كلاسيك",
     subtitle: "حلول يومية بمرونة أعلى",
     tag: "CLASSIC",
@@ -24,7 +24,7 @@ const cards = [
   },
   {
     id: 2,
-    front: "/images/cards/debit-noor.png",
+    front: "/images/cards/debit-noor.webp",
     title: "بطاقة نور",
     subtitle: "مزايا أكثر وتجربة مصرفية أذكى",
     tag: "NOUR",
@@ -37,7 +37,7 @@ const cards = [
   },
   {
     id: 3,
-    front: "/images/cards/gold-credit.png",
+    front: "/images/cards/gold-credit.webp",
     title: "بطاقة جولد",
     subtitle: "تصميم راقٍ ومزايا مميزة",
     tag: "GOLD",
@@ -50,7 +50,7 @@ const cards = [
   },
   {
     id: 4,
-    front: "/images/cards/shopping-prepaid.png",
+    front: "/images/cards/shopping-prepaid.webp",
     title: "بطاقة تسوق",
     subtitle: "تصميم راقٍ ومزايا مميزة",
     tag: "SHOPPING",
@@ -322,7 +322,7 @@ export function CardsSection() {
           ))}
         </div> */}
 
-        
+
         <div className="mt-8 flex items-center justify-center gap-2">
           {cards.map((c, i) => (
             <button
