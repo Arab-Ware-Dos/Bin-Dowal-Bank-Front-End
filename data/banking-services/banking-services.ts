@@ -12,7 +12,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "توصل بلمح البصر أرسل،استلم ووفر وقتك الحوالات أسهل وأسرع مع دول إكسبرس",
       en: "Send and receive in a blink. Save your time with easier and faster transfers via Dool Express."
     },
-    heroImage: "/images/customer-services/Local-transfers.jpg",
+    heroImage: "/images/partners/local/dool-express.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { label: { ar: "دول إكسبرس", en: "Dool Express" } },
@@ -132,7 +132,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "استلم حوالاتك بكل سهولة من أقرب وكيل معتمد للشبكة الموحدة للأموال",
       en: "Receive your transfers with ease from the nearest authorized agent of the Unified Money Network."
     },
-    heroImage: "/images/customer-services/Local-transfers.jpg",
+    heroImage: "/images/partners/local/unmoney.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { label: { ar: "الشبكة الموحدة", en: "Unified Network" } },
@@ -8710,7 +8710,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حوالات موني جرام من أي مكان بالعالم إلى عندك بسرعة وأمان عبر بنك بن دول",
       en: "MoneyGram transfers from anywhere in the world to you, fast and secure via Bindowal Bank"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Asset 43@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -8833,7 +8833,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "خدمة توصلك لأهلك وتوصلهم فيك مهما كانوا بعيد سرعة وأمان وانتشار عالمي تحول عبر شفت وتستلم في اليمن عبر بنك بن دول في أي لحظة",
       en: "A service that connects you with your loved ones wherever they are. Fast, secure, and globally widespread, send via Shift and receive in Yemen via Bindowal Bank at any moment"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Shift-Logo.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -8955,7 +8955,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "الآن تقدر ترسل وتستقبل حوالاتك بكل سهولة وأمان مع خدمة UPT - يو بي تي العالمية أموالك تعبر الحدود بكل ثقة💸",
       en: "Now you can send and receive your remittances with complete ease and security. With UPT global service, your money crosses borders with confidence 💸"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Asset 44@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9078,7 +9078,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "المصاريف ما تتحمل التأخير حول أموالك عبر بن يعلا في السعودية واستلمها فوراً في حسابك بتطبيق بن دول أو خلي أهلك يستلموها من أي فرع أو وكيل من شبكتنا الواسعة في اليمن",
       en: "Expenses cannot afford delay. Transfer your money via Bin Yaala in Saudi Arabia and receive it instantly in your account on Bindowal Bank app, or let your family pick it up from any branch or agent across Yemen"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Asset 46@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9322,7 +9322,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حوالاتك المالية توصل أسرع من اليمن إلى الأردن والعكس عبر بنك بن دول وشركة زمزم للصرافة مافي بين اليمن والأردن مسافات",
       en: "Your financial transfers arrive faster from Yemen to Jordan and vice versa. Via Bindowal Bank and Zamzam Exchange, there are no distances between Yemen and Jordan"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Asset 49@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
@@ -9445,7 +9445,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "نبني جسور الثقة حول العالم مع خدمة سويفت لتحويل الاموال بسرعة وامان",
       en: "Building bridges of trust around the world. With SWIFT money transfer service, send and receive with speed and safety"
     },
-    heroImage: "/images/business-services/SWIFT-transfer.webp",
+    heroImage: "/images/partners/international/Asset 48@3x.png",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.intlTransfers", href: "/personal/international-transfers" },
