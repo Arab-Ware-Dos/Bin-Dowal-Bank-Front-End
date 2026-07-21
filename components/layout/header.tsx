@@ -572,6 +572,11 @@ export function Header(props: HeaderProps) {
                                         <div className="flex items-start gap-4">
                                           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-[#2d3185] shadow-sm transition-colors duration-200 group-hover:bg-[#2d3185] group-hover:text-white">
                                             {Icon && <Icon className="h-5 w-5" />}
+                                            {!Icon && subItem.logo && (
+                                              <div className="relative h-6 w-9 shrink-0 flex items-center justify-center transition-all duration-200 group-hover:brightness-0 group-hover:invert">
+                                                <Image src={subItem.logo} alt={subItem.key} fill sizes="36px" className="object-contain" />
+                                              </div>
+                                            )}
                                           </div>
                                           <div className="min-w-0 pt-1">
                                             <div className="flex items-center gap-2">
@@ -884,6 +889,11 @@ export function Header(props: HeaderProps) {
                                                 >
                                                   <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2d3185]/5 text-[#2d3185]">
                                                     {Icon && <Icon className="h-4.5 w-4.5" />}
+                                                    {!Icon && subItem.logo && (
+                                                      <div className="relative h-5 w-7 shrink-0 flex items-center justify-center">
+                                                        <Image src={subItem.logo} alt={subItem.key} fill sizes="28px" className="object-contain" />
+                                                      </div>
+                                                    )}
                                                   </span>
                                                   <span className="font-bold">
                                                     {locale === "ar" ? subItem.label.ar : subItem.label.en}
