@@ -232,7 +232,7 @@ export function PartnershipsSection() {
         </motion.div>
 
         {/* View all */}
-        <motion.div
+        {/* <motion.div
           className="mt-10 text-center md:mt-14"
           {...sectionReveal}
         >
@@ -243,7 +243,7 @@ export function PartnershipsSection() {
             <span>{t("partnerships.viewAll")}</span>
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )
