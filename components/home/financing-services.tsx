@@ -10,15 +10,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 
-const services = [
-  { id: "tameer", icon: "/images/financing-services/6.webp", href: "/personal/financing-taameer" },
-  { id: "takamul", icon: "/images/financing-services/1.webp", href: "/personal/financing-takamul" },
-  { id: "thimar", icon: "/images/financing-services/2.webp", href: "/personal/financing-thimar" },
-  { id: "solar", icon: "/images/financing-services/3.webp", href: "/financing" },
-  { id: "zad", icon: "/images/financing-services/5.webp", href: "/personal/financing-zad" },
-  { id: "noor", icon: "/images/financing-services/4.webp", href: "/personal/financing-noor" },
-]
-
+import { financingServices } from "@/data/financing-services"
 // Returns position index relative to active: -1 0 1 (side cards), ±2 (hidden)
 function getPosition(index: number, active: number, total: number) {
   let diff = index - active
@@ -35,7 +27,11 @@ export function FinancingServices() {
   const [dragging, setDragging] = useState(false)
   const [dragStart, setDragStart] = useState(0)
 
-  const total = services.length
+  const homeServices = financingServices
+    .filter((service) => service.showOnHome)
+    .sort((a, b) => a.order - b.order)
+
+  const total = homeServices.length
 
   const prev = useCallback(() => {
     setActive((a) => (a - 1 + total) % total)
@@ -140,7 +136,7 @@ export function FinancingServices() {
               setDragging(false)
             }}
           >
-            {services.map((service, i) => {
+            {homeServices.map((service, i) => {
               const pos = getPosition(i, active, total)
               const cfg = cardConfig(pos)
 
@@ -164,8 +160,8 @@ export function FinancingServices() {
                   {/* Background image */}
                   <div className="absolute inset-0">
                     <Image
-                      src={service.icon}
-                      alt={t(`financingServices.${service.id}`)}
+                      src={service.image}
+                      alt={t(service.titleKey)}
                       fill
                       className="object-cover"
                       style={{ filter: `brightness(${cfg.brightness})` }}
@@ -184,10 +180,10 @@ export function FinancingServices() {
                     <div className="absolute inset-0 z-30 flex flex-col justify-end p-7">
                       <span className="mb-3 inline-block h-[3px] w-14 rounded-full bg-[#ed1c24]" />
                       <h3 className="text-white text-[26px] md:text-[30px] font-bold font-cairo leading-tight mb-3">
-                        {t(`financingServices.${service.id}`)}
+                        {t(service.titleKey as any)}
                       </h3>
                       <p className="text-white/85 text-[14px] md:text-[15px] leading-7 font-cairo mb-5 line-clamp-3">
-                        {t(`financingServices.${service.id}.desc`)}
+                        {t(service.descriptionKey as any)}
                       </p>
                       <Link
                         href={mode === "url" ? getLocalizedHref(service.href, locale) : service.href}
@@ -205,7 +201,7 @@ export function FinancingServices() {
                       <div>
                         <span className="mb-2 inline-block h-[2px] w-10 rounded-full bg-[#ed1c24]" />
                         <h3 className="text-white/90 text-[18px] font-bold font-cairo leading-tight">
-                          {t(`financingServices.${service.id}`)}
+                          {t(service.titleKey as any)}
                         </h3>
                       </div>
                     </div>
@@ -239,7 +235,7 @@ export function FinancingServices() {
 
         {/* ─── Dot Indicators ─── */}
         <div className="mt-10 flex items-center justify-center gap-2.5">
-          {services.map((_, i) => (
+          {homeServices.map((_, i) => (
             <button
               key={i}
               onClick={() => setActive(i)}

@@ -62,20 +62,6 @@ export interface Card {
   imageAltEn?: string
 }
 
-export interface FinancingProduct {
-  id: string
-  type: "auto" | "home" | "personal"
-  nameAr: string
-  nameEn: string
-  descAr: string
-  descEn: string
-  minAmount: number
-  maxAmount: number
-  maxPeriod: number
-  profitRate: number
-  requirementsAr: string[]
-  requirementsEn: string[]
-}
 
 export interface FAQ {
   id: string
@@ -447,50 +433,6 @@ export const cards: Card[] = [
   },
 ]
 
-export const financingProducts: FinancingProduct[] = [
-  {
-    id: "1",
-    type: "auto",
-    nameAr: "تمويل السيارات",
-    nameEn: "Auto Financing",
-    descAr: "احصل على سيارة أحلامك مع تمويل إسلامي مرن",
-    descEn: "Get your dream car with flexible Islamic financing",
-    minAmount: 30000,
-    maxAmount: 500000,
-    maxPeriod: 60,
-    profitRate: 4.5,
-    requirementsAr: ["الهوية الوطنية أو الإقامة", "شهادة راتب حديثة", "كشف حساب آخر 3 أشهر"],
-    requirementsEn: ["National ID or Residency", "Recent salary certificate", "Last 3 months bank statement"],
-  },
-  {
-    id: "2",
-    type: "home",
-    nameAr: "التمويل العقاري",
-    nameEn: "Home Financing",
-    descAr: "امتلك منزل أحلامك مع أقساط مريحة",
-    descEn: "Own your dream home with comfortable installments",
-    minAmount: 250000,
-    maxAmount: 5000000,
-    maxPeriod: 300,
-    profitRate: 3.8,
-    requirementsAr: ["الهوية الوطنية", "شهادة راتب حديثة", "كشف حساب آخر 6 أشهر", "تقييم العقار"],
-    requirementsEn: ["National ID", "Recent salary certificate", "Last 6 months bank statement", "Property valuation"],
-  },
-  {
-    id: "3",
-    type: "personal",
-    nameAr: "التمويل الشخصي",
-    nameEn: "Personal Financing",
-    descAr: "تمويل شخصي سريع لتلبية احتياجاتك",
-    descEn: "Quick personal financing to meet your needs",
-    minAmount: 5000,
-    maxAmount: 250000,
-    maxPeriod: 60,
-    profitRate: 5.0,
-    requirementsAr: ["الهوية الوطنية أو الإقامة", "شهادة راتب حديثة", "كشف حساب آخر 3 أشهر"],
-    requirementsEn: ["National ID or Residency", "Recent salary certificate", "Last 3 months bank statement"],
-  },
-]
 
 export const faqs: FAQ[] = [
   {

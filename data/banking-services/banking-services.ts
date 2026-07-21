@@ -8085,7 +8085,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "عشان تحل مشكلة انقطاع الكهرباء، اطلب منتجات الطاقة البديلة عبر تمويل تكامل بخطط ميسرة ومتوافقة مع الشريعة",
       en: "To solve power outages, request alternative energy products through Takamul financing with easy, Sharia-compliant plans"
     },
-    heroImage: "/images/financing-services/Takamul.png",
+    heroImage: "/images/financing-services/3.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.financingTakamul" }
@@ -8214,7 +8214,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "التمويلات مش دائماً عبء أحياناً هي الدفعة الذكية اللي يحتاجها مشروعك عشان ينطلق ويزيد إنتاجه",
       en: "Financing is not always a burden; sometimes it is the smart boost your project needs to launch and increase production"
     },
-    heroImage: "/images/financing-services/Thimar.png",
+    heroImage: "/images/financing-services/2.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.financingThimar" }
@@ -8338,7 +8338,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "حوّل حلمك ببناء بيت جديد أو مشروع سكني إلى واقع بخطط تمويل مرنة تشمل كافة مواد البناء الأساسية",
       en: "Turn your dream of building a new home or residential project into reality with flexible financing plans covering all core construction materials"
     },
-    heroImage: "/images/financing-services/Tameer.png",
+    heroImage: "/images/financing-services/6.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.financingTaameer" }
@@ -8462,7 +8462,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "صممنا تمويل نور خصيصًا لكِ أنتِ، لتخطي عقبة التمويل وتأسيس مشروعك بطموح ونجاح اقتصادي",
       en: "We designed Noor financing specifically for you, to overcome the funding hurdle and establish your business with ambition and economic success"
     },
-    heroImage: "/images/financing-services/Noor.png",
+    heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.financingNoor" }
@@ -8586,7 +8586,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "بدأت المدارس وجاء وقت الأقساط؟ لا تشيل هم، منتج زاد يسهل عليك سداد الرسوم على أقساط مريحة وبدون أي تعقيد",
       en: "School has started and it's installment time? Don't worry, the Zad product makes it easy for you to pay tuition fees in comfortable installments without complications"
     },
-    heroImage: "/images/financing-services/Zad.png",
+    heroImage: "/images/financing-services/5.webp",
     breadcrumbs: [
       { labelKey: "nav.personalBanking", href: "/personal-banking" },
       { labelKey: "nav.financingZad" }

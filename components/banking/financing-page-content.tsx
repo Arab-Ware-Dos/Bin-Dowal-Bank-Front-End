@@ -8,14 +8,12 @@ import { FAQAccordion } from "@/components/ui/faq-accordion"
 import { CalculatorSection } from "@/components/home/calculator-section"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { financingProducts, faqs } from "@/data/mock-data"
-import { Car, Home, User, Check, FileText, AlertCircle } from "lucide-react"
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  auto: Car,
-  home: Home,
-  personal: User,
-}
+import { faqs } from "@/data/mock-data"
+import { financingServices } from "@/data/financing-services"
+import { Check, FileText, AlertCircle } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { getLocalizedHref } from "@/lib/localized-routes"
 
 const container = {
   hidden: { opacity: 0 },
@@ -64,67 +62,90 @@ export function FinancingPageContent() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 gap-6"
           >
-            {financingProducts.map((product) => {
-              const Icon = iconMap[product.type] || User
-              return (
-                <motion.div key={product.id} variants={item} id={product.type}>
-                  <Card className="h-full rounded-2xl hover:shadow-lg transition-all overflow-hidden border-slate-200">
-                    <div className="h-2 bg-gradient-to-r from-[#0b0d36] to-[#262b80]" />
-                    <CardHeader>
-                      <div className="p-4 bg-[#262b80]/8 rounded-xl w-fit mb-3 text-[#262b80]">
-                        <Icon className="h-8 w-8" />
-                      </div>
-                      <CardTitle className="text-xl">
-                        {locale === "ar" ? product.nameAr : product.nameEn}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground mb-6">
-                        {locale === "ar" ? product.descAr : product.descEn}
+            {financingServices
+              .filter((service) => service.showOnFinancingPage)
+              .sort((a, b) => a.order - b.order)
+              .map((service) => (
+                <motion.div key={service.id} variants={item} id={service.id}>
+                  <article className="overflow-hidden rounded-3xl border bg-card hover:shadow-lg transition-all h-full flex flex-col">
+                    <div className="relative aspect-[16/9]">
+                      <Image
+                        src={service.image}
+                        alt={t(service.titleKey as any)}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                      <h3 className="absolute bottom-5 start-5 text-2xl font-semibold text-white">
+                        {t(service.titleKey as any)}
+                      </h3>
+                    </div>
+                    <div className="space-y-5 p-6 flex flex-col flex-grow">
+                      <p className="text-muted-foreground flex-grow">
+                        {t(service.descriptionKey as any)}
                       </p>
 
-                      {/* Product Details */}
-                      <div className="space-y-3 mb-6">
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">
-                            {locale === "ar" ? "الحد الأدنى" : "Minimum"}
-                          </span>
-                          <span className="font-medium">
-                            {formatNumber(product.minAmount)} SAR
-                          </span>
+                      {/* Financial Details if available */}
+                      {service.details ? (
+                        <div className="space-y-3 py-2">
+                          {service.details.minAmount != null && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">
+                                {locale === "ar" ? "الحد الأدنى" : "Minimum"}
+                              </span>
+                              <span className="font-medium">
+                                {formatNumber(service.details.minAmount)} SAR
+                              </span>
+                            </div>
+                          )}
+                          {service.details.maxAmount != null && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">
+                                {locale === "ar" ? "الحد الأقصى" : "Maximum"}
+                              </span>
+                              <span className="font-medium">
+                                {formatNumber(service.details.maxAmount)} SAR
+                              </span>
+                            </div>
+                          )}
+                          {service.details.maxPeriodMonths != null && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">
+                                {locale === "ar" ? "أقصى مدة" : "Max Period"}
+                              </span>
+                              <span className="font-medium">
+                                {service.details.maxPeriodMonths} {locale === "ar" ? "شهر" : "months"}
+                              </span>
+                            </div>
+                          )}
+                          {service.details.profitRate != null && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">
+                                {locale === "ar" ? "معدل الربح" : "Profit Rate"}
+                              </span>
+                              <span className="font-medium text-[#262b80]">
+                                {service.details.profitRate}%
+                              </span>
+                            </div>
+                          )}
                         </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">
-                            {locale === "ar" ? "الحد الأقصى" : "Maximum"}
-                          </span>
-                          <span className="font-medium">
-                            {formatNumber(product.maxAmount)} SAR
-                          </span>
+                      ) : (
+                        <div className="py-2">
+                          <p className="text-sm font-medium text-slate-500 italic">
+                            {locale === "ar"
+                              ? "تخضع الشروط والمبالغ لسياسة البنك ودراسة الطلب."
+                              : "Terms and amounts are subject to bank policy and application review."}
+                          </p>
                         </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">
-                            {locale === "ar" ? "أقصى مدة" : "Max Period"}
-                          </span>
-                          <span className="font-medium">
-                            {product.maxPeriod} {locale === "ar" ? "شهر" : "months"}
-                          </span>
-                        </div>
-                        <div className="flex justify-between text-sm">
-                          <span className="text-muted-foreground">
-                            {locale === "ar" ? "معدل الربح" : "Profit Rate"}
-                          </span>
-                          <span className="font-medium text-[#262b80]">
-                            {product.profitRate}%
-                          </span>
-                        </div>
-                      </div>
+                      )}
 
-                      <Button className="w-full rounded-xl bg-[#262b80] hover:bg-[#0b0d36] text-white">{t("common.apply")}</Button>
-                    </CardContent>
-                  </Card>
+                      <Button asChild className="w-full rounded-xl bg-[#262b80] hover:bg-[#0b0d36] text-white">
+                        <Link href={getLocalizedHref(service.href, locale)}>{locale === "ar" ? "عرض التفاصيل" : "View Details"}</Link>
+                      </Button>
+                    </div>
+                  </article>
                 </motion.div>
-              )
-            })}
+              ))}
           </motion.div>
         </div>
       </section>
