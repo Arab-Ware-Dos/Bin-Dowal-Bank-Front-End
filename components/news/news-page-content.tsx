@@ -244,7 +244,7 @@ export function NewsPageContent() {
                     className="bg-background ps-10"
                   />
                 </div>
-
+{/* 
                 {categories.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     <Button
@@ -280,7 +280,7 @@ export function NewsPageContent() {
                       </Button>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
 
               <div className="rounded-2xl border bg-background px-4 py-3 text-sm text-muted-foreground shadow-sm">
@@ -432,11 +432,7 @@ export function NewsPageContent() {
               </h2>
             </div>
 
-            <p className="text-sm text-muted-foreground">
-              {isArabic
-                ? "محتوى مرتب زمنيًا لتسهيل الوصول إلى الإعلانات والتحديثات."
-                : "Chronologically organized updates for easier access to announcements and news."}
-            </p>
+      
           </div>
 
           {visibleArticles.length > 0 ? (

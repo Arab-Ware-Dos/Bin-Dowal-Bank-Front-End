@@ -125,27 +125,13 @@ function normalizeContent(content: ArticleContent | null | undefined): ArticleBl
         ? item.items.map((entry: string) => entry.trim()).filter(Boolean)
         : []
 
-      return items.length ? [{ type: "list" as const, items }] : []
+      return items.length ? items.map((text) => ({ type: "paragraph" as const, text })) : []
     }
 
     if ("text" in item && typeof item.text === "string" && item.text.trim()) {
       const text = item.text.trim()
 
-      if (item.type === "heading") {
-        return [
-          {
-            type: "heading" as const,
-            text,
-            level: item.level && [2, 3, 4].includes(item.level) ? item.level : 2,
-          },
-        ]
-      }
-
-      if (item.type === "quote") {
-        return [{ type: "quote" as const, text }]
-      }
-
-      if (item.type === "paragraph") {
+      if (item.type === "heading" || item.type === "quote" || item.type === "paragraph") {
         return [{ type: "paragraph" as const, text }]
       }
     }
@@ -392,67 +378,6 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
         )
       }
 
-      if (block.type === "quote") {
-        return (
-          <blockquote
-            key={`quote-${index}`}
-            className="relative overflow-hidden rounded-[28px] border border-primary/15 bg-primary/[0.05] px-6 py-6 text-base leading-8 text-foreground md:px-8 md:text-lg"
-          >
-            <div className="absolute inset-y-0 start-0 w-1.5 bg-gradient-to-b from-primary/80 via-primary/40 to-transparent" />
-            <div className="pointer-events-none absolute -top-10 end-0 h-24 w-24 rounded-full bg-primary/10 blur-2xl" />
-            <p className="relative">{block.text}</p>
-          </blockquote>
-        )
-      }
-
-      if (block.type === "list") {
-        return (
-          <ul
-            key={`list-${index}`}
-            className="list-disc space-y-3 ps-6 text-base leading-8 text-muted-foreground marker:text-primary md:text-[1.06rem]"
-          >
-            {block.items.map((item, itemIndex) => (
-              <li key={`list-item-${index}-${itemIndex}`}>{item}</li>
-            ))}
-          </ul>
-        )
-      }
-
-      if (block.type === "heading") {
-        const level = block.level ?? 2
-
-        if (level === 3) {
-          return (
-            <h3
-              key={`heading-${index}`}
-              className="pt-2 text-2xl font-bold leading-tight tracking-tight text-foreground md:text-[1.75rem]"
-            >
-              {block.text}
-            </h3>
-          )
-        }
-
-        if (level === 4) {
-          return (
-            <h4
-              key={`heading-${index}`}
-              className="pt-2 text-xl font-semibold leading-tight text-foreground md:text-2xl"
-            >
-              {block.text}
-            </h4>
-          )
-        }
-
-        return (
-          <h2
-            key={`heading-${index}`}
-            className="pt-4 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl"
-          >
-            {block.text}
-          </h2>
-        )
-      }
-
       return null
     })
   }
@@ -567,24 +492,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/15 to-transparent" />
 
-                      {(publishedDate || category) && (
-                        <div className="absolute inset-x-4 bottom-4 md:inset-x-6 md:bottom-6">
-                          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-white/15 bg-slate-950/35 px-4 py-3 text-white backdrop-blur-md">
-                            {publishedDate ? (
-                              <div className="inline-flex items-center gap-2 text-sm text-white/90">
-                                <Calendar className="h-4 w-4" />
-                                <time dateTime={articleDateTime}>{publishedDate}</time>
-                              </div>
-                            ) : null}
 
-                            {category ? (
-                              <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium text-white">
-                                {category}
-                              </span>
-                            ) : null}
-                          </div>
-                        </div>
-                      )}
                     </motion.div>
                   ) : null}
 
@@ -596,13 +504,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
                       {...revealProps}
                       className="pb-8"
                     >
-                      {category ? (
-                        <motion.div variants={fadeUp} className="mb-5">
-                          <span className="inline-flex rounded-full border border-primary/15 bg-primary/[0.06] px-4 py-2 text-sm font-medium text-primary">
-                            {category}
-                          </span>
-                        </motion.div>
-                      ) : null}
+
 
                       <motion.h1
                         variants={fadeUp}
@@ -611,16 +513,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
                         {title}
                       </motion.h1>
 
-                      {excerpt ? (
-                        <motion.div
-                          variants={fadeUp}
-                          className="mt-6 max-w-4xl rounded-[28px] border border-border/60 bg-muted/30 p-5 md:p-6"
-                        >
-                          <p className="text-lg font-medium leading-8 text-foreground/85 md:text-xl">
-                            {excerpt}
-                          </p>
-                        </motion.div>
-                      ) : null}
+
                     </motion.header>
 
                     <div className="h-px w-full bg-gradient-to-r from-transparent via-border/80 to-transparent" />
