@@ -120,7 +120,7 @@ export const navigationData: NavItem[] = [
             href: "/personal/fast-money-transfers",
             label: { ar: "الحوالات السريعة", en: "Express Remittances" },
             icon: Plane,
-            cols: 2,
+            cols: 1,
             subLinks: [
               { key: "moneygram", href: "/personal/moneygram", label: { ar: "موني جرام", en: "MoneyGram" }, logo: "/images/partners/international/Asset 43@3x.png" },
               { key: "shift", href: "/personal/shift", label: { ar: "شفت", en: "Shift" }, logo: "/images/partners/international/Shift-logo.png" },

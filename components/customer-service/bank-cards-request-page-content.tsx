@@ -250,7 +250,7 @@ export function BankCardsRequestPageContent() {
                                     ? 'بطاقة بن دول الذهبية'
                                     : 'Bin Dowal Gold Card'}
                                 </SelectItem>
-                                <SelectItem value="debit">
+                                <SelectItem value="noor">
                                   {locale === 'ar' ? 'بطاقة نور' : 'Noor Card'}
                                 </SelectItem>
                                 <SelectItem value="debit">
