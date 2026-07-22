@@ -39,56 +39,56 @@ const products: readonly Product[] = [
     title: "الحساب الجاري",
     category: "خدمات الافراد",
     image: "/images/customer-services/Current-account.webp",
-    href: "/products/personal-finance",
+    href: "/personal/current-account",
   },
   {
     id: 2,
     title: "حساب التوفير",
     category: "خدمات الافراد",
     image: "/images/customer-services/Savings.webp",
-    href: "/products/home-finance",
+    href: "/personal/savings-account",
   },
   {
     id: 3,
     title: "حساب الوديعة الاستثمارية",
     category: "خدمات الافراد",
     image: "/images/customer-services/Investment-deposits.webp",
-    href: "/products/car-lease",
+    href: "/personal/investment-deposit",
   },
   {
     id: 4,
     title: "حساب القصر",
     category: "خدمات الافراد",
     image: "/images/customer-services/minors-account.webp",
-    href: "/cards",
+    href: "/personal/minors-account",
   },
   {
     id: 5,
     title: "الحساب الجاري للشركات",
     category: "بن دول أعمال",
     image: "/images/business-services/Corporate-current-account.webp",
-    href: "/cards",
+    href: "/business/corporate-current-account",
   },
   {
     id: 6,
     title: "الودائع الاستثمارية للشركات",
     category: "بن دول أعمال",
     image: "/images/business-services/Investment-deposits.webp",
-    href: "/cards",
+    href: "/business/corporate-investment-deposits",
   },
   {
     id: 7,
     title: "حوالة السويفت",
     category: "بن دول أعمال",
     image: "/images/business-services/SWIFT-transfer.webp",
-    href: "/cards",
+    href: "/personal/swift",
   },
   {
     id: 8,
     title: "خطابات الضمان",
     category: "بن دول أعمال",
     image: "/images/business-services/Letter-of-guarantee.webp",
-    href: "/cards",
+    href: "/business/bank-guarantees",
   },
 ]
 
@@ -170,7 +170,7 @@ export function DiscoverProductsSection() {
             {visibleProducts.map((product) => (
               <Link
                 key={product.id}
-                href={product.href}
+                href={mode === "url" ? getLocalizedHref(product.href, locale) : product.href}
                 className="group block h-full outline-none"
               >
                 <article className="flex h-full flex-col overflow-hidden rounded-[28px] border border-[#324198]/8 bg-white p-4 shadow-[0_12px_35px_rgba(15,23,42,0.06)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[#324198]/15 group-hover:shadow-[0_18px_45px_rgba(15,23,42,0.1)] group-focus-visible:-translate-y-1.5 group-focus-visible:border-[#324198]/15">
