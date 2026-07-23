@@ -180,17 +180,10 @@ export function NewsSection() {
           })}
         </motion.div>
 
-        <div className="mt-12 flex justify-center">
-          <Button asChild size="lg" className="h-14 rounded-full px-8 text-base">
-            <Link
-              href={resolveHref("/news")}
-              className="inline-flex items-center gap-2"
-            >
-              {t("news.viewAll")}
-              <MoveRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+        <ViewAllButton
+          label={t("news.viewAll")}
+          href={resolveHref("/news")}
+        />
       </div>
     </section>
   )
