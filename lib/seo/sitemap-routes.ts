@@ -1,5 +1,6 @@
 import { LOCALIZED_STATIC_ROUTES } from "@/lib/localized-routes";
 import { newsItems } from "@/data/news";
+import { EXPECTED_PRODUCTION_ROUTE_FAMILIES } from "@/lib/seo/production-route-expectations";
 
 export type SitemapRouteFamily = {
   pathname: string;
@@ -93,11 +94,11 @@ function resolveSitemapPolicy(pathname: string): Omit<SitemapRouteFamily, "pathn
 }
 
 export function getProductionSitemapFamilies(): SitemapRouteFamily[] {
-  // LOCALIZED_STATIC_ROUTES already contains the exhaustive 66 family paths including the spread registries.
+  // LOCALIZED_STATIC_ROUTES already contains the exhaustive production family paths including the spread registries.
   const productionPaths = Array.from(new Set([...LOCALIZED_STATIC_ROUTES]));
 
-  if (productionPaths.length !== 66) {
-    throw new Error(`Expected exactly 66 production family paths, found ${productionPaths.length}.`);
+  if (productionPaths.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
+    throw new Error(`Expected exactly ${EXPECTED_PRODUCTION_ROUTE_FAMILIES} production family paths, found ${productionPaths.length}.`);
   }
 
   return productionPaths.map((pathname) => {

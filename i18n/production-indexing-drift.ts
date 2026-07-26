@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { EXPECTED_PRODUCTION_ROUTE_FAMILIES } from '../lib/seo/production-route-expectations';
 
 const OUT_DIR = path.resolve(process.cwd(), 'out');
 
@@ -106,12 +107,12 @@ function runDriftTest() {
     console.log(`Proof routes with noindex: ${proofNoIndex}`);
     console.log(`Proof routes with nofollow: ${proofNoFollow}\n`);
 
-    if (arFiles.length !== 66) {
-        console.error(`❌ FAILED: Expected exactly 66 Arabic production routes, but found ${arFiles.length}`);
+    if (arFiles.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
+        console.error(`❌ FAILED: Expected exactly ${EXPECTED_PRODUCTION_ROUTE_FAMILIES} Arabic production routes, but found ${arFiles.length}`);
         hasErrors = true;
     }
-    if (enFiles.length !== 66) {
-        console.error(`❌ FAILED: Expected exactly 66 English production routes, but found ${enFiles.length}`);
+    if (enFiles.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
+        console.error(`❌ FAILED: Expected exactly ${EXPECTED_PRODUCTION_ROUTE_FAMILIES} English production routes, but found ${enFiles.length}`);
         hasErrors = true;
     }
     if (proofNoIndex !== 2 || proofNoFollow !== 2) {

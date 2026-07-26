@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { SITE_URL } from "../lib/seo/site-config";
 import { LEGACY_CANONICAL_OVERRIDES } from "../lib/seo/legacy-canonical-overrides";
+import { EXPECTED_PRODUCTION_ROUTE_FAMILIES } from "../lib/seo/production-route-expectations";
 
 const OUT_DIR = path.resolve(process.cwd(), "out");
 
@@ -230,8 +231,8 @@ function runDriftTest() {
       invalidDomainUrls > 0 ||
       previewDomainReferences > 0 ||
       proofRoutesExposingAlternates > 0 ||
-      arFiles.length !== 66 ||
-      enFiles.length !== 66 ||
+      arFiles.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES ||
+      enFiles.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES ||
       legacyFiles.length !== 0 ||
       legacyContracts.length !== 69
     ) {

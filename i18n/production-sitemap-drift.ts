@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { EXPECTED_PRODUCTION_ROUTE_FAMILIES, EXPECTED_PRODUCTION_LOCALIZED_URLS } from "../lib/seo/production-route-expectations";
 
 const sitemapPath = path.join(process.cwd(), "out", "sitemap.xml");
 
@@ -202,16 +203,16 @@ console.log(`Total URLs: ${totalUrls}`);
 console.log(`AR Entries: ${arEntries}`);
 console.log(`EN Entries: ${enEntries}`);
 
-if (totalUrls !== 132) {
-  console.error(`❌ Total URLs is ${totalUrls}, expected 132`);
+if (totalUrls !== EXPECTED_PRODUCTION_LOCALIZED_URLS) {
+  console.error(`❌ Total URLs is ${totalUrls}, expected ${EXPECTED_PRODUCTION_LOCALIZED_URLS}`);
   errors++;
 }
-if (arEntries !== 66) {
-  console.error(`❌ AR Entries is ${arEntries}, expected 66`);
+if (arEntries !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
+  console.error(`❌ AR Entries is ${arEntries}, expected ${EXPECTED_PRODUCTION_ROUTE_FAMILIES}`);
   errors++;
 }
-if (enEntries !== 66) {
-  console.error(`❌ EN Entries is ${enEntries}, expected 66`);
+if (enEntries !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
+  console.error(`❌ EN Entries is ${enEntries}, expected ${EXPECTED_PRODUCTION_ROUTE_FAMILIES}`);
   errors++;
 }
 if (legacyEntries > 0) {
