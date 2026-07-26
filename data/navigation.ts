@@ -81,6 +81,7 @@ export const navigationData: NavItem[] = [
       { key: "management", href: "/about#management", label: { ar: "الإدارة التنفيذية", en: "Executive Management" }, icon: UserCheck },
       { key: "partners", href: "/about/partners", label: { ar: "الشركاء", en: "Partners" }, icon: HeartHandshake },
       { key: "social", href: "/about/social-responsibility", label: { ar: "المسؤولية المجتمعية", en: "Social Responsibility" }, icon: HeartHandshake },
+      { key: "compliance", href: "/about/compliance-statement", label: { ar: "بيان الامتثال", en: "Compliance Statement" }, icon: ShieldCheck },
     ]
   },
   {
