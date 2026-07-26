@@ -76,10 +76,9 @@ export const navigationData: NavItem[] = [
     imageLink: "/about",
     singleLinks: [
       { key: "aboutUs", href: "/about", label: { ar: "نبذة عن البنك", en: "About the Bank" }, icon: Landmark },
-      { key: "vision", href: "/about#vision", label: { ar: "الرؤية والرسالة", en: "Vision & Mission" }, icon: Lightbulb },
+      { key: "vision", href: "/about#vision", label: { ar: "التوجهات الإستراتيجية", en: "Strategic Directions" }, icon: Lightbulb },
       { key: "board", href: "/about/board-of-directors", label: { ar: "مجلس الإدارة", en: "Board of Directors" }, icon: Users },
       { key: "management", href: "/about#management", label: { ar: "الإدارة التنفيذية", en: "Executive Management" }, icon: UserCheck },
-      { key: "reports", href: "/about/annual-reports", label: { ar: "التقارير السنوية", en: "Annual Reports" }, icon: FileText },
       { key: "partners", href: "/about/partners", label: { ar: "الشركاء", en: "Partners" }, icon: HeartHandshake },
       { key: "social", href: "/about/social-responsibility", label: { ar: "المسؤولية المجتمعية", en: "Social Responsibility" }, icon: HeartHandshake },
     ]
@@ -271,6 +270,7 @@ export const navigationData: NavItem[] = [
     label: { ar: "مركز المعرفة", en: "Knowledge Center" },
     singleLinks: [
       { key: "faq", href: "/knowledge-center/faq", label: { ar: "الأسئلة الشائعة", en: "FAQ" }, desc: { ar: "إجابات واضحة ومنظمة لأكثر الاستفسارات شيوعًا حول خدمات البنك", en: "Clear organized answers to the most common questions about bank services" }, icon: HelpCircle },
+      { key: "reports", href: "/knowledge-center/annual-reports", label: { ar: "التقارير السنوية", en: "Annual Reports" }, desc: { ar: "أرشيف التقارير السنوية والقوائم المالية للبنك بصيغة PDF مع إمكانية التصفح والتنزيل", en: "Archive of the bank's annual reports and financial statements in PDF format" }, icon: FileText },
     ]
   },
   {

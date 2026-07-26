@@ -12,7 +12,7 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/",
   "/about",
   "/contact",
-  "/about/annual-reports",
+  "/knowledge-center/annual-reports",
   "/about/board-of-directors",
   "/about/partners",
   "/about/social-responsibility",

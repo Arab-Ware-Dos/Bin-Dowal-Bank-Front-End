@@ -639,8 +639,8 @@ function CtaSection({ isAr }: { isAr: boolean }) {
   const links = [
     {
       href: "/about#vision",
-      labelAr: "الرؤية والرسالة",
-      labelEn: "Vision & Mission",
+      labelAr: "التوجهات الإستراتيجية",
+      labelEn: "Strategic Directions",
       icon: Lightbulb,
     },
     {
@@ -650,7 +650,7 @@ function CtaSection({ isAr }: { isAr: boolean }) {
       icon: Users,
     },
     {
-      href: "/about/annual-reports",
+      href: "/knowledge-center/annual-reports",
       labelAr: "التقارير السنوية",
       labelEn: "Annual Reports",
       icon: FileText,

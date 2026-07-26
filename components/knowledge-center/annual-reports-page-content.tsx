@@ -5,10 +5,10 @@ import { motion } from "framer-motion"
 import { FileText, TrendingDown } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
-import { FeaturedAnnualReport } from "@/components/about/annual-reports/FeaturedAnnualReport"
-import { AnnualReportsFilters, type SortOrder } from "@/components/about/annual-reports/AnnualReportsFilters"
-import { AnnualReportCard } from "@/components/about/annual-reports/AnnualReportCard"
-import { PdfPreviewModal } from "@/components/about/annual-reports/PdfPreviewModal"
+import { FeaturedAnnualReport } from "@/components/knowledge-center/annual-reports/FeaturedAnnualReport"
+import { AnnualReportsFilters, type SortOrder } from "@/components/knowledge-center/annual-reports/AnnualReportsFilters"
+import { AnnualReportCard } from "@/components/knowledge-center/annual-reports/AnnualReportCard"
+import { PdfPreviewModal } from "@/components/knowledge-center/annual-reports/PdfPreviewModal"
 import { annualReports, type AnnualReport } from "@/data/annual-reports"
 
 export function AnnualReportsPageContent() {
@@ -68,7 +68,7 @@ export function AnnualReportsPageContent() {
       ? "يضم هذا القسم أرشيف التقارير السنوية لبنك بن دول للتمويل الأصغر الإسلامي بصيغة PDF، مع إمكانية التصفح والتنزيل المباشر."
       : "This section contains the annual reports archive of Bin Dowal Islamic Microfinance Bank in PDF format, with direct browsing and download capabilities.",
     home: isAr ? "الرئيسية" : "Home",
-    about: isAr ? "عن البنك" : "About Us",
+    knowledgeCenter: isAr ? "مركز المعرفة" : "Knowledge Center",
     archiveTitle: isAr ? "أرشيف التقارير" : "Reports Archive",
     archiveSubtitle: isAr
       ? "تصفح تقاريرنا السنوية السابقة"
@@ -88,7 +88,7 @@ export function AnnualReportsPageContent() {
           subtitle={text.heroSubtitle}
           breadcrumbs={[
             { labelKey: text.home, href: "/" },
-            { labelKey: text.about, href: "/about" },
+            { labelKey: text.knowledgeCenter, href: "/knowledge" },
             { labelKey: text.heroTitle },
           ]}
         />

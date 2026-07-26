@@ -34,6 +34,16 @@ const knowledgeItems = [
     status: "active",
   },
   {
+    id: "reports",
+    icon: FileText,
+    titleAr: "التقارير السنوية",
+    titleEn: "Annual Reports",
+    descAr: "أرشيف التقارير السنوية والقوائم المالية للبنك بصيغة PDF مع إمكانية التصفح والتنزيل",
+    descEn: "Archive of the bank's annual reports and financial statements in PDF format",
+    href: "/knowledge-center/annual-reports",
+    status: "active",
+  },
+  {
     id: "guides",
     icon: FileText,
     titleAr: "الأدلة التعليمية",

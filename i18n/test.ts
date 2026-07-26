@@ -100,8 +100,8 @@ async function runTests() {
     { input: ["/en/contact", "ar"], expected: "/ar/contact" },
 
     // C. Migrated sub-routes from Batch 2
-    { input: ["/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
-    { input: ["/en/about/annual-reports", "ar"], expected: "/ar/about/annual-reports" },
+    { input: ["/knowledge-center/annual-reports", "en"], expected: "/en/knowledge-center/annual-reports" },
+    { input: ["/en/knowledge-center/annual-reports", "ar"], expected: "/ar/knowledge-center/annual-reports" },
     { input: ["/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
     { input: ["/ar/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
     { input: ["/about/partners", "ar"], expected: "/ar/about/partners" },
@@ -179,7 +179,7 @@ async function runTests() {
 
     // F. Query and Hash
     { input: ["/en/about?tab=history#board", "ar"], expected: "/ar/about?tab=history#board" },
-    { input: ["/en/about/annual-reports?year=2025#download", "ar"], expected: "/ar/about/annual-reports?year=2025#download" },
+    { input: ["/en/knowledge-center/annual-reports?year=2025#download", "ar"], expected: "/ar/knowledge-center/annual-reports?year=2025#download" },
     { input: ["/en/calculator?type=personal#result", "ar"], expected: "/ar/calculator?type=personal#result" },
     { input: ["/en/knowledge-center/faq?category=cards#question-3", "ar"], expected: "/ar/knowledge-center/faq?category=cards#question-3" },
     { input: ["/en/customer-service/complaints?source=faq#form", "ar"], expected: "/ar/customer-service/complaints?source=faq#form" },
@@ -386,9 +386,9 @@ async function runTests() {
     { input: ["/about", "en"], expected: "/en/about" },
     { input: ["/ar/about", "en"], expected: "/en/about" },
     { input: ["/en/about", "ar"], expected: "/ar/about" },
-    { input: ["/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
-    { input: ["/ar/about/annual-reports", "en"], expected: "/en/about/annual-reports" },
-    { input: ["/en/about/annual-reports", "ar"], expected: "/ar/about/annual-reports" },
+    { input: ["/knowledge-center/annual-reports", "en"], expected: "/en/knowledge-center/annual-reports" },
+    { input: ["/ar/knowledge-center/annual-reports", "en"], expected: "/en/knowledge-center/annual-reports" },
+    { input: ["/en/knowledge-center/annual-reports", "ar"], expected: "/ar/knowledge-center/annual-reports" },
     { input: ["/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
     { input: ["/ar/about/board-of-directors", "en"], expected: "/en/about/board-of-directors" },
     { input: ["/en/about/board-of-directors", "ar"], expected: "/ar/about/board-of-directors" }
