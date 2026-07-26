@@ -13,6 +13,7 @@ import {
   Smartphone,
   Globe2,
   ShieldCheck,
+  Scale,
   Landmark,
   Monitor,
   Video,
@@ -82,6 +83,7 @@ export const navigationData: NavItem[] = [
       { key: "partners", href: "/about/partners", label: { ar: "الشركاء", en: "Partners" }, icon: HeartHandshake },
       { key: "social", href: "/about/social-responsibility", label: { ar: "المسؤولية المجتمعية", en: "Social Responsibility" }, icon: HeartHandshake },
       { key: "compliance", href: "/about/compliance-statement", label: { ar: "بيان الامتثال", en: "Compliance Statement" }, icon: ShieldCheck },
+      { key: "governance", href: "/about/corporate-governance", label: { ar: "الحوكمة المؤسسية", en: "Corporate Governance" }, icon: Scale },
     ]
   },
   {

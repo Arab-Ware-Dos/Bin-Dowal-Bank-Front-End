@@ -17,6 +17,7 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/about/partners",
   "/about/social-responsibility",
   "/about/compliance-statement",
+  "/about/corporate-governance",
   "/business-banking",
   "/personal-banking",
   "/financing",

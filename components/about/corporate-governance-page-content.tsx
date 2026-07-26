@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
@@ -8,21 +7,20 @@ import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { PageHero } from "@/components/ui/page-hero"
 import {
-  ShieldCheck,
-  Globe2,
-  Users,
   Scale,
-  FileText,
+  Building2,
+  ShieldCheck,
+  Users,
+  BookOpen,
+  HeartHandshake,
   CheckCircle2,
-  Copy,
-  Check,
-  Award,
   Lock,
+  FileText,
   Phone,
   ArrowLeft,
   ArrowRight,
   Sparkles,
-  Building2
+  ArrowUpRight
 } from "lucide-react"
 
 const FADE_UP = {
@@ -51,114 +49,109 @@ const STAGGER_ITEM = {
   },
 }
 
-export function ComplianceStatementPageContent() {
+export function CorporateGovernancePageContent() {
   const { locale, direction } = useI18n()
   const isAr = locale === "ar"
-  const [copied, setCopied] = useState(false)
-
-  const giinNumber = "6PTVIH.99999.SL.886"
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(giinNumber)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
 
   const text = {
-    heroTitle: isAr ? "بيان الامتثال" : "Compliance Statement",
+    heroTitle: isAr ? "الحوكمة المؤسسية" : "Corporate Governance",
     heroSubtitle: isAr
-      ? "التزامنا التام بالمعايير المحلية والدولية لمكافحة غسل الأموال وتمويل الإرهاب وتعزيز النزاهة المصرفية."
-      : "Our steadfast commitment to local and international AML/CFT standards and banking integrity.",
+      ? "إطار مؤسسي متكامل لإدارة مسؤولة، وقرارات حكيمة، وشفافية مطلقة تعزز ثقة عملائنا ومساهمينا."
+      : "An integrated institutional framework for responsible management, sound decision-making, and absolute transparency.",
     home: isAr ? "الرئيسية" : "Home",
     about: isAr ? "عن البنك" : "About Us",
     
-    headerTitle: isAr ? "بيان الامتثال" : "Compliance Statement",
+    headerTitle: isAr ? "الحوكمة المؤسسية" : "Corporate Governance",
     headerSubtitle: isAr 
-      ? "تؤكد إلتزام بنك بن دول للتمويل الأصغر الإسلامي بتطبيق أعلى معايير الرقابة المالية ومكافحة غسل الأموال وتمويل الإرهاب وفقاً للقوانين المحلية والتوصيات الدولية."
-      : "Bin Dowal Islamic Microfinance Bank affirms its strict adherence to the highest standards of financial control, AML, and CFT in accordance with local laws and international recommendations.",
+      ? "يولي بنك بن دول للتمويل الأصغر الإسلامي الحوكمة المؤسسية أهمية قصوى لضمان كفاءة الأداء، وحماية حقوق المساهمين وأصحاب المصالح، والالتزام بأعلى معايير النزاهة والشفافية."
+      : "Bin Dowal Islamic Microfinance Bank attaches paramount importance to corporate governance to ensure operational efficiency, protect shareholder and stakeholder rights, and uphold the highest standards of integrity and transparency.",
 
     sections: [
       {
-        id: "international",
-        title: isAr ? "الالتزام بالمعايير الدولية (FATF & MENAFATF)" : "International Compliance (FATF & MENAFATF)",
-        icon: Globe2,
-        content: isAr
-          ? "اليمن وبصفته عضواً في المينافاتف (منطقة الشرق الأوسط وشمال أفريقيا) (MENAFATF)، يسعى إلى الامتثال بالتوصيات الـ 40 للفاتف FATF الخاصة بمكافحة غسل الأموال (AML) ومكافحة تمويل الإرهاب (CFT). ووفقاً لبيان صدر مؤخراً عن مجموعة العمل المالي (FATF)، فقد نجح اليمن في تنفيذ خطة العمل المتفق عليها. وبالتالي، ستواصل مجموعة العمل المالي مراقبة الوضع عن كثب وتحديد موعد لزيارة الموقع في أقرب فرصة ممكنة."
-          : "As a member of MENAFATF (Middle East and North Africa Financial Action Task Force), Yemen strives to comply with the FATF (Financial Action Task Force) 40 Recommendations on Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT). According to a recent statement issued by the FATF, Yemen has successfully implemented its agreed-upon action plan. Consequently, the FATF will continue to monitor the situation closely and schedule an on-site visit at the earliest possible opportunity.",
-        badge: isAr ? "المعايير الدولية" : "Global Standards",
-      },
-      {
-        id: "internal",
-        title: isAr ? "الرقابة والسياسات الداخلية لبنك بن دول" : "Bin Dowal Bank Internal Policies & Controls",
-        icon: Users,
-        content: isAr
-          ? "فيما يتعلق بتدابير مكافحة غسل الأموال وتمويل الإرهاب، لدى بنك بن دول فريق التزام متخصص تم تعيينه من قبل مجلس الإدارة. كما وضع البنك أيضاً إجراءات وسياسات داخلية لتحديد ومكافحة الأنشطة مثل غسل الأموال وتمويل الإرهاب والاحتيال والفساد والرشوة."
-          : "Regarding AML/CFT measures, Bin Dowal Bank has a dedicated compliance team appointed by the Board of Directors. The Bank has also established comprehensive internal procedures and policies to identify and combat activities such as money laundering, terrorism financing, fraud, corruption, and bribery.",
-        badge: isAr ? "الرقابة المؤسسية" : "Internal Governance",
-      },
-      {
-        id: "legal",
-        title: isAr ? "التوافق مع القوانين اليمنية والجهات الرقابية" : "Alignment with Yemeni Laws & Regulatory Bodies",
+        id: "framework",
+        title: isAr ? "الأهمية الإستراتيجية والإطار القانوني" : "Strategic Importance & Legal Framework",
         icon: Scale,
         content: isAr
-          ? "تتوافق هذه الجهود مع القانون اليمني رقم (1) لسنة 2010 بشأن مكافحة غسل الأموال ومكافحة تمويل الإرهاب والذي دخل حيز التنفيذ في 1 يناير 2010 في اليمن. تم إصدار هذا القانون في البداية وفقاً لتوصيات مجموعة العمل المالي (FATF)، وقد خضع لتعديلات بموجب القانون رقم (17) لسنة 2013. تم تقديم المبادئ التوجيهية المقابلة من قبل وحدة المعلومات المالية (FIU) والبنك المركزي اليمني، لتوضيح الواجبات القانونية المرتبطة بالامتثال لمكافحة غسل الأموال وتمويل الإرهاب."
-          : "These efforts align with Yemeni Law No. (1) of 2010 concerning Anti-Money Laundering and Combating the Financing of Terrorism, which entered into force on January 1, 2010, in Yemen. Originally issued in accordance with FATF recommendations, this law underwent amendments under Law No. (17) of 2013. Corresponding guidelines have been provided by the Financial Information Unit (FIU) and the Central Bank of Yemen to clarify the legal duties associated with AML/CFT compliance.",
-        badge: isAr ? "الإطار القانوني" : "Legal Framework",
+          ? "يولي البنك الحوكمة المؤسسية أهمية أساسية باعتبارها إطارًا متكاملًا لإدارة أعماله بكفاءة ومسؤولية، وضمان سلامة القرارات، وحماية حقوق المساهمين والعملاء وأصحاب المصالح. ويحرص البنك على ممارسة أعماله وفقًا للتشريعات المصرفية النافذة، وقانون الشركات التجارية، والتعليمات والضوابط الصادرة عن البنك المركزي اليمني، إلى جانب السياسات واللوائح الداخلية المعتمدة."
+          : "Bin Dowal Bank attaches fundamental importance to corporate governance as an integrated framework for managing its operations efficiently and responsibly, ensuring sound decision-making, and protecting the rights of shareholders, customers, and stakeholders. The Bank is committed to conducting its business in accordance with prevailing banking laws, commercial company laws, and regulations issued by the Central Bank of Yemen, alongside approved internal policies and regulations.",
+        badge: isAr ? "الإطار التشريعي" : "Legal Framework",
       },
       {
-        id: "fatca",
-        title: isAr ? "قانون الامتثال الضريبي الأمريكي للحسابات الأجنبية (FATCA)" : "Foreign Account Tax Compliance Act (FATCA)",
-        icon: Award,
+        id: "manual",
+        title: isAr ? "ترسيخ مبادئ الحوكمة والدليل المؤسسي" : "Embedding Governance Principles & Institutional Manual",
+        icon: BookOpen,
         content: isAr
-          ? "قانون الامتثال الضريبي الامريكي للحسابات الأجنبية: تم تسجيل بنك بن دول كمؤسسة مالية أجنبية مشاركة."
-          : "Foreign Account Tax Compliance Act: Bin Dowal Bank is registered as a Participating Foreign Financial Institution (PFFI).",
-        badge: isAr ? "الامتثال الضريبي" : "Tax Compliance",
-        hasGiin: true,
+          ? "وانطلاقًا من رؤية مجلس الإدارة، يعمل البنك على ترسيخ مبادئ الحوكمة ضمن مختلف مستوياته الإدارية والتنظيمية، من خلال تحديد واضح للصلاحيات والمسؤوليات، وتعزيز المساءلة والرقابة، وضمان استقلالية الوظائف الرقابية. كما يعتمد البنك دليلًا للحوكمة المؤسسية يحدد الأطر المنظمة للعلاقة بين مجلس الإدارة والإدارة التنفيذية والمساهمين وأصحاب المصالح، ويوضح آليات اتخاذ القرار والمتابعة والإفصاح."
+          : "Guided by the Board of Directors' vision, the Bank works to embed governance principles across all administrative and organizational levels through clear demarcation of authority and responsibilities, enhanced accountability and oversight, and guaranteed independence of control functions. The Bank also adopts a Corporate Governance Manual that defines the relationship framework among the Board, Executive Management, shareholders, and stakeholders, establishing clear mechanisms for decision-making, monitoring, and disclosure.",
+        badge: isAr ? "دليل الحوكمة" : "Governance Manual",
+      },
+      {
+        id: "committees",
+        title: isAr ? "لجان مجلس الإدارة المتخصصة" : "Specialized Board Committees",
+        icon: Users,
+        content: isAr
+          ? "وقد شكّل مجلس الإدارة عددًا من اللجان المتخصصة المنبثقة عنه، وفقًا لمتطلبات العمل المصرفي وأفضل الممارسات المؤسسية، ومن أبرزها لجنة الحوكمة والترشيحات والمكافآت، ولجنة المراجعة، ولجنة إدارة المخاطر. وتمارس هذه اللجان مهامها باستقلالية وحياد، بما يدعم قدرة المجلس على الإشراف الفاعل ومتابعة الأداء وإدارة المخاطر وتعزيز سلامة أنظمة الرقابة الداخلية."
+          : "The Board of Directors has formed several specialized committees in accordance with banking requirements and institutional best practices, notably the Governance, Nominations and Remuneration Committee, the Audit Committee, and the Risk Management Committee. These committees exercise their duties independently and impartially, supporting the Board's capacity for effective oversight, performance tracking, risk management, and strengthening internal control systems.",
+        badge: isAr ? "الإشراف والرقابة" : "Board Oversight",
+      },
+      {
+        id: "controls",
+        title: isAr ? "التكامل مع الوظائف الرقابية المستقلة" : "Integration with Independent Control Functions",
+        icon: ShieldCheck,
+        content: isAr
+          ? "وتتكامل أعمال لجان مجلس الإدارة مع الإدارات والوظائف الرقابية المستقلة في البنك، وفي مقدمتها إدارة الامتثال، وإدارة التدقيق الداخلي، وإدارة المخاطر، بما يضمن الالتزام بالقوانين والتعليمات والسياسات المعتمدة، والكشف المبكر عن المخاطر، والتحقق من كفاءة الإجراءات والضوابط الداخلية."
+          : "The work of the Board committees integrates seamlessly with the Bank's independent control departments—primarily Compliance, Internal Audit, and Risk Management—to ensure strict adherence to approved laws, regulations, and policies, enable early risk detection, and verify the efficiency of internal control procedures.",
+        badge: isAr ? "الرقابة المستقلة" : "Independent Controls",
+      },
+      {
+        id: "transparency",
+        title: isAr ? "الشفافية، وحماية المستهلك المالي، والتطوير المستمر" : "Transparency, Consumer Protection & Continuous Improvement",
+        icon: HeartHandshake,
+        content: isAr
+          ? "ويواصل البنك تطوير منظومة الحوكمة المؤسسية، وتعزيز مبادئ الشفافية والنزاهة والمساءلة والإفصاح، وتطبيق متطلبات دليل حوكمة البنوك الصادر عن البنك المركزي اليمني. كما يحرص على تبني الممارسات التي تسهم في حماية المستهلك المالي، والحد من تعارض المصالح، وترسيخ السلوك المهني والأخلاقي، بما يدعم الاستقرار المؤسسي ويعزز ثقة العملاء والمساهمين والمجتمع في أعمال البنك."
+          : "The Bank continuously advances its corporate governance framework, reinforcing the principles of transparency, integrity, accountability, and disclosure in full adherence to the Central Bank of Yemen's Bank Governance Guidelines. Furthermore, the Bank is dedicated to adopting practices that foster financial consumer protection, mitigate conflicts of interest, and instill professional and ethical conduct, thereby underpinning institutional stability and earning the enduring trust of customers, shareholders, and the wider community.",
+        badge: isAr ? "الشفافية والثقة" : "Trust & Transparency",
       },
     ],
 
-    pillarsTitle: isAr ? "ركائز منظومة الامتثال في بنك بن دول" : "Pillars of Compliance at Bin Dowal Bank",
-    pillars: [
+    committeesTitle: isAr ? "أبرز اللجان المنبثقة عن مجلس الإدارة" : "Key Specialized Board Committees",
+    committeesList: [
       {
-        title: isAr ? "فريق التزام متخصص" : "Dedicated Compliance Team",
+        title: isAr ? "لجنة الحوكمة والترشيحات والمكافآت" : "Governance, Nominations & Remuneration Committee",
         desc: isAr
-          ? "فريق مستقل ومتخصص معين مباشرة من قبل مجلس الإدارة لضمان تطبيق أعلى معايير الحوكمة والنزاهة المصرفية."
-          : "An independent, specialized team appointed directly by the Board of Directors to ensure the highest standards of governance.",
-        icon: ShieldCheck,
+          ? "تعمل على صياغة ومتابعة سياسات الحوكمة، وتقييم أداء المجلس، والإشراف على سياسات المكافآت والترشيحات القيادية."
+          : "Responsible for formulating governance policies, evaluating Board performance, and overseeing remuneration and executive nominations.",
+        icon: Scale,
       },
       {
-        title: isAr ? "إجراءات رقابية صارمة" : "Strict Internal Controls",
+        title: isAr ? "لجنة المراجعة والتدقيق" : "Audit Committee",
         desc: isAr
-          ? "أنظمة وسياسات داخلية متطورة لرصد ومكافحة غسل الأموال وتمويل الإرهاب والاحتيال والرشوة بفعالية عالية."
-          : "Advanced internal systems and policies to monitor and combat money laundering, terrorism financing, fraud, and bribery.",
+          ? "تراقب سلامة التقارير المالية، وتشرف على كفاءة التدقيق الداخلي والخارجي، وتضمن الالتزام بالمعايير الرقابية والمالية."
+          : "Monitors the integrity of financial reporting, oversees internal and external audit efficiency, and ensures compliance with financial standards.",
+        icon: FileText,
+      },
+      {
+        title: isAr ? "لجنة إدارة المخاطر" : "Risk Management Committee",
+        desc: isAr
+          ? "تتولى رصد وتقييم المخاطر المالية والتشغيلية، ووضع إستراتيجيات إدارة المخاطر لضمان استقرار البنك وحماية أصوله."
+          : "Monitors and assesses financial and operational risks, establishing comprehensive risk strategies to safeguard Bank assets.",
         icon: Lock,
       },
-      {
-        title: isAr ? "اعتراف وتسجيل دولي" : "International Recognition",
-        desc: isAr
-          ? "الامتثال الكامل للمبادئ التوجيهية للبنك المركزي اليمني ووحدة المعلومات المالية والتسجيل في نظام FATCA الأمريكي."
-          : "Full compliance with Central Bank of Yemen and FIU guidelines, as well as registration in the U.S. FATCA system.",
-        icon: CheckCircle2,
-      },
     ],
 
-    giinLabel: isAr ? "الرقم التعريفي لبيان الامتثال (GIIN):" : "Compliance Identification Number (GIIN):",
-    copiedText: isAr ? "تم النسخ بنجاح!" : "Copied successfully!",
-    copyTooltip: isAr ? "نسخ الرقم التعريفي" : "Copy GIIN",
-
     shortcutSectionTitle: isAr ? "التنقل السريع بين الأطر التنظيمية والرقابية" : "Quick Navigation: Regulatory & Governance Frameworks",
-    shortcutSectionSubtitle: isAr ? "تصفح السياسات والأطر المكملة لمنظومة الحوكمة والامتثال في بنك بن دول" : "Explore complementary policies and governance frameworks at Bin Dowal Bank",
-    shortcutCardTitle: isAr ? "الحوكمة المؤسسية" : "Corporate Governance",
+    shortcutSectionSubtitle: isAr ? "تصفح السياسات والأطر المكملة لمنظومة الحوكمة في بنك بن دول" : "Explore complementary policies and governance frameworks at Bin Dowal Bank",
+    shortcutCardTitle: isAr ? "بيان الامتثال" : "Compliance Statement",
     shortcutCardDesc: isAr 
-      ? "تعرف على إطار الحوكمة المؤسسية لإدارة الأعمال بكفاءة ومسؤولية ولجان مجلس الإدارة المتخصصة."
-      : "Learn about our institutional governance framework for responsible management and specialized Board committees.",
-    shortcutCardBtn: isAr ? "انتقل إلى الحوكمة المؤسسية" : "Go to Corporate Governance",
+      ? "تعرف على التزامنا التام بتوصيات مكافحة غسل الأموال (AML) وتمويل الإرهاب (CFT) والتسجيل في قانون FATCA."
+      : "Learn about our steadfast adherence to AML/CFT recommendations and FATCA GIIN registration.",
+    shortcutCardBtn: isAr ? "انتقل إلى بيان الامتثال" : "Go to Compliance Statement",
 
-    ctaTitle: isAr ? "هل لديك استفسار حول سياسات الامتثال في البنك؟" : "Have Questions About Our Compliance Policies?",
+    ctaTitle: isAr ? "هل لديك استفسار حول سياسات الحوكمة والإفصاح؟" : "Have Questions About Our Governance & Disclosure Policies?",
     ctaDesc: isAr
-      ? "فريق الامتثال وخدمة العملاء لدينا متاحون للرد على كافة استفساراتكم وتوفير المعلومات المطلوبة حول معايير وإجراءات الالتزام."
-      : "Our compliance and customer service teams are available to answer all your inquiries regarding compliance standards and procedures.",
-    ctaBtn: isAr ? "تواصل مع خدمة العملاء" : "Contact Customer Service",
+      ? "فريقنا متاح للإجابة على استفسارات العملاء والمساهمين وتوفير المعلومات المتعلقة بالحوكمة والشفافية المؤسسية."
+      : "Our team is available to answer inquiries from customers and shareholders and provide information on corporate transparency.",
+    ctaBtn: isAr ? "تواصل معنا" : "Contact Us",
   }
 
   return (
@@ -178,7 +171,7 @@ export function ComplianceStatementPageContent() {
       <section className="py-16 md:py-24 bg-gradient-to-b from-slate-50 via-white to-slate-50 relative overflow-hidden">
         {/* Background Decorative Glows */}
         <div className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-gradient-to-tr from-[#262b80]/5 to-[#8b1e3f]/5 rounded-full blur-3xl -z-10" />
-        <div className="pointer-events-none absolute bottom-10 -right-24 w-[400px] h-[400px] bg-[#262b80]/5 rounded-full blur-2xl -z-10" />
+        <div className="pointer-events-none absolute bottom-10 -left-24 w-[400px] h-[400px] bg-[#8b1e3f]/5 rounded-full blur-2xl -z-10" />
 
         <div className="container mx-auto px-4 max-w-5xl relative z-10">
           
@@ -216,7 +209,7 @@ export function ComplianceStatementPageContent() {
             </p>
           </motion.div>
 
-          {/* Official Statement Document Card */}
+          {/* Official Governance Statement Document Card */}
           <motion.div
             className="bg-white rounded-3xl shadow-[0_16px_50px_rgba(11,13,54,0.07)] border border-slate-200/80 p-6 sm:p-10 md:p-14 mb-20 relative overflow-hidden"
             variants={FADE_UP}
@@ -225,7 +218,7 @@ export function ComplianceStatementPageContent() {
           >
             {/* Document Header Accent & Watermark */}
             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#8b1e3f]" />
-            <ShieldCheck className="absolute -bottom-16 -left-16 w-96 h-96 text-slate-100/50 pointer-events-none -rotate-12" />
+            <Building2 className="absolute -bottom-16 -left-16 w-96 h-96 text-slate-100/50 pointer-events-none -rotate-12" />
 
             {/* Document Content Sections */}
             <div className="space-y-10 md:space-y-12 relative z-10">
@@ -260,39 +253,6 @@ export function ComplianceStatementPageContent() {
                         <p className="text-base md:text-lg text-slate-700 leading-relaxed font-cairo text-justify">
                           {sec.content}
                         </p>
-
-                        {/* Special FATCA GIIN Highlight Box */}
-                        {sec.hasGiin && (
-                          <div className="mt-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-[#0b0d36] to-[#1e2266] text-white shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-white/10">
-                            <div>
-                              <span className="block text-xs sm:text-sm text-slate-300 font-medium mb-1 font-cairo">
-                                {text.giinLabel}
-                              </span>
-                              <div className="font-mono text-lg sm:text-xl md:text-2xl font-bold tracking-wider text-amber-400">
-                                {giinNumber}
-                              </div>
-                            </div>
-
-                            <button
-                              type="button"
-                              onClick={handleCopy}
-                              className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 active:bg-white/30 text-white font-medium text-sm flex items-center justify-center gap-2 transition-all duration-200 border border-white/20 hover:border-white/40 shadow-sm"
-                              title={text.copyTooltip}
-                            >
-                              {copied ? (
-                                <>
-                                  <Check className="w-4 h-4 text-emerald-400" />
-                                  <span className="text-emerald-300">{text.copiedText}</span>
-                                </>
-                              ) : (
-                                <>
-                                  <Copy className="w-4 h-4" />
-                                  <span>{isAr ? "نسخ الرقم" : "Copy Number"}</span>
-                                </>
-                              )}
-                            </button>
-                          </div>
-                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -304,7 +264,7 @@ export function ComplianceStatementPageContent() {
             <div className="mt-12 pt-6 border-t border-slate-200/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs md:text-sm text-slate-500 font-cairo">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span>{isAr ? "بيان امتثال معتمد وصادر عن إدارة الالتزام - بنك بن دول" : "Certified Compliance Statement issued by Bin Dowal Bank Compliance Dept"}</span>
+                <span>{isAr ? "وثيقة الحوكمة المؤسسية المعتمدة من مجلس الإدارة - بنك بن دول" : "Certified Corporate Governance Framework approved by the Board of Directors"}</span>
               </div>
               <div className="font-semibold text-slate-600">
                 {isAr ? "تاريخ التحديث: 2026" : "Last Updated: 2026"}
@@ -312,7 +272,7 @@ export function ComplianceStatementPageContent() {
             </div>
           </motion.div>
 
-          {/* Pillars of Compliance Section */}
+          {/* Key Board Committees Section */}
           <motion.div
             className="mb-20"
             variants={STAGGER_CONTAINER}
@@ -322,14 +282,14 @@ export function ComplianceStatementPageContent() {
           >
             <div className="text-center mb-12">
               <h3 className="text-2xl md:text-3xl font-bold text-[#0b0d36] font-cairo mb-3">
-                {text.pillarsTitle}
+                {text.committeesTitle}
               </h3>
               <div className="w-16 h-1 bg-[#8b1e3f] mx-auto rounded-full" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-              {text.pillars.map((pillar, idx) => {
-                const IconComp = pillar.icon
+              {text.committeesList.map((comm, idx) => {
+                const IconComp = comm.icon
                 return (
                   <motion.div
                     key={idx}
@@ -340,10 +300,10 @@ export function ComplianceStatementPageContent() {
                       <IconComp className="w-7 h-7" />
                     </div>
                     <h4 className="text-lg md:text-xl font-bold text-[#0b0d36] font-cairo mb-3">
-                      {pillar.title}
+                      {comm.title}
                     </h4>
                     <p className="text-sm md:text-base text-slate-600 leading-relaxed font-cairo">
-                      {pillar.desc}
+                      {comm.desc}
                     </p>
                   </motion.div>
                 )
@@ -370,12 +330,12 @@ export function ComplianceStatementPageContent() {
             </p>
 
             <Link
-              href={getLocalizedHref("/about/corporate-governance", locale)}
+              href={getLocalizedHref("/about/compliance-statement", locale)}
               className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 p-6 md:p-8 rounded-2xl bg-white border border-slate-200/90 shadow-md hover:shadow-xl hover:border-[#262b80]/40 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="flex items-center gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#0b0d36] to-[#262b80] text-white flex items-center justify-center shadow-lg shadow-[#262b80]/20 shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Building2 className="w-7 h-7" />
+                  <ShieldCheck className="w-7 h-7" />
                 </div>
                 <div>
                   <h4 className="text-lg md:text-xl font-bold text-[#0b0d36] font-cairo mb-1 group-hover:text-[#262b80] transition-colors">
