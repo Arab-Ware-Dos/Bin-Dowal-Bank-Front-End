@@ -311,6 +311,13 @@ export const navigationData: NavItem[] = [
         desc: { ar: "نموذج لطلب الحصول على منتجات وبطاقات بنك بن دول", en: "Form to request Bin Dowal Bank products and cards" },
         icon: CreditCard
       },
+      {
+        key: "forms",
+        href: "/customer-service/forms",
+        label: { ar: "نماذج البنك", en: "Bank Forms" },
+        desc: { ar: "مكتبة شاملة لنماذج وطلبات الخدمات المصرفية بصيغة PDF قابلة للتنزيل والطباعة", en: "Comprehensive library of banking service forms and applications in PDF format ready for download and printing" },
+        icon: FileText
+      },
       // { key: "callCenter", href: "/contact#call-center", label: { ar: "مركز الاتصال", en: "Call Center" }, icon: UserCog },
     ]
   }

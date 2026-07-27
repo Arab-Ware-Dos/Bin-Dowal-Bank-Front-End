@@ -34,6 +34,7 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/customer-service/complaints",
   "/customer-service/service-request",
   "/customer-service/bank-cards-request",
+  "/customer-service/forms",
   "/branches",
   "/atm-and-branches",
   "/news",
