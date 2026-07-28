@@ -72,14 +72,6 @@ const businessTypes = [
 
 const services = [
   {
-    id: "payroll",
-    icon: Users,
-    nameAr: "حلول الرواتب",
-    nameEn: "Payroll Solutions",
-    descAr: "نظام متكامل لإدارة رواتب موظفيك بكفاءة وأمان",
-    descEn: "Integrated system to manage employee salaries efficiently",
-  },
-  {
     id: "pos",
     icon: CreditCard,
     nameAr: "نقاط البيع",
@@ -228,7 +220,7 @@ export function BusinessBankingPageContent() {
       </section>
 
       {/* Services Section */}
-      <section id="payroll" className="py-16">
+      <section id="services" className="py-16">
         <div className="container mx-auto px-4">
           <SectionTitle
             title={locale === "ar" ? "خدمات الأعمال" : "Business Services"}

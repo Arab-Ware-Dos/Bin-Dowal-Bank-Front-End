@@ -2,6 +2,140 @@ import { ServicePageData } from "@/types/banking-service-page";
 
 export const bankingServicesData: ServicePageData[] = [
   {
+    slug: "business-banking-payroll",
+    section: "business",
+    title: {
+      ar: "خدمة تحويل الرواتب",
+      en: "Payroll Transfer Service"
+    },
+    subtitle: {
+      ar: "حوّل رواتب موظفيك بسهولة… وأنجز عمليات الصرف في الوقت المحدد",
+      en: "Transfer your employees' salaries easily... and complete disbursements on time"
+    },
+    heroImage: "/images/company-header-cover.png",
+    breadcrumbs: [
+      { labelKey: "nav.businessBanking", href: "/business-banking" },
+      { label: { ar: "تحويل الرواتب", en: "Payroll Transfer" } },
+    ],
+    tagline: { ar: "خدمات الأعمال", en: "Business Services" },
+    seoDescription: {
+      ar: "حوّل رواتب موظفيك إلكترونيًا مع بنك بن دول بسهولة وأمان، واستفد من خدمة سريعة تساعدك على إدارة عمليات صرف الرواتب بكفاءة.",
+      en: "Transfer your employees' salaries electronically with Bin Dowal Bank easily and securely, and benefit from a fast service that helps you manage payroll operations efficiently."
+    },
+    overview: {
+      title: { ar: "النبذة التعريفية", en: "Overview" },
+      description: {
+        ar: "تتيح لك خدمة تحويل الرواتب عبر بنك بن دول من صرف رواتب الموظفين إلى حساباتهم بطريقة آمنة وسريعة، مع تسهيل إدارة ملفات الرواتب وتقليل الجهد والوقت وتقليل الأخطاء في صرف مستحقات الموظفين عبر المؤسسة.",
+        en: "The payroll transfer service through Bin Dowal Bank allows you to disburse employees' salaries to their accounts in a safe and fast manner, facilitating the management of payroll files, reducing effort and time, and minimizing errors in disbursing employee dues across the organization."
+      }
+    },
+    why: {
+      title: { ar: "مميزات الخدمة", en: "Service Features" },
+      items: [
+        {
+          id: "payroll-feature-1",
+          text: {
+            ar: "تحويل الرواتب آليا في الوقت المحدد اما عبر البنك او عبر منصة بن دول اعمال بطريقة سهلة وسريعة.",
+            en: "Automatic salary transfer on time either through the bank or via the Bin Dowal Business platform easily and quickly."
+          }
+        },
+        {
+          id: "payroll-feature-2",
+          text: {
+            ar: "تحويل مرتبات بشكل جماعي والى حسابات الموظفين مباشرة.",
+            en: "Bulk salary transfer directly to employees' accounts."
+          }
+        },
+        {
+          id: "payroll-feature-3",
+          text: {
+            ar: "تقارير تفصيلية عن عمليات الصرف.",
+            en: "Detailed reports on disbursement operations."
+          }
+        },
+        {
+          id: "payroll-feature-4",
+          text: {
+            ar: "توثيق إلكتروني لملفات الرواتب والرجوع الى عمليات التحويل السابقة بكل سهولة.",
+            en: "Electronic documentation of payroll files and easy access to previous transfer operations."
+          }
+        },
+        {
+          id: "payroll-feature-5",
+          text: {
+            ar: "تقليل الوقت والجهد في إدارة الرواتب وتاخير نزول مستحقات الموظفين.",
+            en: "Reducing time and effort in payroll management and delays in employee dues."
+          }
+        },
+        {
+          id: "payroll-feature-6",
+          text: {
+            ar: "يمكن للموظفين سحب رواتبهم عبر فروع البنك و/او الصرافات الالية و/او عبر فروع بن دول للصرافة من اي مكان وفي اي وقت.",
+            en: "Employees can withdraw their salaries through bank branches and/or ATMs and/or through Bin Dowal Exchange branches from anywhere and at any time."
+          }
+        },
+        {
+          id: "payroll-feature-7",
+          text: {
+            ar: "إمكانية استفادة الموظفين من خدمات التمويل وفق سياسة البنك.",
+            en: "Possibility for employees to benefit from financing services according to the bank's policy."
+          }
+        }
+      ]
+    },
+    audience: {
+      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
+      items: [
+        {
+          id: "audience-1",
+          text: { ar: "المؤسسات والجهات الحكومية.", en: "Government institutions and agencies." }
+        },
+        {
+          id: "audience-2",
+          text: { ar: "المنظمات الدولية والمحلية.", en: "International and local organizations." }
+        },
+        {
+          id: "audience-3",
+          text: { ar: "الشركات والمؤسسات بمختلف نشاطها.", en: "Companies and institutions of various activities." }
+        },
+        {
+          id: "audience-4",
+          text: { ar: "المنشآت الصغيرة والمتوسطة.", en: "Small and medium enterprises." }
+        },
+        {
+          id: "audience-5",
+          text: { ar: "الجهات التي ترغب في إدارة رواتب موظفيها إلكترونيًا.", en: "Entities that wish to manage their employees' salaries electronically." }
+        }
+      ]
+    },
+    stepsSection: {
+      title: { ar: "كيف تحصل على الخدمة؟", en: "How to get the service?" },
+      steps: [
+        {
+          id: "step-1",
+          title: { ar: "زيارة أقرب فرع لبنك بن دول.", en: "Visit the nearest branch of Bin Dowal Bank." }
+        },
+        {
+          id: "step-2",
+          title: { ar: "تقديم طلب الاشتراك في الخدمة.", en: "Submit a request to subscribe to the service." }
+        },
+        {
+          id: "step-3",
+          title: { ar: "استكمال المتطلبات الفنية والإجرائية.", en: "Complete the technical and procedural requirements." }
+        }
+      ]
+    },
+    ctaSection: {
+      title: { ar: "سهل إدارة رواتب موظفيك", en: "Simplify your employees' payroll management" },
+      description: {
+        ar: "ابدأ بالاستفادة من خدمة تحويل الرواتب في بنك بن دول، وأنجز عمليات الصرف بسرعة وكفاءة.",
+        en: "Start benefiting from the payroll transfer service at Bin Dowal Bank, and complete disbursement operations quickly and efficiently."
+      },
+      primaryLabel: { ar: "تواصل معنا", en: "Contact Us" },
+      primaryHref: "/contact"
+    }
+  },
+  {
     slug: "dool-express",
     section: "personal",
     title: {

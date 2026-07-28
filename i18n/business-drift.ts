@@ -5,9 +5,9 @@ async function runDriftTest() {
   console.log("Running Business Drift Test...");
   let exitCode = 0;
 
-  // 1. Count equals 4
-  if (BUSINESS_SLUGS.length !== 4) {
-    console.error(`Error: Expected exactly 4 Business slugs, got ${BUSINESS_SLUGS.length}`);
+  // 1. Count equals 5
+  if (BUSINESS_SLUGS.length !== 5) {
+    console.error(`Error: Expected exactly 5 Business slugs, got ${BUSINESS_SLUGS.length}`);
     exitCode = 1;
   }
 

@@ -176,7 +176,7 @@ export const navigationData: NavItem[] = [
           { key: "swift", href: "/business/swift-transfers", label: { ar: "حوالات السويفت", en: "SWIFT Transfers" }, icon: Globe2 },
           // { key: "credits", href: "/business#credits", label: { ar: "الاعتمادات المستندية", en: "Letters of Credit" }, icon: FileText },
           { key: "guarantees", href: "/business/bank-guarantees", label: { ar: "خطابات الضمان", en: "Letters of Guarantees" }, icon: ShieldCheck },
-          { key: "payroll", href: "/business-banking#payroll", label: { ar: "تحويل الرواتب", en: "Payroll Management" }, icon: Users },
+          { key: "payroll", href: "/business/business-banking-payroll", label: { ar: "تحويل الرواتب", en: "Payroll Management" }, icon: Users },
           // { key: "intlTrade", href: "/business#trade", label: { ar: "خدمات التجارة الدولية", en: "International Trade" }, icon: Plane },
         ]
       },

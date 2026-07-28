@@ -3,6 +3,7 @@ export const BUSINESS_SLUGS = [
   "corporate-investment-deposits",
   "swift-transfers",
   "bank-guarantees",
+  "business-banking-payroll",
 ] as const;
 
 export type BusinessSlug = (typeof BUSINESS_SLUGS)[number];
