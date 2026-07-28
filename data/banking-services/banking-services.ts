@@ -8178,6 +8178,27 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-th-5", text: { ar: "متوافق مع أحكام الشريعة الإسلامية بما يمنحك راحة وطمأنينة في التعامل.", en: "Compliant with Islamic Sharia principles, giving you peace of mind in dealings." } }
       ]
     },
+     serviceTypes: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: { ar: "يمكنك التقدم بطلب تمويل ثمار باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Thimar financing using one of the guarantees approved by the bank:" },
+      items: [
+        {
+          id: "type-bg-1",
+          title: { ar: "ضمان الذهب", en: "Gold Guarantee" },
+          // description: { ar: "ضمانات بنكية تغطي قيمة الذهب.", en: "Bank guarantees covering the value of gold." }
+        },
+        {
+          id: "type-bg-2",
+          title: { ar: "ضمان الوديعة", en: "Deposit Guarantee" },
+          // description: { ar: "تضمن تنفيذ الأعمال أو الخدمات وفقًا لشروط العقد.", en: "Guarantees the execution of works or services in accordance with contract terms." }
+        },
+        {
+          id: "type-bg-3",
+          title: { ar: "الضمانات التجارية أو أي ضمانات أخرى يعتمدها البنك بعد دراسة الطلب", en: "Commercial guarantees or any other guarantees approved by the bank after studying the application" },
+          // description: { ar: "تغطي المبالغ المدفوعة مقدمًا للموردين أو المقاولين.", en: "Covers amounts paid in advance to suppliers or contractors." }
+        }
+      ]
+    },
     featureCards: {
       title: { ar: "مميزات تمويل ثمار للمشاريع", en: "Features of Thimar Business Financing" },
       items: [
@@ -8334,6 +8355,27 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-tm-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
       ]
     },
+     serviceTypes: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: { ar: "يمكنك التقدم بطلب تمويل تعمير باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Ta'meer financing using one of the guarantees approved by the bank:" },
+      items: [
+        {
+          id: "type-bg-1",
+          title: { ar: "ضمان الذهب", en: "Gold Guarantee" },
+          // description: { ar: "ضمانات بنكية تغطي قيمة الذهب.", en: "Bank guarantees covering the value of gold." }
+        },
+        {
+          id: "type-bg-2",
+          title: { ar: "ضمان الوديعة", en: "Deposit Guarantee" },
+          // description: { ar: "تضمن تنفيذ الأعمال أو الخدمات وفقًا لشروط العقد.", en: "Guarantees the execution of works or services in accordance with contract terms." }
+        },
+        {
+          id: "type-bg-3",
+          title: { ar: "ضمانات أخرى (بحسب سياسات وشروط البنك).", en: "Other guarantees (according to bank policies and terms)." },
+          // description: { ar: "تغطي المبالغ المدفوعة مقدمًا للموردين أو المقاولين.", en: "Covers amounts paid in advance to suppliers or contractors." }
+        }
+      ]
+    },
     featureCards: {
       title: { ar: "مميزات تمويل تعمير للبناء والتشييد", en: "Features of Ta'meer Construction Financing" },
       items: [
@@ -8487,6 +8529,27 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-no-3", text: { ar: "يساعد على تمويل وتوسيع المشاريع الصغيرة.", en: "Helps finance and expand small projects." } },
         { id: "why-no-4", text: { ar: "إجراءات ميسرة.", en: "Easy procedures." } },
         { id: "why-no-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
+      ]
+    },
+     serviceTypes: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: { ar: "يمكنك التقدم بطلب تمويل ثمار باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Thimar financing using one of the guarantees approved by the bank:" },
+      items: [
+        {
+          id: "type-bg-1",
+          title: { ar: "ضمان الذهب", en: "Gold Guarantee" },
+          // description: { ar: "ضمانات بنكية تغطي قيمة الذهب.", en: "Bank guarantees covering the value of gold." }
+        },
+        {
+          id: "type-bg-2",
+          title: { ar: "ضمان الوديعة", en: "Deposit Guarantee" },
+          // description: { ar: "تضمن تنفيذ الأعمال أو الخدمات وفقًا لشروط العقد.", en: "Guarantees the execution of works or services in accordance with contract terms." }
+        },
+        {
+          id: "type-bg-3",
+          title: { ar: "ضمانات أخرى (بحسب سياسات وشروط البنك).", en: "Other guarantees (according to bank policies and terms)." },
+          // description: { ar: "تغطي المبالغ المدفوعة مقدمًا للموردين أو المقاولين.", en: "Covers amounts paid in advance to suppliers or contractors." }
+        }
       ]
     },
     featureCards: {
