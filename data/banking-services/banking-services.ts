@@ -584,8 +584,7 @@ export const bankingServicesData: ServicePageData[] = [
         {
           id: "faq-5",
           question: { ar: "هل يمكن فتح حساب توفير بدون وظيفة؟", en: "Can I open a savings account without a job?" },
-          answer: { ar: "نعم، يمكن فتح الحساب بشرط توفر المستندات المطلوبة.", en: "Yes, the account can be opened provided the required documents are submitted." }
-        },
+},
         {
           id: "faq-6",
           question: { ar: "هل يمكن استقبال الحوالات من خارج اليمن؟", en: "Can I receive international transfers?" },
@@ -608,6 +607,178 @@ export const bankingServicesData: ServicePageData[] = [
       "investment",
       "minors"
     ]
+  },
+  {
+    slug: "swift-transfers",
+    section: "business",
+    title: {
+      ar: "حوالات السويفت للشركات",
+      en: "SWIFT Transfers for Companies"
+    },
+    subtitle: {
+      ar: "بوابتك لإدارة المدفوعات الدولية بثقة عبر شبكة SWIFT العالمية",
+      en: "Your gateway to managing international payments with confidence through the global SWIFT network"
+    },
+    heroImage: "/images/company-header-cover.png",
+    breadcrumbs: [
+      {
+        labelKey: "nav.businessBanking",
+        href: "/business-banking"
+      },
+      {
+        labelKey: "nav.swiftTransfers",
+        label: {
+          ar: "حوالات السويفت",
+          en: "SWIFT Transfers"
+        }
+      }
+    ],
+    tagline: {
+      ar: "بن دول أعمال",
+      en: "Business Banking"
+    },
+    primaryCta: {
+      label: {
+        ar: "اطلب الخدمة الآن",
+        en: "Request This Service"
+      },
+      href: "/contact"
+    },
+    seoDescription: {
+      ar: "نفّذ حوالات السويفت لشركتك عبر بنك بن دول، وأرسل واستقبل المدفوعات عبر شبكة SWIFT العالمية بأمان ووفق الإجراءات المصرفية المعتمدة.",
+      en: "Execute SWIFT transfers for your company through Bin Dowal Bank, and send and receive payments via the global SWIFT network securely and in accordance with approved banking procedures.",
+    },
+    overview: {
+      title: { ar: "حوالات السويفت للشركات", en: "SWIFT Transfers for Companies" },
+      description: {
+        ar: "عندما تتوسع أعمالك خارج الحدود، تصبح سرعة وأمان التحويلات الدولية جزءاً أساسياً من نجاح أعمالك. يوفر بنك بن دول خدمة حوالات SWIFT التي تتيح لشركتك إرسال واستقبال المدفوعات الدولية عبر شبكة مصرفية عالمية موثوقة، مع الالتزام الكامل بالأنظمة المصرفية ومتطلبات الامتثال.",
+        en: "When your business expands beyond borders, the speed and security of international transfers become an essential part of your business success. Bin Dowal Bank provides the SWIFT transfers service that allows your company to send and receive international payments through a trusted global banking network, with full compliance with banking regulations and compliance requirements.",
+      },
+    },
+    why: {
+      title: { ar: "لماذا حوالات السويفت؟", en: "Why SWIFT Transfers?" },
+      description: {
+        ar: "تم تصميم الخدمة لتلبية احتياجات الشركات والمنظمات لإرسال واستقبال الأموال حول العالم، حيث تساعد هذه الخدمة على:",
+        en: "The service is designed to meet the needs of companies and organizations to send and receive funds around the world, helping to:",
+      },
+      items: [
+        { id: "why-st-1", text: { ar: "تسريع عمليات الدفع للموردين.", en: "Accelerate payment processes to suppliers." } },
+        { id: "why-st-2", text: { ar: "تعزيز ثقة شركائك التجاريين.", en: "Strengthen the trust of your business partners." } },
+        { id: "why-st-3", text: { ar: "تقليل مخاطر التحويلات غير الرسمية.", en: "Reduce the risks of informal transfers." } },
+        { id: "why-st-4", text: { ar: "تنفيذ المدفوعات عبر شبكة مصرفية معترف بها عالمياً.", en: "Execute payments through a globally recognized banking network." } },
+        { id: "why-st-5", text: { ar: "إدارة المدفوعات الدولية بكفاءة وموثوقية.", en: "Manage international payments efficiently and reliably." } },
+      ],
+    },
+    featureCards: {
+      title: { ar: "مميزات حوالات السويفت", en: "SWIFT Transfer Features" },
+      items: [
+        {
+          id: "fc-st-1",
+          title: { ar: "إمكانية إرسال واستقبال التحويلات", en: "Send & Receive Transfers" },
+          description: { ar: "الوصول إلى شبكة مصرفية عالمية تتيح تنفيذ المدفوعات واستقبالها من معظم دول العالم.", en: "Access to a global banking network that allows executing and receiving payments from most countries worldwide." }
+        },
+        {
+          id: "fc-st-2",
+          title: { ar: "أعلى معايير الأمان", en: "Highest Security Standards" },
+          description: { ar: "تنفيذ التحويلات وفق معايير مصرفية معتمدة لضمان حماية بيانات العملاء وسلامة العمليات المالية.", en: "Execute transfers according to approved banking standards to ensure customer data protection and financial operations safety." }
+        },
+        {
+          id: "fc-st-3",
+          title: { ar: "ملائمة للشركات", en: "Business-Oriented" },
+          description: { ar: "صُممت الخدمة لتلبية احتياجات الشركات التجارية والصناعية والمنظمات التي تعتمد على التحويلات الدولية في أعمالها اليومية.", en: "The service is designed to meet the needs of commercial, industrial companies, and organizations that rely on international transfers in their daily business." }
+        },
+        {
+          id: "fc-st-4",
+          title: { ar: "شفافية الرسوم", en: "Transparent Fees" },
+          description: { ar: "أسعار صرف وعمولات واضحة وتنافسية دون رسوم خفية.", en: "Clear and competitive exchange rates and commissions with no hidden fees." }
+        },
+      ],
+    },
+    audience: {
+      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
+      items: [
+        { id: "aud-st-1", text: { ar: "شركات الاستيراد والتصدير.", en: "Import and export companies." } },
+        { id: "aud-st-2", text: { ar: "الشركات التجارية التي تتعامل مع موردين أو عملاء خارج اليمن.", en: "Commercial companies dealing with suppliers or clients outside Yemen." } },
+        { id: "aud-st-3", text: { ar: "المنشآت الصناعية.", en: "Industrial facilities." } },
+        { id: "aud-st-4", text: { ar: "المنظمات المحلية والدولية.", en: "Local and international organizations." } },
+        { id: "aud-st-5", text: { ar: "المؤسسات التي تنفذ مدفوعات أو تستقبل تحويلات دولية بشكل دوري.", en: "Institutions that execute payments or receive international transfers periodically." } },
+      ],
+    },
+    requirementsSection: {
+      title: { ar: "الشروط والمتطلبات", en: "Requirements & Conditions" },
+      note: { ar: "تخضع جميع التحويلات الدولية لمتطلبات الامتثال ومكافحة غسل الأموال وتمويل الإرهاب.", en: "All international transfers are subject to compliance requirements, anti-money laundering, and counter-terrorism financing regulations." },
+      items: [
+        { id: "req-st-1", text: { ar: "حساب جاري باسم الشركة لدى بنك بن دول.", en: "A current account in the company's name with Bin Dowal Bank." } },
+        { id: "req-st-2", text: { ar: "بيانات المستفيد كاملة (الاسم ورقم الحساب أو رقم IBAN عند الحاجة).", en: "Full beneficiary details (name, account number, or IBAN when required)." } },
+        { id: "req-st-3", text: { ar: "بيانات البنك المستفيد، بما في ذلك رمز SWIFT.", en: "Beneficiary bank details, including the SWIFT code." } },
+        { id: "req-st-4", text: { ar: "المستندات المؤيدة لغرض التحويل وفق سياسة البنك.", en: "Supporting documents for the transfer purpose according to bank policy." } },
+        { id: "req-st-5", text: { ar: "استيفاء متطلبات الامتثال ومكافحة غسل الأموال وتمويل الإرهاب.", en: "Meeting compliance, anti-money laundering, and counter-terrorism financing requirements." } },
+      ],
+    },
+    stepsSection: {
+      title: { ar: "خطوات الحصول على الخدمة", en: "Steps to Get the Service" },
+      steps: [
+        {
+          id: "step-st-1",
+          title: { ar: "تجهيز البيانات والمستندات", en: "Prepare Details & Documents" },
+          description: { ar: "جهّز بيانات المستفيد والمستندات المطلوبة.", en: "Prepare beneficiary details and required documents." }
+        },
+        {
+          id: "step-st-2",
+          title: { ar: "تقديم الطلب", en: "Submit Request" },
+          description: { ar: "قدّم طلب التحويل في أقرب فرع.", en: "Submit the transfer request at the nearest branch." }
+        },
+        {
+          id: "step-st-3",
+          title: { ar: "مراجعة الامتثال", en: "Compliance Review" },
+          description: { ar: "يقوم البنك بمراجعة الطلب والتحقق من متطلبات الامتثال.", en: "The bank reviews the request and verifies compliance requirements." }
+        },
+        {
+          id: "step-st-4",
+          title: { ar: "تنفيذ الحوالة", en: "Execute Transfer" },
+          description: { ar: "يتم تنفيذ الحوالة عبر شبكة SWIFT.", en: "The transfer is executed through the SWIFT network." }
+        },
+        {
+          id: "step-st-5",
+          title: { ar: "الإشعار بإتمام العملية", en: "Completion Notification" },
+          description: { ar: "تتلقى إشعاراً بإتمام العملية.", en: "You receive a notification upon transaction completion." }
+        },
+      ],
+    },
+    ctaSection: {
+      title: { ar: "ابدأ اليوم بتنفيذ مدفوعات شركتك الدولية", en: "Start Executing Your Company's International Payments Today" },
+      description: { ar: "ابدأ اليوم بتنفيذ مدفوعات شركتك الدولية عبر بنك بن دول، واستفد من شبكة SWIFT العالمية لتحويل الأموال بأمان وموثوقية. تواصل مع أقرب فرع لمعرفة المتطلبات والبدء في تنفيذ عملياتك الدولية.", en: "Start today executing your company's international payments through Bin Dowal Bank, and benefit from the global SWIFT network to transfer funds securely and reliably. Contact the nearest branch to learn about requirements and begin your international operations." },
+      primaryLabel: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
+      primaryHref: "/contact",
+      secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
+      secondaryHref: "tel:+967000000000",
+    },
+    faqs: {
+      title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
+      items: [
+        {
+          id: "faq-st-1",
+          question: { ar: "ما هي حوالات السويفت؟", en: "What are SWIFT Transfers?" },
+          answer: { ar: "هي نظام مالي يتيح إرسال واستقبال التحويلات المالية عبر شبكة SWIFT العالمية.", en: "It is a financial system that allows sending and receiving financial transfers through the global SWIFT network." }
+        },
+        {
+          id: "faq-st-2",
+          question: { ar: "هل يمكن للشركات استقبال حوالات دولية عبر السويفت؟", en: "Can companies receive international transfers via SWIFT?" },
+          answer: { ar: "نعم، يمكن استقبال التحويلات الدولية إلى حساب الشركة وفق الإجراءات المعتمدة.", en: "Yes, international transfers can be received into the company account according to approved procedures." }
+        },
+        {
+          id: "faq-st-3",
+          question: { ar: "ما البيانات المطلوبة لتنفيذ حوالة سويفت؟", en: "What details are required to execute a SWIFT transfer?" },
+          answer: { ar: "تحتاج إلى بيانات المستفيد، ورقم الحساب أو IBAN (عند الحاجة)، ورمز SWIFT للبنك المستفيد، بالإضافة إلى المستندات المطلوبة.", en: "You need beneficiary details, account number or IBAN (when required), the beneficiary bank's SWIFT code, and required supporting documents." }
+        },
+        {
+          id: "faq-st-4",
+          question: { ar: "هل تخضع حوالات السويفت لإجراءات الامتثال؟", en: "Are SWIFT transfers subject to compliance procedures?" },
+          answer: { ar: "نعم، تخضع جميع التحويلات الدولية لمتطلبات الامتثال والأنظمة المصرفية المعمول بها.", en: "Yes, all international transfers are subject to compliance requirements and applicable banking regulations." }
+        },
+      ],
+    },
+    relatedServicesKeys: ["business-current-account", "bank-guarantees", "letters-of-credit"],
   },
   {
     slug: "investment-deposit",
@@ -1965,12 +2136,12 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "minors-account",
     section: "personal",
     title: {
-      ar: "حساب القصر",
+      ar: "حساب القاصر",
       en: "Minors Account"
     },
     subtitle: {
-      ar: "حساب مخصص لتنظيم أموال الأبناء وتعزيز ثقافة الادخار منذ وقت مبكر",
-      en: "An account designed to organize children’s funds and encourage saving habits from an early stage"
+      ar: "ادّخر لأبنائك اليوم… لمستقبل أمن",
+      en: "Save for your children today… for a secure future"
     },
     heroImage: "/images/customer-services/minors-account.webp",
     breadcrumbs: [
@@ -1998,64 +2169,68 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "افتح حساب قصر لأبنائك في بنك بن دول وابدأ بتأمين مستقبلهم المالي. حساب آمن ومنظم لتعليم أبنائك ثقافة الادخار منذ الصغر.",
-      en: "Open a minors account for your children at Bindowal Bank and start securing their financial future. A safe and organized account.",
+      ar: "افتح حساب القاصر في بنك بن دول وابدأ الادخار لأبنائك بطريقة آمنة ومتوافقة مع أحكام الشريعة الإسلامية.",
+      en: "Open a minors account with Bindowal Bank and start saving for your children in a secure way compliant with Islamic Sharia.",
     },
     overview: {
       title: { ar: "نبذة تعريفية", en: "Overview" },
       description: {
-        ar: "يساعد حساب القصر ولي الأمر على حفظ أموال الأبناء وإدارتها ضمن إطار مصرفي منظم إلى حين اكتمال الأهلية أو حسب سياسة البنك.",
-        en: "The minors account helps guardians hold and manage children's funds within an organized banking framework until eligibility is met or according to bank policy.",
+        ar: "حساب القاصر هو حساب ادخاري مخصص للأطفال والقاصرين مادون السن القانونية والمحدد وفق القانون اليمني بـ 18 عام، يُفتح ويُدار بواسطة ولي الأمر أو الوصي النظامي حتى بلوغ السن القانونية. يوفر الحساب وسيلة آمنة ومنظمة لحفظ أموال الأبناء، مع المساهمة في ترسيخ ثقافة الادخار والتخطيط المالي منذ سن مبكرة.",
+        en: "Saving for children is one of the most important decisions that help secure their future needs. Through a minors account at Bin Dowal Bank, you can keep your children's money in a secure savings account managed by the guardian, helping to develop their saving culture in accordance with Islamic Sharia principles.",
       },
     },
     why: {
-      title: { ar: "لماذا حساب القصر؟", en: "Why a Minors Account?" },
+      title: { ar: "لماذا تختار حساب القاصر؟", en: "Why Choose a Minors Account?" },
       description: {
-        ar: "تعليم الأبناء ثقافة الادخار منذ الصغر يبني عادات مالية سليمة تستمر معهم طوال حياتهم.",
-        en: "Teaching children saving culture from an early age builds healthy financial habits that last throughout their lives.",
+        ar: "لأن التخطيط لمستقبل الأبناء يبدأ بالادخار.",
+        en: "Because planning for children future starts with saving.",
       },
       items: [
-        { id: "why-ma-1", text: { ar: "تأمين مستقبل الأبناء من خلال ادخار منظم.", en: "Secure children's future through organized saving." } },
-        { id: "why-ma-2", text: { ar: "تعليم الأبناء أهمية الادخار والإدارة المالية.", en: "Teach children the importance of saving and financial management." } },
-        { id: "why-ma-3", text: { ar: "حفظ الأموال بأمان تحت إشراف ولي الأمر.", en: "Keep funds safe under guardian supervision." } },
+        { id: "why-ma-1", text: { ar: "ترسيخ الوعي الادخاري وإدارة الاموال لابنائك", en: "Secure children's future through organized saving." } },
+        { id: "why-ma-2", text: { ar: "الحصول على عوائد منتظمة على الرصيد المدخر بشكل نصف سنوي", en: "Earn regular returns on the balance saved on a half-yearly basis" } },
+        { id: "why-ma-3", text: { ar: "الادخار متاح عبر الايداع بمبالغ صغيرة ودون سقف محدد", en: "Easy savings with small deposits and no upper limit" } },
+        { id: "why-ma-4", text: { ar: "تامين مستقبل القاصر/ الطفل عبر الأموال المدخرة", en: "Save for your child's future with secure, accumulated funds" } },
+        { id: "why-ma-5", text: { ar: "إدارة الحساب من خلال ولي الأمر", en: "Manage the account through the guardian." } },
+        { id: "why-ma-6", text: { ar: "متوافق مع أحكام الشريعة الإسلامية", en: "Compliant with Islamic Sharia." } },
       ],
     },
     featureCards: {
       title: { ar: "مميزات حساب القصر", en: "Minors Account Features" },
       items: [
-        { id: "fc-ma-1", title: { ar: "إشراف ولي الأمر", en: "Guardian Oversight" }, description: { ar: "يديره ولي الأمر نيابةً عن القاصر بشكل آمن ومنظم.", en: "Managed by the guardian on behalf of the minor safely and in an organized manner." } },
-        { id: "fc-ma-2", title: { ar: "آمن ومنظم", en: "Safe and Structured" }, description: { ar: "حساب مصرفي خاص بالقصر ضمن إطار قانوني ومصرفي واضح.", en: "A dedicated minor's account within a clear legal and banking framework." } },
-        { id: "fc-ma-3", title: { ar: "بداية مبكرة للادخار", en: "Early Saving Start" }, description: { ar: "يمكّن الأبناء من تعلم ثقافة الادخار منذ سن مبكرة.", en: "Enables children to learn saving culture from an early age." } },
-        { id: "fc-ma-4", title: { ar: "تأمين المستقبل", en: "Future Security" }, description: { ar: "تراكم الأموال لصالح الأبناء لتأمين احتياجاتهم المستقبلية.", en: "Accumulate funds for children's future needs." } },
+        { id: "fc-ma-1", title: { ar: "إدارة آمنة من قبل ولي الأمر", en: "Legal Guardian Supervision" }, description: { ar: "يتم فتح الحساب وإدارته بواسطة ولي الأمر أو الوصي النظامي وفق سياسة البنك.", en: "The account is opened and managed by the guardian or legal custodian in accordance with the bank's policy." } },
+        { id: "fc-ma-2", title: { ar: "تعزيز ثقافة الادخار", en: "Promoting Saving Culture" }, description: { ar: "يساعد الأبناء على اكتساب عادات مالية إيجابية منذ سن مبكرة.", en: "Helps children develop positive financial habits from an early age." } },
+        { id: "fc-ma-3", title: { ar: "حساب مصرفي آمن", en: "Safe Account" }, description: { ar: "حفظ الأموال لتامين مستقبل والاحتياجات المستقبلية", en: "Helps children develop positive financial habits from an early age." } },
+        { id: "fc-ma-4", title: { ar: "تنظيم مدخرات الأبناء", en: "Children Savings Management" }, description: { ar: "من خلال إيداع بمبالغ صغيرة تبداء من 1000 ريال يمني", en: "Save small amounts starting from 1000 Yemeni Riyals" } },
+        { id: "fc-ma-5", title: { ar: "عوائد منتظمة", en: "Regular Returns" }, description: { ar: "الحصول على عوائد من المبالغ المدخرة عند وصول الرصيد 50,000 ريال يمني / 100 ريال سعودي/ 100 دولار امريكي كل ستة اشهر ووفق سياسة البنك.", en: "Earn regular returns on the balance saved when it reaches 50,000 YER/100 SAR/100 USD every six months according to bank policy." } },
       ],
     },
     audience: {
       title: { ar: "العملاء المستهدفون", en: "Target Audience" },
       items: [
-        { id: "aud-ma-1", text: { ar: "الآباء والأمهات الراغبون في ادخار أموال لأبنائهم.", en: "Parents wishing to save money for their children." } },
-        { id: "aud-ma-2", text: { ar: "أولياء الأمور المسؤولون عن الأيتام أو القاصرين.", en: "Guardians responsible for orphans or minors." } },
-        { id: "aud-ma-3", text: { ar: "الأسر الراغبة في تعليم أبنائها قيمة الادخار.", en: "Families wanting to teach their children the value of saving." } },
+        { id: "aud-ma-1", text: { ar: "الآباء والأمهات الراغبون في الادخار لأبنائهم.", en: "Parents wishing to save money for their children." } },
+        { id: "aud-ma-2", text: { ar: "أولياء الأمور والأوصياء النظاميين.", en: "Legal guardians and custodians." } },
       ],
     },
     requirementsSection: {
       title: { ar: "شروط فتح حساب القصر", en: "Minors Account Opening Requirements" },
       items: [
-        { id: "req-ma-1", text: { ar: "هوية ولي الأمر السارية المفعول.", en: "Valid ID of the guardian." } },
-        { id: "req-ma-2", text: { ar: "وثيقة إثبات صلة القرابة أو الولاية (شهادة الميلاد/وثيقة الولاية).", en: "Document proving guardianship or kinship (birth certificate/guardianship document)." } },
-        { id: "req-ma-3", text: { ar: "استكمال نموذج فتح الحساب والتوقيع عليه.", en: "Complete and sign the account opening form." } },
+        { id: "req-ma-1", text: { ar: "هوية سارية لولي الأمر أو الوصي.", en: "Valid ID of the guardian." } },
+        { id: "req-ma-2", text: { ar: "وثيقة تثبت صلة القرابة أو الولاية (مثل شهادة الميلاد أو وثيقة الولاية).", en: "Document proving guardianship or kinship (birth certificate/guardianship document)." } },
+        { id: "req-ma-3", text: { ar: "تعبئة نموذج فتح الحساب والتوقيع عليه.", en: "Complete and sign the account opening form." } },
+        { id: "req-ma-4", text: { ar: "استيفاء متطلبات البنك الخاصة بفتح الحساب.", en: "Meet the bank's specific account opening requirements." } },
       ],
     },
-    stepsSection: {
-      title: { ar: "خطوات فتح حساب القصر", en: "Steps to Open a Minors Account" },
-      steps: [
-        { id: "step-ma-1", title: { ar: "تجهيز وثائق ولي الأمر والقاصر", en: "Prepare Guardian and Minor Documents" }, description: { ar: "أحضر هوية ولي الأمر ووثائق إثبات الولاية والصلة بالقاصر.", en: "Bring the guardian's ID and documents proving guardianship." } },
-        { id: "step-ma-2", title: { ar: "التقديم في الفرع", en: "Apply at the Branch" }, description: { ar: "توجه لأحد فروع البنك واستكمل نموذج فتح الحساب.", en: "Visit a bank branch and complete the account opening form." } },
-        { id: "step-ma-3", title: { ar: "تفعيل الحساب والبدء بالادخار", en: "Activate and Start Saving" }, description: { ar: "بعد المراجعة يتم تفعيل الحساب ويمكنك البدء بالإيداع.", en: "After review, the account is activated and you can start depositing." } },
-      ],
-    },
+    // stepsSection: {
+    //   title: { ar: "خطوات فتح حساب القصر", en: "Steps to Open a Minors Account" },
+    //   steps: [
+    //     { id: "step-ma-1", title: { ar: "تجهيز وثائق ولي الأمر والقاصر", en: "Prepare Guardian and Minor Documents" }, description: { ar: "أحضر هوية ولي الأمر ووثائق إثبات الولاية والصلة بالقاصر.", en: "Bring the guardian's ID and documents proving guardianship." } },
+    //     { id: "step-ma-2", title: { ar: "التقديم في الفرع", en: "Apply at the Branch" }, description: { ar: "توجه لأحد فروع البنك واستكمل نموذج فتح الحساب.", en: "Visit a bank branch and complete the account opening form." } },
+    //     { id: "step-ma-3", title: { ar: "تفعيل الحساب والبدء بالادخار", en: "Activate and Start Saving" }, description: { ar: "بعد المراجعة يتم تفعيل الحساب ويمكنك البدء بالإيداع.", en: "After review, the account is activated and you can start depositing." } },
+    //   ],
+    // },
     ctaSection: {
-      title: { ar: "استثمر في مستقبل أبنائك اليوم", en: "Invest in Your Children's Future Today" },
-      description: { ar: "افتح حساب قصر الآن وابدأ بتأمين مستقبل أبنائك بطريقة منظمة وآمنة تناسب قيم عائلتك.", en: "Open a minors account now and start securing your children's future in a safe and organized way." },
+      title: { ar: "ابدأ الادخار لمستقبل أبنائك", en: "Start Saving for Your Children's Future" },
+      description: { ar: "افتح حساب القاصر في بنك بن دول، وابدأ اليوم ببناء مستقبل", en: "Open a minors account at Bin Dowal Bank and start building a secure future for your child today." },
       primaryLabel: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
@@ -2064,10 +2239,11 @@ export const bankingServicesData: ServicePageData[] = [
     faqs: {
       title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
       items: [
-        { id: "faq-ma-1", question: { ar: "من يستطيع فتح حساب القصر؟", en: "Who can open a minors account?" }, answer: { ar: "يمكن لولي أمر الطفل (الأب أو الأم أو وليّ القاصر القانوني) فتح الحساب نيابةً عنه.", en: "The child's guardian (father, mother, or legal guardian of the minor) can open the account on their behalf." } },
-        { id: "faq-ma-2", question: { ar: "ما هو العمر الأقصى لصاحب الحساب كقاصر؟", en: "What is the maximum age for a minor account holder?" }, answer: { ar: "عادةً يغلق حساب القصر أو يحول إلى حساب عادي عند بلوغ الطفل سن الرشد وفق الشريعة والقانون.", en: "Usually the minors account is closed or converted to a regular account when the child reaches adulthood per law." } },
-        { id: "faq-ma-3", question: { ar: "هل يمكن للطفل الوصول للحساب بنفسه؟", en: "Can the child access the account independently?" }, answer: { ar: "لا، يُدار الحساب بشكل حصري من قِبل ولي الأمر المعين حتى بلوغ سن الرشد.", en: "No, the account is exclusively managed by the appointed guardian until adulthood." } },
-        { id: "faq-ma-4", question: { ar: "هل يمكن الإيداع من أشخاص آخرين كالأجداد؟", en: "Can others like grandparents make deposits?" }, answer: { ar: "نعم، يمكن لأي شخص الإيداع في حساب القصر لصالح الطفل وفق إجراءات البنك.", en: "Yes, anyone can deposit into the minors account for the child's benefit per the bank's procedures." } },
+        { id: "faq-ma-1", question: { ar: "من يمكنه فتح حساب القاصر؟", en: "Who can open a minors account?" }, answer: { ar: "يمكن لولي الأمر أو الوصي النظامي فتح الحساب نيابةً عن القاصر وفق سياسة البنك.", en: "The child's guardian (father, mother, or legal guardian of the minor) can open the account on their behalf." } },
+        { id: "faq-ma-2", question: { ar: "هل يستطيع القاصر إدارة الحساب بنفسه؟", en: "Can the minor manage the account by himself?" }, answer: { ar: "تتم إدارة الحساب بواسطة ولي الأمر أو الوصي حتى بلوغ السن القانونية أو وفق الأنظمة المعتمدة.", en: "The account is managed by the guardian until the minor reaches legal age." } },
+        { id: "faq-ma-3", question: { ar: "ما المستندات المطلوبة لفتح الحساب؟", en: "What documents are required to open the account?" }, answer: { ar: "هوية ولي الأمر، ووثيقة إثبات الولاية أو صلة القرابة، واستكمال نموذج فتح الحساب.", en: "Valid ID for the guardian, a document proving guardianship, and completion of the account opening form." } },
+        { id: "faq-ma-4", question: { ar: "هل يمكن الإيداع في الحساب بشكل مستمر؟", en: "Can deposits be made to the account?" }, answer: { ar: "نعم، يمكن إيداع الأموال في الحساب وفق الإجراءات والسياسات المعتمدة لدى البنك.", en: "Yes, anyone can deposit into the minors account for the child's benefit per the bank's procedures." } },
+        { id: "faq-ma-5", question: { ar: "هل حساب القاصر متوافق مع الشريعة الإسلامية؟", en: "Is the minors account compliant with Islamic Sharia?" }, answer: { ar: "نعم، يتم تقديم الحساب وفق أحكام الشريعة الإسلامية.", en: "Yes, the account is provided in accordance with Islamic Sharia principles." } },
       ],
     },
     details: {
@@ -2873,318 +3049,15 @@ export const bankingServicesData: ServicePageData[] = [
     }
   },
   {
-    slug: "swift-transfers",
-    section: "business",
-    title: {
-      ar: "حوالات السويفت",
-      en: "SWIFT Transfers"
-    },
-    subtitle: {
-      ar: "تحويلات دولية للأعمال تدعم التعامل مع الموردين والشركاء خارج البلد",
-      en: "International business transfers that support dealings with suppliers and partners abroad"
-    },
-    heroImage: "/images/company-header-cover.png",
-    breadcrumbs: [
-      {
-        labelKey: "nav.businessBanking",
-        href: "/business-banking"
-      },
-      {
-        labelKey: "nav.swiftTransfers",
-        label: {
-          ar: "حوالات السويفت",
-          en: "SWIFT Transfers"
-        }
-      }
-    ],
-    tagline: {
-      ar: "بن دول أعمال",
-      en: "Business Banking"
-    },
-    primaryCta: {
-      label: {
-        ar: "اطلب الخدمة الآن",
-        en: "Request This Service"
-      },
-      href: "/contact"
-    },
-    seoDescription: {
-      ar: "نفذ تحويلاتك التجارية الدولية بأمان وسرعة عبر خدمة حوالات السويفت من بنك بن دول. تغطية عالمية واسعة ورسوم تنافسية لدعم أعمالك.",
-      en: "Execute your international commercial transfers safely and quickly through Bindowal Bank's SWIFT transfers service. Wide global coverage and competitive fees to support your business.",
-    },
-    overview: {
-      title: { ar: "نبذة تعريفية", en: "Overview" },
-      description: {
-        ar: "تدعم حوالات السويفت الشركات في إرسال واستقبال المدفوعات الدولية عبر شبكة مصرفية منظمة، مع أهمية دقة بيانات البنك المستفيد والغرض التجاري من التحويل.",
-        en: "SWIFT transfers support companies in sending and receiving international payments through an organized banking network, with accurate beneficiary bank details and commercial purpose being essential.",
-      },
-    },
-    why: {
-      title: { ar: "لماذا حوالات السويفت للأعمال؟", en: "Why SWIFT Transfers for Business?" },
-      description: {
-        ar: "وسيلة موثوقة وآمنة لإنجاز تعاملاتك المالية الدولية مع مورديك وشركائك حول العالم بسرعة وكفاءة.",
-        en: "A reliable and safe method to accomplish your international financial transactions with suppliers and partners worldwide quickly and efficiently.",
-      },
-      items: [
-        { id: "why-st-1", text: { ar: "ضمان وصول المدفوعات للجهات المستفيدة بدقة وأمان عالٍ.", en: "Ensure payments reach beneficiaries accurately and with high security." } },
-        { id: "why-st-2", text: { ar: "توسيع نطاق أعمال الشركة للتعامل مع الأسواق العالمية.", en: "Expand the company's business scope to deal with global markets." } },
-        { id: "why-st-3", text: { ar: "توفر قنوات متعددة لتقديم طلبات التحويل ومتابعتها.", en: "Availability of multiple channels to submit and track transfer requests." } },
-      ],
-    },
-    featureCards: {
-      title: { ar: "مميزات حوالات السويفت", en: "SWIFT Transfer Features" },
-      items: [
-        { id: "fc-st-1", title: { ar: "تغطية عالمية", en: "Global Coverage" }, description: { ar: "إمكانية إرسال المدفوعات لمعظم دول العالم عبر شبكة البنوك المراسلة.", en: "Ability to send payments to most countries worldwide via the correspondent bank network." } },
-        { id: "fc-st-2", title: { ar: "أمان وموثوقية", en: "Security and Reliability" }, description: { ar: "تعتمد على نظام مالي عالمي يضمن حماية بيانات وتحويلات شركتك.", en: "Relies on a global financial system that ensures the protection of your company's data and transfers." } },
-        { id: "fc-st-3", title: { ar: "شفافية الرسوم", en: "Transparent Fees" }, description: { ar: "أسعار صرف وعمولات واضحة وتنافسية دون رسوم خفية.", en: "Clear and competitive exchange rates and commissions with no hidden fees." } },
-        { id: "fc-st-4", title: { ar: "سرعة التنفيذ", en: "Fast Execution" }, description: { ar: "إتمام الحوالات وفق أفضل المعايير الزمنية المتعارف عليها دولياً.", en: "Complete transfers according to the best internationally recognized time standards." } },
-      ],
-    },
-    audience: {
-      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
-      items: [
-        { id: "aud-st-1", text: { ar: "الشركات التجارية والمستوردون.", en: "Commercial companies and importers." } },
-        { id: "aud-st-2", text: { ar: "المنشآت الصناعية والمقاولون.", en: "Industrial facilities and contractors." } },
-        { id: "aud-st-3", text: { ar: "المؤسسات غير الربحية والجمعيات الخيرية.", en: "Non-profit organizations and charities." } },
-      ],
-    },
-    requirementsSection: {
-      title: { ar: "متطلبات إجراء حوالة سويفت", en: "SWIFT Transfer Requirements" },
-      note: { ar: "تخضع جميع التحويلات الدولية لسياسات الامتثال وقوانين مكافحة غسل الأموال المحلية والدولية.", en: "All international transfers are subject to local and international compliance policies and AML laws." },
-      items: [
-        { id: "req-st-1", text: { ar: "وجود حساب جاري نشط للشركة لدى بنك بن دول.", en: "An active corporate current account with Bindowal Bank." } },
-        { id: "req-st-2", text: { ar: "بيانات المستفيد كاملة: الاسم، رقم الحساب أو الآيبان (IBAN).", en: "Full beneficiary details: Name, account number or IBAN." } },
-        { id: "req-st-3", text: { ar: "بيانات البنك المستفيد: اسم البنك، العنوان، كود السويفت (SWIFT Code).", en: "Beneficiary bank details: Bank name, address, and SWIFT Code." } },
-        { id: "req-st-4", text: { ar: "إرفاق المستندات الداعمة (فواتير، عقود) المبررة لغرض التحويل.", en: "Attach supporting documents (invoices, contracts) justifying the transfer purpose." } },
-      ],
-    },
-    stepsSection: {
-      title: { ar: "خطوات تنفيذ حوالة سويفت", en: "Steps to Execute a SWIFT Transfer" },
-      steps: [
-        { id: "step-st-1", title: { ar: "تجهيز بيانات المستفيد والمستندات", en: "Prepare Beneficiary Details and Documents" }, description: { ar: "تأكد من صحة بيانات البنك المستفيد (IBAN و SWIFT) وجهّز الفواتير المطلوبة.", en: "Ensure the accuracy of the beneficiary bank details (IBAN and SWIFT) and prepare required invoices." } },
-        { id: "step-st-2", title: { ar: "تقديم الطلب للبنك", en: "Submit Request to the Bank" }, description: { ar: "قدّم طلب التحويل عبر فرع البنك أو القنوات الرقمية المخصصة للشركات.", en: "Submit the transfer request via a bank branch or dedicated corporate digital channels." } },
-        { id: "step-st-3", title: { ar: "المعالجة وتأكيد التنفيذ", en: "Processing and Confirmation" }, description: { ar: "يقوم البنك بمراجعة الطلب وتنفيذه، وتستلم رسالة تأكيد مع رقم تتبع للحوالة.", en: "The bank reviews and executes the request, and you receive a confirmation with a transfer tracking number." } },
-      ],
-    },
-    ctaSection: {
-      title: { ar: "اربط أعمالك بالعالمية بسلاسة", en: "Connect Your Business Globally Seamlessly" },
-      description: { ar: "اعتمد على بنك بن دول لتنفيذ حوالات السويفت الخاصة بشركتك بكل أمان وموثوقية.", en: "Rely on Bindowal Bank to execute your company's SWIFT transfers securely and reliably." },
-      primaryLabel: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
-      primaryHref: "/contact",
-      secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
-      secondaryHref: "tel:+967000000000",
-    },
-    faqs: {
-      title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
-      items: [
-        { id: "faq-st-1", question: { ar: "كم تستغرق حوالة السويفت للوصول إلى حساب المستفيد؟", en: "How long does a SWIFT transfer take to reach the beneficiary's account?" }, answer: { ar: "في العادة، تستغرق من 1 إلى 3 أيام عمل، وتعتمد على البنك المراسل وبلد المستفيد.", en: "Typically, it takes 1 to 3 business days, depending on the correspondent bank and beneficiary's country." } },
-        { id: "faq-st-2", question: { ar: "هل يمكنني تتبع حوالة السويفت بعد تنفيذها؟", en: "Can I track the SWIFT transfer after execution?" }, answer: { ar: "نعم، يمكنك الحصول على نسخة من رسالة السويفت (MT103) واستخدامها لتتبع الحوالة.", en: "Yes, you can get a copy of the SWIFT message (MT103) and use it to track the transfer." } },
-        { id: "faq-st-3", question: { ar: "ماذا لو كانت بيانات المستفيد المدخلة خاطئة؟", en: "What if the entered beneficiary details are incorrect?" }, answer: { ar: "قد يتم رفض الحوالة أو إرجاعها من البنك المستفيد، وستُطبق رسوم على الإرجاع. لذا يجب التأكد من صحة البيانات.", en: "The transfer may be rejected or returned by the beneficiary bank, and return fees will apply. Therefore, verify details." } },
-        { id: "faq-st-4", question: { ar: "هل هناك قيود على مبالغ التحويلات الدولية؟", en: "Are there restrictions on international transfer amounts?" }, answer: { ar: "المبالغ تعتمد على توفر الرصيد، الغرض التجاري، وسياسات الامتثال الخاصة بالبنك والجهات الرقابية.", en: "Amounts depend on available balance, commercial purpose, and compliance policies of the bank and regulators." } },
-      ],
-    },
-    details: {
-      title: {
-        ar: "ما الذي تقدمه حوالات السويفت؟",
-        en: "What Do SWIFT Transfers Offer?"
-      },
-      subtitle: {
-        ar: "تدعم حوالات السويفت الشركات في إرسال واستقبال المدفوعات الدولية عبر شبكة مصرفية منظمة، مع أهمية دقة بيانات البنك المستفيد والغرض التجاري من التحويل.",
-        en: "SWIFT transfers support companies in sending and receiving international payments through an organized banking network, with accurate beneficiary bank details and commercial purpose being essential."
-      },
-      features: [
-        {
-          id: "feature-1",
-          text: {
-            ar: "إرسال مدفوعات للموردين أو الشركاء خارج البلد حسب الدول والبنوك المتاحة.",
-            en: "Send payments to suppliers or partners abroad depending on available countries and banks."
-          }
-        },
-        {
-          id: "feature-2",
-          text: {
-            ar: "استقبال تحويلات تجارية واردة إلى حساب الشركة.",
-            en: "Receive incoming commercial transfers into the company account."
-          }
-        },
-        {
-          id: "feature-3",
-          text: {
-            ar: "توفير بيانات مرجعية تساعد على تتبع العملية والاستعلام عنها.",
-            en: "Provide reference details that help track and inquire about the transaction."
-          }
-        },
-        {
-          id: "feature-4",
-          text: {
-            ar: "مناسبة للاستيراد، الخدمات الخارجية، والالتزامات التجارية الدولية.",
-            en: "Suitable for imports, external services, and international business obligations."
-          }
-        }
-      ]
-    },
-    benefits: {
-      title: {
-        ar: "دعم التعاملات الدولية للشركات",
-        en: "Support for International Business Transactions"
-      },
-      subtitle: {
-        ar: "تمنح الخدمة المنشأة وسيلة مصرفية رسمية للتعامل مع المدفوعات الخارجية، مما يعزز الموثوقية في علاقاتها مع الموردين والشركاء.",
-        en: "The service gives businesses an official banking method for external payments, strengthening reliability with suppliers and partners."
-      },
-      items: [
-        {
-          id: "benefit-1",
-          text: {
-            ar: "تنفيذ مدفوعات دولية بصورة موثقة من حساب الشركة.",
-            en: "Execute international payments with documented records from the company account."
-          }
-        },
-        {
-          id: "benefit-2",
-          text: {
-            ar: "تسهيل التعامل مع الموردين الذين يشترطون حوالات مصرفية رسمية.",
-            en: "Facilitate dealing with suppliers who require official bank transfers."
-          }
-        },
-        {
-          id: "benefit-3",
-          text: {
-            ar: "تحسين تتبع الالتزامات الخارجية ضمن السجلات المالية للشركة.",
-            en: "Improve tracking of external obligations within company financial records."
-          }
-        },
-        {
-          id: "benefit-4",
-          text: {
-            ar: "توفير قناة مناسبة للمدفوعات ذات الطابع التجاري أو المؤسسي.",
-            en: "Provide a suitable channel for commercial or institutional payments."
-          }
-        }
-      ]
-    },
-    howToGet: {
-      title: {
-        ar: "مستندات الغرض التجاري مهمة",
-        en: "Commercial Purpose Documents Matter"
-      },
-      subtitle: {
-        ar: "قد تتطلب حوالات السويفت بيانات مفصلة عن المستفيد والبنك المستلم وفاتورة أو مستند يوضح سبب التحويل حسب السياسة والأنظمة.",
-        en: "SWIFT transfers may require detailed beneficiary and receiving bank information, and an invoice or document explaining the transfer purpose according to policy and regulations."
-      },
-      requirements: [
-        {
-          id: "req-1",
-          text: {
-            ar: "بيانات المستفيد والبنك المستلم ورمز السويفت أو الآيبان عند الحاجة.",
-            en: "Beneficiary and receiving bank details, SWIFT code or IBAN when required."
-          }
-        },
-        {
-          id: "req-2",
-          text: {
-            ar: "فاتورة أو عقد أو مستند يوضح الغرض التجاري من التحويل عند الطلب.",
-            en: "Invoice, contract, or document explaining commercial purpose when requested."
-          }
-        },
-        {
-          id: "req-3",
-          text: {
-            ar: "تفويض من الشركة لتنفيذ التحويل حسب صلاحيات الحساب.",
-            en: "Company authorization to execute the transfer according to account mandates."
-          }
-        }
-      ],
-      channels: [
-        {
-          id: "ch-1",
-          text: {
-            ar: "فرع البنك أو فريق خدمات الأعمال لتنفيذ الطلب ومراجعة البيانات.",
-            en: "Bank branch or business banking team to process the request and review details."
-          }
-        },
-        {
-          id: "ch-2",
-          text: {
-            ar: "مدير علاقة الأعمال للشركات ذات العمليات المتكررة.",
-            en: "Business relationship manager for companies with recurring transactions."
-          }
-        },
-        {
-          id: "ch-3",
-          text: {
-            ar: "خدمة العملاء لمتابعة حالة الحوالة أو طلب نسخة من إشعار العملية.",
-            en: "Customer service to follow transfer status or request a transaction advice copy."
-          }
-        }
-      ]
-    },
-    subscribe: {
-      title: {
-        ar: "راجع البيانات قبل الإرسال",
-        en: "Review Details Before Sending"
-      },
-      subtitle: {
-        ar: "الدقة في بيانات السويفت تقلل احتمالات التأخير أو الرفض، لذلك يجب مراجعة كل معلومة قبل اعتماد العملية.",
-        en: "Accuracy in SWIFT details reduces the possibility of delay or rejection, so every detail should be reviewed before approval."
-      },
-      steps: [
-        {
-          id: "step-1",
-          title: {
-            ar: "تجهيز بيانات السويفت",
-            en: "Prepare SWIFT Details"
-          },
-          description: {
-            ar: "احصل على بيانات البنك المستلم والمستفيد من الجهة المقابلة.",
-            en: "Obtain receiving bank and beneficiary details from the counterparty."
-          }
-        },
-        {
-          id: "step-2",
-          title: {
-            ar: "تقديم المستندات",
-            en: "Submit Documents"
-          },
-          description: {
-            ar: "أرفق الفاتورة أو المستندات الداعمة عند الحاجة.",
-            en: "Attach the invoice or supporting documents when required."
-          }
-        },
-        {
-          id: "step-3",
-          title: {
-            ar: "اعتماد التحويل والمتابعة",
-            en: "Approve and Track"
-          },
-          description: {
-            ar: "اعتمد العملية واحتفظ بمرجع الحوالة للمتابعة.",
-            en: "Approve the transaction and keep the transfer reference for tracking."
-          }
-        }
-      ]
-    },
-    nextStep: {
-      title: {
-        ar: "أنجز مدفوعاتك الدولية بوضوح",
-        en: "Complete International Payments Clearly"
-      },
-      description: {
-        ar: "تواصل مع البنك للتحقق من الدول المتاحة، الرسوم، المدد المتوقعة، ومتطلبات حوالات السويفت.",
-        en: "Contact the bank to confirm available countries, fees, expected timelines, and SWIFT transfer requirements."
-      }
-    }
-  },
-  {
     slug: "bank-guarantees",
     section: "business",
     title: {
-      ar: "الضمانات البنكية",
-      en: "Bank Guarantees"
+      ar: "خطابات الضمان",
+      en: "Letters of Guarantees"
     },
     subtitle: {
-      ar: "حل مصرفي يدعم التزامات الشركات في المناقصات والعقود والمشاريع",
-      en: "A banking solution that supports corporate obligations in tenders, contracts, and projects"
+      ar: "حلول مصرفية تدعم أعمالك والتزاماتك التعاقدية",
+      en: "Banking solutions supporting your business and contractual obligations"
     },
     heroImage: "/images/company-header-cover.png",
     breadcrumbs: [
@@ -3195,8 +3068,8 @@ export const bankingServicesData: ServicePageData[] = [
       {
         labelKey: "nav.bankGuarantees",
         label: {
-          ar: "الضمانات البنكية",
-          en: "Bank Guarantees"
+          ar: "خطابات الضمان",
+          en: "Letters of Guarantees"
         }
       }
     ],
@@ -3212,67 +3085,99 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "عزز ثقة شركائك وضاعف فرص فوزك بالمناقصات من خلال خدمات الكفالات والضمانات البنكية من بنك بن دول. تغطية مرنة وسرعة في الإصدار لتلبية احتياجاتك التجارية.",
-      en: "Enhance partners' trust and multiply your chances of winning tenders with Bank Guarantees from Bindowal Bank. Flexible coverage and fast issuance to meet your business needs.",
+      ar: "خطابات الضمان من بنك بن دول تمكنك من دخول المناقصات وتنفيذ المشاريع والالتزامات مع الجهات المختلفة. حلول مصرفية متوافقة مع الشريعة الإسلامية تلبي احتياجات الشركات والمؤسسات.",
+      en: "Bank Guarantees from Bindowal Bank enable you to enter tenders, execute projects, and fulfill obligations with various entities. Islamic Sharia-compliant banking solutions meeting the needs of companies and institutions.",
     },
     overview: {
       title: { ar: "نبذة تعريفية", en: "Overview" },
       description: {
-        ar: "تساعد الضمانات البنكية الشركات على تقديم تعهد مصرفي لصالح جهة مستفيدة ضمن مناقصة أو عقد أو التزام محدد، وفق دراسة البنك وشروط الإصدار.",
-        en: "Bank guarantees help companies provide a bank undertaking in favor of a beneficiary for a tender, contract, or specific obligation, subject to bank assessment and issuance conditions.",
+        ar: "تساعد خطابات الضمان الشركات والمؤسسات على الوفاء بالتزاماتها التعاقدية من خلال إصدار خطاب ضمان غير قابل للنقض لصالح جهة مستفيدة، بما يدعم المشاركة في المناقصات وتنفيذ العقود والمشاريع. يقدم بنك بن دول خدمة الضمانات البنكية بمختلف أنواعها وفق أحكام الشريعة الإسلامية وقوانين البنك المركزي اليمني والقوانين الدولية النافذة.",
+        en: "Bank guarantees help companies and institutions fulfill their contractual obligations by issuing an irrevocable letter of guarantee in favor of a beneficiary, supporting participation in tenders and execution of contracts and projects. Bindowal Bank offers various types of bank guarantee services in accordance with Islamic Sharia, the laws of the Central Bank of Yemen, and applicable international laws.",
       },
     },
     why: {
-      title: { ar: "لماذا الكفالات البنكية من بنك بن دول؟", en: "Why Bank Guarantees from Bindowal Bank?" },
+      title: { ar: "لماذا الضمانات البنكية؟", en: "Why Bank Guarantees?" },
       description: {
-        ar: "أداة مالية تدعم استقرار ومصداقية أعمالك التجارية، وتمنحك القوة التنافسية في إبرام العقود.",
-        en: "A financial tool that supports the stability and credibility of your business operations, giving you a competitive edge in securing contracts.",
+        ar: "سواء كانت شركتك تنفذ مشاريع معمارية او خدمية او انشطة توريد مواد وسلع ، وتتطلب الى توفير ضمانات للجهات المستفيدة , فان خطابات الضمان الصادرة من بنك بن دول تمنحك وسيلة موثوقة لتعزيز الثقة مع الجهات المستفيدة، وتساعدك على تنفيذ التزاماتك التعاقدية وفق الأطر المصرفية المعتمدة.",
+        en: "Whether your company is executing architectural, service, or supply projects, bank guarantees issued by Bindowal Bank provide a reliable way to build trust with beneficiaries and help you fulfill your contractual obligations in accordance with approved banking frameworks.",
       },
       items: [
-        { id: "why-bg-1", text: { ar: "تعزيز الثقة بين شركتك والمستفيدين سواء كانوا موردين أو جهات حكومية.", en: "Enhance trust between your company and beneficiaries, whether suppliers or government entities." } },
-        { id: "why-bg-2", text: { ar: "تسهيل الاشتراك في العطاءات والمناقصات الكبيرة دون تجميد سيولة نقدية كبيرة.", en: "Facilitate participation in large bids and tenders without freezing significant cash liquidity." } },
-        { id: "why-bg-3", text: { ar: "دعم المركز المالي للشركة وتقديم بديل آمن للدفع المقدم.", en: "Support the company's financial position and provide a secure alternative to advance payment." } },
+        { id: "why-bg-1", text: { ar: "الدخول في المناقصات والعطاءات والمشاريع.", en: "Entering tenders, bids, and projects." } },
+        { id: "why-bg-2", text: { ar: "توفير ضمانات لسداد الالتزامات والعقود المبرمة مع جميع الأطراف وفق العقود المبرمة.", en: "Providing guarantees for the settlement of obligations and contracts concluded with all parties in accordance with concluded contracts." } },
+        { id: "why-bg-3", text: { ar: "تعزيز الثقة بين شركتك والجهات المتعاقدة.", en: "Enhancing trust between your company and the contracting parties." } },
+        { id: "why-bg-4", text: { ar: "توفير الضمانات .", en: "Providing guarantees." } },
+        { id: "why-bg-5", text: { ar: "الاستفادة من حلول مصرفية تناسب احتياجات أعمالك.", en: "Benefit from banking solutions that meet your business needs." } },
+
+        
       ],
     },
-    featureCards: {
-      title: { ar: "مميزات الكفالات البنكية", en: "Bank Guarantee Features" },
+    serviceTypes: {
+      title: { ar: "أنواع الكفالات البنكية", en: "Types of Bank Guarantees" },
+      description: { ar: "يقدم بنك بن دول مجموعة متنوعة من الضمانات لتلبية احتياجات عملائنا", en: "Bindowal Bank offers a variety of guarantees to meet our customers' needs" },
       items: [
-        { id: "fc-bg-1", title: { ar: "إصدار سريع", en: "Fast Issuance" }, description: { ar: "إجراءات مرنة وسريعة لإصدار الضمان بعد استيفاء المتطلبات.", en: "Flexible and fast procedures for issuing the guarantee once requirements are met." } },
-        { id: "fc-bg-2", title: { ar: "أنواع متعددة", en: "Multiple Types" }, description: { ar: "ضمانات ابتدائية (دخول مناقصة)، نهائية (حسن تنفيذ)، وضمانات دفعة مقدمة.", en: "Bid bonds, performance bonds, and advance payment guarantees." } },
-        { id: "fc-bg-3", title: { ar: "تغطية محلية ودولية", en: "Local & International Coverage" }, description: { ar: "إمكانية إصدار الكفالات لصالح جهات داخل البلاد أو خارجها.", en: "Ability to issue guarantees in favor of entities inside or outside the country." } },
-        { id: "fc-bg-4", title: { ar: "تكلفة منافسة", en: "Competitive Cost" }, description: { ar: "عمولات ورسوم مدروسة تناسب حجم التسهيل المقدم.", en: "Calculated commissions and fees suitable for the provided facility size." } },
+        {
+          id: "type-bg-1",
+          title: { ar: "ضمانات ابتدائية (دخول مناقصة)", en: "Bid Bonds" },
+          description: { ar: "تستخدم لدعم مشاركة الشركات في المناقصات والعطاءات العامة والخاصة.", en: "Used to support companies' participation in public and private tenders and bids." }
+        },
+        {
+          id: "type-bg-2",
+          title: { ar: "ضمانات نهائية (حسن تنفيذ)", en: "Performance Bonds" },
+          description: { ar: "تضمن تنفيذ الأعمال أو الخدمات وفقًا لشروط العقد.", en: "Guarantees the execution of works or services in accordance with contract terms." }
+        },
+        {
+          id: "type-bg-3",
+          title: { ar: "ضمانات دفعة مقدمة", en: "Advance Payment Guarantees" },
+          description: { ar: "تغطي المبالغ المدفوعة مقدمًا للموردين أو المقاولين.", en: "Covers amounts paid in advance to suppliers or contractors." }
+        },
+        {
+          id: "type-bg-4",
+          title: { ar: "ضمانات بنكية عامة", en: "General Bank Guarantees" },
+          description: { ar: "ضمانات متنوعة لتلبية احتياجات العملاء المختلفة.", en: "Various guarantees to meet different customer needs." }
+        }
+      ]
+    },
+    featureCards: {
+      title: { ar: "مميزات الضمانات البنكية", en: "Bank Guarantee Features" },
+      items: [
+        { id: "fc-bg-1", title: { ar: "متوافقة مع الشريعة الإسلامية", en: "Sharia Compliant" }, description: { ar: "تُقدم الخدمة وفق أحكام الشريعة الإسلامية والضوابط المصرفية المعتمدة.", en: "The service is provided in accordance with Islamic Sharia provisions and approved banking regulations." } },
+        { id: "fc-bg-2", title: { ar: "إجراءات واضحة", en: "Clear procedures" }, description: { ar: "يتم إصدار الضمان بعد استكمال المتطلبات ودراسة الطلب وفق سياسة البنك.", en: "The guarantee is issued after completing the requirements and studying the application in accordance with bank policy." } },
+        { id: "fc-bg-3", title: { ar: "دعم الأعمال والمشاريع", en: "Business & Projects Support" }, description: { ar: "تساعد الشركات على تنفيذ التزاماتها التعاقدية وتعزيز موثوقيتها أمام الجهات المستفيدة.", en: "Helps companies fulfill their contractual obligations and enhance their reliability before beneficiaries." } },
       ],
     },
     audience: {
       title: { ar: "العملاء المستهدفون", en: "Target Audience" },
       items: [
         { id: "aud-bg-1", text: { ar: "شركات المقاولات والإنشاءات.", en: "Contracting and construction companies." } },
-        { id: "aud-bg-2", text: { ar: "الشركات التجارية المتقدمة للعطاءات.", en: "Commercial companies applying for bids." } },
-        { id: "aud-bg-3", text: { ar: "وكلاء الاستيراد والتصدير.", en: "Import and export agents." } },
+        { id: "aud-bg-2", text: { ar: "الشركات التجارية.", en: "Commercial companies." } },
+        { id: "aud-bg-3", text: { ar: "الموردين والمستوردين.", en: "Suppliers and Importers." } },
+        { id: "aud-bg-4", text: { ar: "الشركات المشاركة في المناقصات والعطاءات.", en: "Governmental institutions and establishments." } },
       ],
     },
     requirementsSection: {
-      title: { ar: "متطلبات إصدار الضمان البنكي", en: "Bank Guarantee Issuance Requirements" },
+      title: { ar: "الشروط والمتطلبات", en: "Requirements" },
       note: { ar: "يخضع إصدار الضمانات للدراسة الائتمانية للشركة وقد يُطلب تقديم غطاء نقدي جزئي أو كلي.", en: "Guarantee issuance is subject to the company's credit assessment, and partial or full cash margin may be required." },
       items: [
-        { id: "req-bg-1", text: { ar: "طلب رسمي بإصدار الضمان محدد فيه الغرض، المستفيد، والمبلغ.", en: "A formal request to issue the guarantee specifying the purpose, beneficiary, and amount." } },
-        { id: "req-bg-2", text: { ar: "نسخة من دعوة المناقصة أو العقد ذي الصلة.", en: "A copy of the tender invitation or relevant contract." } },
-        { id: "req-bg-3", text: { ar: "حساب مصرفي فعال مع توفر الضمانات أو التسهيلات المعتمدة.", en: "An active bank account with available collaterals or approved facilities." } },
-        { id: "req-bg-4", text: { ar: "ميزانيات مالية مدققة للشركة (في حال طلب تسهيل بدون غطاء كامل).", en: "Audited financial statements of the company (if an uncovered facility is requested)." } },
+        { id: "req-bg-1", text: { ar: "تقديم طلب إصدار الضمان البنكي.", en: "A formal request to issue the guarantee" } },
+        { id: "req-bg-2", text: { ar: "إرفاق المستندات المتعلقة بالعقد أو المناقصة.", en: "Attach documents related to the contract or tender." } },
+        { id: "req-bg-3", text: { ar: "استكمال المتطلبات والضمانات وفق سياسة البنك.", en: "Complete requirements and guarantees according to bank policy." } },
+        { id: "req-bg-4", text: { ar: "دراسة الطلب واستكمال الإجراءات.", en: "Study the request and complete the procedures." } },
+        { id: "req-bg-5", text: { ar: "إصدار الضمان البنكي بعد الموافقة.", en: "Issue the guarantee after approval." } },
+        { id: "req-bg-6", text: { ar: "تخضع جميع الطلبات للدراسة والاعتماد وفق الأنظمة المعمول بها.", en: "All applications are subject to study and approval in accordance with applicable regulations." } },
       ],
     },
-    stepsSection: {
-      title: { ar: "خطوات إصدار الضمان البنكي", en: "Steps to Issue a Bank Guarantee" },
-      steps: [
-        { id: "step-bg-1", title: { ar: "تقديم الطلب والوثائق", en: "Submit Request and Documents" }, description: { ar: "قدم طلب الإصدار مع نسخة من العقد أو المناقصة إلى مدير العلاقة الخاص بك.", en: "Submit the issuance request with a copy of the contract or tender to your relationship manager." } },
-        { id: "step-bg-2", title: { ar: "الدراسة والموافقة", en: "Assessment and Approval" }, description: { ar: "يقوم البنك بدراسة الطلب والملاءة المالية للشركة وتحديد نسبة الغطاء النقدي.", en: "The bank assesses the request and the company's financial solvency, determining the cash margin percentage." } },
-        { id: "step-bg-3", title: { ar: "توقيع العقود واستلام خطاب الضمان", en: "Sign Contracts and Receive Guarantee Letter" }, description: { ar: "بعد الموافقة يتم استكمال المستندات وتصدر وثيقة الضمان لتسليمها للمستفيد.", en: "After approval, documents are completed and the guarantee letter is issued for delivery to the beneficiary." } },
-      ],
-    },
+    // stepsSection: {
+    //   title: { ar: "خطوات إصدار الضمان البنكي", en: "Steps to Issue a Bank Guarantee" },
+    //   steps: [
+    //     { id: "step-bg-1", title: { ar: "تقديم الطلب والوثائق", en: "Submit Request and Documents" }, description: { ar: "قدم طلب الإصدار مع نسخة من العقد أو المناقصة إلى مدير العلاقة الخاص بك.", en: "Submit the issuance request with a copy of the contract or tender to your relationship manager." } },
+    //     { id: "step-bg-2", title: { ar: "الدراسة والموافقة", en: "Assessment and Approval" }, description: { ar: "يقوم البنك بدراسة الطلب والملاءة المالية للشركة وتحديد نسبة الغطاء النقدي.", en: "The bank assesses the request and the company's financial solvency, determining the cash margin percentage." } },
+    //     { id: "step-bg-3", title: { ar: "توقيع العقود واستلام خطاب الضمان", en: "Sign Contracts and Receive Guarantee Letter" }, description: { ar: "بعد الموافقة يتم استكمال المستندات وتصدر وثيقة الضمان لتسليمها للمستفيد.", en: "After approval, documents are completed and the guarantee letter is issued for delivery to the beneficiary." } },
+    //   ],
+    // },
     ctaSection: {
-      title: { ar: "وسّع نطاق مناقصاتك وعقودك بثقة", en: "Expand Your Tenders and Contracts with Confidence" },
-      description: { ar: "تحدث مع مسؤولي خدمة الشركات في بنك بن دول لترتيب إصدار الكفالات التي تلبي طموح أعمالك.", en: "Speak with corporate service officers at Bindowal Bank to arrange the issuance of guarantees that meet your business ambitions." },
-      primaryLabel: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
+      title: { ar: "وسّع نطاق أعمالك بثقة", en: "Expand Your reach with confidence" },
+      description: { ar: "اطلب خطابات الضمان البنكي من بنك بن دول، واستفد من حلول مصرفية تدعم مشاركتك في المناقصات والعقود والمشاريع.", en: "Request bank guarantees from Bindowal Bank, and benefit from financial solutions that support your participation in tenders, contracts, and projects." },
+      primaryLabel: { ar: "ابدأ الآن", en: "Start Now" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
       secondaryHref: "tel:+967000000000",
@@ -3280,10 +3185,10 @@ export const bankingServicesData: ServicePageData[] = [
     faqs: {
       title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
       items: [
-        { id: "faq-bg-1", question: { ar: "ما هو الغطاء النقدي للكفالة؟", en: "What is the cash margin for a guarantee?" }, answer: { ar: "هو نسبة من مبلغ الكفالة يتم تجميدها في حساب الشركة كضمان، وتتراوح حسب الدراسة الائتمانية بين 10% إلى 100%.", en: "It is a percentage of the guarantee amount frozen in the company's account as collateral, ranging from 10% to 100% based on credit assessment." } },
-        { id: "faq-bg-2", question: { ar: "هل يمكن إلغاء خطاب الضمان قبل انتهاء مدته؟", en: "Can a letter of guarantee be cancelled before its expiry?" }, answer: { ar: "نعم، يمكن الإلغاء إذا أعيد أصل خطاب الضمان للبنك أو ورد إعفاء خطي من الجهة المستفيدة.", en: "Yes, it can be cancelled if the original letter of guarantee is returned to the bank or a written release from the beneficiary is received." } },
-        { id: "faq-bg-3", question: { ar: "هل تتوفر كفالات الشحن وتخليص البضائع؟", en: "Are shipping and customs clearance guarantees available?" }, answer: { ar: "نعم، نقدم ضمانات موجهة لإدارات الجمارك والموانئ لتسهيل تخليص البضائع.", en: "Yes, we offer guarantees directed to customs and port authorities to facilitate goods clearance." } },
-        { id: "faq-bg-4", question: { ar: "ما الفرق بين الضمان الابتدائي والنهائي؟", en: "What is the difference between a bid bond and a performance bond?" }, answer: { ar: "الابتدائي يضمن جدية الشركة في دخول المناقصة، بينما النهائي يضمن حسن تنفيذ العقد بعد ترسيته عليها.", en: "A bid bond guarantees the company's seriousness in entering a tender, while a performance bond guarantees proper execution of the awarded contract." } },
+        { id: "faq-bg-1", question: { ar: "ما هي خطابات الضمان البنكية؟", en: "What is the bank guarantee?" }, answer: { ar: "هي تعهد يصدره البنك لصالح جهة مستفيدة، يضمن الوفاء بالتزامات العميل وفق شروط الضمان.", en: "It is a commitment issued by the bank in favor of a beneficiary, guaranteeing the fulfillment of the customer's obligations in accordance with the guarantee terms." } },
+        { id: "faq-bg-2", question: { ar: "ما هي أنواع خطابات الضمان البنكية التي يقدمها البنك؟", en: "what is the type of bank guarantees that the bank provides?" }, answer: { ar: "تشمل الضمانات البنكية أنواعًا مختلفة، مثل ابتدائي, تنفيذ, دفعة مقدمة، صيانة, جمركي, وضمان الدفع.", en: "Bank guarantees include various types, such as bid bonds, performance bonds, advance payment bonds, maintenance bonds, customs bonds, and payment guarantees." } },
+        { id: "faq-bg-3", question: { ar: "هل تخضع خطابات الضمان البنكية لدراسة الطلب؟", en: "Are shipping and customs clearance guarantees available?" }, answer: { ar: "نعم، يتم إصدار الضمان بعد دراسة الطلب واستيفاء الشروط والمتطلبات المعتمدة.", en: "All applications are subject to study and approval in accordance with applicable regulations." } },
+        { id: "faq-bg-4", question: { ar: "هل يشترط وجود حساب لدى بنك بن دول؟", en: "Does Bindowal Bank require an account to issue bank guarantees?" }, answer: { ar: "نعم، يشترط وجود حساب مصرفي فعال لدى البنك للاستفادة من الخدمة.", en: "yes, an active bank account is required with the bank to benefit from the service" } },
       ],
     },
     details: {
@@ -3422,61 +3327,61 @@ export const bankingServicesData: ServicePageData[] = [
         }
       ]
     },
-    subscribe: {
-      title: {
-        ar: "من الطلب إلى الإصدار",
-        en: "From Request to Issuance"
-      },
-      subtitle: {
-        ar: "تمر الخدمة بمراجعة المستندات ودراسة المخاطر والتغطيات، ثم إصدار الضمان عند استيفاء الشروط.",
-        en: "The service goes through document review, risk and coverage assessment, then guarantee issuance once conditions are met."
-      },
-      steps: [
-        {
-          id: "step-1",
-          title: {
-            ar: "تقديم مستندات الالتزام",
-            en: "Submit Obligation Documents"
-          },
-          description: {
-            ar: "قدّم العقد أو المناقصة وبيانات المستفيد ونوع الضمان المطلوب.",
-            en: "Submit the contract or tender, beneficiary details, and required guarantee type."
-          }
-        },
-        {
-          id: "step-2",
-          title: {
-            ar: "دراسة الطلب",
-            en: "Assess Request"
-          },
-          description: {
-            ar: "يقوم البنك بمراجعة المستندات والمركز المالي والتغطيات المطلوبة.",
-            en: "The bank reviews documents, financial position, and required coverage."
-          }
-        },
-        {
-          id: "step-3",
-          title: {
-            ar: "الإصدار والتسليم",
-            en: "Issue and Deliver"
-          },
-          description: {
-            ar: "بعد الموافقة واستيفاء الشروط يتم إصدار الضمان وتسليمه وفق الآلية المعتمدة.",
-            en: "After approval and fulfillment of conditions, the guarantee is issued and delivered according to the approved process."
-          }
-        }
-      ]
-    },
-    nextStep: {
-      title: {
-        ar: "ادعم عقودك بضمان مصرفي",
-        en: "Support Your Contracts with a Bank Guarantee"
-      },
-      description: {
-        ar: "تواصل مع فريق خدمات الأعمال لمعرفة نوع الضمان المناسب والمستندات المطلوبة.",
-        en: "Contact the business banking team to identify the suitable guarantee type and required documents."
-      }
-    }
+    // subscribe: {
+    //   title: {
+    //     ar: "من الطلب إلى الإصدار",
+    //     en: "From Request to Issuance"
+    //   },
+    //   subtitle: {
+    //     ar: "تمر الخدمة بمراجعة المستندات ودراسة المخاطر والتغطيات، ثم إصدار الضمان عند استيفاء الشروط.",
+    //     en: "The service goes through document review, risk and coverage assessment, then guarantee issuance once conditions are met."
+    //   },
+    //   steps: [
+    //     {
+    //       id: "step-1",
+    //       title: {
+    //         ar: "تقديم مستندات الالتزام",
+    //         en: "Submit Obligation Documents"
+    //       },
+    //       description: {
+    //         ar: "قدّم العقد أو المناقصة وبيانات المستفيد ونوع الضمان المطلوب.",
+    //         en: "Submit the contract or tender, beneficiary details, and required guarantee type."
+    //       }
+    //     },
+    //     {
+    //       id: "step-2",
+    //       title: {
+    //         ar: "دراسة الطلب",
+    //         en: "Assess Request"
+    //       },
+    //       description: {
+    //         ar: "يقوم البنك بمراجعة المستندات والمركز المالي والتغطيات المطلوبة.",
+    //         en: "The bank reviews documents, financial position, and required coverage."
+    //       }
+    //     },
+    //     {
+    //       id: "step-3",
+    //       title: {
+    //         ar: "الإصدار والتسليم",
+    //         en: "Issue and Deliver"
+    //       },
+    //       description: {
+    //         ar: "بعد الموافقة واستيفاء الشروط يتم إصدار الضمان وتسليمه وفق الآلية المعتمدة.",
+    //         en: "After approval and fulfillment of conditions, the guarantee is issued and delivered according to the approved process."
+    //       }
+    //     }
+    //   ]
+    // },
+    // nextStep: {
+    //   title: {
+    //     ar: "ادعم عقودك بضمان مصرفي",
+    //     en: "Support Your Contracts with a Bank Guarantee"
+    //   },
+    //   description: {
+    //     ar: "تواصل مع فريق خدمات الأعمال لمعرفة نوع الضمان المناسب والمستندات المطلوبة.",
+    //     en: "Contact the business banking team to identify the suitable guarantee type and required documents."
+    //   }
+    // }
   },
   {
     slug: "vip",
@@ -3788,10 +3693,10 @@ export const bankingServicesData: ServicePageData[] = [
       en: "Noor Account (Ladies)"
     },
     subtitle: {
-      ar: "حساب مصمم لدعم احتياجات المرأة اليومية والادخارية بتجربة مصرفية واضحة",
-      en: "An account designed to support women’s daily and saving needs through a clear banking experience"
+      ar: "تجربة مصرفية صُممت لإدارة أموالك باستقلالية وراحة",
+      en: "A banking experience designed to manage your finances with independence and comfort"
     },
-    heroImage: "/images/personalCover.png",
+    heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
       {
         labelKey: "nav.customServices",
@@ -3817,75 +3722,84 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "برنامج نور المصرفي للسيدات من بنك بن دول. باقة مالية متكاملة مصممة خصيصاً للمرأة لتلبي تطلعاتها المالية اليومية والاستثمارية بخصوصية واهتمام.",
-      en: "Noor Banking Program for Women from Bindowal Bank. A comprehensive financial package specially designed to meet women's daily and investment aspirations with privacy and care.",
+      ar: "اكتشفي حساب نور للسيدات من بنك بن دول، حساب مصرفي مصمم لتلبية احتياجاتك اليومية والادخارية بخصوصية ومرونة وخدمات تناسب أسلوب حياتك.",
+      en: "Explore Noor Account for Women from Bindowal Bank, a tailored banking solution meeting your daily and saving needs with privacy, flexibility, and lifestyle-aligned services.",
     },
     overview: {
       title: { ar: "نبذة تعريفية", en: "Overview" },
       description: {
-        ar: "يركز برنامج نور على توفير تجربة مصرفية عملية ومستقلة للسيدات، تجمع بين إدارة الاستخدام اليومي وتنظيم الادخار والوصول إلى الخدمات المالية براحة تامة.",
-        en: "Noor program focuses on a practical and independent banking experience for women, combining daily money management, saving organization, and comfortable access to financial services.",
+        ar: "حساب نور للسيدات من بنك بن دول يمنحكِ تجربة مصرفية متكاملة تلبي احتياجاتك اليومية وتساعدكِ على إدارة اموالك بسهولة وخصوصية. يوفر لكِ الحساب حلولًا مالية مرنة وخدمات مصرفية مصممة لتناسب مختلف مراحل حياتكِ، سواء كنتِ موظفة، أو سيدة أعمال، أو طالبة، أو ترغبين في إدارة مدخراتكِ بطريقة أكثر تنظيمًا واستقلالية. من خلال حساب نور، يمكنكِ الوصول إلى الخدمات المصرفية والاستفادة من المزايا المصممة خصيصًا لدعم طموحاتكِ وخططكِ المالية.",
+        en: "Bindowal Bank's Noor Account for Women offers a comprehensive banking experience tailored to your daily needs, helping you manage your finances with ease and privacy. The account provides flexible financial solutions and banking services designed to support you at various life stages, whether you are employed, a business owner, a student, or looking to organize your savings more effectively and independently. Through Noor Account, you can access banking services and benefit from features specifically designed to support your ambitions and financial goals.",
       },
     },
     why: {
-      title: { ar: "لماذا برنامج نور المصرفي؟", en: "Why Noor Banking Program?" },
+      title: { ar: "لماذا حساب نور للسيدات؟", en: "Why Noor Account for Women?" },
       description: {
-        ar: "لأننا نؤمن بأهمية استقلاليتك المالية، صممنا برنامجاً يفهم احتياجاتك ويقدم لك الدعم والمزايا التي تستحقينها كمرأة عاملة أو سيدة مجتمع.",
-        en: "Because we believe in the importance of your financial independence, we designed a program that understands your needs and provides the support and benefits you deserve as a working woman or society lady.",
+        ar: "لأننا ندرك أن احتياجاتكِ المالية مختلفة، صممنا لكِ حساب نور ليمنحكِ الخصوصية وخدمات مصرفية أكثر قربًا وخصوصية، تساعدكِ على إدارة أموالكِ بثقة وتحقيق أهدافكِ المالية.",
+        en: "Because we recognize that your financial needs differ, we designed Noor Account to provide you with privacy and banking services that are closer and more personalized, helping you manage your money with confidence and achieve your financial goals.",
       },
       items: [
-        { id: "why-noor-1", text: { ar: "إدارة أموالك بخصوصية تامة واستقلالية مالية كاملة.", en: "Manage your funds with complete privacy and full financial independence." } },
-        { id: "why-noor-2", text: { ar: "الحصول على بطاقات مصرفية ذات تصاميم ومزايا تناسب أسلوب حياتك.", en: "Obtain bank cards with designs and benefits that suit your lifestyle." } },
-        { id: "why-noor-3", text: { ar: "خدمة أسرع وأولوية في فروع مختارة عبر أقسام مخصصة للسيدات.", en: "Faster service and priority at select branches through dedicated women's sections." } },
+        { id: "why-noor-1", text: { ar: "إدارة أموالكِ اليومية بسهولة وخصوصية.", en: "Manage your daily finances easily and privately." } },
+        { id: "why-noor-2", text: { ar: "تنظيم مدخراتكِ ووضع خطط مالية تناسب احتياجاتكِ.", en: "Organize your savings and create financial plans that suit your needs." } },
+        { id: "why-noor-3", text: { ar: "الاستفادة من خدمات ومزايا مصرفية مخصصة للسيدات.", en: "Benefit from banking services and advantages tailored for women." } },
+        { id: "why-noor-4", text: { ar: "الحصول على تجربة مصرفية أكثر راحة عبر قنوات وخدمات مصممة لكِ.", en: "Get a more comfortable banking experience through channels and services designed for you." } },
       ],
     },
     featureCards: {
-      title: { ar: "مميزات برنامج نور", en: "Noor Program Features" },
+      title: { ar: "مميزات حساب نور للسيدات", en: "Noor Account Features" },
       items: [
-        { id: "fc-noor-1", title: { ar: "خصوصية تامة", en: "Complete Privacy" }, description: { ar: "فروع وأقسام مخصصة لخدمة السيدات تديرها موظفات لضمان راحتك.", en: "Dedicated branches and sections for women run by female staff to ensure your comfort." } },
-        { id: "fc-noor-2", title: { ar: "عروض حصرية", en: "Exclusive Offers" }, description: { ar: "خصومات وعروض مميزة لدى شبكة واسعة من المتاجر والعلامات التجارية.", en: "Special discounts and offers at a wide network of stores and brands." } },
-        { id: "fc-noor-3", title: { ar: "مرونة الودائع", en: "Flexible Deposits" }, description: { ar: "خيارات استثمارية وودائع توفير تناسب خططك المالية المستقبلية لعائلتك.", en: "Investment options and savings deposits suited for your future family financial plans." } },
-        { id: "fc-noor-4", title: { ar: "بطاقات مميزة", en: "Premium Cards" }, description: { ar: "بطاقة صراف آلي وبطاقات ائتمان بتصميم خاص ومزايا تسوق فريدة.", en: "Debit and credit cards with special designs and unique shopping benefits." } },
+        { id: "fc-noor-1", title: { ar: "خصوصية وراحة في التعامل", en: "Complete Privacy and Convenience" }, description: { ar: "خدمات مصرفية مخصصة للسيدات، بما يوفر لكِ تجربة أكثر سهولة وخصوصية.", en: "Banking services tailored for women, providing a more convenient and private experience." } },
+        { id: "fc-noor-2", title: { ar: "إدارة الحساب من مكانك", en: "Manage Your Account from Anywhere" }, description: { ar: "من خلال تطبيق بن دول يمكنك إدارة حسابك وارسال واستقبال الأموال والشراء من المتاجر الالكترونية مباشرة عن بٌعد.", en: "Through Bindowal Bank's app, you can manage your account, send and receive money, and shop directly from e-stores remotely." } },
+        { id: "fc-noor-3", title: { ar: "بطاقة مصرفية بتصميم مميز", en: "Debit and Credit Cards with Special Designs" }, description: { ar: "استمتعي ببطاقة صراف آلي مصممة ضمن برنامج نور، مع مزايا تسهّل عمليات الشراء والسحب اليومية.", en: "Enjoy a debit card designed within the Noor program, with features that facilitate daily purchases and withdrawals." } },
+        { id: "fc-noor-4", title: { ar: "خيارات ادخارية مرنة", en: "Flexible Savings Options" }, description: { ar: "إمكانية الاستفادة من حلول الادخار والمنتجات الاستثمارية التي تساعدكِ على التخطيط لمستقبلكِ المالي.", en: "Access to flexible savings solutions and investment products that help you plan for your financial future." } },
+        { id: "fc-noor-5", title: { ar: "تمويل نور للسيدات", en: "Noor Finance for Women" }, description: { ar: "يتيح لك حساب نور الحصول على تمويل نور المخصص للسيدات ورائدات الاعمال بشروط مخصصة ومتوافقة مع احكام الشريعة الإسلامية.", en: "Noor Account enables you to get Noor Finance tailored for women and female entrepreneurs, with terms compliant with Islamic Sharia law." } },
+        { id: "fc-noor-6", title: { ar: "خدمات مصرفية تناسب أسلوب حياتكِ", en: "Banking Services That Suit Your Lifestyle" }, description: { ar: "إدارة حسابكِ والاستفادة من الخدمات المصرفية بسهولة عبر القنوات المتاحة من بنك بن دول.", en: "Manage your account and benefit from banking services easily through the channels available from Bindowal Bank." } },
       ],
     },
     audience: {
       title: { ar: "العملاء المستهدفون", en: "Target Audience" },
       items: [
-        { id: "aud-noor-1", text: { ar: "السيدات العاملات وسيدات الأعمال.", en: "Working women and businesswomen." } },
-        { id: "aud-noor-2", text: { ar: "ربات البيوت الراغبات في إدارة مدخراتهن.", en: "Housewives wishing to manage their savings." } },
-        { id: "aud-noor-3", text: { ar: "الطالبات الجامعيات.", en: "University students." } },
+        { id: "aud-noor-1", text: { ar: "السيدات الراغبات في إدارة أموالهن بسهولة.", en: "Women who want to manage their money with ease." } },
+        { id: "aud-noor-2", text: { ar: "سيدات الأعمال واصحاب المشاريع الصغيرة.", en: "Business women and owners of small projects" } },
+        { id: "aud-noor-3", text: { ar: "ربات البيوت الراغبات في تنظيم مدخراتهن.", en: "Housewives wishing to manage their savings" } },
+        { id: "aud-noor-4", text: { ar: "الطالبات الراغبات في بناء عادات مالية سليمة.", en: "Female students looking to develop sound financial habits." } },
+        { id: "aud-noor-5", text: { ar: "كل سيدة تبحث عن تجربة مصرفية مخصصة تلبي احتياجاتها.", en: "Every woman looking for a personalized banking experience that meets her needs." } },
       ],
     },
     requirementsSection: {
-      title: { ar: "شروط الانضمام لبرنامج نور", en: "Noor Program Joining Requirements" },
+      title: { ar: "الشروط والمتطلبات", en: "Requirements" },
       items: [
         { id: "req-noor-1", text: { ar: "بطاقة الهوية الوطنية أو جواز السفر الساري المفعول.", en: "Valid national ID or passport." } },
-        { id: "req-noor-2", text: { ar: "ألا يقل العمر عن 18 عاماً (ويتوفر برنامج خاص للقاصرات).", en: "Minimum age of 18 years (a special program is available for minors)." } },
-        { id: "req-noor-3", text: { ar: "تعبئة نموذج طلب فتح الحساب المصرفي للسيدات.", en: "Fill out the women's bank account opening form." } },
+        { id: "req-noor-2", text: { ar: "ألا يقل العمر عن 18 عاماً.", en: "Minimum age of 18 years." } },
+        { id: "req-noor-3", text: { ar: "تعبئة نموذج طلب فتح الحساب.", en: "Fill out the account opening form." } },
+        { id: "req-noor-4", text: { ar: "استكمال المستندات المطلوبة وفق إجراءات البنك.", en: "Complete the required documents in accordance with the bank's procedures." } },
+        { id: "req-noor-5", text: { ar: "سيتم فتح الحساب بعد استكمال الإجراءات.", en: "The account will be opened after completing the procedures." } },
       ],
     },
-    stepsSection: {
-      title: { ar: "خطوات فتح حساب نور", en: "Steps to Open a Noor Account" },
-      steps: [
-        { id: "step-noor-1", title: { ar: "تقديم الطلب", en: "Submit Request" }, description: { ar: "زوري أقرب فرع يقدم خدمات السيدات أو اطلبي الخدمة عبر التطبيق.", en: "Visit the nearest branch offering women's services or request it via the app." } },
-        { id: "step-noor-2", title: { ar: "إكمال الإجراءات", en: "Complete Procedures" }, description: { ar: "قدمي الوثائق الثبوتية واختاري المنتجات المصرفية التي تناسبك.", en: "Provide your identification documents and choose the banking products that suit you." } },
-        { id: "step-noor-3", title: { ar: "استلام البطاقة", en: "Receive Card" }, description: { ar: "استلمي بطاقتك الخاصة ببرنامج نور وابدئي بتجربة مصرفية مميزة.", en: "Receive your Noor program card and start a unique banking experience." } },
-      ],
-    },
+    // stepsSection: {
+    //   title: { ar: "خطوات فتح حساب نور", en: "Steps to Open a Noor Account" },
+    //   steps: [
+    //     { id: "step-noor-1", title: { ar: "تقديم الطلب", en: "Submit Request" }, description: { ar: "زوري أقرب فرع يقدم خدمات السيدات أو اطلبي الخدمة عبر التطبيق.", en: "Visit the nearest branch offering women's services or request it via the app." } },
+    //     { id: "step-noor-2", title: { ar: "إكمال الإجراءات", en: "Complete Procedures" }, description: { ar: "قدمي الوثائق الثبوتية واختاري المنتجات المصرفية التي تناسبك.", en: "Provide your identification documents and choose the banking products that suit you." } },
+    //     { id: "step-noor-3", title: { ar: "استلام البطاقة", en: "Receive Card" }, description: { ar: "استلمي بطاقتك الخاصة ببرنامج نور وابدئي بتجربة مصرفية مميزة.", en: "Receive your Noor program card and start a unique banking experience." } },
+    //   ],
+    // },
     ctaSection: {
-      title: { ar: "تمتعي باستقلاليتك المالية", en: "Enjoy Your Financial Independence" },
-      description: { ar: "انضمي لبرنامج نور اليوم واكتشفي باقة من الخدمات المصممة خصيصاً لتناسب أسلوب حياتكِ وطموحاتكِ.", en: "Join the Noor program today and discover a package of services specially designed to fit your lifestyle and aspirations." },
-      primaryLabel: { ar: "اطلبي الخدمة الآن", en: "Request This Service" },
+      title: { ar: "استقلاليتكِ المالية تبدأ بخطوة.", en: "Your financial independence begins with one step." },
+      description: { ar: "افتحي حساب نور للسيدات اليوم، واستمتعي بتجربة مصرفية صُممت لتناسب احتياجاتكِ وطموحاتكِ.", en: "Open a Noor account for women today, and enjoy a banking experience designed to suit your needs and aspirations." },
+      primaryLabel: { ar: "ابدئي الآن", en: "Start Now" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "الاستفسار والمساعدة", en: "Inquiry and Help" },
-      secondaryHref: "tel:+967000000000",
+      secondaryHref: "tel:+9678000644",
     },
     faqs: {
       title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
       items: [
-        { id: "faq-noor-1", question: { ar: "هل تختلف رسوم برنامج نور عن الحسابات العادية؟", en: "Are Noor program fees different from regular accounts?" }, answer: { ar: "يقدم برنامج نور إعفاءات وتخفيضات خاصة على العديد من الرسوم المصرفية الأساسية.", en: "Noor program offers special exemptions and discounts on many basic banking fees." } },
-        { id: "faq-noor-2", question: { ar: "هل يمكنني ربط حساب نور بتمويل شخصي؟", en: "Can I link my Noor account to personal financing?" }, answer: { ar: "نعم، ويتيح لك البرنامج الحصول على عروض تمويلية تفضيلية بشروط ميسرة للسيدات.", en: "Yes, and the program allows you to obtain preferential financing offers with flexible terms for women." } },
-        { id: "faq-noor-3", question: { ar: "أين توجد الفروع والأقسام الخاصة بالسيدات؟", en: "Where are the dedicated branches and women's sections located?" }, answer: { ar: "تتوفر أقسام السيدات في معظم فروعنا الرئيسية. يمكنك التعرف على مواقعها عبر صفحة الفروع.", en: "Women's sections are available in most of our main branches. You can find their locations on the branches page." } },
+        { id: "faq-noor-1", question: { ar: "ما هو حساب نور للسيدات؟", en: "What is Noor account for women?" }, answer: { ar: "هو حساب مصرفي صُمم خصيصًا للسيدات لتلبية احتياجاتهن اليومية والادخارية، مع توفير خدمات ومزايا تناسب أسلوب حياتهن.", en: "Noor is a bank account designed specifically for women to meet their daily and savings needs, offering services and benefits that suit their lifestyle." } },
+        { id: "faq-noor-2", question: { ar: "من يمكنها فتح حساب نور؟", en: "Who can open a Noor account?" }, answer: { ar: "يمكن للسيدات ممن تنطبق عليهن شروط فتح الحساب الاستفادة من برنامج نور.", en: "Women who meet the account opening requirements can benefit from the Noor program." } },
+        { id: "faq-noor-3", question: { ar: "هل يمكن ربط حساب نور بالخدمات التمويلية؟", en: "Can Noor account be linked to financing services?" }, answer: { ar: "نعم، يمكن لحاملة حساب نور الاستفادة من المنتجات التمويلية المتاحة وفق الشروط والأحكام المعتمدة لدى البنك.", en: "Yes, Noor account holders can benefit from financing services according to the bank's terms and conditions." } },
+        { id: "faq-noor-4", question: { ar: "هل يوفر حساب نور خدمات ادخارية؟", en: "Does Noor account offer savings services?" }, answer: { ar: "نعم، يتيح الحساب إمكانية الاستفادة من حلول ومنتجات ادخارية واستثمارية متوفرة لدى بنك بن دول.", en: "Yes, Noor account holders can benefit from financing services according to the bank's terms and conditions." } },
+        { id: "faq-noor-5", question: { ar: "أين يمكنني فتح حساب نور؟", en: "Where can I open a Noor account?" }, answer: { ar: "يمكنكِ زيارة أقرب فرع لبنك بن دول أو استخدام القنوات المصرفية المتاحة لطلب الخدمة.", en: "You can visit the nearest branch of Bin Dowal Bank or use the available banking channels to request the service." } },
       ],
     },
     details: {
@@ -4024,51 +3938,51 @@ export const bankingServicesData: ServicePageData[] = [
         }
       ]
     },
-    subscribe: {
-      title: {
-        ar: "افتح حساب نور بسهولة",
-        en: "Open Noor Account Easily"
-      },
-      subtitle: {
-        ar: "اختر الطريقة المناسبة، جهّز بياناتك، ثم استكمل الطلب ليتم تفعيل الحساب بعد المراجعة.",
-        en: "Choose the suitable method, prepare your details, then complete the application for activation after review."
-      },
-      steps: [
-        {
-          id: "step-1",
-          title: {
-            ar: "تجهيز البيانات",
-            en: "Prepare Details"
-          },
-          description: {
-            ar: "جهزي الهوية ورقم التواصل والمعلومات الأساسية.",
-            en: "Prepare ID, contact number, and basic details."
-          }
-        },
-        {
-          id: "step-2",
-          title: {
-            ar: "تقديم الطلب",
-            en: "Submit Request"
-          },
-          description: {
-            ar: "قدمي الطلب عبر الفرع أو القناة المتاحة.",
-            en: "Submit the request through the branch or available channel."
-          }
-        },
-        {
-          id: "step-3",
-          title: {
-            ar: "التفعيل والاستخدام",
-            en: "Activate and Use"
-          },
-          description: {
-            ar: "بعد المراجعة يتم تفعيل الحساب لاستخدامه في المعاملات اليومية.",
-            en: "After review, the account is activated for daily transactions."
-          }
-        }
-      ]
-    },
+    // subscribe: {
+    //   title: {
+    //     ar: "افتح حساب نور بسهولة",
+    //     en: "Open Noor Account Easily"
+    //   },
+    //   subtitle: {
+    //     ar: "اختر الطريقة المناسبة، جهّز بياناتك، ثم استكمل الطلب ليتم تفعيل الحساب بعد المراجعة.",
+    //     en: "Choose the suitable method, prepare your details, then complete the application for activation after review."
+    //   },
+    //   steps: [
+    //     {
+    //       id: "step-1",
+    //       title: {
+    //         ar: "تجهيز البيانات",
+    //         en: "Prepare Details"
+    //       },
+    //       description: {
+    //         ar: "جهزي الهوية ورقم التواصل والمعلومات الأساسية.",
+    //         en: "Prepare ID, contact number, and basic details."
+    //       }
+    //     },
+    //     {
+    //       id: "step-2",
+    //       title: {
+    //         ar: "تقديم الطلب",
+    //         en: "Submit Request"
+    //       },
+    //       description: {
+    //         ar: "قدمي الطلب عبر الفرع أو القناة المتاحة.",
+    //         en: "Submit the request through the branch or available channel."
+    //       }
+    //     },
+    //     {
+    //       id: "step-3",
+    //       title: {
+    //         ar: "التفعيل والاستخدام",
+    //         en: "Activate and Use"
+    //       },
+    //       description: {
+    //         ar: "بعد المراجعة يتم تفعيل الحساب لاستخدامه في المعاملات اليومية.",
+    //         en: "After review, the account is activated for daily transactions."
+    //       }
+    //     }
+    //   ]
+    // },
     nextStep: {
       title: {
         ar: "تجربة مصرفية مصممة لكِ",
@@ -4390,8 +4304,8 @@ export const bankingServicesData: ServicePageData[] = [
       en: "Expatriate Account"
     },
     subtitle: {
-      ar: "حساب يسهّل على المغتربين إدارة أموالهم وتحويلاتهم واحتياجات أسرهم",
-      en: "An account that helps expatriates manage money, transfers, and family needs"
+      ar: "ابقَ على اتصال بأموالك… أينما كنت",
+      en: "Stay connected to your money… wherever you are"
     },
     heroImage: "/images/personalCover.png",
     breadcrumbs: [
@@ -4419,64 +4333,74 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "برنامج المغترب من بنك بن دول. حلول مصرفية متكاملة لربطك بوطنك وعائلتك، مع خدمات تحويل سريعة، إدارة آمنة لمدخراتك، وفرص استثمارية مجزية.",
-      en: "Expat Program from Bindowal Bank. Comprehensive banking solutions connecting you with your home and family, with fast transfer services, secure savings management, and rewarding investment opportunities.",
+      ar: "افتح حسابك في بنك بن دول وأدر أموالك من خارج اليمن بسهولة. استقبل الحوالات، ادخر، ونفذ معاملاتك المصرفية بأمان وفق أحكام الشريعة الإسلامية.",
+      en: "Open your account at Bindowal Bank and manage your money easily from outside Yemen. Receive remittances, save, and conduct your banking transactions safely in accordance with Islamic Sharia.",
     },
     overview: {
       title: { ar: "نبذة تعريفية", en: "Overview" },
       description: {
-        ar: "يركز برنامج المغترب على تسهيل إدارة الأموال من خارج البلد، وربط العميل باحتياجات أسرته ومدخراته وتحويلاته بصورة أوضح وأكثر كفاءة.",
-        en: "The expat program focuses on helping clients manage funds from abroad, connecting them with family needs, savings, and transfers more clearly and efficiently.",
+        ar: "إذا كنت تعمل أو تقيم خارج اليمن، فإن حساب المغتربين من بنك بن دول يمنحك وسيلة آمنة لإدارة أموالك وتحويلاتك، مع إمكانية متابعة حسابك والاستفادة من الخدمات المصرفية دون الحاجة إلى التواجد داخل اليمن. صُمم الحساب لتلبية احتياجات المغتربين، ومساعدتهم على إدارة مدخراتهم، واستقبال الحوالات، ودعم أسرهم بسهولة، وفق أحكام الشريعة الإسلامية.",
+        en: "If you work or reside outside Yemen, Bindowal Bank's Expatriate Account provides a secure way to manage your funds and transfers, with the ability to monitor your account and access banking services without needing to be present in Yemen. The account is designed to meet the needs of expatriates, helping them manage their savings, receive remittances, and support their families easily, in compliance with Islamic Sharia.",
       },
     },
     why: {
-      title: { ar: "لماذا برنامج المغترب؟", en: "Why the Expat Program?" },
+      title: { ar: "لماذا حساب المغتربين؟", en: "Why the Expat Account?" },
       description: {
-        ar: "لأننا ندرك تحديات الغربة، صممنا برنامجاً يبقيك قريباً من عائلتك ووطنك، ويوفر لك راحة البال في إدارة شؤونك المالية عن بُعد.",
-        en: "Because we understand the challenges of living abroad, we designed a program that keeps you close to your family and home country, providing peace of mind in managing your finances remotely.",
+        ar: "لأن إدارة أموالك من خارج الوطن يجب أن تكون أكثر سهولة ومرونة. حساب المغتربين من بنك بن دول مصمّم ليمنحك الأمان والمرونة التي تحتاجها لإدارة أموالك وتحويلاتك المالية بسهولة، وأنت مطمئن.",
+        en: "Because managing your finances from abroad should be easier and more flexible. Bindowal Bank's Expatriate Account is designed to give you the security and flexibility you need to manage your money and financial transfers easily and with confidence.",
       },
       items: [
-        { id: "why-expat-1", text: { ar: "تحويل الأموال لعائلتك بسرعة وأمان وبتكاليف تنافسية.", en: "Transfer funds to your family quickly, safely, and at competitive costs." } },
-        { id: "why-expat-2", text: { ar: "الاستثمار وإدارة مدخراتك في وطنك لبناء مستقبل مالي آمن.", en: "Invest and manage your savings in your home country to build a secure financial future." } },
-        { id: "why-expat-3", text: { ar: "تنفيذ التزاماتك المالية وسداد الفواتير محلياً بكل سهولة من مكان إقامتك.", en: "Execute your financial obligations and pay local bills easily from your country of residence." } },
+        { id: "why-expat-1", text: { ar: "إدارة أموالك من خارج اليمن بكل سهولة عبر تطبيق بنك بن دول.", en: "Manage your money from outside Yemen easily through Bindowal Bank app." } },
+        { id: "why-expat-2", text: { ar: "تحويل وإيداع اموالك الى الحساب مباشرة من خلال الارسال الأموال وايداعها الى حسابك مباشرة.", en: "Transfer and deposit your funds to the account directly through sending money and depositing it directly to your account." } },
+        { id: "why-expat-3", text: { ar: "فتح الحساب بعملات متعددة.", en: "Open account in multiple currencies." } },
+        { id: "why-expat-4", text: { ar: "إرسال واستقبال الحوالات بسهولة", en: "Send and receive transfers easily" } },
+        { id: "why-expat-5", text: { ar: "الحصول على بطاقة ماستر كارد تتيح لك الاستخدام داخل اليمن وخارجه.", en: "Get a Master Card that allows you to use it inside and outside Yemen." } },
+        { id: "why-expat-6", text: { ar: "إمكانية طلب بطاقة إضافية لاحد افراد اسرتك وتحديد سقف شهري للسحب.", en: "Ability to request an additional card for a family member and set a monthly withdrawal limit." } },
+        { id: "why-expat-7", text: { ar: "متابعة حسابك والاستفادة من الخدمات المصرفية الرقمية.", en: "Monitor your account and benefit from digital banking services." } },
+        { id: "why-expat-8", text: { ar: "ادخار أموالك بطريقة آمنة ومتوافقة مع الشريعة الإسلامية.", en: "Save your money in a secure manner compliant with Islamic Sharia." } },
+
       ],
     },
     featureCards: {
-      title: { ar: "مميزات برنامج المغترب", en: "Expat Program Features" },
+      title: { ar: "مميزات برنامج المغتربين", en: "Expat Program Features" },
       items: [
-        { id: "fc-expat-1", title: { ar: "تحويلات ميسرة", en: "Easy Transfers" }, description: { ar: "قنوات متعددة لإرسال واستقبال الحوالات المالية بسرعة وبأسعار صرف تنافسية.", en: "Multiple channels to send and receive financial transfers quickly at competitive exchange rates." } },
-        { id: "fc-expat-2", title: { ar: "ودائع استثمارية", en: "Investment Deposits" }, description: { ar: "تنمية مدخراتك بعوائد مجزية من خلال خيارات استثمارية متوافقة مع الشريعة.", en: "Grow your savings with rewarding returns through Sharia-compliant investment options." } },
-        { id: "fc-expat-3", title: { ar: "صيرفة رقمية متكاملة", en: "Integrated Digital Banking" }, description: { ar: "إدارة حسابك، تنفيذ التحويلات، ومتابعة العمليات على مدار الساعة عبر تطبيق البنك.", en: "Manage your account, execute transfers, and track transactions 24/7 via the bank's app." } },
-        { id: "fc-expat-4", title: { ar: "بطاقات لعائلتك", en: "Cards for Your Family" }, description: { ar: "إمكانية إصدار بطاقات صراف آلي لأفراد عائلتك في الوطن لتسهيل نفقاتهم اليومية.", en: "Ability to issue debit cards for your family members back home to facilitate daily expenses." } },
+        { id: "fc-expat-1", title: { ar: "إدارة حسابك عن بُعد", en: "Remote Account Management" }, description: { ar: "الوصول إلى حسابك وإدارة معاملاتك من أي مكان عبر القنوات المصرفية المتاحة.", en: "Access your account and manage your transactions from anywhere via available banking channels." } },
+        { id: "fc-expat-2", title: { ar: "استقبال وإرسال الحوالات", en: "Receiving and Sending Transfers" }, description: { ar: "تنفيذ واستقبال التحويلات المالية بسهولة وفق الخدمات المتاحة لدى البنك.", en: "Receive and send transfers easily in accordance with the services available at the bank." } },
+        { id: "fc-expat-3", title: { ar: "خدمات مصرفية رقمية", en: "Digital Banking Services" }, description: { ar: "الاستفادة من تطبيق البنك والخدمات الإلكترونية لمتابعة الحساب وإجراء العمليات.", en: "Benefit from the bank's app and electronic services to monitor your account and perform operations." } },
+        { id: "fc-expat-4", title: { ar: "حساب متعدد العملات", en: "Multi-Currency Account" }, description: { ar: "الاستفادة من إمكانية فتح الحساب والإيداع بعملات متعددة.", en: "Benefit from the ability to open an account and deposit funds in multiple currencies." } },
+        { id: "fc-expat-5", title: { ar: "خدمة متوافقة مع الشريعة الإسلامية", en: "Sharia-Compliant Service" }, description: { ar: "جميع الخدمات المقدمة تتم وفق أحكام الشريعة الإسلامية.", en: "All services provided are in accordance with the provisions of Islamic Sharia." } },
+      
       ],
     },
     audience: {
       title: { ar: "العملاء المستهدفون", en: "Target Audience" },
       items: [
-        { id: "aud-expat-1", text: { ar: "المغتربون العاملون خارج الوطن.", en: "Expatriates working abroad." } },
-        { id: "aud-expat-2", text: { ar: "رجال الأعمال والمستثمرون المقيمون في الخارج.", en: "Businessmen and investors residing abroad." } },
-        { id: "aud-expat-3", text: { ar: "الطلاب الدارسون في الخارج وأسرهم.", en: "Students studying abroad and their families." } },
+        { id: "aud-expat-1", text: { ar: "اليمنيين المقيمين والعاملين خارج اليمن.", en: "Yemeni residents and workers outside Yemen." } },
+        { id: "aud-expat-2", text: { ar: "رجال الأعمال والمستثمرون في الخارج.", en: "Businessmen and investors abroad." } },
+        { id: "aud-expat-3", text: { ar: "الطلاب اليمنيين الدارسون خارج البلاد.", en: "Yemeni students studying abroad." } },
+        { id: "aud-expat-4", text: { ar: "المغتربين الراغبين في إدارة أموالهم ودعم أسرهم داخل اليمن.", en: "Expats wishing to manage their finances and support their families in Yemen." } },
+
       ],
     },
     requirementsSection: {
       title: { ar: "شروط الانضمام لبرنامج المغترب", en: "Expat Program Joining Requirements" },
       items: [
-        { id: "req-expat-1", text: { ar: "وثيقة إثبات الهوية سارية المفعول (جواز السفر أو الهوية الوطنية).", en: "Valid identification document (passport or national ID)." } },
-        { id: "req-expat-2", text: { ar: "تأشيرة أو إقامة سارية تثبت وضع العميل كمغترب في بلد الإقامة.", en: "Valid visa or residency proving the client's expat status in the country of residence." } },
-        { id: "req-expat-3", text: { ar: "تعبئة نموذج فتح حساب المغتربين (يمكن إنجاز بعض الخطوات إلكترونياً حسب التوفر).", en: "Fill out the expat account opening form (some steps can be done online subject to availability)." } },
+        { id: "req-expat-1", text: { ar: "هوية أو جواز سفر سارية.", en: "Valid identification document (passport or national ID)." } },
+        { id: "req-expat-2", text: { ar: "تعبئة نموذج فتح الحساب عبر تطبيق بنك بن دول.", en: "Fill out the account opening form through the Bin Dowal Bank application." } },
+        { id: "req-expat-3", text: { ar: "استيفاء متطلبات البنك لفتح الحساب.", en: "Meet the bank's requirements for opening an account." } },
       ],
     },
-    stepsSection: {
-      title: { ar: "خطوات الانضمام لبرنامج المغترب", en: "Steps to Join the Expat Program" },
-      steps: [
-        { id: "step-expat-1", title: { ar: "التقديم عبر الإنترنت أو الممثلين", en: "Apply Online or via Representatives" }, description: { ar: "استخدم القنوات الرقمية للبنك أو تواصل مع وكلائنا في بلد إقامتك لتقديم الطلب.", en: "Use the bank's digital channels or contact our agents in your country of residence to apply." } },
-        { id: "step-expat-2", title: { ar: "استكمال وتوثيق البيانات", en: "Complete and Verify Details" }, description: { ar: "قدم المستندات الثبوتية المطلوبة لإتمام إجراءات فتح الحساب.", en: "Provide the required identification documents to complete account opening procedures." } },
-        { id: "step-expat-3", title: { ar: "التمتع بالخدمات", en: "Enjoy Services" }, description: { ar: "بمجرد تفعيل الحساب، يمكنك إدارة أموالك وتحويلاتك عن بُعد بكل أمان وراحة.", en: "Once the account is active, manage your funds and transfers remotely with complete security and comfort." } },
-      ],
-    },
+    // stepsSection: {
+    //   title: { ar: "خطوات الانضمام لبرنامج المغترب", en: "Steps to Join the Expat Program" },
+    //   steps: [
+    //     { id: "step-expat-1", title: { ar: "التقديم عبر الإنترنت أو الممثلين", en: "Apply Online or via Representatives" }, description: { ar: "استخدم القنوات الرقمية للبنك أو تواصل مع وكلائنا في بلد إقامتك لتقديم الطلب.", en: "Use the bank's digital channels or contact our agents in your country of residence to apply." } },
+    //     { id: "step-expat-2", title: { ar: "استكمال وتوثيق البيانات", en: "Complete and Verify Details" }, description: { ar: "قدم المستندات الثبوتية المطلوبة لإتمام إجراءات فتح الحساب.", en: "Provide the required identification documents to complete account opening procedures." } },
+    //     { id: "step-expat-3", title: { ar: "التمتع بالخدمات", en: "Enjoy Services" }, description: { ar: "بمجرد تفعيل الحساب، يمكنك إدارة أموالك وتحويلاتك عن بُعد بكل أمان وراحة.", en: "Once the account is active, manage your funds and transfers remotely with complete security and comfort." } },
+    //   ],
+    // },
     ctaSection: {
       title: { ar: "ابقَ قريباً من وطنك وعائلتك", en: "Stay Close to Your Home and Family" },
-      description: { ar: "انضم لبرنامج المغترب من بنك بن دول، ودع مسافة الغربة تتلاشى مع خدمات مالية موثوقة تلبي طموحاتك وتدعم أحباءك.", en: "Join the Expat Program from Bindowal Bank, and let the distance fade with reliable financial services fulfilling your ambitions and supporting your loved ones." },
+      description: { ar: "استفد من خدمات مصرفية تساعدك على إدارة أموالك وتحويلاتك بسهولة، وابقَ على اتصال بأموالك وأسرتك أينما كنت", en: "Benefit from banking services that help you manage your money and transfers easily, and stay connected to your funds and family wherever you are" },
       primaryLabel: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "تواصل معنا", en: "Contact Us" },
@@ -4485,10 +4409,11 @@ export const bankingServicesData: ServicePageData[] = [
     faqs: {
       title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
       items: [
-        { id: "faq-expat-1", question: { ar: "هل يمكنني فتح حساب المغترب دون الحاجة للعودة إلى الوطن؟", en: "Can I open an expat account without needing to return home?" }, answer: { ar: "نعم، يمكنك تقديم طلبك عبر القنوات الرقمية المتاحة واستكمال بعض الإجراءات عبر ممثلي البنك في الخارج وفقاً للقوانين.", en: "Yes, you can apply via available digital channels and complete certain procedures through the bank's representatives abroad in accordance with the law." } },
-        { id: "faq-expat-2", question: { ar: "ما هي العملات المتاحة لحساب المغترب؟", en: "What currencies are available for the expat account?" }, answer: { ar: "يمكنك فتح الحساب بالعملة المحلية أو بالعملات الأجنبية الرئيسية حسب حاجتك.", en: "You can open the account in local currency or major foreign currencies according to your needs." } },
-        { id: "faq-expat-3", question: { ar: "هل يمكنني تفويض أحد أفراد عائلتي لإدارة حسابي جزئياً؟", en: "Can I authorize a family member to partially manage my account?" }, answer: { ar: "نعم، يمكنك إصدار وكالة بنكية معتمدة أو بطاقات إضافية لأحد أفراد أسرتك بصلاحيات محددة.", en: "Yes, you can issue an approved bank mandate or supplementary cards for a family member with specific limits." } },
-        { id: "faq-expat-4", question: { ar: "كيف تتم إجراءات التوقيع على المستندات البنكية للمغتربين؟", en: "How are bank document signatures handled for expats?" }, answer: { ar: "تتم الإجراءات وفق سياسات البنك المعتمدة وقد تتطلب تصديق السفارة أو استخدام التواقيع الإلكترونية المعتمدة محلياً.", en: "Procedures are handled per the bank's approved policies and may require embassy attestation or locally approved electronic signatures." } },
+        { id: "faq-expat-1", question: { ar: "هل يمكن فتح حساب المغتربين من خارج اليمن؟", en: "Can I open an expat account from outside Yemen?" }, answer: { ar: "يمكن الاستفادة من القنوات التي يتيحها البنك لبدء إجراءات فتح الحساب، وفق السياسة المعتمدة.", en: "You can take advantage of the channels provided by the bank to start the account opening procedures, in accordance with the approved policy." } },
+        { id: "faq-expat-2", question: { ar: "هل يمكن إدارة الحساب عن بُعد؟", en: "Can the account be managed remotely?" }, answer: { ar: "نعم، يمكن إدارة الحساب والاستفادة من الخدمات الرقمية المتاحة لدى البنك عبر تطبيق بن دول والبطائق الالكترونية.", en: "Yes, you can manage the account and benefit from the bank's digital services through the Bin Dowal application and electronic cards." } },
+        { id: "faq-expat-3", question: { ar: "هل يمكن استقبال الحوالات الدولية؟", en: "Can I receive international transfers?" }, answer: { ar: "نعم، يمكن استقبال الحوالات وفق الخدمات والقنوات التي يوفرها البنك.", en: "Yes, you can receive transfers according to the services and channels provided by the bank." } },
+        { id: "faq-expat-4", question: { ar: "ما العملات المتاحة لحساب المغتربين؟", en: "What currencies are available for the expat account?" }, answer: { ar: "يمكن فتح الحساب بالعملات التي يتيحها البنك وفق السياسة المعتمدة.", en: "The account can be opened in currencies approved by the bank according to its policy." } },
+        { id: "faq-expat-5", question: { ar: "هل حساب المغتربين متوافق مع الشريعة الإسلامية؟", en: "Is the expat account compliant with Islamic Sharia?" }, answer: { ar: "نعم، يتم تقديم الحساب وفق أحكام الشريعة الإسلامية.", en: "Yes, the expat account is compliant with Islamic Sharia." } },
       ],
     },
     details: {
@@ -4571,117 +4496,117 @@ export const bankingServicesData: ServicePageData[] = [
         }
       ]
     },
-    howToGet: {
-      title: {
-        ar: "توثيق الهوية وبيانات التواصل مهم",
-        en: "Identity and Contact Verification Matter"
-      },
-      subtitle: {
-        ar: "قد يحتاج فتح الحساب إلى وثائق تعريفية محدثة وبيانات تواصل داخلية أو خارجية، مع الالتزام بمتطلبات التحقق المعتمدة.",
-        en: "Opening the account may require updated identification documents and local or international contact details, following approved verification requirements."
-      },
-      requirements: [
-        {
-          id: "req-1",
-          text: {
-            ar: "هوية سارية أو جواز سفر أو وثيقة إقامة عند الحاجة.",
-            en: "Valid ID, passport, or residence document when required."
-          }
-        },
-        {
-          id: "req-2",
-          text: {
-            ar: "بيانات تواصل فعّالة داخل البلد أو خارجه.",
-            en: "Active contact details locally or abroad."
-          }
-        },
-        {
-          id: "req-3",
-          text: {
-            ar: "استكمال نماذج فتح الحساب ومتطلبات التحقق.",
-            en: "Complete account opening forms and verification requirements."
-          }
-        }
-      ],
-      channels: [
-        {
-          id: "ch-1",
-          text: {
-            ar: "زيارة الفرع عند التواجد داخل البلد.",
-            en: "Visit a branch when present in the country."
-          }
-        },
-        {
-          id: "ch-2",
-          text: {
-            ar: "التواصل مع خدمة العملاء لمعرفة آلية التقديم المناسبة للمغترب.",
-            en: "Contact customer service to understand the suitable application process for expatriates."
-          }
-        },
-        {
-          id: "ch-3",
-          text: {
-            ar: "القنوات الرقمية المتاحة للمتابعة بعد فتح الحساب.",
-            en: "Available digital channels for monitoring after account opening."
-          }
-        }
-      ]
-    },
-    subscribe: {
-      title: {
-        ar: "نظّم علاقتك المصرفية من أي مكان",
-        en: "Organize Your Banking Relationship from Anywhere"
-      },
-      subtitle: {
-        ar: "ابدأ بتجهيز الوثائق وبيانات التواصل، ثم راجع طريقة التقديم المتاحة حسب وجودك داخل البلد أو خارجه.",
-        en: "Start by preparing documents and contact details, then review the available application method based on whether you are inside or outside the country."
-      },
-      steps: [
-        {
-          id: "step-1",
-          title: {
-            ar: "تجهيز الوثائق",
-            en: "Prepare Documents"
-          },
-          description: {
-            ar: "جهّز الهوية أو الجواز وبيانات التواصل المحدثة.",
-            en: "Prepare ID or passport and updated contact details."
-          }
-        },
-        {
-          id: "step-2",
-          title: {
-            ar: "اختيار طريقة التقديم",
-            en: "Choose Application Method"
-          },
-          description: {
-            ar: "حدد القناة الأنسب للتقديم حسب موقعك وإتاحة الخدمة.",
-            en: "Choose the most suitable channel based on your location and service availability."
-          }
-        },
-        {
-          id: "step-3",
-          title: {
-            ar: "تفعيل الحساب والمتابعة",
-            en: "Activate and Monitor"
-          },
-          description: {
-            ar: "بعد الموافقة يتم تفعيل الحساب ومتابعته عبر القنوات المتاحة.",
-            en: "After approval, the account is activated and can be monitored through available channels."
-          }
-        }
-      ]
-    },
-    nextStep: {
-      title: {
-        ar: "ابقَ قريبًا من التزاماتك المالية",
-        en: "Stay Connected to Your Financial Obligations"
-      },
-      description: {
-        ar: "تواصل مع البنك لمعرفة تفاصيل حساب المغتربين وطريقة التقديم الأنسب لحالتك.",
-        en: "Contact the bank to learn about Expatriate Account details and the application method that suits your case."
-      }
-    }
+    // howToGet: {
+    //   title: {
+    //     ar: "توثيق الهوية وبيانات التواصل مهم",
+    //     en: "Identity and Contact Verification Matter"
+    //   },
+    //   subtitle: {
+    //     ar: "قد يحتاج فتح الحساب إلى وثائق تعريفية محدثة وبيانات تواصل داخلية أو خارجية، مع الالتزام بمتطلبات التحقق المعتمدة.",
+    //     en: "Opening the account may require updated identification documents and local or international contact details, following approved verification requirements."
+    //   },
+    //   requirements: [
+    //     {
+    //       id: "req-1",
+    //       text: {
+    //         ar: "هوية سارية أو جواز سفر أو وثيقة إقامة عند الحاجة.",
+    //         en: "Valid ID, passport, or residence document when required."
+    //       }
+    //     },
+    //     {
+    //       id: "req-2",
+    //       text: {
+    //         ar: "بيانات تواصل فعّالة داخل البلد أو خارجه.",
+    //         en: "Active contact details locally or abroad."
+    //       }
+    //     },
+    //     {
+    //       id: "req-3",
+    //       text: {
+    //         ar: "استكمال نماذج فتح الحساب ومتطلبات التحقق.",
+    //         en: "Complete account opening forms and verification requirements."
+    //       }
+    //     }
+    //   ],
+    //   channels: [
+    //     {
+    //       id: "ch-1",
+    //       text: {
+    //         ar: "زيارة الفرع عند التواجد داخل البلد.",
+    //         en: "Visit a branch when present in the country."
+    //       }
+    //     },
+    //     {
+    //       id: "ch-2",
+    //       text: {
+    //         ar: "التواصل مع خدمة العملاء لمعرفة آلية التقديم المناسبة للمغترب.",
+    //         en: "Contact customer service to understand the suitable application process for expatriates."
+    //       }
+    //     },
+    //     {
+    //       id: "ch-3",
+    //       text: {
+    //         ar: "القنوات الرقمية المتاحة للمتابعة بعد فتح الحساب.",
+    //         en: "Available digital channels for monitoring after account opening."
+    //       }
+    //     }
+    //   ]
+    // },
+    // subscribe: {
+    //   title: {
+    //     ar: "نظّم علاقتك المصرفية من أي مكان",
+    //     en: "Organize Your Banking Relationship from Anywhere"
+    //   },
+    //   subtitle: {
+    //     ar: "ابدأ بتجهيز الوثائق وبيانات التواصل، ثم راجع طريقة التقديم المتاحة حسب وجودك داخل البلد أو خارجه.",
+    //     en: "Start by preparing documents and contact details, then review the available application method based on whether you are inside or outside the country."
+    //   },
+    //   steps: [
+    //     {
+    //       id: "step-1",
+    //       title: {
+    //         ar: "تجهيز الوثائق",
+    //         en: "Prepare Documents"
+    //       },
+    //       description: {
+    //         ar: "جهّز الهوية أو الجواز وبيانات التواصل المحدثة.",
+    //         en: "Prepare ID or passport and updated contact details."
+    //       }
+    //     },
+    //     {
+    //       id: "step-2",
+    //       title: {
+    //         ar: "اختيار طريقة التقديم",
+    //         en: "Choose Application Method"
+    //       },
+    //       description: {
+    //         ar: "حدد القناة الأنسب للتقديم حسب موقعك وإتاحة الخدمة.",
+    //         en: "Choose the most suitable channel based on your location and service availability."
+    //       }
+    //     },
+    //     {
+    //       id: "step-3",
+    //       title: {
+    //         ar: "تفعيل الحساب والمتابعة",
+    //         en: "Activate and Monitor"
+    //       },
+    //       description: {
+    //         ar: "بعد الموافقة يتم تفعيل الحساب ومتابعته عبر القنوات المتاحة.",
+    //         en: "After approval, the account is activated and can be monitored through available channels."
+    //       }
+    //     }
+    //   ]
+    // },
+    // nextStep: {
+    //   title: {
+    //     ar: "ابقَ قريبًا من التزاماتك المالية",
+    //     en: "Stay Connected to Your Financial Obligations"
+    //   },
+    //   description: {
+    //     ar: "تواصل مع البنك لمعرفة تفاصيل حساب المغتربين وطريقة التقديم الأنسب لحالتك.",
+    //     en: "Contact the bank to learn about Expatriate Account details and the application method that suits your case."
+    //   }
+    // }
   },
   {
     slug: "mobile-banking",
@@ -8207,12 +8132,12 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "financing-thimar",
     section: "personal",
     title: {
-      ar: "تمويل ثمار لدعم المشاريع الصغيرة والمتوسطة | بنك بن دول",
-      en: "Thimar Financing for Small & Medium Enterprises | Bindowal Bank"
+      ar: "تمويل ثمار للمشاريع الصغيرة في اليمن | بنك بن دول للتمويل الأصغر الإسلامي",
+      en: "Thimar Financing for Small Projects in Yemen | Bindowal Islamic Microfinance Bank"
     },
     subtitle: {
-      ar: "التمويلات مش دائماً عبء أحياناً هي الدفعة الذكية اللي يحتاجها مشروعك عشان ينطلق ويزيد إنتاجه",
-      en: "Financing is not always a burden; sometimes it is the smart boost your project needs to launch and increase production"
+      ar: "كل مشروع ناجح يحتاج إلى تمويل يساعده على النمو في الوقت المناسب. إذا كنت تخطط لتوسيع نشاطك التجاري أو تطوير مشروعك القائم، فإن تمويل ثمار من بنك بن دول يوفر لك حلاً تمويليًا متوافقًا مع أحكام الشريعة الإسلامية، يساعدك على تنمية أعمالك بثقة وإجراءات ميسرة.",
+      en: "Every successful project needs financing to help it grow at the right time. If you're planning to expand your business or develop an existing project, Thimar financing from Bin Dowal Bank offers a Sharia-compliant financing solution to help you grow with confidence through simple procedures."
     },
     heroImage: "/images/financing-services/2.webp",
     breadcrumbs: [
@@ -8228,22 +8153,28 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "تمويل ثمار من بنك بن دول يوفر سيولة مالية وخطط سداد مدروسة لدعم المشاريع الصغيرة والمتوسطة في اليمن لزيادة الإنتاج والتوسع الاقتصادي وفق أحكام الشريعة.",
-      en: "Thimar financing from Bin Dowal Bank provides financial liquidity and well-studied repayment plans to support SMEs in Yemen to increase production and expand economically under Sharia guidelines."
+      ar: "احصل على تمويل ثمار من بنك بن دول لتمويل المشاريع الصغيرة والمتوسطة في اليمن، وفق أحكام الشريعة الإسلامية، بإجراءات ميسرة وضمانات معتمدة تساعدك على تطوير مشروعك وتنمية أعمالك.",
+      en: "Get Thimar financing from Bin Dowal Bank to fund small and medium enterprises in Yemen, in accordance with Islamic Sharia principles, with easy procedures and approved guarantees to help you develop and grow your business."
     },
     overview: {
       title: { ar: "ما هو تمويل ثمار؟", en: "What is Thimar Financing?" },
       description: {
-        ar: "هل تبحث عن رأس مال لتكبير مشروعك أو سيولة لشراء مواد خام وزيادة الإنتاج؟ تمويل 'ثمار' من بنك بن دول صممناه خصيصاً ليكون الرافعة الذكية لمشروعك الصغير أو المتوسط. نوفر لك السيولة اللازمة بخطط مالية مدروسة ومتوافقة مع الشريعة الإسلامية لتطوير أعمالك وشراء الأصول والمعدات، وبما يضمن نمو أعمالك وتحقيق أرباح مستدامة دون ضغوط مالية مفاجئة.",
-        en: "Are you looking for capital to expand your project or liquidity to purchase raw materials and increase production? 'Thimar' financing from Bin Dowal Bank was designed specifically to be the smart lever for your small or medium business. We provide you with the necessary liquidity with studied, Sharia-compliant financial plans to develop your business and purchase assets and equipment, ensuring your business grows and achieves sustainable profits."
+        ar: "صُمم تمويل ثمار لدعم أصحاب المشاريع الصغيرة والمتوسطة ورواد الأعمال، من خلال توفير تمويل يساعد على شراء الأصول أو توسيع النشاط أو زيادة رأس المال التشغيلي، بما يتوافق مع أحكام الشريعة الإسلامية وسياسة البنك.",
+        en: "Thimar financing was designed to support small and medium enterprise owners and entrepreneurs by providing financing that helps purchase assets, expand activities, or increase working capital, in accordance with Islamic Sharia principles and bank policy."
       }
     },
+    intro: {
+      ar: "كل مشروع ناجح يحتاج إلى تمويل يساعده على النمو في الوقت المناسب. إذا كنت تخطط لتوسيع نشاطك التجاري أو تطوير مشروعك القائم، فإن تمويل ثمار من بنك بن دول يوفر لك حلاً تمويليًا متوافقًا مع أحكام الشريعة الإسلامية، يساعدك على تنمية أعمالك بثقة وإجراءات ميسرة.",
+      en: "Every successful project needs financing to help it grow at the right time. If you are planning to expand your business or develop your existing project, Thimar financing from Bin Dowal Bank provides you with a Sharia-compliant financing solution that helps you grow your business with confidence and easy procedures."
+    },
     why: {
-      title: { ar: "لماذا تختار تمويل ثمار لمشروعك؟", en: "Why Choose Thimar Financing for Your Project?" },
+      title: { ar: "لماذا تختار تمويل ثمار؟", en: "Why Choose Thimar Financing?" },
       items: [
-        { id: "why-th-1", text: { ar: "دفع عجلة الإنتاج والتوسع الاقتصادي لمشروعك.", en: "Accelerate production and economic expansion for your business." } },
-        { id: "why-th-2", text: { ar: "توفير سيولة مرنة لشراء أصول ومواد خام بفترات سداد مريحة.", en: "Provide flexible liquidity to purchase assets and raw materials with comfortable repayment periods." } },
-        { id: "why-th-3", text: { ar: "شراكة نمو حقيقية مبنية على خطط مالية متوافقة مع الشريعة.", en: "A real growth partnership based on Sharia-compliant financial plans." } }
+        { id: "why-th-1", text: { ar: "تمويل يساعدك على شراء المعدات أو البضائع اللازمة لتوسعة مشروعك.", en: "Financing that helps you purchase equipment or goods needed to expand your project." } },
+        { id: "why-th-2", text: { ar: "يدعم زيادة الطاقة التشغيلية للمشروع.", en: "Supports increasing the operational capacity of your project." } },
+        { id: "why-th-3", text: { ar: "يساهم في تحسين التدفقات النقدية.", en: "Contributes to improving cash flows." } },
+        { id: "why-th-4", text: { ar: "يوفر حلولاً تمويلية تتناسب مع احتياجات أصحاب المشاريع الصغيرة.", en: "Provides financing solutions that suit the needs of small business owners." } },
+        { id: "why-th-5", text: { ar: "متوافق مع أحكام الشريعة الإسلامية بما يمنحك راحة وطمأنينة في التعامل.", en: "Compliant with Islamic Sharia principles, giving you peace of mind in dealings." } }
       ]
     },
     featureCards: {
@@ -8262,55 +8193,66 @@ export const bankingServicesData: ServicePageData[] = [
         {
           id: "fc-th-3",
           title: { ar: "متوافق مع الضوابط الشرعية", en: "Sharia Compliant" },
-          description: { ar: "تطبيق صيغ المضاربة، المرابحة، والمشاركة المتوافقة مع الشريعة الإسلامية.", en: "Application of Sharia-compliant formulas like Mudarabah, Murabaha, and Musharakah." }
+          description: { ar: "تطبيق صيغ تمويلية متوافقة مع أحكام الشريعة الإسلامية.", en: "Application of financing formulas compliant with Islamic Sharia principles." }
         },
         {
           id: "fc-th-4",
-          title: { ar: "علاقة شراكة مستدامة", en: "Sustainable Partnership" },
-          description: { ar: "تقديم استشارات مالية لمساعدتك في استثمار التمويل بأفضل طريقة ممكنة.", en: "Providing financial advice to help you invest financing in the best possible way." }
+          title: { ar: "إجراءات ميسرة", en: "Easy Procedures" },
+          description: { ar: "إجراءات تقديم مبسطة تناسب أصحاب المشاريع الصغيرة وتوفر لهم الوقت والجهد.", en: "Simplified application procedures that suit small business owners and save them time and effort." }
         }
       ]
     },
-    audience: {
-      title: { ar: "الأنشطة والمشاريع المستهدفة", en: "Targeted Activities & Projects" },
+    guaranteesSection: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: {
+        ar: "يمكنك التقدم بطلب تمويل ثمار باستخدام إحدى الضمانات المعتمدة لدى البنك:",
+        en: "You can apply for Thimar financing using one of the bank-approved guarantees:"
+      },
       items: [
-        { id: "aud-th-1", text: { ar: "أصحاب المشاريع الصغيرة والناشئة والمتوسطة في كافة القطاعات الاقتصادية.", en: "Owners of small, startup, and medium projects in all economic sectors." } },
-        { id: "aud-th-2", text: { ar: "الورش الصناعية، معامل الإنتاج، والمحلات التجارية الخدمية والتجارية.", en: "Industrial workshops, production factories, and retail/service shops." } },
-        { id: "aud-th-3", text: { ar: "الأنشطة الزراعية والحيوانية والخدمية المتنوعة.", en: "Various agricultural, livestock, and service activities." } }
+        { id: "guar-th-1", text: { ar: "ضمان الذهب.", en: "Gold guarantee." } },
+        { id: "guar-th-2", text: { ar: "ضمان الوديعة.", en: "Deposit guarantee." } },
+        { id: "guar-th-3", text: { ar: "الضمانات التجارية أو أي ضمانات أخرى يعتمدها البنك بعد دراسة الطلب.", en: "Commercial guarantees or any other guarantees approved by the bank after reviewing the application." } }
       ]
     },
-    requirementsSection: {
-      title: { ar: "المستندات والشروط المطلوبة لتمويل ثمار", en: "Required Documents & Conditions for Thimar" },
+    audience: {
+      title: { ar: "المستهدفون من تمويل ثمار", en: "Who is Thimar Financing For?" },
       items: [
-        { id: "req-th-1", text: { ar: "سجل تجاري وتراخيص مزاولة المهنة سارية المفعول.", en: "Valid commercial registration and professional practice license." } },
-        { id: "req-th-2", text: { ar: "دراسة جدوى مبسطة أو خطة عمل واضحة للمشروع وتوقعات الأرباح.", en: "A simplified feasibility study or a clear business plan showing profit expectations." } },
-        { id: "req-th-3", text: { ar: "كشف حساب بنكي يوضح حركة التدفق المالي لآخر 6 أشهر (إن وجد).", en: "Bank statement showing cash flow activity for the last 6 months (if available)." } }
+        { id: "aud-th-1", text: { ar: "أصحاب المشاريع التجارية.", en: "Commercial business owners." } },
+        { id: "aud-th-2", text: { ar: "أصحاب الورش والمنشآت الإنتاجية.", en: "Owners of workshops and production facilities." } },
+        { id: "aud-th-3", text: { ar: "رواد الأعمال الراغبون في إطلاق أو تطوير مشاريعهم.", en: "Entrepreneurs wishing to launch or develop their projects." } },
+        { id: "aud-th-4", text: { ar: "أصحاب الأنشطة الخدمية.", en: "Service activity owners." } },
+        { id: "aud-th-5", text: { ar: "المؤسسات الصغيرة والمتوسطة الباحثة عن تمويل متوافق مع الشريعة الإسلامية.", en: "Small and medium enterprises seeking Sharia-compliant financing." } }
       ]
     },
     stepsSection: {
-      title: { ar: "خطوات البدء بتمويل ثمار", en: "Steps to Begin with Thimar Financing" },
+      title: { ar: "كيفية الحصول على تمويل ثمار؟", en: "How to Get Thimar Financing?" },
       steps: [
         {
           id: "step-th-1",
-          title: { ar: "تقديم فكرة المشروع والخطة", en: "Submit Project Idea" },
-          description: { ar: "قدّم فكرة مشروعك والجدوى الاقتصادية لمسؤول التمويل بالفرع.", en: "Submit your project idea and feasibility study to the financing officer." }
+          title: { ar: "زيارة أقرب فرع", en: "Visit the Nearest Branch" },
+          description: { ar: "زر أقرب فرع لبنك بن دول للاستفسار والحصول على المعلومات اللازمة.", en: "Visit the nearest Bin Dowal Bank branch to inquire and get the necessary information." }
         },
         {
           id: "step-th-2",
-          title: { ar: "الدراسة والتقييم الائتماني", en: "Study & Valuation" },
-          description: { ar: "يقوم البنك بدراسة الطلب وتقييم الفرص والمخاطر المترتبة على المشروع.", en: "The bank reviews the request, assessing opportunities and risks associated with the project." }
+          title: { ar: "تقديم الطلب واستكمال المستندات", en: "Submit Application & Complete Documents" },
+          description: { ar: "قدّم طلب التمويل واستكمل المستندات المطلوبة وفق متطلبات البنك.", en: "Submit the financing application and complete the required documents as per bank requirements." }
         },
         {
           id: "step-th-3",
-          title: { ar: "اعتماد التمويل والصرف", en: "Approval & Disbursement" },
-          description: { ar: "بعد الموافقة، يتم إيداع مبلغ التمويل أو صرف الدفعات لبدء التشغيل والإنتاج.", en: "Upon approval, the financing amount is deposited or installments are paid to start operation and production." }
+          title: { ar: "دراسة الطلب", en: "Application Review" },
+          description: { ar: "يقوم البنك بدراسة الطلب وفق سياساته المعتمدة.", en: "The bank reviews the application according to its approved policies." }
+        },
+        {
+          id: "step-th-4",
+          title: { ar: "الموافقة وصرف التمويل", en: "Approval & Disbursement" },
+          description: { ar: "عند الموافقة، يتم استكمال إجراءات التمويل وصرفه. ولمعرفة تفاصيل التمويل وشروطه، يسعدنا استقبالكم في أقرب فرع.", en: "Upon approval, the financing procedures are completed and funds are disbursed. For financing details and conditions, we welcome you at the nearest branch." }
         }
       ]
     },
     ctaSection: {
-      title: { ar: "فكر صح… واستثمر في تكبير مشروعك", en: "Think right... and invest in growing your project" },
-      description: { ar: "تمويل ثمار هو شريكك الأمثل للانتقال بمشروعك لمستوى جديد من الإنتاجية والنجاح.", en: "Thimar financing is your ideal partner to take your project to a new level of productivity and success." },
-      primaryLabel: { ar: "قدم طلب تمويل مشروعك الآن", en: "Apply for Project Financing Now" },
+      title: { ar: "ابدأ اليوم في تطوير مشروعك", en: "Start Developing Your Project Today" },
+      description: { ar: "ابدأ اليوم في تطوير مشروعك مع تمويل ثمار من بنك بن دول. زر أقرب فرع، وتعرف على قيمة التمويل المناسبة وابدأ إجراءات التقديم مع فريقنا المختص.", en: "Start developing your project today with Thimar financing from Bin Dowal Bank. Visit the nearest branch, learn about the appropriate financing amount, and begin application procedures with our specialized team." },
+      primaryLabel: { ar: "قدم طلبك اليوم", en: "Apply Today" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
       secondaryHref: "tel:+967000000000"
@@ -8320,8 +8262,23 @@ export const bankingServicesData: ServicePageData[] = [
       items: [
         {
           id: "faq-th-1",
-          question: { ar: "هل يشترط وجود سجل تجاري للتقديم؟", en: "Is a commercial registration required to apply?" },
-          answer: { ar: "للمشاريع القائمة نعم يفضل وجود تراخيص وسجل ساري، أما للمشاريع الناشئة والمهن الحرة الصغيرة جداً فيمكن تقديم كفالات وضمانات بديلة يقبلها البنك.", en: "For established projects, yes, active licenses and records are preferred. For startups and very small home businesses, alternative guarantees and sureties accepted by the bank can be submitted." }
+          question: { ar: "ما هو تمويل ثمار؟", en: "What is Thimar Financing?" },
+          answer: { ar: "هو تمويل يقدمه بنك بن دول لدعم المشاريع الصغيرة وتعزيز التمكين الاقتصادي، وفق أحكام الشريعة الإسلامية.", en: "It is financing provided by Bin Dowal Bank to support small projects and enhance economic empowerment, in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-th-2",
+          question: { ar: "هل تمويل ثمار متوافق مع الشريعة الإسلامية؟", en: "Is Thimar Financing Sharia-compliant?" },
+          answer: { ar: "نعم، يتم تقديم التمويل وفق أحكام الشريعة الإسلامية.", en: "Yes, the financing is provided in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-th-3",
+          question: { ar: "ما الضمانات المقبولة للحصول على التمويل؟", en: "What guarantees are accepted to obtain financing?" },
+          answer: { ar: "يمكن التقديم باستخدام ضمان الذهب، أو ضمان الوديعة، أو الضمان التجاري، وفق سياسة البنك.", en: "You can apply using a gold guarantee, deposit guarantee, or commercial guarantee, according to bank policy." }
+        },
+        {
+          id: "faq-th-4",
+          question: { ar: "كيف يمكنني التقديم على تمويل ثمار؟", en: "How can I apply for Thimar Financing?" },
+          answer: { ar: "يمكنك زيارة أقرب فرع لبنك بن دول للحصول على التفاصيل وتقديم طلب التمويل.", en: "You can visit the nearest Bin Dowal Bank branch to get details and submit the financing application." }
         }
       ]
     },
@@ -8331,12 +8288,12 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "financing-taameer",
     section: "personal",
     title: {
-      ar: "تمويل تعمير للبناء ومواد البناء | بنك بن دول",
-      en: "Ta'meer Financing for Building & Materials | Bindowal Bank"
+      ar: "تمويل تعمير",
+      en: "Ta'meer Financing"
     },
     subtitle: {
-      ar: "حوّل حلمك ببناء بيت جديد أو مشروع سكني إلى واقع بخطط تمويل مرنة تشمل كافة مواد البناء الأساسية",
-      en: "Turn your dream of building a new home or residential project into reality with flexible financing plans covering all core construction materials"
+      ar: "تمويل بناء المنازل والمشاريع الإنشائية في اليمن",
+      en: "Financing Home Construction and Building Projects in Yemen"
     },
     heroImage: "/images/financing-services/6.webp",
     breadcrumbs: [
@@ -8352,22 +8309,28 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "تمويل تعمير للبناء والتشييد من بنك بن دول يوفر الخشب، الحديد، وكافة مواد البناء لتمويل خطوات بناء منزلك أو مشروعك السكني بخطط سداد مرنة متوافقة مع الشريعة.",
-      en: "Ta'meer construction financing from Bin Dowal Bank provides wood, steel, and all building materials to finance your home or residential project with flexible, Sharia-compliant repayment plans."
+      ar: "احصل على تمويل تعمير من بنك بن دول لتمويل بناء منزلك أو مشروعك الإنشائي، وفق أحكام الشريعة الإسلامية وبضمانات معتمدة وإجراءات ميسرة.",
+      en: "Get Ta'meer financing from Bin Dowal Bank to finance building your home or construction project, in accordance with Islamic Sharia principles with approved guarantees and easy procedures."
+    },
+    intro: {
+      ar: "إذا كنت تخطط لبناء منزل أو تنفيذ مشروع إنشائي، فإن الحصول على التمويل المناسب يساعدك على البدء بثقة وتحقيق أهدافك. مع تمويل تعمير من بنك بن دول، نوفر لك حلول تمويلية متوافقة مع أحكام الشريعة الإسلامية، تساعدك على تمويل أعمال البناء والمشاريع الإعمار وفق سياسة البنك.",
+      en: "If you are planning to build a home or implement a construction project, getting the right financing helps you start with confidence and achieve your goals. With Ta'meer financing from Bin Dowal Bank, we provide you with Sharia-compliant financing solutions that help you finance construction works and building projects according to bank policy."
     },
     overview: {
       title: { ar: "ما هو تمويل تعمير؟", en: "What is Ta'meer Financing?" },
       description: {
-        ar: "بناء منزل العمر أو تطوير مشروع سكني يتطلب الكثير من التجهيزات والسيولة لشراء مواد البناء الأساسية. منتج 'تعمير' من بنك بن دول صممناه ليكون شريكك الأمثل لتحقيق هذا الحلم. يمنحك هذا المنتج تمويلاً مرناً وميسراً يغطي شراء كافة مواد البناء الإنشائية والتشطيبية مثل الحديد، الإسمنت، الخشب، الطوب، والدهانات، مما يسهل عليك كافة خطوات البناء والتشييد وتوزيع التكلفة على أقساط تتناسب مع قدرتك المالية ومتوافقة تماماً مع أحكام الشريعة الإسلامية.",
-        en: "Building your dream home or developing a residential project requires significant preparation and liquidity to purchase essential construction materials. The 'Ta'meer' product from Bin Dowal Bank was designed to be your perfect partner in realizing this dream. This product provides flexible and easy financing covering all structural and finishing construction materials, such as steel, cement, wood, bricks, and paints, easing your building steps and spreading costs over installments matching your financial capacity and fully compliant with Islamic Sharia."
+        ar: "تمويل تعمير هو أحد حلول تمويل البناء في اليمن التي يقدمها بنك بن دول، والمخصص لتمويل بناء المنازل والمشاريع الإعمار. صُمم هذا التمويل لدعم الأفراد الراغبين في تنفيذ مشاريع البناء، من خلال حلول تمويلية تتوافق مع أحكام الشريعة الإسلامية، وتلبي احتياجاتهم وفق سياسة البنك.",
+        en: "Ta'meer financing is one of the construction financing solutions in Yemen offered by Bin Dowal Bank, dedicated to financing home construction and building projects. This financing is designed to support individuals wishing to implement construction projects through Sharia-compliant financing solutions that meet their needs according to bank policy."
       }
     },
     why: {
       title: { ar: "لماذا تختار تمويل تعمير؟", en: "Why Choose Ta'meer Financing?" },
       items: [
-        { id: "why-tm-1", text: { ar: "شريكك الأمثل لتحقيق حلم الاستقرار السكني المريح.", en: "Your ideal partner to achieve comfortable housing stability." } },
-        { id: "why-tm-2", text: { ar: "تمويل متكامل يغطي المواد الأساسية والتشطيبات اللازمة.", en: "Integrated financing covering core materials and required finishings." } },
-        { id: "why-tm-3", text: { ar: "أسعار وشروط سداد مرنة تتلاءم تماماً مع دخلك الشهري.", en: "Flexible prices and repayment terms tailored to your monthly income." } }
+        { id: "why-tm-1", text: { ar: "تمويل متوافق مع أحكام الشريعة الإسلامية.", en: "Financing compliant with Islamic Sharia principles." } },
+        { id: "why-tm-2", text: { ar: "مخصص لبناء المنازل.", en: "Dedicated to home construction." } },
+        { id: "why-tm-3", text: { ar: "إجراءات تمويل ميسرة.", en: "Easy financing procedures." } },
+        { id: "why-tm-4", text: { ar: "حلول تمويلية تناسب احتياجات العملاء.", en: "Financing solutions that suit customers' needs." } },
+        { id: "why-tm-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
       ]
     },
     featureCards: {
@@ -8375,66 +8338,76 @@ export const bankingServicesData: ServicePageData[] = [
       items: [
         {
           id: "fc-tm-1",
-          title: { ar: "تغطية كافة مواد البناء", en: "All Building Materials" },
-          description: { ar: "يشمل التمويل شراء الحديد، الخشب، الإسمنت، والأدوات الصحية والكهربائية المتنوعة.", en: "Financing includes steel, wood, cement, and various sanitary & electrical tools." }
+          title: { ar: "متوافق مع الشريعة الإسلامية", en: "Sharia-Compliant" },
+          description: { ar: "يُقدَّم التمويل وفق أحكام الشريعة الإسلامية لضمان راحة العميل وطمأنينته.", en: "Financing is provided in accordance with Islamic Sharia principles to ensure customer comfort and peace of mind." }
         },
         {
           id: "fc-tm-2",
-          title: { ar: "تمويل متوافق مع الشريعة", en: "Sharia-Compliant" },
-          description: { ar: "يتم شراء المواد بالكامل وإعادة بيعها بالمرابحة الإسلامية المعتمدة.", en: "Materials are purchased and sold back via the approved Islamic Murabaha." }
+          title: { ar: "مخصص للبناء والإعمار", en: "Dedicated to Construction" },
+          description: { ar: "مخصص لتمويل بناء المنازل والمشاريع الإنشائية لمساعدتك على تحقيق أهدافك البنائية.", en: "Dedicated to financing home construction and building projects to help you achieve your construction goals." }
         },
         {
           id: "fc-tm-3",
-          title: { ar: "سداد ميسر طويل الأجل", en: "Long-Term Repayment" },
-          description: { ar: "فترات سداد ممتدة ومريحة لتسهيل عملية البناء دون ضغوط مالية.", en: "Extended and comfortable repayment periods to facilitate building without pressure." }
+          title: { ar: "إجراءات ميسرة", en: "Easy Procedures" },
+          description: { ar: "إجراءات تقديم مبسطة توفر الوقت والجهد وتسهّل الحصول على التمويل.", en: "Simplified application procedures that save time and effort and make it easy to obtain financing." }
         },
         {
           id: "fc-tm-4",
-          title: { ar: "تقييم واستشارات هندسية", en: "Engineering Advice" },
-          description: { ar: "مساعدتك في تقييم الكميات والتأكد من مطابقة المواد للمواصفات الفنية المطلوبة.", en: "Helping you evaluate quantities and verify materials match the required specs." }
+          title: { ar: "ضمانات مرنة", en: "Flexible Guarantees" },
+          description: { ar: "ضمانات متعددة ومعتمدة تناسب مختلف الفئات وطبيعة المشاريع الإنشائية.", en: "Multiple approved guarantees suitable for different categories and the nature of construction projects." }
         }
       ]
     },
-    audience: {
-      title: { ar: "الفئات المستهدفة لتمويل تعمير", en: "Target Audience for Ta'meer Financing" },
+    guaranteesSection: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: {
+        ar: "يمكنك التقدم بطلب تمويل تعمير باستخدام إحدى الضمانات المعتمدة لدى البنك:",
+        en: "You can apply for Ta'meer financing using one of the bank-approved guarantees:"
+      },
       items: [
-        { id: "aud-tm-1", text: { ar: "المواطنون الراغبون في بناء منازلهم الخاصة أو ترميمها وتوسعتها.", en: "Citizens wishing to build, renovate, or expand their private homes." } },
-        { id: "aud-tm-2", text: { ar: "المقاولون وأصحاب المشاريع الإنشائية السكنية.", en: "Contractors and owners of residential construction projects." } },
-        { id: "aud-tm-3", text: { ar: "الموظفون الحاصلون على أراضي سكنية ويريدون البدء بالتعمير.", en: "Employees possessing residential lands wishing to start construction." } }
+        { id: "guar-tm-1", text: { ar: "ضمان الذهب.", en: "Gold guarantee." } },
+        { id: "guar-tm-2", text: { ar: "ضمان الوديعة.", en: "Deposit guarantee." } },
+        { id: "guar-tm-3", text: { ar: "ضمانات أخرى (بحسب سياسات وشروط البنك).", en: "Other guarantees (according to bank policies and conditions)." } }
       ]
     },
-    requirementsSection: {
-      title: { ar: "المستندات المطلوبة للتقديم", en: "Required Documents for Application" },
+    audience: {
+      title: { ar: "من يمكنه الاستفادة من تمويل تعمير؟", en: "Who Can Benefit from Ta'meer Financing?" },
       items: [
-        { id: "req-tm-1", text: { ar: "وثيقة ملكية الأرض (صك الملكية) وتراخيص البناء سارية المفعول.", en: "Land ownership document (deed) and active building licenses." } },
-        { id: "req-tm-2", text: { ar: "عرض سعر تفصيلي للمواد المطلوبة للبناء من مورد معتمد لدى البنك.", en: "Detailed price quotation for requested building materials from an approved supplier." } },
-        { id: "req-tm-3", text: { ar: "إثبات الدخل الشهري أو الضمانات الشخصية والتجارية المناسبة.", en: "Proof of monthly income or suitable personal and commercial guarantees." } }
+        { id: "aud-tm-1", text: { ar: "الموظفون الذين يستلمون مرتباتهم عبر البنك (شريطة وجود اتفاقية مع جهة العمل لتمويل الموظفين).", en: "Employees who receive their salaries through the bank (subject to an agreement with the employer for employee financing)." } },
+        { id: "aud-tm-2", text: { ar: "المغتربون والأفراد الذين يتوفر لديهم مصادر دخل منتظمة ويمكنهم تقديم الضمانات المقبولة لدى البنك.", en: "Expatriates and individuals with regular income sources who can provide bank-approved guarantees." } },
+        { id: "aud-tm-3", text: { ar: "التجار الذين يرغبون بالحصول على تمويل وعدم استهلاك السيولة الحالية.", en: "Merchants who wish to obtain financing without depleting their current liquidity." } },
+        { id: "aud-tm-4", text: { ar: "أي جهة تنطبق عليها الشروط والأحكام الخاصة بالبنك.", en: "Any entity that meets the bank's specific terms and conditions." } }
       ]
     },
     stepsSection: {
-      title: { ar: "خطوات الحصول على تمويل تعمير", en: "Steps to Obtain Ta'meer Financing" },
+      title: { ar: "كيف تحصل على التمويل؟", en: "How to Get Financing?" },
       steps: [
         {
           id: "step-tm-1",
-          title: { ar: "تحديد قائمة المواد وعرض السعر", en: "List Materials" },
-          description: { ar: "قم بحساب احتياجات البناء واحصل على عروض أسعار من الموردين المعتمدين.", en: "Calculate construction needs and obtain price quotes from approved suppliers." }
+          title: { ar: "زيارة أقرب فرع", en: "Visit the Nearest Branch" },
+          description: { ar: "زيارة أقرب فرع لبنك بن دول للاستفسار والحصول على المعلومات اللازمة.", en: "Visit the nearest Bin Dowal Bank branch to inquire and get the necessary information." }
         },
         {
           id: "step-tm-2",
-          title: { ar: "تقديم المستندات والطلب للفرع", en: "Submit Application" },
-          description: { ar: "زر أقرب فرع وقدم طلبك مستوفياً الوثائق وتراخيص البناء المعتمدة.", en: "Visit the nearest branch and submit your request, including documents and approved licenses." }
+          title: { ar: "تقديم طلب التمويل", en: "Submit Financing Application" },
+          description: { ar: "تقديم طلب التمويل واستكمال المستندات والمتطلبات.", en: "Submit the financing application and complete the documents and requirements." }
         },
         {
           id: "step-tm-3",
-          title: { ar: "شراء المواد والتسليم", en: "Purchase & Delivery" },
-          description: { ar: "يقوم البنك بشراء المواد وتسليمها لك لبدء البناء وتشييد منزل أحلامك فوراً.", en: "The bank purchases the materials and delivers them to you to start building immediately." }
+          title: { ar: "مراجعة الطلب", en: "Application Review" },
+          description: { ar: "مراجعة الطلب وفق سياسة البنك.", en: "The application is reviewed according to bank policy." }
+        },
+        {
+          id: "step-tm-4",
+          title: { ar: "صرف التمويل", en: "Financing Disbursement" },
+          description: { ar: "عند الموافقة، يتم استكمال إجراءات التمويل وصرفه. ولمعرفة تفاصيل التمويل وشروطه، يسعدنا استقبالكم في أقرب فرع.", en: "Upon approval, the financing procedures are completed and funds are disbursed. For financing details and conditions, we welcome you at the nearest branch." }
         }
       ]
     },
     ctaSection: {
-      title: { ar: "بيت العمر يبدأ بخطوة ذكية", en: "Your dream home starts with a smart step" },
-      description: { ar: "دعنا نساعدك في بناء جدران مستقبلك. قدم طلب تمويل تعمير اليوم وابدأ التشييد بكل ثقة وأمان.", en: "Let us help you build the walls of your future. Apply for Ta'meer financing today and start building with confidence." },
-      primaryLabel: { ar: "قدم طلب التشييد الآن", en: "Apply for Construction Now" },
+      title: { ar: "ابدأ اليوم في تنفيذ مشروعك الإنشائي", en: "Start Your Construction Project Today" },
+      description: { ar: "إذا كنت تبحث عن تمويل بناء منزل في اليمن أو تمويل لمشروعك الإنشائي، فإن تمويل تعمير من بنك بن دول يوفر لك الحل المناسب. زر أقرب فرع لبنك بن دول، وتعرّف على تفاصيل التمويل وكيفية التقديم.", en: "If you are looking for home construction financing in Yemen or financing for your construction project, Ta'meer financing from Bin Dowal Bank provides you with the right solution. Visit the nearest Bin Dowal Bank branch and learn about financing details and how to apply." },
+      primaryLabel: { ar: "زر أقرب فرع", en: "Visit the Nearest Branch" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
       secondaryHref: "tel:+967000000000"
@@ -8444,8 +8417,23 @@ export const bankingServicesData: ServicePageData[] = [
       items: [
         {
           id: "faq-tm-1",
-          question: { ar: "هل يشمل تمويل تعمير أجور العمال والمقاول؟", en: "Does Ta'meer financing cover labor fees?" },
-          answer: { ar: "تمويل تعمير مخصص بشكل أساسي للمواد العينية (مثل الحديد، الخشب، ومواد البناء) عبر صيغة المرابحة. للاستشارات أو تغطية العقود الإنشائية الأخرى، يرجى الاستفسار من إدارة التمويل العقاري عن المنتجات المساندة.", en: "Ta'meer financing is primarily dedicated to physical materials (such as steel, wood, and construction materials) via Murabaha. For covering other construction contracts, please check with the real estate financing department regarding supporting products." }
+          question: { ar: "ما هو تمويل تعمير؟", en: "What is Ta'meer Financing?" },
+          answer: { ar: "هو تمويل يقدمه بنك بن دول للمساعدة في تمويل بناء المنازل والمشاريع الإنشائية وفق أحكام الشريعة الإسلامية.", en: "It is financing provided by Bin Dowal Bank to help finance home construction and building projects in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-tm-2",
+          question: { ar: "هل تمويل تعمير متوافق مع الشريعة الإسلامية؟", en: "Is Ta'meer Financing Sharia-compliant?" },
+          answer: { ar: "نعم، يتم تقديم التمويل وفق أحكام الشريعة الإسلامية.", en: "Yes, the financing is provided in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-tm-3",
+          question: { ar: "ما الضمانات المقبولة للحصول على التمويل؟", en: "What guarantees are accepted to obtain financing?" },
+          answer: { ar: "يمكن التقديم باستخدام ضمان الذهب، أو ضمان الوديعة، أو الضمان التجاري، وفق سياسة البنك.", en: "You can apply using a gold guarantee, deposit guarantee, or commercial guarantee, according to bank policy." }
+        },
+        {
+          id: "faq-tm-4",
+          question: { ar: "كيف يمكنني التقديم على تمويل تعمير؟", en: "How can I apply for Ta'meer Financing?" },
+          answer: { ar: "يمكنك زيارة أقرب فرع لبنك بن دول للحصول على التفاصيل وتقديم طلب التمويل.", en: "You can visit the nearest Bin Dowal Bank branch to get details and submit the financing application." }
         }
       ]
     },
@@ -8455,12 +8443,12 @@ export const bankingServicesData: ServicePageData[] = [
     slug: "financing-noor",
     section: "personal",
     title: {
-      ar: "تمويل نور لدعم المشاريع النسائية | بنك بن دول",
-      en: "Noor Financing for Women's Projects | Bindowal Bank"
+      ar: "تمويل نور",
+      en: "Noor Financing"
     },
     subtitle: {
-      ar: "صممنا تمويل نور خصيصًا لكِ أنتِ، لتخطي عقبة التمويل وتأسيس مشروعك بطموح ونجاح اقتصادي",
-      en: "We designed Noor financing specifically for you, to overcome the funding hurdle and establish your business with ambition and economic success"
+      ar: "تمويل المشاريع النسائية في اليمن لتنمية مشروعك",
+      en: "Financing Women's Projects in Yemen to Grow Your Business"
     },
     heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
@@ -8476,89 +8464,105 @@ export const bankingServicesData: ServicePageData[] = [
       href: "/contact"
     },
     seoDescription: {
-      ar: "تمويل نور من بنك بن دول مخصص لدعم المشاريع والأنشطة الاقتصادية للمرأة في اليمن بفرص تمويل ميسرة ومرنة متوافقة بالكامل مع الشريعة الإسلامية.",
-      en: "Noor financing from Bin Dowal Bank is dedicated to supporting women's business and economic projects in Yemen with easy and flexible Sharia-compliant financing."
+      ar: "احصل على تمويل نور من بنك بن دول لدعم السيدات وتمكينهن من إدارة وتطوير مشاريعهن الصغيرة، وفق أحكام الشريعة الإسلامية وبإجراءات ميسرة.",
+      en: "Get Noor financing from Bin Dowal Bank to support women and empower them to manage and develop their small projects, in accordance with Islamic Sharia principles and with easy procedures."
+    },
+    intro: {
+      ar: "إذا كنتِ تسعين إلى بدء مشروعك الخاص أو تطوير مشروع قائم، فإن الحصول على التمويل المناسب يساعدك على تحقيق أهدافك بثقة. مع تمويل نور من بنك بن دول، نوفر لكِ حلاً تمويليًا متوافقًا مع أحكام الشريعة الإسلامية، يهدف إلى تمكين السيدات ودعم مشاريعهن الصغيرة بما يعزز فرص النمو والاستقرار المالي.",
+      en: "If you are seeking to start your own project or develop an existing one, obtaining the right financing helps you achieve your goals with confidence. With Noor financing from Bin Dowal Bank, we provide you with a Sharia-compliant financing solution aimed at empowering women and supporting their small projects to enhance growth opportunities and financial stability."
     },
     overview: {
       title: { ar: "ما هو تمويل نور؟", en: "What is Noor Financing?" },
       description: {
-        ar: "إذا كانت لديكِ فكرة مشروع تجاري رائد، أو ترغبين في توسيع عملك الحالي، ولكن التمويل يقف عقبة في طريقك، فإن تمويل 'نور' من بنك بن دول هو خيارك الأفضل. لقد صممنا هذا المنتج خصيصًا لكِ لمساعدتك وكل امرأة طموحة على تحقيق نجاحها الاقتصادي واستقلالها المالي. نوفر لكِ فرص تمويل ميسرة ومرنة تلائم طبيعة عملك وتدعم انطلاقتك نحو عالم الأعمال بكل ثقة، مع توافق تام مع ضوابط الشريعة الإسلامية.",
-        en: "If you have a pioneering business idea or wish to expand your current business, but financing stands as an obstacle, 'Noor' financing from Bin Dowal Bank is your best choice. We designed this product specifically for you, to help you and every ambitious woman achieve economic success and financial independence. We provide you with easy, flexible financing opportunities that fit your business nature and support your launch into the business world."
+        ar: "انطلاقاً من رؤية البنك في تحقيق الشمول المالي والتمكين الاقتصادي للسيدات، تمويل نور هو أحد حلول تمويل المشاريع النسائية في اليمن التي يقدمها بنك بن دول، والمخصص لدعم السيدات وتمكينهن من إدارة وتوسيع مشاريعهن الصغيرة. صُمم هذا التمويل لمساندة المرأة في تطوير مشروعها، من خلال حلول تمويلية متوافقة مع أحكام الشريعة الإسلامية، وفق سياسة البنك.",
+        en: "Based on the bank's vision of achieving financial inclusion and economic empowerment for women, Noor financing is one of the women's project financing solutions in Yemen offered by Bin Dowal Bank, dedicated to supporting women and empowering them to manage and expand their small projects. This financing is designed to support women in developing their projects through Sharia-compliant financing solutions, according to bank policy."
       }
     },
     why: {
       title: { ar: "لماذا تختارين تمويل نور؟", en: "Why Choose Noor Financing?" },
       items: [
-        { id: "why-no-1", text: { ar: "مخصص بالكامل لدعم طموح المرأة الاقتصادي وتطوير أعمالها التجارية.", en: "Fully dedicated to supporting women's economic ambition and developing their businesses." } },
-        { id: "why-no-2", text: { ar: "شروط وضمانات ميسرة جداً تراعي طبيعة المشاريع والأنشطة النسائية.", en: "Very simple requirements and guarantees considering the nature of women's projects." } },
-        { id: "why-no-3", text: { ar: "دعم فني وتوجيه مالي لتطوير وإدارة فكرتك الاستثمارية بنجاح.", en: "Technical support and financial guidance to develop and manage your investment idea." } }
+        { id: "why-no-1", text: { ar: "تمويل متوافق مع أحكام الشريعة الإسلامية.", en: "Financing compliant with Islamic Sharia principles." } },
+        { id: "why-no-2", text: { ar: "مخصص لدعم السيدات وتمكينهن اقتصاديًا.", en: "Dedicated to supporting women and empowering them economically." } },
+        { id: "why-no-3", text: { ar: "يساعد على تمويل وتوسيع المشاريع الصغيرة.", en: "Helps finance and expand small projects." } },
+        { id: "why-no-4", text: { ar: "إجراءات ميسرة.", en: "Easy procedures." } },
+        { id: "why-no-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
       ]
     },
     featureCards: {
-      title: { ar: "مميزات تمويل نور الاستثماري", en: "Features of Noor Investment Financing" },
+      title: { ar: "مميزات تمويل نور", en: "Noor Financing Features" },
       items: [
         {
           id: "fc-no-1",
-          title: { ar: "فرص تمويل مرنة", en: "Flexible Opportunities" },
-          description: { ar: "تمويل متناسب مع أحجام المشاريع الصغيرة والمنزلية والناشئة والمهنية.", en: "Financing tailored for small, home-based, and startup projects." }
+          title: { ar: "متوافق مع الشريعة الإسلامية", en: "Sharia Compliant" },
+          description: { ar: "يُقدَّم التمويل وفق أحكام الشريعة الإسلامية لضمان راحة المتقدمة وطمأنينتها.", en: "Financing is provided in accordance with Islamic Sharia principles to ensure the applicant's comfort and peace of mind." }
         },
         {
           id: "fc-no-2",
-          title: { ar: "متوافق مع الشريعة", en: "Sharia Compliant" },
-          description: { ar: "صيغ تمويل إسلامية واضحة وبسيطة مثل المرابحة والمشاركة الإسلامية.", en: "Clear and simple Islamic financing formulas like Murabaha and Musharakah." }
+          title: { ar: "تمكين اقتصادي للسيدات", en: "Women's Economic Empowerment" },
+          description: { ar: "مخصص لدعم السيدات في بدء مشاريعهن أو تطويرها ليحققن الاستقلال المالي.", en: "Dedicated to supporting women in starting or developing their projects to achieve financial independence." }
         },
         {
           id: "fc-no-3",
-          title: { ar: "فترة سماح مناسبة", en: "Suitable Grace Period" },
-          description: { ar: "توفير فترات سماح مرنة في بداية المشروع لدعم استقرار التدفقات المالية.", en: "Providing grace periods at the start of the project to support financial stability." }
+          title: { ar: "إجراءات ميسرة", en: "Easy Procedures" },
+          description: { ar: "إجراءات تقديم مبسطة تسهل على السيدات الوصول إلى التمويل وتوفر الوقت والجهد.", en: "Simplified application procedures that make it easy for women to access financing, saving time and effort." }
         },
         {
           id: "fc-no-4",
-          title: { ar: "إجراءات ميسرة وسريعة", en: "Easy & Fast Procedures" },
-          description: { ar: "تقييم سريع للطلب لضمان حصولك على السيولة وبدء مشروعك دون تأخير.", en: "Quick evaluation of application to ensure you receive liquidity and start your project without delay." }
+          title: { ar: "ضمانات مرنة", en: "Flexible Guarantees" },
+          description: { ar: "ضمانات متعددة ومعتمدة تناسب طبيعة المشاريع الصغيرة والأنشطة النسائية.", en: "Multiple approved guarantees suitable for the nature of small projects and women's activities." }
         }
       ]
     },
-    audience: {
-      title: { ar: "من يمكنها الاستفادة من تمويل نور؟", en: "Who Can Benefit from Noor?" },
+    guaranteesSection: {
+      title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
+      description: {
+        ar: "يمكنكِ التقدم بطلب تمويل نور باستخدام إحدى الضمانات المعتمدة لدى البنك:",
+        en: "You can apply for Noor financing using one of the bank-approved guarantees:"
+      },
       items: [
-        { id: "aud-no-1", text: { ar: "رائدات الأعمال وصاحبات الأفكار والمشاريع الناشئة والإنتاجية.", en: "Female entrepreneurs and owners of startup and productive projects." } },
-        { id: "aud-no-2", text: { ar: "النساء اللواتي يدعمن أسرهن عبر الحرف اليدوية والأعمال المنزلية.", en: "Women supporting families through crafts and home-based businesses." } },
-        { id: "aud-no-3", text: { ar: "سيدات الأعمال الراغبات في التوسع والنمو الاقتصادي وتطوير الفروع.", en: "Businesswomen wishing to expand and grow economically." } }
+        { id: "guar-no-1", text: { ar: "ضمان الذهب.", en: "Gold guarantee." } },
+        { id: "guar-no-2", text: { ar: "ضمان الوديعة.", en: "Deposit guarantee." } },
+        { id: "guar-no-3", text: { ar: "ضمانات أخرى (بحسب سياسات وشروط البنك).", en: "Other guarantees (according to bank policies and conditions)." } }
       ]
     },
-    requirementsSection: {
-      title: { ar: "شروط التقديم لتمويل نور", en: "Noor Financing Requirements" },
+    audience: {
+      title: { ar: "من يمكنها الاستفادة من تمويل نور؟", en: "Who Can Benefit from Noor Financing?" },
       items: [
-        { id: "req-no-1", text: { ar: "فكرة مشروع واضحة أو دراسة جدوى مبسطة للنشاط التجاري.", en: "A clear project idea or simplified feasibility study of the activity." } },
-        { id: "req-no-2", text: { ar: "إثبات هوية سارية المفعول (بطاقة شخصية أو جواز سفر للمتقدمة بالطلب).", en: "Valid identification card for the applicant." } },
-        { id: "req-no-3", text: { ar: "توفير ضمانات أو كفالات مقبولة لدى إدارة التمويل بالبنك.", en: "Provide acceptable guarantees or sureties to the bank's financing department." } }
+        { id: "aud-no-1", text: { ar: "السيدات الراغبات في بدء مشروع صغير.", en: "Women wishing to start a small project." } },
+        { id: "aud-no-2", text: { ar: "صاحبات المشاريع ورائدات الأعمال الراغبات في تطوير أعمالهن.", en: "Female business owners and entrepreneurs wishing to develop their businesses." } },
+        { id: "aud-no-3", text: { ar: "الأسر المنتجة الباحثة عن تمويل لتنمية مشاريعهن.", en: "Productive families seeking financing to grow their projects." } },
+        { id: "aud-no-4", text: { ar: "من تبحث عن تمويل للمشاريع النسائية في اليمن وفق أحكام الشريعة الإسلامية.", en: "Those seeking financing for women's projects in Yemen in accordance with Islamic Sharia principles." } }
       ]
     },
     stepsSection: {
-      title: { ar: "خطوات الحصول على التمويل", en: "Steps to Obtain Financing" },
+      title: { ar: "كيف تحصلين على التمويل؟", en: "How to Get Financing?" },
       steps: [
         {
           id: "step-no-1",
-          title: { ar: "تقديم فكرة المشروع", en: "Submit Idea" },
-          description: { ar: "شاركي فكرة مشروعك ومتطلبات التشغيل مع مسؤولة تمويل نور بالفرع.", en: "Share your business idea and operating requirements with the Noor officer." }
+          title: { ar: "زيارة أقرب فرع", en: "Visit the Nearest Branch" },
+          description: { ar: "زيارة أقرب فرع لبنك بن دول للاستفسار والحصول على المعلومات اللازمة.", en: "Visit the nearest Bin Dowal Bank branch to inquire and get the necessary information." }
         },
         {
           id: "step-no-2",
-          title: { ar: "دراسة وتحديد الاحتياج", en: "Define Needs" },
-          description: { ar: "دراسة سريعة للطلب لتحديد حجم التمويل الملائم وخطط السداد المناسبة.", en: "A quick review to determine the appropriate financing size and repayment plans." }
+          title: { ar: "تقديم طلب التمويل", en: "Submit Financing Application" },
+          description: { ar: "تقديم طلب التمويل واستكمال المستندات والمتطلبات.", en: "Submit the financing application and complete the documents and requirements." }
         },
         {
           id: "step-no-3",
-          title: { ar: "التفعيل والانطلاق", en: "Activation" },
-          description: { ar: "بعد الموافقة، يتم توقيع العقود وصرف مبلغ التمويل لتبدئي نجاحك فوراً.", en: "Upon approval, contracts are signed and financing is disbursed to start your success immediately." }
+          title: { ar: "مراجعة الطلب", en: "Application Review" },
+          description: { ar: "مراجعة الطلب وفق سياسة البنك.", en: "The application is reviewed according to bank policy." }
+        },
+        {
+          id: "step-no-4",
+          title: { ar: "صرف التمويل", en: "Financing Disbursement" },
+          description: { ar: "عند الموافقة، يتم استكمال إجراءات التمويل وصرفه. ولمعرفة تفاصيل التمويل وشروطه، يسعدنا استقبالكن في أقرب فرع.", en: "Upon approval, the financing procedures are completed and funds are disbursed. For financing details and conditions, we welcome you at the nearest branch." }
         }
       ]
     },
     ctaSection: {
-      title: { ar: "نجاحك الاقتصادي يبدأ الآن", en: "Your economic success starts now" },
-      description: { ar: "تواصلي معنا اليوم واحصلي على تمويل نور ليكون دفعتك الذكية نحو التميز وتحقيق طموحك الاستثماري.", en: "Contact us today and get Noor financing to be your smart boost toward excellence and achieving your investment ambition." },
-      primaryLabel: { ar: "تواصل معنا الآن", en: "Contact Us Now" },
+      title: { ar: "ابدئي اليوم في تطوير مشروعك", en: "Start Developing Your Project Today" },
+      description: { ar: "إذا كنتِ تبحثين عن تمويل للمشاريع النسائية في اليمن يساعدكِ على إدارة مشروعك أو تطويره، فإن تمويل نور من بنك بن دول هو الخيار المناسب لكِ. زوري أقرب فرع لبنك بن دول، وتعرّفي على تفاصيل التمويل وكيفية التقديم.", en: "If you are looking for financing for women's projects in Yemen that helps you manage or develop your project, Noor financing from Bin Dowal Bank is the right choice for you. Visit the nearest Bin Dowal Bank branch and learn about financing details and how to apply." },
+      primaryLabel: { ar: "زوري أقرب فرع", en: "Visit the Nearest Branch" },
       primaryHref: "/contact",
       secondaryLabel: { ar: "اتصل بنا", en: "Call Us" },
       secondaryHref: "tel:+967000000000"
@@ -8568,8 +8572,23 @@ export const bankingServicesData: ServicePageData[] = [
       items: [
         {
           id: "faq-no-1",
-          question: { ar: "هل يشترط وجود مقر رسمي للمشروع للتقديم؟", en: "Is an official business location required to apply?" },
-          answer: { ar: "لا، ندعم أيضاً المشاريع المنزلية والحرفية التي تدار من المنزل، بشرط وضوح الفكرة والقدرة على الإنتاج والسداد.", en: "No, we also support home-based and craft projects managed from home, provided the idea is clear, with a capability to produce and repay." }
+          question: { ar: "ما هو تمويل نور؟", en: "What is Noor Financing?" },
+          answer: { ar: "هو تمويل يقدمه بنك بن دول لدعم السيدات وتمكينهن من إدارة وتوسيع مشاريعهن الصغيرة، وفق أحكام الشريعة الإسلامية.", en: "It is financing provided by Bin Dowal Bank to support women and empower them to manage and expand their small projects, in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-no-2",
+          question: { ar: "هل تمويل نور متوافق مع الشريعة الإسلامية؟", en: "Is Noor Financing Sharia-compliant?" },
+          answer: { ar: "نعم، يتم تقديم التمويل وفق أحكام الشريعة الإسلامية.", en: "Yes, the financing is provided in accordance with Islamic Sharia principles." }
+        },
+        {
+          id: "faq-no-3",
+          question: { ar: "ما الضمانات المقبولة للحصول على التمويل؟", en: "What guarantees are accepted to obtain financing?" },
+          answer: { ar: "يمكن التقديم باستخدام ضمان الذهب، أو ضمان الوديعة، أو الضمان التجاري، وفق سياسة البنك.", en: "You can apply using a gold guarantee, deposit guarantee, or commercial guarantee, according to bank policy." }
+        },
+        {
+          id: "faq-no-4",
+          question: { ar: "كيف يمكنني التقديم على تمويل نور؟", en: "How can I apply for Noor Financing?" },
+          answer: { ar: "يمكنكِ زيارة أقرب فرع لبنك بن دول للحصول على التفاصيل وتقديم طلب التمويل.", en: "You can visit the nearest Bin Dowal Bank branch to get details and submit the financing application." }
         }
       ]
     },

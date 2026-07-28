@@ -115,6 +115,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
   const sectionLinks = [
     data.overview ? { id: "overview", ar: "نبذة تعريفية", en: "Overview" } : (data.details ? { id: "details", ar: "تفاصيل الخدمة", en: "Service Details" } : null),
     data.why ? { id: "why", ar: "لماذا هذه الخدمة؟", en: "Why this Service?" } : (data.benefits ? { id: "benefits", ar: "كيف أستفيد من الخدمة؟", en: "How Do I Benefit?" } : null),
+    data.types?.items?.length ? { id: "types", ar: "الأنواع", en: "Types" } : null,
     data.featureCards?.items?.length ? { id: "features", ar: "المميزات", en: "Features" } : null,
     data.audience?.items?.length ? { id: "audience", ar: "العملاء المستهدفون", en: "Target Audience" } : null,
     data.requirementsSection?.items?.length ? { id: "requirements", ar: "الشروط والمتطلبات", en: "Requirements" } : (data.howToGet ? { id: "get-service", ar: "كيف أحصل على الخدمة؟", en: "How Do I Get It?" } : null),
@@ -346,6 +347,44 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                       </div>
                     </motion.section>
                   )}
+
+                  {data.serviceTypes?.items?.length ? (
+                    <motion.section
+                      id="serviceTypes"
+                      variants={fadeUp}
+                      initial="hidden"
+                      whileInView="show"
+                      viewport={viewport}
+                      className="scroll-mt-28 rounded-[28px] px-6 py-8 shadow-[0_14px_40px_rgba(15,23,42,0.04)] md:px-8 bg-white"
+                    >
+                      <div className="mb-8">
+                        <SectionLabel>
+                          {isArabic ? "أنواع" : "Types"}
+                        </SectionLabel>
+                        <SectionTitle
+                          title={getText(data.serviceTypes.title, isArabic)}
+                          subtitle={data.serviceTypes.subtitle ? getText(data.serviceTypes.subtitle, isArabic) : undefined}
+                        />
+                        {data.serviceTypes.description && (
+                          <p className="mt-4 text-sm leading-7 text-slate-600">
+                            {getText(data.serviceTypes.description, isArabic)}
+                          </p>
+                        )}
+                      </div>
+                      {data.serviceTypes.items && data.serviceTypes.items.length > 0 && (
+                        <div className="mt-6 lg:mt-0 space-y-3">
+                          {data.serviceTypes.items.map((item) => (
+                            <div key={item.id} className="flex items-center gap-3 rounded-2xl bg-slate-50 px-5 py-4">
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
+                                <Check className="h-4 w-4" />
+                              </span>
+                              <span className="text-md font-medium text-slate-700">{getText(item.text, isArabic)}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </motion.section>
+                  ) : null}
 
                   {data.featureCards?.items?.length ? (
                     <motion.section

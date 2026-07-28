@@ -175,7 +175,7 @@ export const navigationData: NavItem[] = [
           { key: "corpInvestments", href: "/business/corporate-investment-deposits", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
           { key: "swift", href: "/business/swift-transfers", label: { ar: "حوالات السويفت", en: "SWIFT Transfers" }, icon: Globe2 },
           // { key: "credits", href: "/business#credits", label: { ar: "الاعتمادات المستندية", en: "Letters of Credit" }, icon: FileText },
-          { key: "guarantees", href: "/business/bank-guarantees", label: { ar: "الضمانات البنكية", en: "Bank Guarantees" }, icon: ShieldCheck },
+          { key: "guarantees", href: "/business/bank-guarantees", label: { ar: "خطابات الضمان", en: "Letters of Guarantees" }, icon: ShieldCheck },
           { key: "payroll", href: "/business-banking#payroll", label: { ar: "تحويل الرواتب", en: "Payroll Management" }, icon: Users },
           // { key: "intlTrade", href: "/business#trade", label: { ar: "خدمات التجارة الدولية", en: "International Trade" }, icon: Plane },
         ]
@@ -206,28 +206,28 @@ export const navigationData: NavItem[] = [
       {
         title: { ar: "حساب المغتربين", en: "Expatriate Account" },
         links: [
-          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حسابات جارية بالعملات الأجنبية", en: "Foreign Currency Accounts" }, icon: Globe2 },
-          { key: "expatSavings", href: "/accounts/expat", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
-          { key: "expatIntl", href: "/accounts/expat", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
-          { key: "expatLocal", href: "/accounts/expat", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
-          { key: "expatDigital", href: "/digital-channels", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
+          { key: "expatCurrent", href: "/accounts/expat", label: { ar: "حساب المغتربين", en: "Expatriate Account" }, icon: Globe2 },
+          // { key: "expatSavings", href: "/accounts/expat", label: { ar: "حسابات التوفير والودائع", en: "Savings & Investments" }, icon: HandCoins },
+          // { key: "expatIntl", href: "/accounts/expat", label: { ar: "خدمات التحويل الدولي", en: "International Transfers" }, icon: Send },
+          // { key: "expatLocal", href: "/accounts/expat", label: { ar: "خدمات التحويل المحلي", en: "Local Transfers" }, icon: Landmark },
+          // { key: "expatDigital", href: "/digital-channels", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
         ]
       },
       {
         title: { ar: "حساب القاصر", en: "Minors Account" },
         links: [
-          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب توفير", en: "Savings Account" }, icon: Baby },
-          { key: "minorInvestments", href: "/personal/minors-account", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
+          { key: "minorSavings", href: "/personal/minors-account", label: { ar: "حساب القاصر", en: "Minors Account" }, icon: Baby },
+          // { key: "minorInvestments", href: "/personal/minors-account", label: { ar: "حساب الودائع الاستثمارية", en: "Investment Deposit Account" }, icon: TrendingUp },
         ]
       },
       {
         title: { ar: "حساب نور للسيدات", en: "Noor Account (Ladies)" },
         links: [
-          { key: "noorCurrent", href: "/accounts/noor", label: { ar: "حسابات الجارية", en: "Bank Accounts" }, icon: Wallet },
-          { key: "noorSavings", href: "/accounts/noor", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
-          { key: "noorInvestments", href: "/accounts/noor", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
-          { key: "noorCard", href: "/cards/noor-card", label: { ar: "بطاقة نور البنكية", en: "Noor Bank Card" }, icon: CreditCard },
-          { key: "noorDigital", href: "/digital-channels", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
+          { key: "noorCurrent", href: "/accounts/noor", label: { ar: "حساب نور للسيدات", en: "Noor Account (Ladies)" }, icon: Wallet },
+          // { key: "noorSavings", href: "/accounts/noor", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
+          // { key: "noorInvestments", href: "/accounts/noor", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
+          // { key: "noorCard", href: "/cards/noor-card", label: { ar: "بطاقة نور البنكية", en: "Noor Bank Card" }, icon: CreditCard },
+          // { key: "noorDigital", href: "/digital-channels", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
         ]
       },
       {
