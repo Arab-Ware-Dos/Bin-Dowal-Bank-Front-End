@@ -454,8 +454,18 @@ export function AboutPageContent() {
       : "Bin Dowal Islamic Microfinance Bank is a modern national banking institution established in 2021 under an official license issued by the Central Bank of Yemen, to become one of the leading banks in providing Islamic financial and banking solutions for individuals and small and medium-sized enterprises. The bank works to promote financial inclusion, stimulate economic activity, and deliver trusted, secure services that combine Islamic values with continuous banking innovation.",
 
     establishmentParagraph2: isAr
-      ? "ومنذ انطلاقته، يعمل البنك على بناء تجربة مصرفية تقوم على الثقة والشفافية والالتزام والابتكار، عبر منظومة متكاملة من الخدمات البنكية التقليدية والرقمية التي تسهّل الوصول إلى الخدمات المالية، وتدعم التنمية المجتمعية المستدامة، وتعزز دوره كشريك موثوق في دعم النمو الاقتصادي في اليمن."
+      ? "ومنذ التاسيس حرصت إدارة البنك على تبني مفهوم الصيرفة الإسلامية في المنتجات المصرفية المقدمة في تكريس لمفهوم التنمية والاستثمار في المشاريع المنتجة التي تضيف قيمة للاقتصاد الوطني والمجتمع وذلك باشراف هيئة رقابة شرعية من ذوي الخبرات والكفاءة في جانب الصيرفة الإسلامية."
       : "Since its launch, the bank has worked to build a banking experience founded on trust, transparency, commitment, and innovation through an integrated ecosystem of traditional and digital banking services that improve access to financial services, support sustainable community development, and reinforce its role as a trusted partner in advancing economic growth in Yemen.",
+    establishmentParagraph3: isAr
+      ? "وايمانا بأهمية الوصول والانتشار وتوفير خدمات مصرفية للجميع قام البنك بافتتاح 40 فروع ومكاتب موزعة في مناطق مختلفة من المحافظات المحررة، كما عمل البنك على الاستثمار في المجال التقني من خلال توفير خدمات الكترونية متنوعة ومختلفة تلبي احتياجات العملاء وتساهم في تحسين تجربة عميل فريدة."
+      : "And with a belief in the importance of access and reach and providing banking services to all, the bank opened 40 branches and offices distributed in different areas of the liberated governorates. The bank has also invested in the technical field by providing various and different electronic services that meet the needs of customers and contribute to improving the customer experience.",
+    establishmentParagraph4: isAr
+      ? "كما اسهم البنك بشكل فعال في توفير خدمات تمويلية متخصصة تلبي احتياجات افراد المجتمع, وفي هذا السياق كان للبنك دور فعال في تكريس المفهوم الاجتماعي للعمل المصرفي في دعم التعليم لفئة الشباب وابتكار منتجات تمويلية لرائدات الاعمال من السيدات بما يسهم في تحسين الدخل للاسر المنتجة والمشاريع الصغيرة وتقليل البطالة."
+      : "The bank has also played an active role in providing specialized financing services that meet the needs of community members, and in this context, the bank has played an active role in consecrating the social concept of banking in supporting education for youth and developing innovative financing products for female entrepreneurs, contributing to improving the income of productive families and small projects and reducing unemployment.",
+    establishmentParagraph5: isAr
+      ? "وفي مواكبة للمتغيرات العالمية في تكريس مفهوم الاستدامة المالية ومن اداوتها تطبيق مفهوم الشمول المالي, قام بنك بن دول بإطلاق محفظة بن دول باي في خطوة سباقة لتوفير خدمات المالية ومصرفية للافراد والمؤسسات الصغيرة ومتناهية الصغر في خطوة تعكس رسالة البنك الهادفة لضم الفئات المختلفة في النظام المصرفي وتوفير خدمات مالية تلبي احتياجات المجتمع وتساهم في تقليل العرض النقدي و التضخم ضمن توجهات الدولة في تعزيز كفاءة الإدارة المالية للاقتصاد الوطني."
+      : "In light of the global changes in consolidating the concept of financial sustainability and its tool for implementing the concept of financial inclusion, Bin Dowal Bank launched the Bin Dowal Pay wallet in a pioneering step to provide financial and banking services to individuals, small and micro enterprises, reflecting the bank's mission to include different groups in the banking system and provide financial services that meet the needs of society and help reduce the money supply and inflation in line with the state's directions to enhance the efficiency of financial management of the national economy.",
+      
     establishmentCardTitle: isAr
       ? "انطلاقة نحو تمكين مالي أوسع"
       : "A Launch Toward Broader Financial Empowerment",
@@ -528,8 +538,8 @@ export function AboutPageContent() {
     establishmentBadge: isAr ? "تأسيس بنك بن دول" : "Bin Dowal Bank Establishment",
     establishmentTitle: isAr ? "منذ 2021: بنك بن دول يطلق خدماته المصرفية المتكاملة" : "Since 2021: Bin Dowal Bank Launches Its Integrated Banking Services",
     establishmentParagraph1: isAr
-      ? "تأسس بنك بن دول في عام 2021، ليصبح أول بنك تمويلي إسلامي مرخص في اليمن، مدعومًا برؤية واضحة لتعزيز الشمول المالي ودعم الاقتصاد الوطني."
-      : "Established in 2021, Bin Dowal Bank became the first licensed Islamic microfinance bank in Yemen, driven by a clear vision to enhance financial inclusion and support the national economy.",
+      ? "تاسس بنك بن دول للتمويل الأصغر الإسلامي في العام 2021م في مدينة المكلا بموجب ترخيص رقم  984/CBY/2022 وفقا لأحكام قانون البنك المركزي اليمني المنظمة لاعمال بنوك التمويل الأصغر الصادر برقم (15) للعام 2009م ومنذ التاسيس عمل بنك بن دول على تقديم خدمات مالية ومصرفية لدعم جهود التنمية والتمكين الاقتصادي في اطار الرسالة الذي أسس لها البنك."
+      : "Established in 2021, in Dhowal Microfinance Bank was licensed by the Central Bank of Yemen under license number 984/CBY/2022, adhering to the Islamic microfinance law. From the outset, Dhowal has been committed to providing comprehensive financial and banking services, contributing to economic development and empowerment in line with its founding mission.",
     establishmentYearLabel: isAr ? "منذ 2021" : "Since 2021",
     establishmentMetaLabel1: isAr ? "سنة التأسيس" : "Year of Establishment",
     establishmentMetaValue2: isAr ? "مؤسسة مرخصة" : "Licensed Institution",
@@ -559,61 +569,11 @@ export function AboutPageContent() {
         </div>
       </PageHero>
 
-    {/* Hero Metrics */}
-<section className="relative z-30 -mt-12 pb-10 md:-mt-16 lg:-mt-20">
-  <div className="container mx-auto px-4">
-    <div className="relative overflow-hidden rounded-[32px] border border-white/60 bg-white/75 shadow-[0_30px_80px_rgba(11,13,54,0.12)] backdrop-blur-2xl">
-      {/* base premium layers */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.86),rgba(247,249,255,0.92)_42%,rgba(240,243,251,0.96)_100%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#0b0d36]/12 to-transparent" />
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-40 bg-gradient-to-r from-[#262b80]/[0.06] to-transparent" />
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-40 bg-gradient-to-l from-[#7a1f3d]/[0.06] to-transparent" />
 
-      {/* subtle animated sheen */}
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent)] blur-xl"
-        animate={{ x: ["0%", "220%"] }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "linear",
-          repeatDelay: 1.5,
-        }}
-      />
 
-      {/* soft floating highlight */}
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-20 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-white/30 blur-3xl"
-        animate={{ opacity: [0.25, 0.4, 0.25], scale: [1, 1.06, 1] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
 
-      {/* vertical separators on desktop */}
-      <div className="pointer-events-none absolute inset-y-8 left-1/4 hidden w-px bg-gradient-to-b from-transparent via-[#0b0d36]/10 to-transparent lg:block" />
-      <div className="pointer-events-none absolute inset-y-8 left-2/4 hidden w-px bg-gradient-to-b from-transparent via-[#0b0d36]/10 to-transparent lg:block" />
-      <div className="pointer-events-none absolute inset-y-8 left-3/4 hidden w-px bg-gradient-to-b from-transparent via-[#0b0d36]/10 to-transparent lg:block" />
-
-      <div className="relative px-3 py-3 md:px-5 md:py-5 lg:px-6 lg:py-6">
-        <div className="grid grid-cols-2 gap-2 md:gap-3 lg:grid-cols-4 lg:gap-0">
-          {metrics.map((item, index) => (
-            <MetricCard
-              key={item.labelEn}
-              item={item}
-              isAr={isAr}
-              delay={index * 0.06}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-     {/* About */}
-<section className="relative overflow-hidden bg-white py-20 lg:py-28">
+      {/* About */}
+      {/* <section className="relative overflow-hidden bg-white py-20 lg:py-28">
   <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(11,13,54,0.05),transparent_28%)]" />
   <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/20 to-transparent" />
   <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/10 to-transparent" />
@@ -658,87 +618,70 @@ export function AboutPageContent() {
       ))}
     </motion.div>
   </div>
-</section>
+</section> */}
 
-   {/* Establishment */}
-<section className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28">
-  {/* Background layers */}
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%)]" />
-  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.06),transparent_28%)]" />
-  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/20 to-transparent" />
-  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#78182e]/20 to-transparent" />
+      {/* Establishment */}
+      <section className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28">
+        {/* Background layers */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.06),transparent_28%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/20 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#78182e]/20 to-transparent" />
 
-  <div className="container relative z-10 mx-auto px-4">
-    <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
-      {/* Text Content */}
-      <motion.div {...FADE_IN_UP} className="order-2 lg:order-1">
-        <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-4 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-          <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#262b80]">
-            {text.establishmentBadge}
-          </span>
-        </div>
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
+            {/* Text Content */}
+            <motion.div {...FADE_IN_UP} className="order-2 lg:order-1">
+              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-4 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#262b80]">
+                  {text.establishmentBadge}
+                </span>
+              </div>
 
-        <div className="mb-6 max-w-xl">
-          <div className="mb-3 h-px w-20 bg-gradient-to-r from-[#78182e] to-[#262b80]" />
-          <h3 className="text-3xl font-bold leading-[1.25] tracking-tight text-[#0f172a] md:text-4xl xl:text-[2.75rem]">
-            {text.establishmentTitle}
-          </h3>
-        </div>
+              <div className="mb-6 max-w-xl">
+                <div className="mb-3 h-px w-20 bg-gradient-to-r from-[#78182e] to-[#262b80]" />
+                <h3 className="text-3xl font-bold leading-[1.25] tracking-tight text-[#0f172a] md:text-4xl xl:text-[2.75rem]">
+                  {text.establishmentTitle}
+                </h3>
+              </div>
 
-        <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
-          <p>{text.establishmentParagraph1}</p>
-          <p>{text.establishmentParagraph2}</p>
-        </div>
+              <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
+                <p>{text.establishmentParagraph1}</p>
+                <p>{text.establishmentParagraph2}</p>
+                <p>{text.establishmentParagraph3}</p>
+                <p>{text.establishmentParagraph4}</p>
+                <p>{text.establishmentParagraph5}</p>
+              </div>
 
-        <div className="mt-8 flex flex-wrap items-center gap-6 border-t border-[#262b80]/10 pt-6">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-              {text.establishmentMetaLabel1 || "Year of Establishment"}
-            </div>
-            <div className="mt-1 text-xl font-bold tracking-tight text-[#262b80]">
-              2021
-            </div>
+             
+            </motion.div>
+
+            {/* Visual */}
+            <motion.div
+              {...FADE_IN_UP}
+              transition={{ delay: 0.15 }}
+              className="order-1 relative flex justify-center lg:order-2 lg:justify-end"
+            >
+              <div className="relative w-full max-w-[450px]">
+                {/* Soft visual glow */}
+                <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.08),transparent_35%)]" />
+                <div className="absolute inset-0 rounded-[32px] " />
+
+                <Image
+                  src="/images/banking-experience.png"
+                  alt={text.establishmentImageAlt || "تأسيس بنك بن دول"}
+                  width={700}
+                  height={700}
+                  className="relative z-[1] h-auto w-full object-contain"
+                  priority
+                />
+
+              </div>
+            </motion.div>
           </div>
-
-          <div className="hidden h-10 w-px bg-[#262b80]/10 md:block" />
-
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-              {text.establishmentMetaLabel2 || "Licensed Institution"}
-            </div>
-            <div className="mt-1 text-sm font-medium text-slate-700 md:text-base">
-              {text.establishmentMetaValue2 || "Officially Licensed"}
-            </div>
-          </div>
         </div>
-      </motion.div>
-
-      {/* Visual */}
-      <motion.div
-        {...FADE_IN_UP}
-        transition={{ delay: 0.15 }}
-        className="order-1 relative flex justify-center lg:order-2 lg:justify-end"
-      >
-        <div className="relative w-full max-w-[450px]">
-          {/* Soft visual glow */}
-          <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.08),transparent_35%)]" />
-          <div className="absolute inset-0 rounded-[32px] " />
-
-          <Image
-            src="/images/banking-experience.png"
-            alt={text.establishmentImageAlt || "تأسيس بنك بن دول"}
-            width={700}
-            height={700}
-            className="relative z-[1] h-auto w-full object-contain"
-            priority
-          />
-
-        </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Reach */}
       <section className="bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 text-white">
@@ -833,163 +776,163 @@ export function AboutPageContent() {
         </div>
       </section>
 
-   {/* Vision & Mission */}
-<section id="vision" className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f8f9fc_100%)] py-24 md:py-28">
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.06),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.05),transparent_24%)]" />
-  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/15 to-transparent" />
-  <div className="container relative z-10 mx-auto px-4">
-    <div className="mx-auto max-w-3xl text-center">
-      <motion.div {...FADE_IN_UP}>
-        <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
-          <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-          <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-            {text.visionMissionTitle}
-          </span>
-        </div>
-
-        <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
-          {text.visionMissionTitle}
-        </h2>
-
-        <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
-
-        <p className="text-lg leading-8 text-slate-600 md:text-xl">
-          {text.visionMissionSubtitle}
-        </p>
-      </motion.div>
-    </div>
-
-    <div className="mt-16 grid gap-8 lg:grid-cols-2">
-      <motion.div {...FADE_IN_UP}>
-        <div className="group relative h-full overflow-hidden rounded-[30px] border border-[#dbe2f0] bg-white/90 p-8 shadow-[0_20px_60px_rgba(11,13,54,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(11,13,54,0.10)] md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.07),transparent_30%)]" />
-          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/25 to-transparent" />
-
-          <div className="relative z-10 flex h-full flex-col">
-            <div className="mb-8 flex items-start justify-between gap-4">
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-[22px] bg-[#262b80] shadow-[0_18px_40px_rgba(38,43,128,0.22)]">
-                <Eye className="h-7 w-7 text-white" />
+      {/* Vision & Mission */}
+      <section id="vision" className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f8f9fc_100%)] py-24 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.06),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.05),transparent_24%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/15 to-transparent" />
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <motion.div {...FADE_IN_UP}>
+              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
+                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
+                  {text.visionMissionTitle}
+                </span>
               </div>
-              <div className="mt-4 h-px flex-1 bg-gradient-to-r from-[#262b80]/20 via-[#8b1e3f]/20 to-transparent" />
-            </div>
 
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-              {isAr ? "الرؤية المؤسسية" : "Corporate Vision"}
-            </div>
+              <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
+                {text.visionMissionTitle}
+              </h2>
 
-            <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-              {text.visionTitle}
-            </h3>
+              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
 
-            <p className="text-lg leading-8 text-slate-600">
-              {text.visionDesc}
-            </p>
+              <p className="text-lg leading-8 text-slate-600 md:text-xl">
+                {text.visionMissionSubtitle}
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="mt-16 grid gap-8 lg:grid-cols-2">
+            <motion.div {...FADE_IN_UP}>
+              <div className="group relative h-full overflow-hidden rounded-[30px] border border-[#dbe2f0] bg-white/90 p-8 shadow-[0_20px_60px_rgba(11,13,54,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(11,13,54,0.10)] md:p-10">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.07),transparent_30%)]" />
+                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/25 to-transparent" />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="mb-8 flex items-start justify-between gap-4">
+                    <div className="relative flex h-16 w-16 items-center justify-center rounded-[22px] bg-[#262b80] shadow-[0_18px_40px_rgba(38,43,128,0.22)]">
+                      <Eye className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="mt-4 h-px flex-1 bg-gradient-to-r from-[#262b80]/20 via-[#8b1e3f]/20 to-transparent" />
+                  </div>
+
+                  <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
+                    {isAr ? "الرؤية المؤسسية" : "Corporate Vision"}
+                  </div>
+
+                  <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
+                    {text.visionTitle}
+                  </h3>
+
+                  <p className="text-lg leading-8 text-slate-600">
+                    {text.visionDesc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div {...FADE_IN_UP} transition={{ delay: 0.1 }}>
+              <div className="group relative h-full overflow-hidden rounded-[30px] border border-[#dbe2f0] bg-[linear-gradient(180deg,rgba(248,249,252,0.96),rgba(255,255,255,0.98))] p-8 shadow-[0_20px_60px_rgba(11,13,54,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(11,13,54,0.10)] md:p-10">
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.07),transparent_28%)]" />
+                <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#0b0d36]/20 to-transparent" />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <div className="mb-8 flex items-start justify-between gap-4">
+                    <div className="relative flex h-16 w-16 items-center justify-center rounded-[22px] bg-[#0b0d36] shadow-[0_18px_40px_rgba(11,13,54,0.22)]">
+                      <Target className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="mt-4 h-px flex-1 bg-gradient-to-r from-[#0b0d36]/20 via-[#8b1e3f]/20 to-transparent" />
+                  </div>
+
+                  <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
+                    {isAr ? "الرسالة المؤسسية" : "Corporate Mission"}
+                  </div>
+
+                  <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
+                    {text.missionTitle}
+                  </h3>
+
+                  <p className="text-lg leading-8 text-slate-600">
+                    {text.missionDesc}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </motion.div>
+      </section>
 
-      <motion.div {...FADE_IN_UP} transition={{ delay: 0.1 }}>
-        <div className="group relative h-full overflow-hidden rounded-[30px] border border-[#dbe2f0] bg-[linear-gradient(180deg,rgba(248,249,252,0.96),rgba(255,255,255,0.98))] p-8 shadow-[0_20px_60px_rgba(11,13,54,0.06)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_28px_80px_rgba(11,13,54,0.10)] md:p-10">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.07),transparent_28%)]" />
-          <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#0b0d36]/20 to-transparent" />
-
-          <div className="relative z-10 flex h-full flex-col">
-            <div className="mb-8 flex items-start justify-between gap-4">
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-[22px] bg-[#0b0d36] shadow-[0_18px_40px_rgba(11,13,54,0.22)]">
-                <Target className="h-7 w-7 text-white" />
+      {/* Values */}
+      <section className="relative overflow-hidden bg-[#f8f9fc] py-24 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.05),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(120,24,46,0.05),transparent_20%)]" />
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <motion.div {...FADE_IN_UP}>
+              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
+                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
+                  {text.valuesTitle}
+                </span>
               </div>
-              <div className="mt-4 h-px flex-1 bg-gradient-to-r from-[#0b0d36]/20 via-[#8b1e3f]/20 to-transparent" />
-            </div>
 
-            <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-              {isAr ? "الرسالة المؤسسية" : "Corporate Mission"}
-            </div>
+              <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
+                {text.valuesTitle}
+              </h2>
 
-            <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-              {text.missionTitle}
-            </h3>
+              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
 
-            <p className="text-lg leading-8 text-slate-600">
-              {text.missionDesc}
-            </p>
+              <p className="text-lg leading-8 text-slate-600 md:text-xl">
+                {text.valuesSubtitle}
+              </p>
+            </motion.div>
+          </div>
+
+          <motion.div
+            className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
+            variants={STAGGER_CONTAINER}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-50px" }}
+          >
+            {values.map((item) => (
+              <ValueCard key={item.titleEn} item={item} isAr={isAr} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Strategic Goals */}
+      <section className="relative overflow-hidden border-t border-[#d7dbea] bg-white py-24 md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.05),transparent_30%)]" />
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="mx-auto mb-16 max-w-3xl text-center">
+            <motion.div {...FADE_IN_UP}>
+              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-[#f8f9fc] px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
+                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
+                  {text.goalsTitle}
+                </span>
+              </div>
+
+              <h2 className="mb-5 text-3xl font-bold text-[#0b0d36] md:text-5xl">
+                {text.goalsTitle}
+              </h2>
+
+              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
+
+              <p className="text-lg leading-8 text-slate-600 md:text-xl">
+                {text.goalsSubtitle}
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+            {strategicGoals.map((item, index) => (
+              <GoalCard key={item.titleEn} item={item} isAr={isAr} delay={index * 0.08} />
+            ))}
           </div>
         </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
-
-{/* Values */}
-<section className="relative overflow-hidden bg-[#f8f9fc] py-24 md:py-28">
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.05),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(120,24,46,0.05),transparent_20%)]" />
-  <div className="container relative z-10 mx-auto px-4">
-    <div className="mx-auto max-w-3xl text-center">
-      <motion.div {...FADE_IN_UP}>
-        <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
-          <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-          <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-            {text.valuesTitle}
-          </span>
-        </div>
-
-        <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
-          {text.valuesTitle}
-        </h2>
-
-        <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
-
-        <p className="text-lg leading-8 text-slate-600 md:text-xl">
-          {text.valuesSubtitle}
-        </p>
-      </motion.div>
-    </div>
-
-    <motion.div
-      className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
-      variants={STAGGER_CONTAINER}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      {values.map((item) => (
-        <ValueCard key={item.titleEn} item={item} isAr={isAr} />
-      ))}
-    </motion.div>
-  </div>
-</section>
-
-{/* Strategic Goals */}
-<section className="relative overflow-hidden border-t border-[#d7dbea] bg-white py-24 md:py-28">
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.05),transparent_30%)]" />
-  <div className="container relative z-10 mx-auto px-4">
-    <div className="mx-auto mb-16 max-w-3xl text-center">
-      <motion.div {...FADE_IN_UP}>
-        <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-[#f8f9fc] px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
-          <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-          <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-            {text.goalsTitle}
-          </span>
-        </div>
-
-        <h2 className="mb-5 text-3xl font-bold text-[#0b0d36] md:text-5xl">
-          {text.goalsTitle}
-        </h2>
-
-        <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
-
-        <p className="text-lg leading-8 text-slate-600 md:text-xl">
-          {text.goalsSubtitle}
-        </p>
-      </motion.div>
-    </div>
-
-    <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-      {strategicGoals.map((item, index) => (
-        <GoalCard key={item.titleEn} item={item} isAr={isAr} delay={index * 0.08} />
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Digital Transformation */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 md:py-28">
