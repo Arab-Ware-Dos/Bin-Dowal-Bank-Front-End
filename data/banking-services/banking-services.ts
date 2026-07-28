@@ -9577,5 +9577,170 @@ export const bankingServicesData: ServicePageData[] = [
       ]
     },
     relatedServicesKeys: ["moneygram", "shift", "upt", "bin-yaala"]
+  },
+  {
+    slug: "noor-ladies-card",
+    section: "accounts",
+    title: {
+      ar: "بطاقة نور للسيدات (MasterCard Debit)",
+      en: "Noor Ladies Card (MasterCard Debit)"
+    },
+    subtitle: {
+      ar: "تحكم مباشر بأموالكِ ودفع أسهل أينما كنتي",
+      en: "Direct control over your money and easier payments wherever you are"
+    },
+    heroImage: "/images/personalCover.png",
+    breadcrumbs: [
+      { labelKey: "nav.customServices", href: "/custom-services" },
+      { label: { ar: "بطاقة نور للسيدات", en: "Noor Ladies Card" } }
+    ],
+    tagline: {
+      ar: "بطاقة نور للسيدات",
+      en: "Noor Ladies Card"
+    },
+    primaryCta: {
+      label: { ar: "اطلب الخدمة الآن", en: "Request This Service" },
+      href: "/contact"
+    },
+    seoDescription: {
+      ar: "احصل على بطاقة نور للسيدات من بنك بن دول واستخدمها للسحب النقدي، والشراء عبر الإنترنت، والدفع عبر نقاط البيع بسهولة وأمان داخل اليمن وخارجه.",
+      en: "Get the Noor Ladies Card from Bin Dowal Bank and use it for cash withdrawals, online shopping, and POS payments easily and securely inside and outside Yemen."
+    },
+    overview: {
+      title: { ar: "النبذة التعريفية", en: "Overview" },
+      description: {
+        ar: "بطاقة نور للسيدات (MasterCard Debit) هي بطاقة خصم مباشر مرتبطة مباشرة بحساب نور للسيدات تتيح لكِ السحب النقدي، والشراء عبر الإنترنت، والدفع في نقاط البيع، باستخدام الرصيد المتوفر في الحساب.\nوتوفر البطاقة حلول دفع آمنة وسريعة، مع إمكانية استخدامها محليًا ودوليًا عبر شبكة MasterCard العالمية، بالإضافة إلى خدمات حماية إلكترونية متقدمة تساعد على تعزيز أمان المعاملات المالية.\nسواء كنتِ تستخدمين البطاقة لمشترياتكِ اليومية، أو للتسوق الإلكتروني، أو أثناء السفر، فإن بطاقة نور للسيدات تمنحكِ وسيلة دفع عملية وآمنة تناسب احتياجاتك المختلفة.",
+        en: "The Noor Ladies Card (MasterCard Debit) is a direct debit card linked directly to the Noor Ladies account, allowing you to withdraw cash, shop online, and pay at POS terminals using the available balance in your account. The card provides secure and fast payment solutions, with the ability to use it locally and internationally via the global MasterCard network, in addition to advanced electronic protection services that help enhance the security of financial transactions."
+      }
+    },
+    intro: {
+      ar: "أصبحت البطاقات البنكية جزءًا أساسيًا من المعاملات اليومية، سواء للسحب النقدي، أو التسوق الإلكتروني، أو الدفع عبر نقاط البيع.\nومن خلال بطاقة نور للسيدات من بنك بن دول، يمكنكِ الوصول إلى أموالكِ بسهولة واستخدامها بأمان داخل اليمن وخارجه، مع خدمات إلكترونية متطورة تمنحكِ تجربة مصرفية أكثر مرونة وراحة.",
+      en: "Bank cards have become an essential part of daily transactions, whether for cash withdrawals, online shopping, or POS payments. With the Noor Ladies Card from Bin Dowal Bank, you can easily access your money and use it safely inside and outside Yemen, with advanced electronic services that give you a more flexible and comfortable banking experience."
+    },
+    why: {
+      title: { ar: "لماذا تختار بطاقة نور للسيدات ؟", en: "Why choose the Noor Ladies Card?" },
+      description: {
+        ar: "لأنكِ تحتاجين إلى وسيلة دفع مرتبطة مباشرة بحسابك وتمنحكي تحكمًا أكبر بأموالك.",
+        en: "Because you need a payment method directly linked to your account that gives you greater control over your money."
+      },
+      items: [
+        { id: "why-n-1", text: { ar: "السحب النقدي بسهولة", en: "Easy cash withdrawal" } },
+        { id: "why-n-2", text: { ar: "الشراء عبر الإنترنت بأمان", en: "Safe online shopping" } },
+        { id: "why-n-3", text: { ar: "الدفع عبر نقاط البيع محليًا ودوليًا", en: "Pay via POS locally and internationally" } },
+        { id: "why-n-4", text: { ar: "متابعة عملياتك المالية بشكل فوري", en: "Instant tracking of your financial transactions" } },
+        { id: "why-n-5", text: { ar: "إدارة أموالك بمرونة أكبر", en: "Manage your money with greater flexibility" } }
+      ]
+    },
+    featureCards: {
+      title: { ar: "مميزات بطاقة نور للسيدات في بنك بن دول", en: "Features of the Noor Ladies Card at Bin Dowal Bank" },
+      items: [
+        {
+          id: "fc-n-1",
+          title: { ar: "قبول عالمي", en: "Global Acceptance" },
+          description: { ar: "إمكانية استخدام البطاقة محليًا ودوليًا عبر شبكة MasterCard العالمية.", en: "Ability to use the card locally and internationally via the global MasterCard network." }
+        },
+        {
+          id: "fc-n-2",
+          title: { ar: "الشراء عبر الإنترنت", en: "Online Shopping" },
+          description: { ar: "التسوق الإلكتروني والدفع عبر المواقع الإلكترونية بسهولة وأمان.", en: "Online shopping and paying through websites easily and securely." }
+        },
+        {
+          id: "fc-n-3",
+          title: { ar: "الدفع عبر نقاط البيع", en: "POS Payments" },
+          description: { ar: "استخدام البطاقة للدفع في المتاجر ونقاط البيع المختلفة.", en: "Use the card to pay in stores and various POS terminals." }
+        },
+        {
+          id: "fc-n-4",
+          title: { ar: "السحب النقدي المحلي والدولي", en: "Local and International Cash Withdrawal" },
+          description: { ar: "إمكانية السحب من أجهزة الصراف الآلي داخل اليمن وخارجه.", en: "Ability to withdraw from ATMs inside and outside Yemen." }
+        },
+        {
+          id: "fc-n-5",
+          title: { ar: "حماية إلكترونية متقدمة DS3", en: "Advanced 3DS Electronic Protection" },
+          description: { ar: "تعزيز أمان العمليات الإلكترونية وحماية إضافية أثناء الدفع عبر الإنترنت.", en: "Enhance the security of electronic operations and additional protection during online payments." }
+        },
+        {
+          id: "fc-n-6",
+          title: { ar: "رسائل SMS فورية", en: "Instant SMS Alerts" },
+          description: { ar: "استقبال إشعارات فورية لجميع العمليات المالية المنفذة على البطاقة.", en: "Receive instant notifications for all financial transactions performed on the card." }
+        },
+        {
+          id: "fc-n-7",
+          title: { ar: "خدمات إلكترونية متكاملة", en: "Integrated Electronic Services" },
+          description: { ar: "إدارة الحساب والبطاقة عبر القنوات الرقمية والتطبيق البنكي.", en: "Manage the account and card via digital channels and the banking app." }
+        },
+        {
+          id: "fc-n-8",
+          title: { ar: "دعم العملات المختلفة", en: "Support for Various Currencies" },
+          description: { ar: "إمكانية استخدام البطاقة بعدة عملات حسب نوع الحساب.", en: "Ability to use the card in multiple currencies depending on the account type." }
+        }
+      ]
+    },
+    audience: {
+      title: { ar: "العملاء المستهدفون", en: "Target Audience" },
+      items: [
+        { id: "aud-n-1", text: { ar: "السيدات اللواتي يعتمدن على المدفوعات الإلكترونية", en: "Ladies who rely on electronic payments" } },
+        { id: "aud-n-2", text: { ar: "السيدات اللواتي يشترن عبر الإنترنت", en: "Ladies who shop online" } },
+        { id: "aud-n-3", text: { ar: "سيدات الأعمال الصغيرة", en: "Small business ladies" } },
+        { id: "aud-n-4", text: { ar: "السيدات الباحثات عن وسيلة دفع آمنة ومرتبطة بحساباتهن البنكية", en: "Ladies looking for a secure payment method linked to their bank accounts" } }
+      ]
+    },
+    requirementsSection: {
+      title: { ar: "شروط الحصول على بطاقة نور للسيدات", en: "Requirements for Obtaining the Noor Ladies Card" },
+      items: [
+        { id: "req-n-1", text: { ar: "وجود حساب نور للسيدات نشط في البنك.", en: "Having an active Noor Ladies account at the bank." } },
+        { id: "req-n-2", text: { ar: "تقديم طلب إصدار البطاقة.", en: "Submit a card issuance request." } },
+        { id: "req-n-3", text: { ar: "استكمال البيانات المطلوبة.", en: "Complete the required information." } }
+      ]
+    },
+    stepsSection: {
+      title: { ar: "كيفية الحصول على البطاقة", en: "How to Get the Card" },
+      steps: [
+        { id: "stp-n-1", title: { ar: "زيارة أقرب فرع", en: "Visit the nearest branch" } },
+        { id: "stp-n-2", title: { ar: "تقديم طلب إصدار البطاقة", en: "Submit a card issuance request" } },
+        { id: "stp-n-3", title: { ar: "استكمال البيانات المطلوبة", en: "Complete the required information" } },
+        { id: "stp-n-4", title: { ar: "مراجعة الطلب واعتماد الإصدار", en: "Review the request and approve issuance" } },
+        { id: "stp-n-5", title: { ar: "استلام البطاقة وتفعيلها", en: "Receive and activate the card" } }
+      ]
+    },
+    ctaSection: {
+      title: { ar: "احصلي على بطاقتك اليوم", en: "Get your card today" },
+      description: { ar: "استمتعي بتجربة مصرفية أكثر مرونة وأمانًا مع بطاقة نور للسيدات من بنك بن دول، واستخدمي أموالك بسهولة داخل اليمن وخارجه", en: "Enjoy a more flexible and secure banking experience with the Noor Ladies Card from Bin Dowal Bank, and use your money easily inside and outside Yemen" },
+      primaryLabel: { ar: "قدمي طلبك الآن", en: "Apply Now" },
+      primaryHref: "/contact",
+      secondaryLabel: { ar: "اتصل بنا", en: "Contact Us" },
+      secondaryHref: "tel:+967000000000"
+    },
+    faqs: {
+      title: { ar: "الأسئلة الشائعة", en: "FAQs" },
+      items: [
+        {
+          id: "faq-n-1",
+          question: { ar: "هل بطاقة نور للسيدات مرتبطة بالحساب البنكي؟", en: "Is the Noor Ladies Card linked to the bank account?" },
+          answer: { ar: "نعم، يتم خصم المبالغ مباشرة من الرصيد المتوفر في الحساب.", en: "Yes, amounts are deducted directly from the available balance in the account." }
+        },
+        {
+          id: "faq-n-2",
+          question: { ar: "هل يمكن استخدام البطاقة للشراء عبر الإنترنت؟", en: "Can the card be used for online shopping?" },
+          answer: { ar: "نعم، يمكن استخدامها للتسوق الإلكتروني والدفع عبر الإنترنت.", en: "Yes, it can be used for online shopping and online payments." }
+        },
+        {
+          id: "faq-n-3",
+          question: { ar: "هل البطاقة تدعم الاستخدام الدولي؟", en: "Does the card support international use?" },
+          answer: { ar: "نعم، يمكن استخدامها محليًا ودوليًا عبر شبكة MasterCard.", en: "Yes, it can be used locally and internationally via the MasterCard network." }
+        },
+        {
+          id: "faq-n-4",
+          question: { ar: "هل توجد رسوم على السحب الدولي؟", en: "Are there fees for international withdrawals?" },
+          answer: { ar: "نعم، يتم تطبيق رسوم ثابتة ومتغيرة بحسب نوع العملية والبنك الخارجي.", en: "Yes, fixed and variable fees are applied depending on the type of transaction and the external bank." }
+        },
+        {
+          id: "faq-n-5",
+          question: { ar: "هل خدمة الرسائل النصية متوفرة؟", en: "Is the SMS service available?" },
+          answer: { ar: "نعم، يتم إرسال إشعارات SMS فورية لجميع العمليات.", en: "Yes, instant SMS notifications are sent for all transactions." }
+        }
+      ]
+    },
+    relatedServicesKeys: ["noorCurrent", "savingsAccount"]
   }
 ];

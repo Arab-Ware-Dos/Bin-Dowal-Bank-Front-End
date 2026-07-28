@@ -3,6 +3,7 @@ export const ACCOUNT_SLUGS = [
   "noor",
   "youth",
   "expat",
+  "noor-ladies-card",
 ] as const;
 
 export type AccountSlug = (typeof ACCOUNT_SLUGS)[number];

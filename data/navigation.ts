@@ -226,7 +226,7 @@ export const navigationData: NavItem[] = [
           { key: "noorCurrent", href: "/accounts/noor", label: { ar: "حساب نور للسيدات", en: "Noor Account (Ladies)" }, icon: Wallet },
           // { key: "noorSavings", href: "/accounts/noor", label: { ar: "حسابات التوفير", en: "Savings Accounts" }, icon: HandCoins },
           // { key: "noorInvestments", href: "/accounts/noor", label: { ar: "الودائع الاستثمارية", en: "Investment Deposits" }, icon: TrendingUp },
-          // { key: "noorCard", href: "/cards/noor-card", label: { ar: "بطاقة نور البنكية", en: "Noor Bank Card" }, icon: CreditCard },
+          { key: "noorCard", href: "/accounts/noor-ladies-card", label: { ar: "بطاقة نور للسيدات", en: "Noor Ladies Card" }, icon: CreditCard },
           // { key: "noorDigital", href: "/digital-channels", label: { ar: "الخدمات الرقمية", en: "Digital Services" }, icon: Laptop },
         ]
       },
