@@ -9589,7 +9589,7 @@ export const bankingServicesData: ServicePageData[] = [
       ar: "تحكم مباشر بأموالكِ ودفع أسهل أينما كنتي",
       en: "Direct control over your money and easier payments wherever you are"
     },
-    heroImage: "/images/personalCover.png",
+    heroImage: "/images/cards/debit-noor.webp",
     breadcrumbs: [
       { labelKey: "nav.customServices", href: "/custom-services" },
       { label: { ar: "بطاقة نور للسيدات", en: "Noor Ladies Card" } }
