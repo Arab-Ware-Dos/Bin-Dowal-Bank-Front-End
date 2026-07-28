@@ -584,7 +584,8 @@ export const bankingServicesData: ServicePageData[] = [
         {
           id: "faq-5",
           question: { ar: "هل يمكن فتح حساب توفير بدون وظيفة؟", en: "Can I open a savings account without a job?" },
-},
+          answer: { ar: "نعم، يمكن فتح الحساب للمستقلين أو غير الموظفين.", en: "Yes, freelancers and non-employees can open an account." }
+        },
         {
           id: "faq-6",
           question: { ar: "هل يمكن استقبال الحوالات من خارج اليمن؟", en: "Can I receive international transfers?" },

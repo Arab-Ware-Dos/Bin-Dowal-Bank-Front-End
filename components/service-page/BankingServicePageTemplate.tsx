@@ -115,7 +115,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
   const sectionLinks = [
     data.overview ? { id: "overview", ar: "نبذة تعريفية", en: "Overview" } : (data.details ? { id: "details", ar: "تفاصيل الخدمة", en: "Service Details" } : null),
     data.why ? { id: "why", ar: "لماذا هذه الخدمة؟", en: "Why this Service?" } : (data.benefits ? { id: "benefits", ar: "كيف أستفيد من الخدمة؟", en: "How Do I Benefit?" } : null),
-    data.types?.items?.length ? { id: "types", ar: "الأنواع", en: "Types" } : null,
+    data.serviceTypes?.items?.length ? { id: "serviceTypes", ar: "الأنواع", en: "Types" } : null,
     data.featureCards?.items?.length ? { id: "features", ar: "المميزات", en: "Features" } : null,
     data.audience?.items?.length ? { id: "audience", ar: "العملاء المستهدفون", en: "Target Audience" } : null,
     data.requirementsSection?.items?.length ? { id: "requirements", ar: "الشروط والمتطلبات", en: "Requirements" } : (data.howToGet ? { id: "get-service", ar: "كيف أحصل على الخدمة؟", en: "How Do I Get It?" } : null),
@@ -378,7 +378,10 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                               <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
                                 <Check className="h-4 w-4" />
                               </span>
-                              <span className="text-md font-medium text-slate-700">{getText(item.text, isArabic)}</span>
+                              <div className="flex flex-col">
+                                <span className="text-md font-bold text-slate-700 block">{getText(item.title, isArabic)}</span>
+                                {item.description && <span className="text-sm font-medium text-slate-600 block mt-1">{getText(item.description, isArabic)}</span>}
+                              </div>
                             </div>
                           ))}
                         </div>

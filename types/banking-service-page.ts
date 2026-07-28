@@ -73,6 +73,13 @@ export type ServicePageData = {
   seoDescription?: LocalizedText;
   overview?: ServiceTextBlock;
   why?: ServiceTextBlock & { items?: ServiceSimpleItem[] };
+  serviceTypes?: {
+    title: LocalizedText;
+    subtitle?: LocalizedText;
+    description?: LocalizedText;
+    items?: { id: string; title: LocalizedText; description?: LocalizedText }[];
+  };
+  intro?: LocalizedText;
   featureCards?: {
     title: LocalizedText;
     subtitle?: LocalizedText;
@@ -81,6 +88,12 @@ export type ServicePageData = {
   audience?: {
     title: LocalizedText;
     subtitle?: LocalizedText;
+    items: ServiceSimpleItem[];
+  };
+  guaranteesSection?: {
+    title: LocalizedText;
+    subtitle?: LocalizedText;
+    description?: LocalizedText;
     items: ServiceSimpleItem[];
   };
   requirementsSection?: {
