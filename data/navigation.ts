@@ -274,16 +274,19 @@ export const navigationData: NavItem[] = [
     singleLinks: [
       { key: "faq", href: "/knowledge-center/faq", label: { ar: "الأسئلة الشائعة", en: "FAQ" }, desc: { ar: "إجابات واضحة ومنظمة لأكثر الاستفسارات شيوعًا حول خدمات البنك", en: "Clear organized answers to the most common questions about bank services" }, icon: HelpCircle },
       { key: "reports", href: "/knowledge-center/annual-reports", label: { ar: "التقارير السنوية", en: "Annual Reports" }, desc: { ar: "أرشيف التقارير السنوية والقوائم المالية للبنك بصيغة PDF مع إمكانية التصفح والتنزيل", en: "Archive of the bank's annual reports and financial statements in PDF format" }, icon: FileText },
-    ]
-  },
-  {
-    key: "news",
-    href: "/news",
-    label: { ar: "الاخبار", en: "News" },
-    singleLinks: [
       { key: "bankNews", href: "/news", label: { ar: "أخبار البنك", en: "Bank News" }, icon: Newspaper },
+      { key: "digitalLibrary", href: "/digital-library", label: { ar: "المكتبة الرقمية", en: "Digital Library" }, icon: Newspaper },
     ]
   },
+  // {
+  //   key: "digitalLibrary",
+  //   href: "/digital-library",
+  //   label: { ar: "المكتبة", en: "Library" },
+  //   // singleLinks: [
+  //   //   { key: "digitalLibraryProducts", href: "/digital-library/products", label: { ar: "المنتجات", en: "Products" }, icon: Newspaper },
+  //   //   { key: "digitalLibraryGuides", href: "/digital-library/guides", label: { ar: "الإرشادات", en: "Guides" }, icon: Newspaper },
+  //   // ]
+  // },
   {
     key: "contact",
     href: "/contact",
