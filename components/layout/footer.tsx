@@ -18,7 +18,7 @@ import {
   Mail,
 } from "lucide-react"
 
-const quickLinks = [
+const quickLinks: { key: string; href: string }[] = [
   // { key: "expat", href: "/accounts/expat" },
   // { key: "businessBanking", href: "/business-banking" },
   // { key: "cards", href: "/cards" },
