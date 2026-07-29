@@ -31,7 +31,7 @@ export function SearchInput({ className = "" }: { className?: string }) {
         onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         placeholder={t("search.placeholder")}
         aria-label={t("search.placeholder")}
-        className="w-full h-8 ps-11 pe-4 py-2 bg-slate-100/70 border border-slate-200/80 rounded-full text-[13px] font-medium outline-none focus:ring-2 focus:ring-[#2d3185]/20 focus:border-[#2d3185] focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
+        className="w-full h-8 ps-11 pe-4 py-2 bg-slate-100/70 border border-slate-200/80 rounded-full text-[13px] outline-none focus:ring-2 focus:ring-[#2d3185]/20 focus:border-[#2d3185] focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
       />
       <button
         onClick={handleSearch}

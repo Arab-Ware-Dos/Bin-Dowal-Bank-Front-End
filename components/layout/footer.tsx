@@ -19,24 +19,24 @@ import {
 } from "lucide-react"
 
 const quickLinks = [
-  { key: "personalBanking", href: "/personal-banking" },
-  { key: "businessBanking", href: "/business-banking" },
-  { key: "cards", href: "/cards" },
-  { key: "financing", href: "/financing" },
+  // { key: "expat", href: "/accounts/expat" },
+  // { key: "businessBanking", href: "/business-banking" },
+  // { key: "cards", href: "/cards" },
+  // { key: "financing", href: "/financing" },
 ]
 
 const productLinks = [
   { key: "accounts", href: "/personal-banking#accounts" },
   { key: "debitCards", href: "/cards#debit" },
-  { key: "autoFinancing", href: "/financing#auto" },
+  // { key: "autoFinancing", href: "/financing#auto" },
   { key: "mobileApp", href: "/digital-channels#mobile" },
 ]
 
 const supportLinks = [
   { key: "contact", href: "/contact" },
-  { key: "branches", href: "/branches" },
+  { key: "branches", href: "/atm-and-branches" },
   { key: "about", href: "/about" },
-  { key: "careers", href: "/about#careers" },
+  { key: "careers", href: "/knowledge-center/careers" },
 ]
 
 const socialLinks = [

@@ -7,6 +7,7 @@ import { PERSONAL_REMITTANCE_ROUTE_PATHS } from "@/lib/personal-remittance-route
 import { PERSONAL_INDEPENDENT_TRANSFER_ROUTE_PATHS } from "@/lib/personal-independent-transfer-routes";
 import { PERSONAL_CORE_TRANSFER_ROUTE_PATHS } from "@/lib/personal-core-transfer-routes";
 import { PERSONAL_ACCOUNT_DEPOSIT_ROUTE_PATHS } from "@/lib/personal-account-deposit-routes";
+import { CAREER_ROUTE_PATHS } from "@/lib/career-routes";
 
 export const LOCALIZED_STATIC_ROUTES = [
   "/",
@@ -49,7 +50,8 @@ export const LOCALIZED_STATIC_ROUTES = [
   ...PERSONAL_REMITTANCE_ROUTE_PATHS,
   ...PERSONAL_INDEPENDENT_TRANSFER_ROUTE_PATHS,
   ...PERSONAL_CORE_TRANSFER_ROUTE_PATHS,
-  ...PERSONAL_ACCOUNT_DEPOSIT_ROUTE_PATHS
+  ...PERSONAL_ACCOUNT_DEPOSIT_ROUTE_PATHS,
+  ...CAREER_ROUTE_PATHS
 ] as const;
 
 export type LocalizedStaticRoute = (typeof LOCALIZED_STATIC_ROUTES)[number];

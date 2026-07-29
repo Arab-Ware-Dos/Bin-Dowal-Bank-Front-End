@@ -276,6 +276,7 @@ export const navigationData: NavItem[] = [
       { key: "reports", href: "/knowledge-center/annual-reports", label: { ar: "التقارير السنوية", en: "Annual Reports" }, desc: { ar: "أرشيف التقارير السنوية والقوائم المالية للبنك بصيغة PDF مع إمكانية التصفح والتنزيل", en: "Archive of the bank's annual reports and financial statements in PDF format" }, icon: FileText },
       { key: "bankNews", href: "/news", label: { ar: "أخبار البنك", en: "Bank News" }, icon: Newspaper },
       { key: "digitalLibrary", href: "/digital-library", label: { ar: "المكتبة الرقمية", en: "Digital Library" }, icon: Newspaper },
+      { key: "careers", href: "/knowledge-center/careers", label: { ar: "الوظائف", en: "Careers" }, desc: { ar: "استكشف الفرص الوظيفية وانضم إلى فريق عمل بنك بن دول", en: "Explore career opportunities and join the Bin Dowal Bank team" }, icon: Briefcase },
     ]
   },
   // {
