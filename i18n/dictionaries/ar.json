@@ -1,4 +1,12 @@
 {
+  "search.placeholder": "ابحث في الموقع...",
+  "search.title": "نتائج البحث",
+  "search.resultsFor": "نتائج البحث عن:",
+  "search.resultCount": "تم العثور على {count} نتيجة",
+  "search.noResults": "لم يتم العثور على نتائج مطابقة لبحثك.",
+  "search.suggestion": "جرّب استخدام كلمات مختلفة أو أكثر عمومية.",
+  "search.emptyQuery": "الرجاء إدخال كلمة للبحث عنها.",
+  "search.searchButton": "بحث",
   "nav.home": "الرئيسية",
   "nav.personalBanking": "خدمات الأفراد",
   "nav.businessBanking": "بن دول أعمال",

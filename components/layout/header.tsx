@@ -45,6 +45,7 @@ type DesktopMenuPosition = {
 import { Locale } from "@/i18n/config"
 import { UrlLanguageSwitcher } from "@/components/i18n/url-language-switcher"
 import { Suspense } from "react"
+import { SearchInput } from "@/components/search/SearchInput"
 
 export type HeaderProps =
   | {
@@ -295,7 +296,14 @@ export function Header(props: HeaderProps) {
                 </Link>
               </div>
 
-              <div className="flex items-center">
+              <div className="flex items-center gap-2 lg:gap-4">
+                <div className="hidden md:block">
+                  <Suspense fallback={<div className="h-8 w-40 bg-slate-100 rounded-full animate-pulse" />}>
+                    <SearchInput className="h-8" />
+                  </Suspense>
+                </div>
+                <span className="hidden md:block h-4 w-px bg-slate-300" />
+                
                 <a
                   href="/documents/Bin-Dowal-Bank-Profile.pdf"
                   download="Bin-Dowal-Bank-Profile.pdf"
@@ -305,7 +313,7 @@ export function Header(props: HeaderProps) {
                   <Download className="h-4 w-4" />
                   <span className="hidden sm:inline">{t("topbar.download")}</span>
                 </a>
-                <span className="mx-4 hidden h-4 w-px bg-slate-300 sm:block" />
+                <span className="mx-2 sm:mx-4 h-4 w-px bg-slate-300" />
 
                 {localeMode === "url" ? (
                   <Suspense fallback={
@@ -693,6 +701,13 @@ export function Header(props: HeaderProps) {
                     )}
                   </AnimatePresence>
                 </div> */}
+
+                {/* Mobile Search - Visible only on small screens */}
+                <div className="md:hidden">
+                  <Suspense fallback={<div className="h-10 w-40 bg-slate-100 rounded-full animate-pulse" />}>
+                    <SearchInput className="w-40" />
+                  </Suspense>
+                </div>
 
                 {/* Mobile Menu Trigger */}
                 <Sheet

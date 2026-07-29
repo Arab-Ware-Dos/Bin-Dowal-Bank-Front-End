@@ -1,4 +1,12 @@
 {
+  "search.placeholder": "Search the website...",
+  "search.title": "Search Results",
+  "search.resultsFor": "Search results for:",
+  "search.resultCount": "Found {count} results",
+  "search.noResults": "No matching results found for your search.",
+  "search.suggestion": "Try using different or more general words.",
+  "search.emptyQuery": "Please enter a search term.",
+  "search.searchButton": "Search",
   "nav.home": "Home",
   "nav.personalBanking": "Personal Banking",
   "nav.businessBanking": "Business Banking",

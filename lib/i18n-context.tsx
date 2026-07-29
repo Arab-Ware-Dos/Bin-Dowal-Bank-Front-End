@@ -17,6 +17,16 @@ interface I18nContextType {
 
 const translations: Record<Locale, Record<string, string>> = {
   ar: {
+    // Search
+    "search.placeholder": "ابحث في الموقع...",
+    "search.title": "نتائج البحث",
+    "search.resultsFor": "نتائج البحث عن:",
+    "search.resultCount": "تم العثور على {count} نتيجة",
+    "search.noResults": "لم يتم العثور على نتائج مطابقة لبحثك.",
+    "search.suggestion": "جرّب استخدام كلمات مختلفة أو أكثر عمومية.",
+    "search.emptyQuery": "الرجاء إدخال كلمة للبحث عنها.",
+    "search.searchButton": "بحث",
+
     // Navigation
     "nav.home": "الرئيسية",
     "nav.personalBanking": "خدمات الأفراد",
@@ -259,6 +269,16 @@ const translations: Record<Locale, Record<string, string>> = {
     "partnerships.viewAll": "مشاهدة جميع الشركاء",
   },
   en: {
+    // Search
+    "search.placeholder": "Search the website...",
+    "search.title": "Search Results",
+    "search.resultsFor": "Search results for:",
+    "search.resultCount": "Found {count} results",
+    "search.noResults": "No matching results found for your search.",
+    "search.suggestion": "Try using different or more general words.",
+    "search.emptyQuery": "Please enter a search term.",
+    "search.searchButton": "Search",
+
     // Navigation
     "nav.home": "Home",
     "nav.personalBanking": "Personal Banking",

@@ -48,8 +48,8 @@ function runDriftTest() {
         return fileList;
     }
 
-    const arFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'ar')).filter(f => !f.includes('root-proof.html'));
-    const enFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'en')).filter(f => !f.includes('root-proof.html'));
+    const arFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'ar')).filter(f => !f.includes('root-proof.html') && !f.includes('search.html'));
+    const enFilesDir = getAllHtmlFiles(path.join(OUT_DIR, 'en')).filter(f => !f.includes('root-proof.html') && !f.includes('search.html'));
 
     const arFiles = [...arFilesDir, path.join(OUT_DIR, 'ar.html')].filter(fs.existsSync);
     const enFiles = [...enFilesDir, path.join(OUT_DIR, 'en.html')].filter(fs.existsSync);
@@ -105,7 +105,24 @@ function runDriftTest() {
     console.log(`English noindex routes: ${enNoindex}`);
     console.log(`\nProof routes scanned: 2`);
     console.log(`Proof routes with noindex: ${proofNoIndex}`);
-    console.log(`Proof routes with nofollow: ${proofNoFollow}\n`);
+    console.log(`Proof routes with nofollow: ${proofNoFollow}`);
+
+    const searchRoutes = [
+        path.join(OUT_DIR, 'ar/search.html'),
+        path.join(OUT_DIR, 'en/search.html')
+    ];
+    let searchNoIndex = 0;
+    for (const f of searchRoutes) {
+        if (fs.existsSync(f)) {
+            const res = checkFileForRobots(f, false);
+            if (res.hasNoIndex) searchNoIndex++;
+            if (res.indexable) {
+                console.error(`❌ FAILED: Search route ${f} should not be indexable.`);
+                hasErrors = true;
+            }
+        }
+    }
+    console.log(`Search routes with noindex: ${searchNoIndex}\n`);
 
     if (arFiles.length !== EXPECTED_PRODUCTION_ROUTE_FAMILIES) {
         console.error(`❌ FAILED: Expected exactly ${EXPECTED_PRODUCTION_ROUTE_FAMILIES} Arabic production routes, but found ${arFiles.length}`);
