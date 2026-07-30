@@ -407,10 +407,16 @@ export function Header(props: HeaderProps) {
                       >
                         <Link
                           href={resolveHref(item.href)}
-                          className="relative inline-flex items-center px-2 lg:px-3 py-2 font-semibold sm:font-medium md:font-bold lg:font-bold xl:font-medium 2xl:font-medium text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[18px] sm:text-[18px] md:text-[18px] lg:text-[22px] xl:text-[13px] 2xl:text-[18px] whitespace-nowrap"
+                          className={`relative inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] ${
+                            locale === "ar"
+                              ? "whitespace-nowrap"
+                              : "text-center leading-tight max-w-[120px] whitespace-normal"
+                          }`}
                         >
                           {locale === "ar" ? item.label.ar : item.label.en}
                         </Link>
+
+
 
 
                         {hasSubmenu && (
@@ -559,13 +565,18 @@ export function Header(props: HeaderProps) {
                                                     href={resolveHref(sub.href)}
                                                     className="group/sublink flex items-center py-2 text-[14px] font-medium text-slate-600 hover:text-[#2d3185] transition-all duration-200"
                                                   >
-                                                    {sub.logo ? (
+                                                    {sub.icon ? (
+                                                      <div className={`shrink-0 transition-transform duration-300 group-hover/sublink:scale-110 flex items-center justify-center ${locale === "ar" ? "ml-2.5" : "mr-2.5"}`}>
+                                                        <DynamicIcon name={sub.icon} className="h-4 w-4 text-[#2d3185]" />
+                                                      </div>
+                                                    ) : sub.logo ? (
                                                       <div className={`relative h-6 w-9 shrink-0 overflow-hidden transition-transform duration-300 group-hover/sublink:scale-110 flex items-center justify-center ${locale === "ar" ? "ml-2.5" : "mr-2.5"}`}>
                                                         <Image src={sub.logo} alt={sub.key} fill sizes="36px" className="object-contain p-0.5" />
                                                       </div>
                                                     ) : (
                                                       <span className={`w-1.5 h-1.5 shrink-0 rounded-full bg-slate-300 group-hover/sublink:bg-[#ed1c24] group-hover/sublink:scale-125 transition-all duration-300 ${locale === "ar" ? "ml-2.5" : "mr-2.5"}`} />
                                                     )}
+
                                                     <div className="flex flex-col flex-1 min-w-0">
                                                       <div className="flex items-center gap-1.5">
                                                         <span className="transition-all duration-200 font-semibold group-hover/sublink:text-[#2d3185] whitespace-nowrap">

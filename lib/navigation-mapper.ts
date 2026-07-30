@@ -1,7 +1,7 @@
 import { NavItem, NavSubGroup, NavLink, navigationData } from '@/data/navigation';
 import { NavigationSection, NavigationItem } from '@/types/navigation';
 
-// خريطة مطابقة المفاتيح بين الـ API والـ Frontend للحفاظ على الصور والغلاف التجميلي لكل قسم
+// خريطة مطابقة المفاتيح بين الـ API والـ Frontend للحفاظ على الصور والغلاف التجميلي والتخطيط الفاخر لكل قسم
 const KEY_ALIASES: Record<string, string> = {
   about_us: 'about',
   individual_services: 'personalBanking',
@@ -24,12 +24,15 @@ export function mapApiToNavItems(sections: NavigationSection[], locale: string =
       (n) => n.key === mappedKey || n.key === section.key || n.label.ar === section.title || n.label.en === section.title
     );
 
+    const titleAr = section.title_ar || (locale === 'ar' ? section.title : staticMatch?.label.ar) || section.title;
+    const titleEn = section.title_en || (locale === 'en' ? section.title : staticMatch?.label.en) || section.title;
+
     const navItem: NavItem = {
       key: section.key || `nav_${section.id}`,
       href: staticMatch?.href || '#',
       label: {
-        ar: locale === 'ar' ? section.title : (staticMatch?.label.ar || section.title),
-        en: locale === 'en' ? section.title : (staticMatch?.label.en || section.title),
+        ar: titleAr,
+        en: titleEn,
       },
       image: staticMatch?.image,
       imageTitle: staticMatch?.imageTitle,
@@ -42,18 +45,38 @@ export function mapApiToNavItems(sections: NavigationSection[], locale: string =
       const isSingleGroup = section.items.length === 1 && (
         section.items[0].title === "الخدمات المتاحة" || 
         section.items[0].title === "Available Services" || 
-        section.items[0].title === "الخدمات"
+        section.items[0].title_ar === "الخدمات المتاحة" ||
+        section.items[0].title_en === "Available Services"
       );
 
       if (isSingleGroup && section.items[0].children) {
         // Single Links layout (الكروت مع اللوحة الجانبية المصورة)
-        navItem.singleLinks = section.items[0].children.map((child) => mapApiChildToNavLink(child, locale));
+        navItem.singleLinks = section.items[0].children.map((child, idx) => {
+          const staticChild = staticMatch?.singleLinks?.[idx] || staticMatch?.singleLinks?.find(s => s.label.ar === child.title || s.label.en === child.title);
+          return mapApiChildToNavLink(child, staticChild);
+        });
       } else {
         // Groups layout (مجموعات متعددة الأعمدة)
-        navItem.groups = section.items.map((group) => {
+        navItem.groups = section.items.map((group, groupIdx) => {
+          const groupTitleAr = group.title_ar || group.title;
+          const groupTitleEn = group.title_en || group.title;
+
+          // البحث عن التنسيق الثابت المماثل لهذه المجموعة (مثل cols: 2 أو rows: 5)
+          const staticGroup = staticMatch?.groups?.[groupIdx] || staticMatch?.groups?.find(g => 
+            g.title.ar === group.title || 
+            g.title.en === group.title || 
+            g.title.ar === groupTitleAr || 
+            g.title.en === groupTitleEn
+          );
+
           const navGroup: NavSubGroup = {
-            title: { ar: group.title, en: group.title },
-            links: (group.children || []).map((child) => mapApiChildToNavLink(child, locale)),
+            title: { ar: groupTitleAr, en: groupTitleEn },
+            cols: staticGroup?.cols,
+            rows: staticGroup?.rows,
+            links: (group.children || []).map((child, childIdx) => {
+              const staticLink = staticGroup?.links?.[childIdx] || staticGroup?.links?.find(l => l.label.ar === child.title || l.label.en === child.title);
+              return mapApiChildToNavLink(child, staticLink);
+            }),
           };
           return navGroup;
         });
@@ -64,20 +87,33 @@ export function mapApiToNavItems(sections: NavigationSection[], locale: string =
   });
 }
 
-function mapApiChildToNavLink(child: NavigationItem, locale: string): NavLink {
+function mapApiChildToNavLink(child: NavigationItem, staticLink?: NavLink): NavLink {
+  const childTitleAr = child.title_ar || child.title;
+  const childTitleEn = child.title_en || child.title;
+
+  const childSubtitleAr = child.subtitle_ar || child.subtitle || undefined;
+  const childSubtitleEn = child.subtitle_en || child.subtitle || undefined;
+
   const navLink: NavLink = {
     key: `link_${child.id}`,
-    href: child.url || '#',
+    href: child.url || staticLink?.href || '#',
     label: {
-      ar: child.title,
-      en: child.title,
+      ar: childTitleAr,
+      en: childTitleEn,
     },
-    desc: child.subtitle ? { ar: child.subtitle, en: child.subtitle } : undefined,
-    icon: child.icon || undefined,
+    desc: (childSubtitleAr || childSubtitleEn) ? { 
+      ar: childSubtitleAr || childSubtitleEn || '', 
+      en: childSubtitleEn || childSubtitleAr || '' 
+    } : staticLink?.desc,
+    icon: child.icon || staticLink?.icon || undefined,
+    cols: staticLink?.cols,
   };
 
   if (child.children && child.children.length > 0) {
-    navLink.subLinks = child.children.map((subChild) => mapApiChildToNavLink(subChild, locale));
+    navLink.subLinks = child.children.map((subChild, subIdx) => {
+      const staticSubLink = staticLink?.subLinks?.[subIdx] || staticLink?.subLinks?.find(s => s.label.ar === subChild.title || s.label.en === subChild.title);
+      return mapApiChildToNavLink(subChild, staticSubLink);
+    });
   }
 
   return navLink;

@@ -1,7 +1,11 @@
 export interface NavigationItem {
   id: number;
   title: string;
+  title_ar?: string | null;
+  title_en?: string | null;
   subtitle?: string | null;
+  subtitle_ar?: string | null;
+  subtitle_en?: string | null;
   url?: string | null;
   icon?: string | null;
   badge?: string | null;
@@ -14,6 +18,8 @@ export interface NavigationSection {
   id: number;
   key: string;
   title: string;
+  title_ar?: string | null;
+  title_en?: string | null;
   lang: string;
   order_index: number;
   items: NavigationItem[];
