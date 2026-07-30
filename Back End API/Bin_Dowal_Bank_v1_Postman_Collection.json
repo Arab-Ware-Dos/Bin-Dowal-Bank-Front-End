@@ -1,0 +1,467 @@
+{
+	"info": {
+		"_postman_id": "bindowal-bank-frontend-v1",
+		"name": "Bin Dowal Bank - Frontend APIs (v1)",
+		"description": "Postman Collection for Bin Dowal Islamic Microfinance Bank public frontend API endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Navigation & Layout",
+			"item": [
+				{
+					"name": "Get Navigation Tree (Header & Footer)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/navigation",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"navigation"
+							]
+						},
+						"description": "Fetch top navigation header and footer items."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Get All Services",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/services?category=Personal Banking",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "Personal Banking",
+									"description": "Optional category filter"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"description": "Optional search term",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fetch list of all 23 bank services."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/services/current-account",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"services",
+								"current-account"
+							]
+						},
+						"description": "Fetch complete details of a single service by slug."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "News & Media",
+			"item": [
+				{
+					"name": "Get All News",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/news?is_featured=true",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news"
+							],
+							"query": [
+								{
+									"key": "is_featured",
+									"value": "true",
+									"description": "Filter featured news only"
+								},
+								{
+									"key": "search",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fetch news and announcements list."
+					},
+					"response": []
+				},
+				{
+					"name": "Get News Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/news/saba-african-bank-official-visit",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"news",
+								"saba-african-bank-official-visit"
+							]
+						},
+						"description": "Fetch complete news article content by slug."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Annual Reports",
+			"item": [
+				{
+					"name": "Get Annual Reports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/annual-reports",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"annual-reports"
+							]
+						},
+						"description": "Fetch published bank annual reports with PDF file links."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CSR Initiatives",
+			"item": [
+				{
+					"name": "Get CSR Initiatives",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/csr-initiatives?category=environment",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"csr-initiatives"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "environment",
+									"description": "Filter by category: environment, social, disability, health"
+								}
+							]
+						},
+						"description": "Fetch list of corporate social responsibility initiatives."
+					},
+					"response": []
+				},
+				{
+					"name": "Get CSR Initiative Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/csr-initiatives/coastal-cleaning-sustainability-campaign",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"csr-initiatives",
+								"coastal-cleaning-sustainability-campaign"
+							]
+						},
+						"description": "Fetch details of a specific CSR initiative by slug."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locations & ATMs",
+			"item": [
+				{
+					"name": "Get Branches & ATMs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/locations?type=branch",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"locations"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "branch",
+									"description": "Filter by type: branch or atm"
+								},
+								{
+									"key": "city",
+									"value": "المكلا",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Fetch branches and ATMs with geographical coordinates and working hours."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bank Partners",
+			"item": [
+				{
+					"name": "Get All Bank Partners",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/partners?type=corresponding_bank",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"partners"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "corresponding_bank",
+									"description": "Filter by type: local, international, corresponding_bank"
+								}
+							]
+						},
+						"description": "Fetch list of bank partners, international networks, and corresponding banks."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job Vacancies & Careers",
+			"item": [
+				{
+					"name": "Get All Job Vacancies",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/jobs?department=خدمة العملاء",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "department",
+									"value": "خدمة العملاء",
+									"description": "Filter by department"
+								}
+							]
+						},
+						"description": "Fetch all active job vacancies."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Job Vacancy Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/jobs/customer-service-representative",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"jobs",
+								"customer-service-representative"
+							]
+						},
+						"description": "Fetch detailed information for a specific job vacancy and increment views count."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		}
+	]
+}
