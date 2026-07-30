@@ -29,9 +29,13 @@ import {
   ChevronLeft
 } from "lucide-react"
 
-// استيراد بيانات القائمة الهيكلية الجديدة
+// استيراد بيانات القائمة الهيكلية الجديدة والربط الديناميكي مع الـ API
 import { navigationData, NavItem } from "@/data/navigation"
 import { getLocalizedHref } from "@/lib/localized-routes"
+import { DynamicIcon } from "@/components/ui/dynamic-icon"
+import { getNavigationData } from "@/services/navigation-service"
+import { mapApiToNavItems } from "@/lib/navigation-mapper"
+
 
 const DESKTOP_MEGA_MENU_MAX_WIDTH = 1150
 const DESKTOP_MEGA_MENU_MIN_WIDTH = 800
@@ -128,9 +132,30 @@ export function Header(props: HeaderProps) {
     [locale]
   )
 
+  const [navItems, setNavItems] = useState<NavItem[]>(navigationData)
+
+  useEffect(() => {
+    let isMounted = true
+    async function loadDynamicNav() {
+      try {
+        const sections = await getNavigationData(locale)
+        if (sections && sections.length > 0 && isMounted) {
+          const mapped = mapApiToNavItems(sections, locale)
+          setNavItems(mapped)
+        }
+      } catch (err) {
+        console.warn("[Header] Failed to fetch dynamic navigation:", err)
+      }
+    }
+    loadDynamicNav()
+    return () => {
+      isMounted = false
+    }
+  }, [locale])
+
   const activeDesktopItem: NavItem | null = useMemo(() => {
-    return navigationData.find((item) => item.key === activeDesktopMenu) ?? null
-  }, [activeDesktopMenu])
+    return navItems.find((item) => item.key === activeDesktopMenu) ?? null
+  }, [activeDesktopMenu, navItems])
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 18)
@@ -172,7 +197,8 @@ export function Header(props: HeaderProps) {
   const calculateDesktopMenuPosition = (key: string) => {
     const navElement = desktopNavRef.current
     const triggerElement = desktopTriggerRefs.current[key]
-    const currentItem = navigationData.find(item => item.key === key)
+    const currentItem = navItems.find(item => item.key === key)
+
 
     if (!navElement || !triggerElement || !currentItem || typeof window === "undefined") return
 
@@ -359,9 +385,10 @@ export function Header(props: HeaderProps) {
                 className="relative hidden lg:flex lg:items-center lg:gap-1"
                 onMouseLeave={() => activeDesktopMenu && closeDesktopMenu()}
               >
-                {navigationData.map((item) => {
+                {navItems.map((item) => {
                   const hasSubmenu = !!(item.groups || item.singleLinks)
                   const isOpen = activeDesktopMenu === item.key
+
 
                   return (
                     <div
@@ -380,10 +407,11 @@ export function Header(props: HeaderProps) {
                       >
                         <Link
                           href={resolveHref(item.href)}
-                          className="relative inline-flex items-center px-2 lg:px-3 py-2 font-semibold sm:font-medium md:font-bold lg:font-bold xl:font-medium 2xl:font-medium text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[18px] sm:text-[18px] md:text-[18px] lg:text-[22px] xl:text-[13px] 2xl:text-[18px]"
+                          className="relative inline-flex items-center px-2 lg:px-3 py-2 font-semibold sm:font-medium md:font-bold lg:font-bold xl:font-medium 2xl:font-medium text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[18px] sm:text-[18px] md:text-[18px] lg:text-[22px] xl:text-[13px] 2xl:text-[18px] whitespace-nowrap"
                         >
                           {locale === "ar" ? item.label.ar : item.label.en}
                         </Link>
+
 
                         {hasSubmenu && (
                           <button
@@ -502,9 +530,10 @@ export function Header(props: HeaderProps) {
                                             >
                                               {Icon && (
                                                 <span className="flex h-7 w-7 mt-0.5 shrink-0 items-center justify-center rounded-md bg-[#2d3185]/5 text-[#2d3185] transition-all duration-300 group-hover/link:bg-[#2d3185] group-hover/link:text-white group-hover/link:shadow-md group-hover/link:scale-110">
-                                                  <Icon className="h-4 w-4" />
+                                                  {typeof Icon === "string" ? <DynamicIcon name={Icon} className="h-4 w-4" /> : <Icon className="h-4 w-4" />}
                                                 </span>
                                               )}
+
                                               <div className="flex flex-col flex-1 min-w-0">
                                                 <div className="flex items-center gap-2">
                                                   <span className="text-[14px] font-semibold transition-colors leading-tight">
@@ -579,8 +608,9 @@ export function Header(props: HeaderProps) {
                                       >
                                         <div className="flex items-start gap-4">
                                           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white text-[#2d3185] shadow-sm transition-colors duration-200 group-hover:bg-[#2d3185] group-hover:text-white">
-                                            {Icon && <Icon className="h-5 w-5" />}
+                                            {Icon && (typeof Icon === "string" ? <DynamicIcon name={Icon} className="h-5 w-5" /> : <Icon className="h-5 w-5" />)}
                                             {!Icon && subItem.logo && (
+
                                               <div className="relative h-6 w-9 shrink-0 flex items-center justify-center transition-all duration-200 group-hover:brightness-0 group-hover:invert">
                                                 <Image src={subItem.logo} alt={subItem.key} fill sizes="36px" className="object-contain" />
                                               </div>
@@ -766,9 +796,10 @@ export function Header(props: HeaderProps) {
                         </div>
 
                         <div className="space-y-3">
-                          {navigationData.map((item) => {
+                          {navItems.map((item) => {
                             const hasSubmenu = !!(item.groups || item.singleLinks)
                             const isOpen = activeMobileMenu === item.key
+
 
                             return (
                               <div
@@ -851,7 +882,8 @@ export function Header(props: HeaderProps) {
                                                                   onClick={() => setMobileMenuOpen(false)}
                                                                   className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-600 active:bg-[#2d3185]/5 active:text-[#2d3185] transition-colors"
                                                                 >
-                                                                  {Icon && <Icon className="h-4 w-4 shrink-0 opacity-60" />}
+                                                                  {Icon && (typeof Icon === "string" ? <DynamicIcon name={Icon} className="h-4 w-4 shrink-0 opacity-60" /> : <Icon className="h-4 w-4 shrink-0 opacity-60" />)}
+
                                                                   <span className="text-[13.5px] font-semibold">{locale === "ar" ? link.label.ar : link.label.en}</span>
                                                                 </Link>
                                                                 
