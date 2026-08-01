@@ -9,13 +9,14 @@ import { PageHero } from "@/components/ui/page-hero"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { newsItems } from "@/data/news"
+import { useNews } from "@/hooks/use-news"
 import {
   Calendar,
   ArrowLeft,
   ArrowRight,
   Search,
   Newspaper,
+  Loader2,
 } from "lucide-react"
 
 type NewsArticle = {
@@ -101,7 +102,7 @@ export function NewsPageContent() {
     [mode, locale]
   )
 
-  const allNews = useMemo(() => newsItems as NewsArticle[], [])
+  const { news: allNews, loading, error } = useNews()
 
   const [searchQuery, setSearchQuery] = useState("")
   const [activeCategory, setActiveCategory] = useState("all")

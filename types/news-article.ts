@@ -30,6 +30,7 @@ export interface NewsArticle {
   contentEn: ArticleContent;
   categoryAr?: string;
   categoryEn?: string;
+  categorySlug?: string;
   image?: string;
   imageAltAr?: string;
   imageAltEn?: string;
