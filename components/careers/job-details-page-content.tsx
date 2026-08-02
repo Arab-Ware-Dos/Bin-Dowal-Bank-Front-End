@@ -28,14 +28,19 @@ export function JobDetailsPageContent({ job }: JobDetailsPageContentProps) {
     return mode === "url" ? getLocalizedHref(target, locale) : target
   }
 
-  const title = ar ? job.title.ar : job.title.en
+  const title = ar ? job.title.ar : (job.title.en || job.title.ar)
   const email = job.applicationEmail || "careers@bindowalbank.com"
-  const description = ar ? job.description?.ar : job.description?.en
-  const department = ar ? job.department?.ar : job.department?.en
+  const description = ar ? job.description?.ar : (job.description?.en || job.description?.ar)
+  const department = ar ? job.department?.ar : (job.department?.en || job.department?.ar)
 
-  const responsibilities = ar ? job.responsibilities?.ar || [] : job.responsibilities?.en || job.responsibilities?.ar || []
-  const qualifications = ar ? job.qualifications?.ar || [] : job.qualifications?.en || job.qualifications?.ar || []
-  const conditions = ar ? job.conditions?.ar || [] : job.conditions?.en || job.conditions?.ar || []
+  const respList = ar ? job.responsibilities?.ar : job.responsibilities?.en
+  const responsibilities = respList && respList.length > 0 ? respList : (job.responsibilities?.ar || [])
+
+  const qualList = ar ? job.qualifications?.ar : job.qualifications?.en
+  const qualifications = qualList && qualList.length > 0 ? qualList : (job.qualifications?.ar || [])
+
+  const condList = ar ? job.conditions?.ar : job.conditions?.en
+  const conditions = condList && condList.length > 0 ? condList : (job.conditions?.ar || [])
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(38,43,128,0.05),transparent_35%),linear-gradient(to_bottom,#ffffff,#f8fafc)]">
@@ -84,7 +89,7 @@ export function JobDetailsPageContent({ job }: JobDetailsPageContentProps) {
                       </div>
                       <div>
                         <p className="text-sm font-semibold text-slate-500">{ar ? "مكان العمل" : "Location"}</p>
-                        <p className="text-base font-bold text-[#0b0d36]">{ar ? job.location.ar : job.location.en}</p>
+                        <p className="text-base font-bold text-[#0b0d36]">{ar ? job.location.ar : (job.location.en || job.location.ar)}</p>
                       </div>
                     </div>
 

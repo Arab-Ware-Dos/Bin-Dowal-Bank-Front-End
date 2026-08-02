@@ -375,13 +375,14 @@ Accept: application/json
 ### 6. قائمة التقارير السنوية (Annual Reports)
 
 - **المسار:** `GET /annual-reports`
-- **الوصف:** يُرجع قوائم وتقارير البنك السنوية المعتمدة المنشورة مع رابط ملف الـ PDF وحجمه وعدد الصفحات.
+- **الوصف:** يُرجع قوائم وتقارير البنك السنوية المعتمدة المنشورة باللغتين العربية والإنجليزية، مع رابط ملف الـ PDF وحجمه وعدد الصفحات، بالإضافة لدعم التوطين حسب ترويسة اللغة (`Accept-Language`).
 
 #### مثال طلب (Request):
 ```http
 GET /api/v1/annual-reports HTTP/1.1
 Host: localhost:8000
 Accept: application/json
+Accept-Language: ar
 ```
 
 #### استجابة ناجحة (Response 200 OK):
@@ -392,12 +393,41 @@ Accept: application/json
       "id": 1,
       "year": 2025,
       "title": "التقرير السنوي لعام 2025",
+      "title_ar": "التقرير السنوي لعام 2025",
+      "title_en": "Annual Report 2025",
       "brief_description": "القوائم المالية وحسابات الأرباح المعتمدة لبنك بن دول عن العام المالي 2025",
-      "pdf_file_path": "http://localhost:8000/storage/reports/annual-report-2025.pdf",
+      "brief_description_ar": "القوائم المالية وحسابات الأرباح المعتمدة لبنك بن دول عن العام المالي 2025",
+      "brief_description_en": "Approved financial statements and profit accounts for Bin Dowal Bank for fiscal year 2025",
+      "file_url": "http://localhost:8000/storage/reports/annual-report-2025.pdf",
       "file_size": "14.2 MB",
       "page_count": 64,
-      "publish_date": "2026-03-01",
-      "is_published": true
+      "publish_date": "2026-03-01T00:00:00.000000Z",
+      "is_published": true,
+      "created_at": "2026-03-01T10:00:00.000000Z"
+    }
+  ]
+}
+```
+
+#### عند إرسال `Accept-Language: en`:
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "year": 2025,
+      "title": "Annual Report 2025",
+      "title_ar": "التقرير السنوي لعام 2025",
+      "title_en": "Annual Report 2025",
+      "brief_description": "Approved financial statements and profit accounts for Bin Dowal Bank for fiscal year 2025",
+      "brief_description_ar": "القوائم المالية وحسابات الأرباح المعتمدة لبنك بن دول عن العام المالي 2025",
+      "brief_description_en": "Approved financial statements and profit accounts for Bin Dowal Bank for fiscal year 2025",
+      "file_url": "http://localhost:8000/storage/reports/annual-report-2025.pdf",
+      "file_size": "14.2 MB",
+      "page_count": 64,
+      "publish_date": "2026-03-01T00:00:00.000000Z",
+      "is_published": true,
+      "created_at": "2026-03-01T10:00:00.000000Z"
     }
   ]
 }
@@ -554,10 +584,12 @@ Accept: application/json
   "data": [
     {
       "id": 1,
-      "name": "موني جرام العالمية",
-      "logo_path": "storage/partners/moneygram.png",
+      "name": "شركة موني جرام العالمية (MoneyGram)",
+      "name_ar": "شركة موني جرام العالمية (MoneyGram)",
+      "name_en": "MoneyGram International",
+      "logo_url": "http://localhost:8000/storage/images/partners/international/Asset%2043@3x.png",
+      "website_url": "https://www.moneygram.com",
       "partner_type": "international",
-      "website_url": "https://moneygram.com",
       "order_index": 1
     }
   ]

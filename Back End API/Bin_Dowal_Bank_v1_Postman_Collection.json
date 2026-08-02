@@ -221,7 +221,7 @@
 								"annual-reports"
 							]
 						},
-						"description": "Fetch published bank annual reports with PDF file links."
+						"description": "Fetch published bank annual reports with bilingual titles, brief descriptions, and PDF file links."
 					},
 					"response": []
 				}
@@ -381,7 +381,44 @@
 						},
 						"description": "Fetch list of bank partners, international networks, and corresponding banks."
 					},
-					"response": []
+					"response": [
+						{
+							"name": "Successful Bank Partners Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ar"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/partners?type=corresponding_bank",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"partners"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"شركة موني جرام العالمية (MoneyGram)\",\n      \"name_ar\": \"شركة موني جرام العالمية (MoneyGram)\",\n      \"name_en\": \"MoneyGram International\",\n      \"logo_url\": \"http://localhost:8000/storage/images/partners/international/Asset%2043@3x.png\",\n      \"website_url\": \"https://www.moneygram.com\",\n      \"partner_type\": \"international\",\n      \"order_index\": 1\n    }\n  ]\n}"
+						}
+					]
 				}
 			]
 		},

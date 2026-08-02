@@ -68,12 +68,12 @@ export function CareersPageContent() {
                         <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-[#324198]/[0.05] text-[#324198] transition-colors duration-300 group-hover:bg-[#324198] group-hover:text-white">
                           <Briefcase className="h-6 w-6" />
                         </div>
-                        <h3 className="mb-4 text-xl font-bold text-[#0b0d36]">{ar ? job.title.ar : job.title.en}</h3>
+                        <h3 className="mb-4 text-xl font-bold text-[#0b0d36]">{ar ? job.title.ar : (job.title.en || job.title.ar)}</h3>
                         
                         <div className="mb-6 flex flex-col gap-3">
                           <div className="flex items-center gap-2 text-sm text-slate-600">
                             <MapPin className="h-4 w-4 text-slate-400" />
-                            <span>{ar ? job.location.ar : job.location.en}</span>
+                            <span>{ar ? job.location.ar : (job.location.en || job.location.ar)}</span>
                           </div>
                           {job.endDate && (
                             <div className="flex items-center gap-2 text-sm text-slate-600">

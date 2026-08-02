@@ -83,36 +83,57 @@ export interface JobSingleApiResponse {
 
 // ─── Normalize API raw job to frontend JobData ──────────────
 
+function parseArrayField(val: unknown): string[] {
+  if (!val) return []
+  if (Array.isArray(val)) {
+    return val.map((item) => String(item).trim()).filter(Boolean)
+  }
+  if (typeof val === "string") {
+    const trimmed = val.trim()
+    if (!trimmed) return []
+    if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
+      try {
+        const parsed = JSON.parse(trimmed)
+        if (Array.isArray(parsed)) {
+          return parsed.map((item) => String(item).trim()).filter(Boolean)
+        }
+      } catch {
+        // Not valid JSON string, proceed with newline splitting
+      }
+    }
+    return trimmed.split(/\r?\n/).map((s) => s.trim()).filter(Boolean)
+  }
+  return []
+}
+
 export function normalizeJobVacancy(raw: ApiJobRaw): JobData {
-  const titleAr = raw.title_ar ?? raw.titleAr ?? raw.title ?? ""
-  const titleEn = raw.title_en ?? raw.titleEn ?? raw.title ?? titleAr
+  const titleAr = (raw.title_ar ?? raw.titleAr ?? raw.title ?? "").trim()
+  const rawTitleEn = (raw.title_en ?? raw.titleEn ?? "").trim()
+  const titleEn = rawTitleEn || (raw.title && raw.title !== titleAr ? raw.title.trim() : titleAr)
 
-  const locationAr = raw.location_ar ?? raw.locationAr ?? raw.location ?? "عدن، اليمن"
-  const locationEn = raw.location_en ?? raw.locationEn ?? raw.location ?? "Aden, Yemen"
+  const locationAr = (raw.location_ar ?? raw.locationAr ?? raw.location ?? "عدن، اليمن").trim()
+  const rawLocationEn = (raw.location_en ?? raw.locationEn ?? "").trim()
+  const locationEn = rawLocationEn || (raw.location && raw.location !== locationAr ? raw.location.trim() : "Aden, Yemen")
 
-  const deptAr = raw.department_ar ?? raw.departmentAr ?? raw.department ?? ""
-  const deptEn = raw.department_en ?? raw.departmentEn ?? raw.department ?? deptAr
+  const deptAr = (raw.department_ar ?? raw.departmentAr ?? raw.department ?? "").trim()
+  const rawDeptEn = (raw.department_en ?? raw.departmentEn ?? "").trim()
+  const deptEn = rawDeptEn || (raw.department && raw.department !== deptAr ? raw.department.trim() : deptAr)
 
-  const descAr = raw.description_ar ?? raw.descriptionAr ?? raw.description ?? ""
-  const descEn = raw.description_en ?? raw.descriptionEn ?? (raw.description && raw.description !== raw.description_ar ? raw.description : "")
+  const descAr = (raw.description_ar ?? raw.descriptionAr ?? raw.description ?? "").trim()
+  const rawDescEn = (raw.description_en ?? raw.descriptionEn ?? "").trim()
+  const descEn = rawDescEn || (raw.description && raw.description !== descAr ? raw.description.trim() : descAr)
 
-  const respAr = Array.isArray(raw.responsibilities)
-    ? raw.responsibilities
-    : (raw.responsibilities_ar ?? raw.responsibilitiesAr ?? [])
-  const rawRespEn = raw.responsibilities_en ?? raw.responsibilitiesEn
-  const respEn = Array.isArray(rawRespEn) ? rawRespEn : respAr
+  const respAr = parseArrayField(raw.responsibilities_ar ?? raw.responsibilitiesAr ?? raw.responsibilities)
+  const respEnParsed = parseArrayField(raw.responsibilities_en ?? raw.responsibilitiesEn)
+  const respEn = respEnParsed.length > 0 ? respEnParsed : respAr
 
-  const qualAr = Array.isArray(raw.qualifications)
-    ? raw.qualifications
-    : (raw.qualifications_ar ?? raw.qualificationsAr ?? [])
-  const rawQualEn = raw.qualifications_en ?? raw.qualificationsEn
-  const qualEn = Array.isArray(rawQualEn) ? rawQualEn : qualAr
+  const qualAr = parseArrayField(raw.qualifications_ar ?? raw.qualificationsAr ?? raw.qualifications)
+  const qualEnParsed = parseArrayField(raw.qualifications_en ?? raw.qualificationsEn)
+  const qualEn = qualEnParsed.length > 0 ? qualEnParsed : qualAr
 
-  const condAr = Array.isArray(raw.conditions)
-    ? raw.conditions
-    : (raw.conditions_ar ?? raw.conditionsAr ?? [])
-  const rawCondEn = raw.conditions_en ?? raw.conditionsEn
-  const condEn = Array.isArray(rawCondEn) ? rawCondEn : condAr
+  const condAr = parseArrayField(raw.conditions_ar ?? raw.conditionsAr ?? raw.conditions)
+  const condEnParsed = parseArrayField(raw.conditions_en ?? raw.conditionsEn)
+  const condEn = condEnParsed.length > 0 ? condEnParsed : condAr
 
   return {
     id: String(raw.id),
