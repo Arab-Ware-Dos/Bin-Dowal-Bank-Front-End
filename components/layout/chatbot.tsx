@@ -29,6 +29,8 @@ export function Chatbot() {
     script.async = true
     
     script.onload = () => {
+      // The Jotform Agent is now natively configured to "Always Open".
+      // We just need to mark it as loaded, and Jotform will take over the UI.
       setIsLoaded(true)
       setIsLoading(false)
     }
@@ -41,21 +43,19 @@ export function Chatbot() {
     document.body.appendChild(script)
   }
 
-  // Once Jotform is loaded, it manages its own floating button and UI.
-  // We hide our local button to avoid overlapping.
+  // Once Jotform is loaded, its native UI takes over.
   if (isLoaded) return null
 
   return (
-    <div className="fixed bottom-6 end-6 z-50">
+    <div className="fixed bottom-5 end-5 z-50">
       <button
         onClick={handleOpenChat}
         disabled={isLoading}
-        aria-label={isAr ? "المساعدة" : "Help"}
         dir={direction}
-        className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2d3185] text-white shadow-[0_4px_20px_rgba(45,49,133,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#23276f] hover:shadow-[0_8px_25px_rgba(45,49,133,0.4)] focus:outline-none focus:ring-4 focus:ring-[#2d3185]/30 disabled:opacity-90 disabled:hover:scale-100"
+        className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2d3185] text-white shadow-[0_4px_20px_rgba(45,49,133,0.3)] transition-all duration-300 hover:scale-105 hover:bg-[#23276f] hover:shadow-[0_8px_25px_rgba(45,49,133,0.4)] focus:outline-none focus:ring-4 focus:ring-[#2d3185]/30 disabled:opacity-95 disabled:hover:scale-100 disabled:cursor-wait"
       >
         {isLoading ? (
-          <Loader2 className="h-7 w-7 animate-spin" />
+          <Loader2 className="h-8 w-8 animate-spin" />
         ) : (
           <MessageCircle className="h-8 w-8" />
         )}
