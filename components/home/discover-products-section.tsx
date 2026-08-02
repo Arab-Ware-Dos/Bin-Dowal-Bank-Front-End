@@ -9,15 +9,15 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 
 const CATEGORY_CONFIG = {
-  "خدمات الافراد": {
+  personal: {
     id: "personal",
     link: "/financing#personal",
-    label: "خدمات الأفراد",
+    labelKey: "discoverProducts.personal",
   },
-  "بن دول أعمال": {
+  business: {
     id: "business",
     link: "/financing#business",
-    label: "بن دول أعمال",
+    labelKey: "discoverProducts.business",
   },
 } as const
 
@@ -25,7 +25,7 @@ type Category = keyof typeof CATEGORY_CONFIG
 
 type Product = {
   id: number
-  title: string
+  titleKey: string
   category: Category
   image: string
   href: string
@@ -36,57 +36,57 @@ const categories = Object.keys(CATEGORY_CONFIG) as Category[]
 const products: readonly Product[] = [
   {
     id: 1,
-    title: "الحساب الجاري",
-    category: "خدمات الافراد",
+    titleKey: "discoverProducts.prod1.title",
+    category: "personal",
     image: "/images/customer-services/Current-account.webp",
     href: "/personal/current-account",
   },
   {
     id: 2,
-    title: "حساب التوفير",
-    category: "خدمات الافراد",
+    titleKey: "discoverProducts.prod2.title",
+    category: "personal",
     image: "/images/customer-services/Savings.webp",
     href: "/personal/savings-account",
   },
   {
     id: 3,
-    title: "حساب الوديعة الاستثمارية",
-    category: "خدمات الافراد",
+    titleKey: "discoverProducts.prod3.title",
+    category: "personal",
     image: "/images/customer-services/Investment-deposits.webp",
     href: "/personal/investment-deposit",
   },
   {
     id: 4,
-    title: "حساب القصر",
-    category: "خدمات الافراد",
+    titleKey: "discoverProducts.prod4.title",
+    category: "personal",
     image: "/images/customer-services/minors-account.webp",
     href: "/personal/minors-account",
   },
   {
     id: 5,
-    title: "الحساب الجاري للشركات",
-    category: "بن دول أعمال",
+    titleKey: "discoverProducts.prod5.title",
+    category: "business",
     image: "/images/business-services/Corporate-current-account.webp",
     href: "/business/corporate-current-account",
   },
   {
     id: 6,
-    title: "الودائع الاستثمارية للشركات",
-    category: "بن دول أعمال",
+    titleKey: "discoverProducts.prod6.title",
+    category: "business",
     image: "/images/business-services/Investment-deposits.webp",
     href: "/business/corporate-investment-deposits",
   },
   {
     id: 7,
-    title: "حوالة السويفت",
-    category: "بن دول أعمال",
+    titleKey: "discoverProducts.prod7.title",
+    category: "business",
     image: "/images/business-services/SWIFT-transfer.webp",
     href: "/personal/swift",
   },
   {
     id: 8,
-    title: "خطابات الضمان",
-    category: "بن دول أعمال",
+    titleKey: "discoverProducts.prod8.title",
+    category: "business",
     image: "/images/business-services/Letter-of-guarantee.webp",
     href: "/business/bank-guarantees",
   },
@@ -95,9 +95,9 @@ const products: readonly Product[] = [
 const MAX_VISIBLE_PRODUCTS = 4
 
 export function DiscoverProductsSection() {
-  const { mode, locale } = useI18n()
+  const { mode, locale, t, direction } = useI18n()
   const [activeCategory, setActiveCategory] =
-    useState<Category>("خدمات الافراد")
+    useState<Category>("personal")
 
   const activeMeta = CATEGORY_CONFIG[activeCategory]
 
@@ -110,7 +110,7 @@ export function DiscoverProductsSection() {
 
   return (
     <section
-      dir="rtl"
+      dir={direction}
       aria-labelledby="discover-products-heading"
       className="relative w-full overflow-hidden bg-[#f7f8fb] py-16 md:py-10"
     >
@@ -122,9 +122,9 @@ export function DiscoverProductsSection() {
       <div className="container relative z-10 mx-auto max-w-7xl px-4">
         <SectionHeader
           id="discover-products-heading"
-          badge="منتجات بنك بن دول"
-          title="اكتشف منتجاتنا"
-          description="مجموعة مختارة من المنتجات والخدمات المصرفية المصممة لتقديم تجربة واضحة، عملية، واحترافية للأفراد وقطاع الأعمال."
+          badge={t("discoverProducts.badge")}
+          title={t("discoverProducts.title")}
+          description={t("discoverProducts.description")}
           showDivider={true}
         />
 
@@ -154,7 +154,7 @@ export function DiscoverProductsSection() {
                     : "border border-[#324198]/10 bg-white text-[#324198] hover:border-[#324198]/20 hover:bg-[#f2f4f8]",
                 ].join(" ")}
               >
-                {category}
+                {t(meta.labelKey)}
               </button>
             )
           })}
@@ -176,7 +176,7 @@ export function DiscoverProductsSection() {
                 <article className="flex h-full flex-col overflow-hidden rounded-[28px] border border-[#324198]/8 bg-white p-4 shadow-[0_12px_35px_rgba(15,23,42,0.06)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[#324198]/15 group-hover:shadow-[0_18px_45px_rgba(15,23,42,0.1)] group-focus-visible:-translate-y-1.5 group-focus-visible:border-[#324198]/15">
                   <div className="flex items-center justify-between">
                     <span className="rounded-full bg-[#f3f5f9] px-3 py-1 font-cairo text-[11px] font-medium text-[#5f6982]">
-                      {CATEGORY_CONFIG[product.category].label}
+                      {t(CATEGORY_CONFIG[product.category].labelKey)}
                     </span>
 
                     <span className="h-2 w-2 rounded-full bg-[#8b93d6]" />
@@ -187,7 +187,7 @@ export function DiscoverProductsSection() {
 
                     <Image
                       src={product.image}
-                      alt={product.title}
+                      alt={t(product.titleKey)}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-[1.03] group-focus-visible:scale-[1.03]"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -200,22 +200,21 @@ export function DiscoverProductsSection() {
 
 
                     <h3 className="mt-2 font-cairo text-xl font-bold leading-snug text-[#324198] md:text-[22px]">
-                      {product.title}
+                      {t(product.titleKey)}
                     </h3>
 
                     <p className="mt-3 font-cairo text-sm leading-7 text-[#667089]">
-                      منتج مصرفي مصمم لتقديم تجربة أكثر وضوحًا ومرونة ضمن إطار
-                      احترافي موثوق.
+                      {t("discoverProducts.productDesc")}
                     </p>
 
                     <div className="mt-6 flex items-center justify-between border-t border-[#324198]/8 pt-4">
                       <span className="font-cairo text-sm font-semibold text-[#324198]">
-                        استكشف المنتج
+                        {t("discoverProducts.exploreProduct")}
                       </span>
 
-                      <span className="inline-flex items-center gap-2 font-cairo text-sm font-medium text-[#6d76b8] transition-transform duration-300 group-hover:-translate-x-1">
-                        المزيد
-                        <span aria-hidden="true">←</span>
+                      <span className={`inline-flex items-center gap-2 font-cairo text-sm font-medium text-[#6d76b8] transition-transform duration-300 ${direction === 'ltr' ? 'group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`}>
+                        {t("discoverProducts.more")}
+                        <span aria-hidden="true">{direction === 'ltr' ? "→" : "←"}</span>
                       </span>
                     </div>
                   </div>
@@ -226,14 +225,14 @@ export function DiscoverProductsSection() {
         ) : (
           <div className="mt-12 rounded-[24px] border border-[#324198]/8 bg-white p-8 text-center shadow-sm">
             <p className="font-cairo text-base text-[#324198]">
-              لا توجد منتجات ضمن هذا التصنيف حالياً.
+              {t("discoverProducts.noProducts")}
             </p>
           </div>
         )}
 
         {shouldShowViewAll && (
           <ViewAllButton
-            label="عرض جميع المنتجات"
+            label={t("discoverProducts.viewAll")}
             href={mode === "url" ? getLocalizedHref(activeMeta.link, locale) : activeMeta.link}
           />
         )}
