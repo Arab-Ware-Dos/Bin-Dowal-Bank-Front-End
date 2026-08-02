@@ -436,6 +436,16 @@ export function Footer() {
             </Link>
           </div>
         </motion.div>
+
+        {/* Developer Credit */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-6 flex justify-center text-center text-xs text-white/40 md:text-sm"
+        >
+          <p>
+            {isArabic ? "برمجة وتطوير شركة عرب وير دوز" : "Programming and Development by Arabware Dos Company"}
+          </p>
+        </motion.div>
       </motion.div>
     </footer>
   )
