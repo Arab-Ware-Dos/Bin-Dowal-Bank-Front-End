@@ -442,9 +442,22 @@ export function Footer() {
           variants={itemVariants}
           className="mt-6 flex justify-center text-center text-xs text-white/40 md:text-sm"
         >
-          <p>
-            {isArabic ? "برمجة وتطوير شركة عرب وير دوز" : "Programming and Development by Arabware Dos Company"}
-          </p>
+          <a
+            href="https://arabwdos.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 transition-colors hover:text-white/70"
+          >
+            {isArabic ? "برمجة وتطوير" : "Programming and Development by"}
+            <Image
+              src="/images/arab_ware_dos_logo_white.png"
+              alt="Arabware Dos Company"
+              width={80}
+              height={20}
+              className="h-4 w-auto object-contain"
+            />
+            {isArabic ? "شركة عرب وير دوز" : "Arabware Dos Company"}
+          </a>
         </motion.div>
       </motion.div>
     </footer>
