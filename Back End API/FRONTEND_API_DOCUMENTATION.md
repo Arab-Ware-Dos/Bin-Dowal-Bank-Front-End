@@ -598,7 +598,55 @@ Accept: application/json
 
 ---
 
-### 11. قائمة الوظائف الشاغرة (Job Vacancies)
+### 11. النماذج البنكية للتنزيل (Downloadable Banking Forms)
+
+- **المسار:** `GET /forms`
+- **الوصف:** يُرجع جميع النماذج وطلبات الخدمات المصرفية المتاحة للتنزيل المباشر بصيغة PDF.
+
+#### الترويسات (Headers):
+- `Accept-Language`: `ar` أو `en` (اختياري، الافتراضي: `ar`).
+
+#### مثال طلب (Request):
+```http
+GET /api/v1/forms HTTP/1.1
+Host: localhost:8000
+Accept: application/json
+Accept-Language: ar
+```
+
+#### استجابة ناجحة (Response 200 OK):
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "طلب اشتراك الموبايل والوايب المصرفي",
+      "title_ar": "طلب اشتراك الموبايل والوايب المصرفي",
+      "title_en": "Mobile & Web Banking Subscription Form",
+      "file_url": "http://localhost:8000/storage/forms/mobile-web-banking-subscription-form.pdf",
+      "file_size": "809 KB",
+      "category": "الخدمات الإلكترونية",
+      "order_index": 1,
+      "is_published": true
+    },
+    {
+      "id": 2,
+      "title": "نموذج أعرف عميلك (KYC form)",
+      "title_ar": "نموذج أعرف عميلك (KYC form)",
+      "title_en": "Know Your Customer (KYC) Form",
+      "file_url": "http://localhost:8000/storage/forms/kyc-form.pdf",
+      "file_size": "252 KB",
+      "category": "بيانات العملاء والامتثال",
+      "order_index": 2,
+      "is_published": true
+    }
+  ]
+}
+```
+
+---
+
+### 12. قائمة الوظائف الشاغرة (Job Vacancies)
 
 - **المسار:** `GET /jobs`
 - **الوصف:** يُرجع جميع الوظائف الشاغرة النشطة والتي ما زالت في فترة التقديم.

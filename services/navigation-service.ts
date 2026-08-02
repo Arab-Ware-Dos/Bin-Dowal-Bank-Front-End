@@ -230,10 +230,10 @@ export const FALLBACK_NAVIGATION_DATA: NavigationSection[] = [
         order_index: 1,
         children: [
           { id: 68, title: "تواصل معنا", subtitle: null, url: "/contact", icon: "PhoneCall", badge: null, target: "_self", order_index: 1, children: [] },
-          { id: 69, title: "تقديم شكوى", subtitle: null, url: "/complaints", icon: "AlertCircle", badge: null, target: "_self", order_index: 2, children: [] },
-          { id: 70, title: "طلب خدمة", subtitle: null, url: "/service-request", icon: "FilePlus", badge: null, target: "_self", order_index: 3, children: [] },
-          { id: 71, title: "طلب بطاقة بنكية", subtitle: null, url: "/card-request", icon: "CreditCard", badge: null, target: "_self", order_index: 4, children: [] },
-          { id: 72, title: "نماذج البنك", subtitle: null, url: "/forms", icon: "FileCheck", badge: null, target: "_self", order_index: 5, children: [] }
+          { id: 69, title: "تقديم شكوى", subtitle: null, url: "/customer-service/complaints", icon: "AlertCircle", badge: null, target: "_self", order_index: 2, children: [] },
+          { id: 70, title: "طلب خدمة", subtitle: null, url: "/customer-service/service-request", icon: "FilePlus", badge: null, target: "_self", order_index: 3, children: [] },
+          { id: 71, title: "طلب بطاقة بنكية", subtitle: null, url: "/customer-service/bank-cards-request", icon: "CreditCard", badge: null, target: "_self", order_index: 4, children: [] },
+          { id: 72, title: "نماذج البنك", subtitle: null, url: "/customer-service/forms", icon: "FileCheck", badge: null, target: "_self", order_index: 5, children: [] }
         ]
       }
     ]

@@ -150,4 +150,16 @@ export type ServicePageData = {
     description: LocalizedText;
   };
   relatedServicesKeys?: string[];
+  relatedServicesData?: Array<{
+    service_id?: number;
+    service_slug?: string;
+    title_ar?: string;
+    title_en?: string;
+    summary_ar?: string;
+    summary_en?: string;
+    category_ar?: string;
+    category_en?: string;
+    link_url?: string;
+    image_url?: string;
+  }>;
 };

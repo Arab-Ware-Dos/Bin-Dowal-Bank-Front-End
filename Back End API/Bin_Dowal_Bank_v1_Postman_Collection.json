@@ -423,6 +423,77 @@
 			]
 		},
 		{
+			"name": "Downloadable Banking Forms",
+			"item": [
+				{
+					"name": "Get Downloadable Banking Forms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "ar",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/forms",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"forms"
+							]
+						},
+						"description": "Fetch list of downloadable bank forms (PDFs) with title, size, and category."
+					},
+					"response": [
+						{
+							"name": "Successful Banking Forms Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "ar"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/forms",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"forms"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"id\": 1,\n      \"title\": \"طلب اشتراك الموبايل والوايب المصرفي\",\n      \"title_ar\": \"طلب اشتراك الموبايل والوايب المصرفي\",\n      \"title_en\": \"Mobile & Web Banking Subscription Form\",\n      \"file_url\": \"http://localhost:8000/storage/forms/mobile-web-banking-subscription-form.pdf\",\n      \"file_size\": \"809 KB\",\n      \"category\": \"الخدمات الإلكترونية\",\n      \"order_index\": 1,\n      \"is_published\": true\n    }\n  ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name": "Job Vacancies & Careers",
 			"item": [
 				{

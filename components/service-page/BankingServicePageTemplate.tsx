@@ -108,9 +108,25 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
     [locale, mode]
   );
 
-  const relatedServices = data.relatedServicesKeys 
-    ? allRelatedServices.filter((s) => data.relatedServicesKeys?.includes(s.id.toString()))
+  const apiRelatedServices = (data.relatedServicesData && data.relatedServicesData.length > 0)
+    ? data.relatedServicesData.map((item, idx) => ({
+        id: item.service_slug || item.service_id || idx,
+        titleAr: item.title_ar || "",
+        titleEn: item.title_en || item.title_ar || "",
+        descriptionAr: item.summary_ar || "",
+        descriptionEn: item.summary_en || item.summary_ar || "",
+        image: item.image_url || "/images/company-header-cover.png",
+        categoryAr: item.category_ar || (isArabic ? "خدمات البنك" : "Bank Services"),
+        categoryEn: item.category_en || "Bank Services",
+        href: item.link_url || `/services/${item.service_slug}`
+      }))
     : []
+
+  const relatedServices = apiRelatedServices.length > 0
+    ? apiRelatedServices
+    : (data.relatedServicesKeys 
+        ? allRelatedServices.filter((s) => data.relatedServicesKeys?.includes(s.id.toString()))
+        : [])
 
   const sectionLinks = [
     data.overview ? { id: "overview", ar: "نبذة تعريفية", en: "Overview" } : (data.details ? { id: "details", ar: "تفاصيل الخدمة", en: "Service Details" } : null),
@@ -133,8 +149,7 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
         title={getText(data.title, isArabic)}
         subtitle={getText(data.subtitle, isArabic)}
         breadcrumbs={data.breadcrumbs.map(b => ({
-          labelKey: b.labelKey || "",
-          label: b.label ? getText(b.label, isArabic) : undefined,
+          labelKey: b.label ? getText(b.label, isArabic) : (b.labelKey || ""),
           href: b.href
         }))}
         tagline={data.tagline ? getText(data.tagline, isArabic) : undefined}
