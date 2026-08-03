@@ -91,10 +91,10 @@ export function MediaCenterGrid({ items }: { items: NewsArticle[] }) {
                 aria-selected={isActive}
                 variant={isActive ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat.value)}
-                className={`rounded-full px-6 py-2 transition-all ${
+                className={`rounded-full cursor-pointer px-6 py-2 transition-all ${
                   isActive
-                    ? "bg-[#262b80] text-white hover:bg-[#0b0d36]"
-                    : "hover:bg-muted"
+                    ? "bg-[#262b80] text-white hover:bg-[#cc272e]"
+                    : "hover:bg-[#cc272e]"
                 }`}
               >
                 {cat.label}
