@@ -57,6 +57,7 @@ export type ServicePageData = {
   title: LocalizedText;
   subtitle: LocalizedText;
   heroImage: string;
+  iconConfig?: { type: 'icon' | 'image'; value: string } | null;
   breadcrumbs: {
     labelKey?: string;
     label?: LocalizedText;

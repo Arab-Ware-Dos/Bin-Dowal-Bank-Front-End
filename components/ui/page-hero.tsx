@@ -47,55 +47,12 @@ export function PageHero({
           </div>
         </div>
 
-        {children ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-3xl"
-            >
-              {tagline && (
-                <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
-                  {tagline}
-                </span>
-              )}
-
-              <h1 className="mb-6 text-4xl font-bold leading-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl">
-                {title}
-              </h1>
-
-              <p className="mb-10 text-lg leading-relaxed text-white/82 drop-shadow-md md:text-xl">
-                {subtitle}
-              </p>
-
-              {children}
-            </motion.div>
-
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative flex h-[260px] w-[260px] items-center justify-center md:h-[320px] md:w-[320px]">
-                <div className="absolute inset-0 rounded-full" />
-                <div className="absolute inset-6 rounded-full" />
-                <motion.div
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="relative z-10"
-                >
-                  <Image src="/logo-2.png" alt="Current Account" width={260} height={260} className="h-40 w-40 text-white/15 md:h-52 md:w-52 object-contain" />
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mt-2 max-w-3xl"
+            className="max-w-3xl"
           >
             {tagline && (
               <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
@@ -103,15 +60,25 @@ export function PageHero({
               </span>
             )}
 
-            <h1 className="mb-4 text-4xl font-bold text-white drop-shadow-lg text-balance md:text-5xl lg:text-6xl">
+            <h1 className="mb-6 text-4xl font-bold leading-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl">
               {title}
             </h1>
 
-            <p className="text-lg text-white/88 drop-shadow-md md:text-xl leading-relaxed text-pretty">
+            <p className="mb-8 text-lg leading-relaxed text-white/82 drop-shadow-md md:text-xl">
               {subtitle}
             </p>
+
+            {children}
           </motion.div>
-        )}
+
+          <div className="flex justify-center rtl:lg:justify-end ltr:lg:justify-start">
+            <img
+              src="/logo-2.png"
+              alt={title}
+              className="h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 object-contain"
+            />
+          </div>
+        </div>
       </div>
     </section>
   )

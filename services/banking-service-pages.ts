@@ -54,92 +54,111 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
   const categoryEn = apiData.category_en || "";
 
   let section: "personal" | "business" | "accounts" | "e-services" = "personal";
-  if (categoryAr.includes("أعمال") || categoryEn.toLowerCase().includes("business")) {
+  if (categoryAr.includes("أعمال") || categoryEn.toLowerCase().includes("business") || categoryEn.toLowerCase().includes("corporate")) {
     section = "business";
-  } else if (categoryAr.includes("إلكترونية") || categoryEn.toLowerCase().includes("digital") || categoryEn.toLowerCase().includes("electronic")) {
+  } else if (categoryAr.includes("إلكترونية") || categoryAr.includes("رقمية") || categoryEn.toLowerCase().includes("digital") || categoryEn.toLowerCase().includes("electronic")) {
     section = "e-services";
   } else if (categoryAr.includes("حسابات") || categoryEn.toLowerCase().includes("account")) {
     section = "accounts";
   }
 
-  // Feature cards extraction
+  // Feature cards extraction (deduplicated)
   const featureCardsItems: ServiceFeatureCard[] = [];
-  
+  const seenFeatureKeys = new Set<string>();
+
+  const addFeature = (titleAr: string, titleEn: string, descAr: string, descEn: string, id: string) => {
+    const key = `${titleAr.trim()}-${descAr.trim()}`;
+    if (key.length > 1 && seenFeatureKeys.has(key)) return;
+    if (key.length > 1) seenFeatureKeys.add(key);
+    featureCardsItems.push({
+      id,
+      title: { ar: titleAr || titleEn, en: titleEn || titleAr },
+      description: { ar: descAr || descEn, en: descEn || descAr },
+      icon: "CheckCircle2",
+    });
+  };
+
+  if (apiData.features && Array.isArray(apiData.features)) {
+    apiData.features.forEach((f: any, idx: number) => {
+      const tAr = f.title_ar || f.title || "";
+      const tEn = f.title_en || f.title || tAr;
+      const dAr = f.content_ar || f.description_ar || f.content || f.description || "";
+      const dEn = f.content_en || f.description_en || f.content || f.description || dAr;
+      if (tAr || tEn || dAr || dEn) {
+        addFeature(tAr, tEn, dAr, dEn, `feature-${f.id || idx}`);
+      }
+    });
+  }
+
   if (apiData.sections_content && Array.isArray(apiData.sections_content)) {
     apiData.sections_content
       .filter((sc) => sc.type === "feature")
       .forEach((sc, idx) => {
-        featureCardsItems.push({
-          id: `sc-feature-${sc.id || idx}`,
-          title: { ar: sc.title_ar || sc.title || "", en: sc.title_en || sc.title || "" },
-          description: { ar: sc.content_ar || sc.content || "", en: sc.content_en || sc.content || "" },
-          icon: "CheckCircle2",
-        });
+        const tAr = sc.title_ar || sc.title || "";
+        const tEn = sc.title_en || sc.title || tAr;
+        const dAr = sc.content_ar || sc.content || "";
+        const dEn = sc.content_en || sc.content || dAr;
+        if (tAr || tEn || dAr || dEn) {
+          addFeature(tAr, tEn, dAr, dEn, `sc-feature-${sc.id || idx}`);
+        }
       });
   }
 
-  if (apiData.features && Array.isArray(apiData.features)) {
-    apiData.features.forEach((f: any, idx: number) => {
-      const titleAr = f.title_ar || f.title || "";
-      const titleEn = f.title_en || f.title || titleAr;
-      const descAr = f.description_ar || f.content_ar || f.description || f.content || "";
-      const descEn = f.description_en || f.content_en || f.description || f.content || descAr;
-      if (titleAr || titleEn || descAr || descEn) {
-        featureCardsItems.push({
-          id: `feature-${idx}`,
-          title: { ar: titleAr, en: titleEn },
-          description: { ar: descAr, en: descEn },
-          icon: "CheckCircle2",
-        });
+  // Steps extraction (deduplicated)
+  const stepsItems: ServiceStep[] = [];
+  const seenStepKeys = new Set<string>();
+
+  const addStep = (titleAr: string, titleEn: string, descAr: string, descEn: string, id: string) => {
+    const key = `${titleAr.trim()}-${descAr.trim()}`;
+    if (key.length > 1 && seenStepKeys.has(key)) return;
+    if (key.length > 1) seenStepKeys.add(key);
+    stepsItems.push({
+      id,
+      title: { ar: titleAr || titleEn, en: titleEn || titleAr },
+      description: (descAr || descEn) ? { ar: descAr || descEn, en: descEn || descAr } : undefined,
+    });
+  };
+
+  if (apiData.steps && Array.isArray(apiData.steps)) {
+    apiData.steps.forEach((s: any, idx: number) => {
+      const tAr = s.title_ar || s.title || "";
+      const tEn = s.title_en || s.title || tAr;
+      const dAr = s.content_ar || s.description_ar || s.content || s.description || "";
+      const dEn = s.content_en || s.description_en || s.content || s.description || dAr;
+      if (tAr || tEn || dAr || dEn) {
+        addStep(tAr, tEn, dAr, dEn, `step-${s.id || idx}`);
       }
     });
   }
 
-  // Steps extraction
-  const stepsItems: ServiceStep[] = [];
-  
   if (apiData.sections_content && Array.isArray(apiData.sections_content)) {
     apiData.sections_content
       .filter((sc) => sc.type === "step")
       .forEach((sc, idx) => {
-        stepsItems.push({
-          id: `sc-step-${sc.id || idx}`,
-          title: { ar: sc.title_ar || sc.title || "", en: sc.title_en || sc.title || "" },
-          description: { ar: sc.content_ar || sc.content || "", en: sc.content_en || sc.content || "" },
-        });
+        const tAr = sc.title_ar || sc.title || "";
+        const tEn = sc.title_en || sc.title || tAr;
+        const dAr = sc.content_ar || sc.content || "";
+        const dEn = sc.content_en || sc.content || dAr;
+        if (tAr || tEn || dAr || dEn) {
+          addStep(tAr, tEn, dAr, dEn, `sc-step-${sc.id || idx}`);
+        }
       });
   }
 
-  if (apiData.steps && Array.isArray(apiData.steps)) {
-    apiData.steps.forEach((s: any, idx: number) => {
-      const titleAr = s.title_ar || s.title || "";
-      const titleEn = s.title_en || s.title || titleAr;
-      const descAr = s.description_ar || s.content_ar || s.description || s.content || "";
-      const descEn = s.description_en || s.content_en || s.description || s.content || descAr;
-      if (titleAr || titleEn || descAr || descEn) {
-        stepsItems.push({
-          id: `step-${idx}`,
-          title: { ar: titleAr, en: titleEn },
-          description: { ar: descAr, en: descEn },
-        });
-      }
-    });
-  }
-
-  // FAQs extraction
+  // FAQs extraction (deduplicated)
   const faqItems: ServiceFaq[] = [];
-  
-  if (apiData.sections_content && Array.isArray(apiData.sections_content)) {
-    apiData.sections_content
-      .filter((sc) => sc.type === "faq")
-      .forEach((sc, idx) => {
-        faqItems.push({
-          id: `sc-faq-${sc.id || idx}`,
-          question: { ar: sc.title_ar || sc.title || "", en: sc.title_en || sc.title || "" },
-          answer: { ar: sc.content_ar || sc.content || "", en: sc.content_en || sc.content || "" },
-        });
-      });
-  }
+  const seenFaqKeys = new Set<string>();
+
+  const addFaq = (qAr: string, qEn: string, aAr: string, aEn: string, id: string) => {
+    const key = `${qAr.trim()}-${aAr.trim()}`;
+    if (key.length > 1 && seenFaqKeys.has(key)) return;
+    if (key.length > 1) seenFaqKeys.add(key);
+    faqItems.push({
+      id,
+      question: { ar: qAr || qEn, en: qEn || qAr },
+      answer: { ar: aAr || aEn, en: aEn || aAr },
+    });
+  };
 
   if (apiData.faqs && Array.isArray(apiData.faqs)) {
     apiData.faqs.forEach((f: any, idx: number) => {
@@ -148,13 +167,23 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
       const aAr = f.answer_ar || f.answer || f.content_ar || f.content || "";
       const aEn = f.answer_en || f.answer || f.content_en || f.content || aAr;
       if (qAr || qEn || aAr || aEn) {
-        faqItems.push({
-          id: `faq-${idx}`,
-          question: { ar: qAr, en: qEn },
-          answer: { ar: qAr, en: qEn },
-        });
+        addFaq(qAr, qEn, aAr, aEn, `faq-${f.id || idx}`);
       }
     });
+  }
+
+  if (apiData.sections_content && Array.isArray(apiData.sections_content)) {
+    apiData.sections_content
+      .filter((sc) => sc.type === "faq")
+      .forEach((sc, idx) => {
+        const qAr = sc.title_ar || sc.title || "";
+        const qEn = sc.title_en || sc.title || qAr;
+        const aAr = sc.content_ar || sc.content || "";
+        const aEn = sc.content_en || sc.content || aAr;
+        if (qAr || qEn || aAr || aEn) {
+          addFaq(qAr, qEn, aAr, aEn, `sc-faq-${sc.id || idx}`);
+        }
+      });
   }
 
   // Why items
@@ -162,9 +191,11 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
   if (apiData.why_content && Array.isArray(apiData.why_content)) {
     apiData.why_content.forEach((item, idx) => {
       if (typeof item === "string") {
-        whyItems.push({ id: `why-${idx}`, text: { ar: item, en: item } });
+        if (item.trim()) {
+          whyItems.push({ id: `why-${idx}`, text: { ar: item, en: item } });
+        }
       } else if (item && typeof item === "object") {
-        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || "";
+        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || (item as any).text || "";
         const textEn = (item as any).text_en || (item as any).content_en || (item as any).en || (item as any).title_en || textAr;
         if (textAr || textEn) {
           whyItems.push({
@@ -181,9 +212,11 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
   if (apiData.target_audiences && Array.isArray(apiData.target_audiences)) {
     apiData.target_audiences.forEach((item, idx) => {
       if (typeof item === "string") {
-        audienceItems.push({ id: `aud-${idx}`, text: { ar: item, en: item } });
+        if (item.trim()) {
+          audienceItems.push({ id: `aud-${idx}`, text: { ar: item, en: item } });
+        }
       } else if (item && typeof item === "object") {
-        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || "";
+        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || (item as any).text || "";
         const textEn = (item as any).text_en || (item as any).content_en || (item as any).en || (item as any).title_en || textAr;
         if (textAr || textEn) {
           audienceItems.push({
@@ -200,9 +233,11 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
   if (apiData.conditions && Array.isArray(apiData.conditions)) {
     apiData.conditions.forEach((item, idx) => {
       if (typeof item === "string") {
-        conditionItems.push({ id: `cond-${idx}`, text: { ar: item, en: item } });
+        if (item.trim()) {
+          conditionItems.push({ id: `cond-${idx}`, text: { ar: item, en: item } });
+        }
       } else if (item && typeof item === "object") {
-        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || "";
+        const textAr = (item as any).text_ar || (item as any).content_ar || (item as any).ar || (item as any).title_ar || (item as any).text || "";
         const textEn = (item as any).text_en || (item as any).content_en || (item as any).en || (item as any).title_en || textAr;
         if (textAr || textEn) {
           conditionItems.push({
@@ -214,16 +249,52 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
     });
   }
 
-  // Pricing table
+  // Pricing table (supports currency_ar/currency_en + amount OR label_ar/label_en + value_ar/value_en)
   const tableRows: ServiceTableRow[] = [];
   if (apiData.pricing_table && Array.isArray(apiData.pricing_table)) {
-    apiData.pricing_table.forEach((row, idx) => {
-      tableRows.push({
-        id: `table-${idx}`,
-        label: { ar: row.label_ar || "", en: row.label_en || "" },
-        value: { ar: row.value_ar || "", en: row.value_en || "" },
-      });
+    apiData.pricing_table.forEach((row: any, idx) => {
+      const labelAr = row.label_ar || row.currency_ar || "";
+      const labelEn = row.label_en || row.currency_en || labelAr;
+      const valueAr = row.value_ar || row.amount || "";
+      const valueEn = row.value_en || row.amount || valueAr;
+      if (labelAr || labelEn || valueAr || valueEn) {
+        tableRows.push({
+          id: `table-${idx}`,
+          label: { ar: labelAr, en: labelEn },
+          value: { ar: valueAr, en: valueEn },
+        });
+      }
     });
+  }
+
+  // Related Services
+  let mappedRelatedServices: any[] | undefined = undefined;
+  if (apiData.related_services_data && Array.isArray(apiData.related_services_data) && apiData.related_services_data.length > 0) {
+    mappedRelatedServices = apiData.related_services_data.map((rs: any, idx: number) => ({
+      service_id: rs.service_id || idx,
+      service_slug: rs.service_slug || rs.slug || "",
+      title_ar: rs.title_ar || rs.name_ar || rs.title || "",
+      title_en: rs.title_en || rs.name_en || rs.title || rs.title_ar || "",
+      summary_ar: rs.summary_ar || rs.summary || "",
+      summary_en: rs.summary_en || rs.summary || rs.summary_ar || "",
+      category_ar: rs.category_ar || categoryAr,
+      category_en: rs.category_en || categoryEn,
+      link_url: rs.link_url || (rs.slug ? `/services/${rs.slug}` : (rs.service_slug ? `/services/${rs.service_slug}` : '#')),
+      image_url: rs.image_url || "/images/company-header-cover.png",
+    }));
+  } else if (apiData.related_services && Array.isArray(apiData.related_services) && apiData.related_services.length > 0) {
+    mappedRelatedServices = apiData.related_services.map((rs: any) => ({
+      service_id: rs.id,
+      service_slug: rs.slug,
+      title_ar: rs.title_ar || rs.name_ar || "",
+      title_en: rs.title_en || rs.name_en || rs.title_ar || "",
+      summary_ar: rs.summary_ar || rs.summary || "",
+      summary_en: rs.summary_en || rs.summary || rs.summary_ar || "",
+      category_ar: rs.category_ar || categoryAr,
+      category_en: rs.category_en || categoryEn,
+      link_url: `/services/${rs.slug}`,
+      image_url: "/images/company-header-cover.png",
+    }));
   }
 
   const titleAr = apiData.title_ar || apiData.hero_title || apiData.page_name_ar || apiData.name_ar || "";
@@ -232,65 +303,103 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
   const pageNameAr = apiData.page_name_ar || apiData.name_ar || apiData.title_ar || "";
   const pageNameEn = apiData.page_name_en || apiData.name_en || apiData.title_en || pageNameAr;
 
+  const subtitleAr = apiData.summary_ar || apiData.hero_description || apiData.about_content_ar || apiData.title_ar || "";
+  const subtitleEn = apiData.summary_en || apiData.hero_description || apiData.about_content_en || apiData.title_en || subtitleAr;
+
+  const overviewTitleAr = apiData.about_title_ar || apiData.about_title || "";
+  const overviewTitleEn = apiData.about_title_en || apiData.about_title || overviewTitleAr;
+  const overviewDescAr = apiData.about_content_ar || apiData.about_content || "";
+  const overviewDescEn = apiData.about_content_en || apiData.about_content || overviewDescAr;
+
+  const overviewSection = (overviewTitleAr || overviewDescAr || overviewDescEn)
+    ? {
+        title: { ar: overviewTitleAr || "عن الخدمة", en: overviewTitleEn || "About Service" },
+        description: { ar: overviewDescAr, en: overviewDescEn },
+      }
+    : undefined;
+
+  const whyTitleAr = apiData.why_title_ar || apiData.why_title || "";
+  const whyTitleEn = apiData.why_title_en || apiData.why_title || whyTitleAr;
+  const whyDescAr = apiData.why_description_ar || "";
+  const whyDescEn = apiData.why_description_en || whyDescAr;
+
+  const whySection = (whyTitleAr || whyDescAr || whyDescEn || whyItems.length > 0)
+    ? {
+        title: { ar: whyTitleAr || "لماذا تختار هذه الخدمة؟", en: whyTitleEn || "Why Choose This Service?" },
+        description: (whyDescAr || whyDescEn) ? { ar: whyDescAr, en: whyDescEn } : undefined,
+        items: whyItems.length > 0 ? whyItems : undefined,
+      }
+    : undefined;
+
+  const featuresTitleAr = apiData.features_title_ar || "";
+  const featuresTitleEn = apiData.features_title_en || featuresTitleAr;
+  const featuresDescAr = apiData.features_description_ar || "";
+  const featuresDescEn = apiData.features_description_en || featuresDescAr;
+
+  const featureCardsSection = (featuresTitleAr || featuresTitleEn || featureCardsItems.length > 0)
+    ? {
+        title: { ar: featuresTitleAr || "مميزات الخدمة", en: featuresTitleEn || "Service Features" },
+        subtitle: (featuresDescAr || featuresDescEn) ? { ar: featuresDescAr, en: featuresDescEn } : undefined,
+        items: featureCardsItems,
+      }
+    : undefined;
+
+  const condTitleAr = apiData.conditions_title_ar || "";
+  const condTitleEn = apiData.conditions_title_en || condTitleAr;
+  const condDescAr = apiData.conditions_description_ar || "";
+  const condDescEn = apiData.conditions_description_en || condDescAr;
+
+  const requirementsSection = (condTitleAr || condTitleEn || conditionItems.length > 0 || tableRows.length > 0)
+    ? {
+        title: { ar: condTitleAr || "شروط ومتطلبات الخدمة", en: condTitleEn || "Conditions & Requirements" },
+        subtitle: (condDescAr || condDescEn) ? { ar: condDescAr, en: condDescEn } : undefined,
+        items: conditionItems,
+        table: tableRows.length > 0 ? tableRows : undefined,
+      }
+    : undefined;
+
+  const stepsTitleAr = apiData.steps_title_ar || "";
+  const stepsTitleEn = apiData.steps_title_en || stepsTitleAr;
+  const stepsDescAr = apiData.steps_description_ar || "";
+  const stepsDescEn = apiData.steps_description_en || stepsDescAr;
+
+  const stepsSection = (stepsTitleAr || stepsTitleEn || stepsItems.length > 0)
+    ? {
+        title: { ar: stepsTitleAr || "خطوات التقديم", en: stepsTitleEn || "Application Steps" },
+        subtitle: (stepsDescAr || stepsDescEn) ? { ar: stepsDescAr, en: stepsDescAr } : undefined,
+        steps: stepsItems,
+      }
+    : undefined;
+
+  const iconConfigData = apiData.icon_config || apiData.icon || null;
+
   return {
     slug: apiData.slug,
     section,
     title: { ar: titleAr, en: titleEn },
-    subtitle: {
-      ar: apiData.hero_description || apiData.about_content_ar || apiData.title_ar || "",
-      en: apiData.hero_description || apiData.about_content_en || apiData.title_en || "",
-    },
+    subtitle: { ar: subtitleAr, en: subtitleEn },
     heroImage: "/images/company-header-cover.png",
+    iconConfig: iconConfigData,
     breadcrumbs: [
       { label: { ar: categoryAr || "خدمات البنك", en: categoryEn || "Bank Services" }, href: "/services" },
       { label: { ar: pageNameAr, en: pageNameEn } },
     ],
     tagline: { ar: categoryAr || "خدمات البنك", en: categoryEn || "Bank Services" },
     seoDescription: {
-      ar: apiData.meta_description || apiData.about_content_ar || "",
-      en: apiData.meta_description || apiData.about_content_en || "",
+      ar: apiData.meta_description || apiData.summary_ar || apiData.about_content_ar || "",
+      en: apiData.meta_description || apiData.summary_en || apiData.about_content_en || "",
     },
-    overview: (apiData.about_title_ar || apiData.about_content_ar || apiData.about_content_en || apiData.about_title)
-      ? {
-          title: { ar: apiData.about_title_ar || apiData.about_title || "عن الخدمة", en: apiData.about_title_en || "About Service" },
-          description: { ar: apiData.about_content_ar || apiData.about_content || "", en: apiData.about_content_en || apiData.about_content || "" },
-        }
-      : undefined,
-    why: (apiData.why_title_ar || apiData.why_title || whyItems.length > 0)
-      ? {
-          title: { ar: apiData.why_title_ar || apiData.why_title || "لماذا تختار هذه الخدمة؟", en: apiData.why_title_en || "Why Choose This Service?" },
-          description: apiData.why_description_ar ? { ar: apiData.why_description_ar, en: apiData.why_description_en || "" } : undefined,
-          items: whyItems.length > 0 ? whyItems : undefined,
-        }
-      : undefined,
-    featureCards: (apiData.features_title_ar || apiData.features_title_en || featureCardsItems.length > 0)
-      ? {
-          title: { ar: apiData.features_title_ar || "مميزات الخدمة", en: apiData.features_title_en || "Service Features" },
-          subtitle: apiData.features_description_ar ? { ar: apiData.features_description_ar, en: apiData.features_description_en || "" } : undefined,
-          items: featureCardsItems,
-        }
-      : undefined,
+    overview: overviewSection,
+    why: whySection,
+    featureCards: featureCardsSection,
     audience: (apiData.target_audiences && audienceItems.length > 0)
       ? {
           title: { ar: "الفئات المستهدفة", en: "Target Audience" },
           items: audienceItems,
         }
       : undefined,
-    requirementsSection: (apiData.conditions_title_ar || conditionItems.length > 0 || tableRows.length > 0)
-      ? {
-          title: { ar: apiData.conditions_title_ar || "شروط ومتطلبات الخدمة", en: apiData.conditions_title_en || "Conditions & Requirements" },
-          subtitle: apiData.conditions_description_ar ? { ar: apiData.conditions_description_ar, en: apiData.conditions_description_en || "" } : undefined,
-          items: conditionItems,
-          table: tableRows.length > 0 ? tableRows : undefined,
-        }
-      : undefined,
-    stepsSection: (apiData.steps_title_ar || stepsItems.length > 0)
-      ? {
-          title: { ar: apiData.steps_title_ar || "خطوات التقديم", en: apiData.steps_title_en || "Application Steps" },
-          subtitle: apiData.steps_description_ar ? { ar: apiData.steps_description_ar, en: apiData.steps_description_en || "" } : undefined,
-          steps: stepsItems,
-        }
-      : undefined,
+    requirementsSection,
+    stepsSection,
     faqs: faqItems.length > 0
       ? {
           title: { ar: "الأسئلة الشائعة", en: "Frequently Asked Questions" },
@@ -305,26 +414,72 @@ export function normalizeBankServiceApiResponse(apiData: BankServiceItemData): S
       secondaryLabel: { ar: "الفروع والصرافات", en: "Branches & ATMs" },
       secondaryHref: "/branches",
     },
-    relatedServicesData: apiData.related_services_data || (apiData.related_services ? apiData.related_services.map(rs => ({
-      service_slug: rs.slug,
-      title_ar: rs.title_ar || rs.name_ar || "",
-      title_en: rs.title_en || rs.name_en || "",
-      link_url: `/services/${rs.slug}`
-    })) : undefined),
+    relatedServicesData: mappedRelatedServices,
   };
 }
 
 /**
  * Fetches a single banking service page data by slug from API with fallback to local static data.
+ * Supports legacy calling signatures: (slug, locale) or (section, slug, locale).
  */
 export async function getBankingServicePageData(
-  slug: string,
-  locale?: string
+  slugOrSection: string,
+  localeOrSlug?: string,
+  possibleLocale?: string
 ): Promise<ServicePageData | null> {
+  let slug = slugOrSection;
+  let locale = localeOrSlug;
+
+  const knownSections = ["business", "accounts", "personal", "e-services", "services"];
+  if (knownSections.includes(slugOrSection) && localeOrSlug && !localeOrSlug.startsWith("ar") && !localeOrSlug.startsWith("en")) {
+    slug = localeOrSlug;
+    locale = possibleLocale;
+  }
+
   const targetSlug = resolveSlug(slug);
 
-  // Try API with targetSlug first, then raw slug
-  for (const s of [targetSlug, slug]) {
+  const candidateSet = new Set<string>([slug, targetSlug]);
+  if (targetSlug === "expat-account" || slug === "expat-account" || targetSlug === "expat" || slug === "expat") {
+    candidateSet.add("expat");
+    candidateSet.add("expat-account");
+  }
+  if (targetSlug === "noor-ladies-account" || slug === "noor-ladies-account" || targetSlug === "noor" || slug === "noor") {
+    candidateSet.add("noor");
+    candidateSet.add("noor-ladies-account");
+  }
+  if (targetSlug === "mobile-banking" || slug === "mobile-banking" || targetSlug === "mobile-banking-app" || slug === "mobile-banking-app") {
+    candidateSet.add("mobile-banking");
+    candidateSet.add("mobile-banking-app");
+  }
+  if (targetSlug === "internet-banking" || slug === "internet-banking" || targetSlug === "business-platform" || slug === "business-platform") {
+    candidateSet.add("internet-banking");
+    candidateSet.add("business-platform");
+  }
+  if (targetSlug === "mushtarayati-network" || slug === "mushtarayati-network" || targetSlug === "pos-network" || slug === "pos-network") {
+    candidateSet.add("mushtarayati-network");
+    candidateSet.add("pos-network");
+  }
+  if (targetSlug === "financing-zad" || slug === "financing-zad" || targetSlug === "zad-financing" || slug === "zad-financing") {
+    candidateSet.add("financing-zad");
+    candidateSet.add("zad-financing");
+  }
+  if (targetSlug === "noor-ladies-card" || slug === "noor-ladies-card" || targetSlug === "noor-card" || slug === "noor-card") {
+    candidateSet.add("noor-ladies-card");
+    candidateSet.add("noor-card");
+  }
+  if (targetSlug === "corporate-current-account" || slug === "corporate-current-account" || targetSlug === "business-accounts" || slug === "business-accounts") {
+    candidateSet.add("corporate-current-account");
+    candidateSet.add("business-accounts");
+  }
+  if (targetSlug === "minors-account" || slug === "minors-account" || targetSlug === "minors-investment-deposits" || slug === "minors-investment-deposits") {
+    candidateSet.add("minors-account");
+    candidateSet.add("minors-investment-deposits");
+  }
+
+  const candidateSlugs = Array.from(candidateSet);
+
+  // Try API with candidate slugs
+  for (const s of candidateSlugs) {
     try {
       const response = await fetchAPI<BankServiceSingleApiResponse>(`/services/${s}`, {
         locale,
@@ -344,7 +499,7 @@ export async function getBankingServicePageData(
   // Fallback to local static JSON data ONLY if API fetch fails or API returns no data
   console.warn(`⚠️ [API Fallback] API fetch failed for slug "${slug}". Using local static fallback data.`);
   const fallbackItem = bankingServicesData.find(
-    (item) => item.slug === targetSlug || item.slug === slug
+    (item) => candidateSlugs.includes(item.slug)
   );
   return fallbackItem || null;
 }
@@ -353,18 +508,35 @@ export const getBankingServiceBySlug = getBankingServicePageData;
 
 /**
  * Helper to fetch all services list for dynamic routes / static paths.
+ * Combines API slugs, static fallback slugs, and all alias keys/values.
  */
 export async function getAllServicesSlugs(): Promise<string[]> {
+  const slugsSet = new Set<string>();
+
+  // Add all static banking services slugs
+  bankingServicesData.forEach((item) => {
+    if (item.slug) slugsSet.add(item.slug);
+  });
+
+  // Add all keys and values from SLUG_ALIASES
+  Object.entries(SLUG_ALIASES).forEach(([key, val]) => {
+    if (key) slugsSet.add(key);
+    if (val) slugsSet.add(val);
+  });
+
+  // Try adding API slugs
   try {
     const response = await fetchAPI<{ data: BankServiceItemData[] }>('/services', {
       cache: 'no-store',
     });
-    if (response && Array.isArray(response.data) && response.data.length > 0) {
-      return response.data.map((item) => item.slug);
+    if (response && Array.isArray(response.data)) {
+      response.data.forEach((item) => {
+        if (item.slug) slugsSet.add(item.slug);
+      });
     }
   } catch {
-    // Fallback to static slugs
+    // Ignore API errors
   }
 
-  return bankingServicesData.map((item) => item.slug);
+  return Array.from(slugsSet);
 }

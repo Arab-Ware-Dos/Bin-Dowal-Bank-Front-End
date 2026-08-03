@@ -50,6 +50,11 @@ export interface BankServiceItemData {
   page_name_en?: string;
   category_ar?: string;
   category_en?: string;
+  summary_ar?: string;
+  summary_en?: string;
+  icon_config?: { type: 'icon' | 'image'; value: string } | null;
+  icon?: { type: 'icon' | 'image'; value: string } | null;
+  order_index?: number;
   meta_title?: string;
   meta_description?: string;
   hero_title?: string;
@@ -65,9 +70,9 @@ export interface BankServiceItemData {
   why_title_en?: string;
   why_description_ar?: string;
   why_description_en?: string;
-  why_content?: string[] | null;
-  target_audiences?: string[] | null;
-  conditions?: string[] | null;
+  why_content?: Array<string | { text_ar?: string; text_en?: string; content_ar?: string; content_en?: string }> | null;
+  target_audiences?: Array<string | { text_ar?: string; text_en?: string; content_ar?: string; content_en?: string }> | null;
+  conditions?: Array<string | { text_ar?: string; text_en?: string; content_ar?: string; content_en?: string }> | null;
   conditions_title_ar?: string;
   conditions_title_en?: string;
   conditions_description_ar?: string;
@@ -80,7 +85,7 @@ export interface BankServiceItemData {
   features_title_en?: string;
   features_description_ar?: string;
   features_description_en?: string;
-  pricing_table?: Array<{ label_ar?: string; label_en?: string; value_ar?: string; value_en?: string }> | null;
+  pricing_table?: Array<{ label_ar?: string; label_en?: string; value_ar?: string; value_en?: string; currency_ar?: string; currency_en?: string; amount?: string }> | null;
   related_title_ar?: string;
   related_title_en?: string;
   related_description_ar?: string;

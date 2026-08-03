@@ -23,6 +23,7 @@ import { allRelatedServices } from "@/data/related-services"
 import { ServicePageData, LocalizedText, ServiceFeature } from "@/types/banking-service-page"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { CustomSectionRenderer } from "./custom-section-registry"
+import DynamicIcon from "@/components/ui/dynamic-icon"
 
 const viewport = { once: true, amount: 0.18 }
 
@@ -259,16 +260,14 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                         <div className="relative w-full">
                           <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px]">
                             <motion.div
-                              className="absolute inset-0 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
+                              className="absolute inset-0 flex items-center justify-center drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
                               whileHover={shouldReduceMotion ? undefined : { scale: 1.035, y: -5 }}
                               transition={{ duration: 0.45, ease: "easeOut" }}
                             >
-                              <Image
-                                src={data.heroImage}
+                              <DynamicIcon
+                                name={data.iconConfig?.value || data.heroImage || "/images/company-header-cover.png"}
+                                className="max-h-full max-w-full object-contain"
                                 alt={isArabic ? "صورة توضيحية للخدمة" : "Service illustration"}
-                                fill
-                                className="object-contain"
-                                priority
                               />
                             </motion.div>
                           </div>
