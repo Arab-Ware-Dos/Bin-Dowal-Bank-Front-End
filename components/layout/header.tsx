@@ -276,7 +276,7 @@ export function Header(props: HeaderProps) {
         >
           <div className="container mx-auto px-4">
             <div className="flex h-11 items-center justify-between text-slate-600">
-              <div className="flex items-center">
+              <div className="flex items-center gap-3 sm:gap-0">
                 <Link
                   href={resolveHref("/atm-and-branches")}
                   className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
@@ -297,12 +297,12 @@ export function Header(props: HeaderProps) {
               </div>
 
               <div className="flex items-center gap-2 lg:gap-4">
-                <div className="hidden md:block">
-                  <Suspense fallback={<div className="h-8 w-40 bg-slate-100 rounded-full animate-pulse" />}>
-                    <SearchInput className="h-8" />
+                <div className="block">
+                  <Suspense fallback={<div className="h-8 w-24 sm:w-32 md:w-40 bg-slate-100 rounded-full animate-pulse" />}>
+                    <SearchInput className="h-8 w-24 sm:w-32 md:w-40" />
                   </Suspense>
                 </div>
-                <span className="hidden md:block h-4 w-px bg-slate-300" />
+                <span className="hidden sm:block h-4 w-px bg-slate-300" />
                 
                 <a
                   href="/documents/Bin-Dowal-Bank-Profile.pdf"
@@ -313,7 +313,7 @@ export function Header(props: HeaderProps) {
                   <Download className="h-4 w-4" />
                   <span className="hidden sm:inline">{t("topbar.download")}</span>
                 </a>
-                <span className="mx-2 sm:mx-4 h-4 w-px bg-slate-300" />
+                <span className="mx-1 sm:mx-4 h-4 w-px bg-slate-300" />
 
                 {localeMode === "url" ? (
                   <Suspense fallback={
@@ -701,13 +701,6 @@ export function Header(props: HeaderProps) {
                     )}
                   </AnimatePresence>
                 </div> */}
-
-                {/* Mobile Search - Visible only on small screens */}
-                <div className="md:hidden">
-                  <Suspense fallback={<div className="h-10 w-40 bg-slate-100 rounded-full animate-pulse" />}>
-                    <SearchInput className="w-40" />
-                  </Suspense>
-                </div>
 
                 {/* Mobile Menu Trigger */}
                 <Sheet
