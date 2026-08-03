@@ -13,16 +13,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (locale === "ar") {
     return {
       alternates: buildLocalizedAlternates({ pathname: "/news", locale: locale as "ar" | "en" }),
-    title: "الأخبار | بنك بن دول",
-      description: "تابع أحدث أخبار وأنشطة وفعاليات بنك بن دول."
-};
+      title: "المركز الإعلامي | بنك بن دول",
+      description: "تابع أحدث الأخبار والفعاليات والإنجازات من بنك بن دول."
+    };
   }
 
   return {
     alternates: buildLocalizedAlternates({ pathname: "/news", locale: locale as "ar" | "en" }),
-    title: "News | Bin Dowal Bank",
-    description: "Follow the latest news, activities, and events from Bin Dowal Bank."
-};
+    title: "Media Center | Bin Dowal Bank",
+    description: "Follow the latest news, events, and achievements from Bin Dowal Bank."
+  };
 }
 
 export default async function LocalizedNewsPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -34,7 +34,7 @@ export default async function LocalizedNewsPage({ params }: { params: Promise<{ 
 
   return (
     <main data-localized-route="news" data-locale={locale}>
-      <NewsPageContent />
+      <NewsPageContent locale={locale} />
     </main>
   );
 }

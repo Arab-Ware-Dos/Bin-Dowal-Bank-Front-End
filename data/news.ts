@@ -78,8 +78,7 @@ export const newsItems: NewsArticle[] = [
       },
     ],
 
-    categoryAr: "أخبار البنك",
-    categoryEn: "Bank News",
+    category: 'bank-news',
 
     image: "/images/news/lebnon.jpeg",
     imageAltAr: "مشاركة بنك بن دول للتمويل الأصغر الإسلامي في ملتقى اتحاد المصارف العربية في بيروت",
@@ -89,8 +88,6 @@ export const newsItems: NewsArticle[] = [
     publishedAt: "2026-04-12",
 
     url: "/news/bank-bin-dowl-for-islamic-microfinance-participates-in-the-arab-banks-union-forum-in-beirut",
-
-    isFeatured: true,
   },
   {
   id: "2",
@@ -169,8 +166,7 @@ export const newsItems: NewsArticle[] = [
     },
   ],
 
-  categoryAr: "أخبار البنك",
-  categoryEn: "Bank News",
+  category: 'bank-news',
 
   image: "/images/news/saba-bank-visit.jpeg",
   imageAltAr:
@@ -182,8 +178,6 @@ export const newsItems: NewsArticle[] = [
   publishedAt: "",
 
   url: "/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
-
-  isFeatured: false,
 },
 {
   id: "3",
@@ -262,8 +256,7 @@ export const newsItems: NewsArticle[] = [
     },
   ],
 
-  categoryAr: "أخبار البنك",
-  categoryEn: "Bank News",
+  category: 'bank-news',
 
   image: "/images/news/financial-credit-analysis-course.jpg",
   imageAltAr: "اختتام دورة التحليل المالي والائتماني في بنك بن دول",
@@ -273,8 +266,6 @@ export const newsItems: NewsArticle[] = [
   publishedAt: "",
 
   url: "/news/conclusion-of-the-financial-and-credit-analysis-course",
-
-  isFeatured: false,
 },
 {
   id: "4",
@@ -353,8 +344,7 @@ export const newsItems: NewsArticle[] = [
     },
   ],
 
-  categoryAr: "أخبار البنك",
-  categoryEn: "Bank News",
+  category: 'bank-news',
 
   image: "/images/news/two-courses-financial-credit-analysis.jpeg",
   imageAltAr: "اختتام دورتين حول التحليل المالي والائتماني في بنك بن دول",
@@ -364,7 +354,5 @@ export const newsItems: NewsArticle[] = [
   publishedAt: "",
 
   url: "/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis",
-
-  isFeatured: false,
 }
 ]

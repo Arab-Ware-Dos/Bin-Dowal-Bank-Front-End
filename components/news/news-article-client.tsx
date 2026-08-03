@@ -20,6 +20,7 @@ import {
   Check,
 } from "lucide-react"
 import { NewsArticle, ArticleBlock, ArticleContent } from "@/types/news-article"
+import { MEDIA_CATEGORIES } from "@/data/media-categories"
 
 type SupportedLocale = "ar" | "en"
 
@@ -249,9 +250,9 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
     article?.titleEn,
     isArabic ? "عنوان الخبر غير متوفر" : "Article title is unavailable"
   )
-
   const excerpt = pickLocalizedText(currentLocale, article?.excerptAr, article?.excerptEn)
-  const category = pickLocalizedText(currentLocale, article?.categoryAr, article?.categoryEn)
+  
+  const category = article?.category ? (isArabic ? MEDIA_CATEGORIES[article.category].ar : MEDIA_CATEGORIES[article.category].en) : ""
 
   const imageAlt = pickLocalizedText(
     currentLocale,
@@ -394,7 +395,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
           subtitle=""
           breadcrumbs={[
             { labelKey: isArabic ? "الرئيسية" : "Home", href: "/" },
-            { labelKey: isArabic ? "الأخبار" : "News", href: "/news" },
+            { labelKey: isArabic ? "المركز الإعلامي" : "Media Center", href: "/news" },
             { labelKey: isArabic ? "الخبر غير موجود" : "Article Not Found" },
           ]}
         />
@@ -425,7 +426,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
               <Button asChild size="lg" className="rounded-full px-6">
                 <Link href={resolveHref("/news")} className="inline-flex items-center gap-2">
                   <ArrowIcon className="h-4 w-4" />
-                  {isArabic ? "العودة إلى الأخبار" : "Back to News"}
+                  {isArabic ? "العودة إلى المركز الإعلامي" : "Back to Media Center"}
                 </Link>
               </Button>
             </motion.div>
@@ -446,7 +447,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
         subtitle=""
         breadcrumbs={[
           { labelKey: isArabic ? "الرئيسية" : "Home", href: "/" },
-          { labelKey: isArabic ? "الأخبار" : "News", href: "/news" },
+          { labelKey: isArabic ? "المركز الإعلامي" : "Media Center", href: "/news" },
           { labelKey: title },
         ]}
       />
@@ -462,7 +463,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
               >
                 <Link href={resolveHref("/news")} className="inline-flex items-center gap-2">
                   <ArrowIcon className="h-4 w-4" />
-                  {isArabic ? "العودة للأخبار" : "Back to News"}
+                  {isArabic ? "العودة للمركز الإعلامي" : "Back to Media Center"}
                 </Link>
               </Button>
             </div>
