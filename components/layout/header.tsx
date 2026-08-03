@@ -738,7 +738,7 @@ export function Header(props: HeaderProps) {
                       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
                       <Link href={resolveHref("/")} onClick={() => setMobileMenuOpen(false)} className="inline-flex transition-transform hover:scale-105 active:scale-95">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bank%20Logo-sQ4ejPvlaY9DvzUZ11CkmGwd9hycOG.png"
+                          src="/images/logo.png"
                           alt="Bin Dowal Islamic Microfinance Bank"
                           width={180}
                           height={52}
