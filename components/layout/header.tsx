@@ -930,7 +930,7 @@ export function Header(props: HeaderProps) {
                     </div>
 
                     {/* Mobile Login Button Area */}
-                    <div className="border-t border-slate-200 bg-white p-5 shrink-0">
+                    {/* <div className="border-t border-slate-200 bg-white p-5 shrink-0">
                       <div className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${mobileLoginMenuOpen ? 'border-[#2d3185] ring-2 ring-[#2d3185]/10' : 'border-slate-200'}`}>
                         <button
                           type="button"
@@ -982,7 +982,7 @@ export function Header(props: HeaderProps) {
                           )}
                         </AnimatePresence>
                       </div>
-                    </div>
+                    </div> */}
                   </SheetContent>
                 </Sheet>
               </div>

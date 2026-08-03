@@ -371,8 +371,8 @@ export function ContactPageContent() {
       title={locale === "ar" ? "موقعنا" : "Our Location"}
       subtitle={
         locale === "ar"
-          ? "المقر الرئيسي"
-          : "Head office"
+          ? "الفرع الرئيسي"
+          : "Head branch"
       }
     />
 
@@ -388,19 +388,19 @@ export function ContactPageContent() {
           <div className="absolute inset-y-0 right-0 hidden w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent lg:block" />
 
           <div className="mb-4 inline-flex items-center rounded-full border border-[#262b80]/10 bg-[#262b80]/[0.04] px-4 py-2 text-xs font-semibold tracking-[0.22em] text-[#262b80]">
-            {locale === "ar" ? "المقر الرئيسي" : "HEAD OFFICE"}
+            {locale === "ar" ? "الفرع الرئيسي" : "HEAD BRANCH"}
           </div>
 
           <h3 className="text-2xl font-bold text-[#0b0d36] md:text-3xl">
             {locale === "ar"
-              ? "المقر الرئيسي"
-              : "Head office"}
+              ? "الفرع الرئيسي"
+              : "Head branch"}
           </h3>
 
           <p className="mt-4 max-w-xl text-base leading-8 text-slate-600">
             {locale === "ar"
-              ? "اهلا وسهلا بكم في المقر الرئيسي لبنك بن دول للتمويل الاصغر الاسلامي"
-              : "Welcome to the head office of Bin Dowal Islamic Microfinance Bank"}
+              ? "اهلا وسهلا بكم في الفرع الرئيسي لبنك بن دول للتمويل الاصغر الاسلامي"
+              : "Welcome to the head branch of Bin Dowal Islamic Microfinance Bank"}
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -413,8 +413,8 @@ export function ContactPageContent() {
               </p>
               <p className="mt-2 text-sm leading-7 text-slate-600">
                 {locale === "ar"
-                  ? "فرع بنك بن دول - المكلا - حضرموت - اليمن"
-                  : "Bin Dowal Bank Branch - Mukalla - Hadhramaut - Yemen"}
+                  ? "جول مسحه - المكلا - حضرموت - اليمن"
+                  : "Ghul Masah - Mukalla - Hadhramaut - Yemen"}
               </p>
             </div>
 
@@ -427,8 +427,8 @@ export function ContactPageContent() {
               </p>
               <p className="mt-2 text-sm leading-7 text-slate-600">
                 {locale === "ar"
-                  ? "الأحد - الخميس | 8:00 ص - 4:00 م"
-                  : "Sunday - Thursday | 8:00 AM - 4:00 PM"}
+                  ? "السبت - الخميس 8:00 ص - 3:30 م"
+                  : "Saturday - Thursday 8:00 AM - 3:30 PM"}
               </p>
             </div>
           </div>

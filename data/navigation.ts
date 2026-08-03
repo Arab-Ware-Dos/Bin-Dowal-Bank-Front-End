@@ -88,12 +88,12 @@ export const navigationData: NavItem[] = [
   },
   {
     key: "personalBanking",
-    href: "/personal-banking",
+    href: "",
     label: { ar: "خدمات الأفراد", en: "Personal Banking" },
     image: "/images/personalCover.png",
     imageTitle: { ar: "حلول الأفراد", en: "Personal Solutions" },
     imageDesc: { ar: "خدمات مصرفية تلبي احتياجاتك اليومية وتطلعاتك المستقبلية.", en: "Banking services tailored to your daily needs and future aspirations." },
-    imageLink: "/personal-banking",
+    imageLink: "",
     groups: [
       {
         title: { ar: "الحسابات", en: "Accounts" },
@@ -159,12 +159,12 @@ export const navigationData: NavItem[] = [
 
   {
     key: "businessBanking",
-    href: "/business-banking",
+    href: "",
     label: { ar: "بن دول أعمال", en: "Bin Dowal Business" },
     image: "/images/company-header-cover.png",
     imageTitle: { ar: "تمكين الشركات", en: "Empowering Business" },
     imageDesc: { ar: "حلول أعمال متكاملة تدعم نمو مستقبلك التجاري عبر باقات تمويلية وخدمات إدارة النقد والحلول الرقمية.", en: "Comprehensive business solutions." },
-    imageLink: "/business-banking",
+    imageLink: "",
     groups: [
       {
         title: { ar: "الشركات الكبيرة والمتوسطة", en: "Large Corporate" },
@@ -200,7 +200,7 @@ export const navigationData: NavItem[] = [
   },
   {
     key: "customServices",
-    href: "/custom-services",
+    href: "",
     label: { ar: "خدمات مخصصة", en: "Custom Services" },
     groups: [
       {
@@ -257,7 +257,7 @@ export const navigationData: NavItem[] = [
   },
   {
     key: "digitalChannels",
-    href: "/digital-channels",
+    href: "",
     label: { ar: "الخدمات الإلكترونية", en: "E-Services" },
     singleLinks: [
       { key: "bankApp", href: "/e-services/mobile-banking", label: { ar: "التطبيق البنكي", en: "Mobile Banking" }, icon: Smartphone },
@@ -269,7 +269,7 @@ export const navigationData: NavItem[] = [
   },
   {
     key: "knowledgeCenter",
-    href: "/knowledge",
+    href: "",
     label: { ar: "مركز المعرفة", en: "Knowledge Center" },
     singleLinks: [
       { key: "faq", href: "/knowledge-center/faq", label: { ar: "الأسئلة الشائعة", en: "FAQ" }, desc: { ar: "إجابات واضحة ومنظمة لأكثر الاستفسارات شيوعًا حول خدمات البنك", en: "Clear organized answers to the most common questions about bank services" }, icon: HelpCircle },
