@@ -440,23 +440,24 @@ export function Footer() {
         {/* Developer Credit */}
         <motion.div
           variants={itemVariants}
-          className="mt-6 flex justify-center text-center text-xs text-white/40 md:text-sm"
+          className="mt-8 flex justify-center text-center"
         >
           <a
             href="https://arabwdos.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 transition-colors hover:text-white/70"
+            className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
           >
-            {isArabic ? "برمجة وتطوير" : "Programming and Development by"}
             <Image
               src="/images/arab_ware_dos_logo_white.png"
               alt="Arabware Dos Company"
-              width={80}
-              height={20}
-              className="h-4 w-auto object-contain"
+              width={200}
+              height={50}
+              className="h-18 w-auto object-contain opacity-70 transition-opacity group-hover:opacity-100"
             />
-            {isArabic ? "شركة عرب وير دوز" : "Arabware Dos Company"}
+            <span className="text-[11px] text-white/40 md:text-xs transition-colors group-hover:text-white/70">
+              {isArabic ? "تطوير شركة عرب وير دوز" : "Development by Arab Ware Dos"}
+            </span>
           </a>
         </motion.div>
       </motion.div>
