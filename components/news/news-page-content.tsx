@@ -213,8 +213,8 @@ export function NewsPageContent() {
         title={isArabic ? "الأخبار والمستجدات" : "News & Updates"}
         subtitle={
           isArabic
-            ? "آخر أخبار البنك وإعلاناته ومبادراته المؤسسية في صفحة موحدة واضحة وسهلة التصفح."
-            : "A structured newsroom for the bank’s latest announcements, updates, and institutional news."
+            ? "آخر أخبار البنك وإعلاناته ومبادراته."
+            : " latest announcements, updates, and institutional news."
         }
         breadcrumbs={[
           { labelKey: isArabic ? "الرئيسية" : "Home", href: resolveHref("/") },
