@@ -12,7 +12,7 @@ export function ComplianceStatementPageContent() {
   const isAr = locale === "ar"
   const [copied, setCopied] = useState(false)
 
-  const giinNumber = "6PTVIH.99999.SL.886"
+  const giinNumber = "6PTVIH.99999.SL.887"
 
   const handleCopy = () => {
     navigator.clipboard.writeText(giinNumber)
@@ -21,67 +21,125 @@ export function ComplianceStatementPageContent() {
   }
 
   const text = {
-    heroTitle: isAr ? "بيان الامتثال" : "Compliance Statement",
+    heroTitle: isAr ? "بيان الامتثال ومكافحة الجرائم المالية" : "Compliance and Financial Crime Prevention Statement",
     heroSubtitle: isAr
       ? "التزامنا التام بالمعايير المحلية والدولية لمكافحة غسل الأموال وتمويل الإرهاب وتعزيز النزاهة المصرفية."
       : "Our steadfast commitment to local and international AML/CFT standards and banking integrity.",
     home: isAr ? "الرئيسية" : "Home",
     about: isAr ? "عن البنك" : "About Us",
     
-    docTitle: isAr ? "بيان الامتثال" : "Compliance Statement",
-
-    intro: isAr 
-      ? "تؤكد إلتزام بنك بن دول للتمويل الأصغر الإسلامي بتطبيق أعلى معايير الرقابة المالية ومكافحة غسل الأموال وتمويل الإرهاب وفقاً للقوانين المحلية والتوصيات الدولية."
-      : "Bin Dowal Islamic Microfinance Bank affirms its strict adherence to the highest standards of financial control, AML, and CFT in accordance with local laws and international recommendations.",
+    docTitle: isAr ? "بيان الامتثال ومكافحة الجرائم المالية" : "Compliance and Financial Crime Prevention Statement",
 
     sections: [
       {
-        title: isAr ? "الالتزام بالمعايير الدولية (FATF & MENAFATF)" : "International Compliance (FATF & MENAFATF)",
+        title: isAr ? "نهج البنك في الامتثال:" : "The Bank's Approach to Compliance:",
         content: isAr
-          ? "اليمن وبصفته عضواً في المينافاتف (منطقة الشرق الأوسط وشمال أفريقيا) (MENAFATF)، يسعى إلى الامتثال بالتوصيات الـ 40 للفاتف FATF الخاصة بمكافحة غسل الأموال (AML) ومكافحة تمويل الإرهاب (CFT). ووفقاً لبيان صدر مؤخراً عن مجموعة العمل المالي (FATF)، فقد نجح اليمن في تنفيذ خطة العمل المتفق عليها. وبالتالي، ستواصل مجموعة العمل المالي مراقبة الوضع عن كثب وتحديد موعد لزيارة الموقع في أقرب فرصة ممكنة."
-          : "As a member of MENAFATF (Middle East and North Africa Financial Action Task Force), Yemen strives to comply with the FATF (Financial Action Task Force) 40 Recommendations on Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT). According to a recent statement issued by the FATF, Yemen has successfully implemented its agreed-upon action plan. Consequently, the FATF will continue to monitor the situation closely and schedule an on-site visit at the earliest possible opportunity.",
+          ? [
+              "يلتزم بنك بن دول للتمويل الأصغر الإسلامي بممارسة أعماله وفقاً لمبادئ النزاهة والشفافية والمساءلة وأحكام الشريعة الإسلامية، وبالامتثال للقوانين والتشريعات اليمنية النافذة، وتعليمات البنك المركزي اليمني، والمعايير الدولية ذات الصلة. ويُعد الامتثال مسؤولية مشتركة على جميع مستويات البنك وعنصراً أساسياً لحماية العملاء والموظفين والمساهمين وشركاء الأعمال، والمحافظة على سمعة البنك وسلامة النظام المالي.",
+              "ينطبق إطار الامتثال ومكافحة الجرائم المالية، بحسب طبيعة النشاط وما ينطبق نظاماً، على المركز الرئيسي وجميع الفروع والمكاتب وقنوات تقديم الخدمة، وعلى الشركات التابعة أو الكيانات الخاضعة لسيطرة البنك إن وجدت. ويلتزم البنك بتطبيق معايير متسقة، مع مراعاة المتطلبات القانونية والرقابية المحلية ذات الصلة."
+            ]
+          : [
+              "Bin Dowal Islamic Microfinance Bank is committed to conducting its business in accordance with the principles of integrity, transparency and accountability, the requirements of Islamic Sharia, applicable Yemeni laws and regulations, instructions issued by the Central Bank of Yemen, and relevant international standards. Compliance is a shared responsibility at every level of the Bank and is fundamental to protecting customers, employees, shareholders and business partners, as well as safeguarding the Bank's reputation and the integrity of the financial system.",
+              "Subject to the nature of the activity and applicable legal requirements, the Bank's compliance and financial crime framework applies to its head office, all branches, offices and delivery channels, and to any subsidiaries or controlled entities. The Bank applies consistent standards while observing relevant local legal and regulatory requirements."
+            ]
       },
       {
-        title: isAr ? "الرقابة والسياسات الداخلية لبنك بن دول" : "Bin Dowal Bank Internal Policies & Controls",
+        title: isAr ? "الحوكمة والإشراف:" : "Governance and Oversight:",
+        content: isAr 
+          ? [
+              "يتولى مجلس الإدارة والإدارة العليا الإشراف على إطار الامتثال وثقافة السلوك المهني في البنك. وتقوم إدارة امتثال مستقلة ومتخصصة، تتمتع بإمكانية الوصول الملائم إلى مجلس الإدارة ولجانه وفق ترتيبات الحوكمة المعتمدة، بتحديد مخاطر عدم الامتثال والجرائم المالية وتقييمها، وتقديم المشورة، ومراقبة التطبيق، ورفع التقارير الرقابية والإدارية، ودعم المعالجة في الوقت المناسب.",
+              "يراجع البنك دورياً سياساته وإجراءاته وأنظمته وتقييماته للمخاطر وضوابطه الداخلية، بما يواكب التغيرات التشريعية والرقابية، والمنتجات والخدمات وقنوات التقديم الجديدة، والتقنيات الحديثة، ومخاطر الجرائم المالية المستجدة."
+            ]
+          : [
+              "The Board of Directors and Senior Management oversee the Bank's compliance framework and culture of professional conduct. An independent and specialized Compliance Department, with appropriate access to the Board and its committees under the Bank's governance arrangements, identifies and assesses compliance and financial crime risks, provides advice, monitors implementation, supports regulatory and management reporting, and promotes timely remediation.",
+              "The Bank periodically reviews its policies, procedures, systems, risk assessments and internal controls to reflect legislative and regulatory developments, new products, services and delivery channels, emerging technologies, and evolving financial crime risks."
+            ]
+      },
+      {
+        title: isAr ? "مكافحة غسل الأموال وتمويل الإرهاب والجرائم المالية:" : "Anti-Money Laundering, Counter-Terrorist Financing and Financial Crime:",
         content: isAr
-          ? "فيما يتعلق بتدابير مكافحة غسل الأموال وتمويل الإرهاب، لدى بنك بن دول فريق التزام متخصص تم تعيينه من قبل مجلس الإدارة. كما وضع البنك أيضاً إجراءات وسياسات داخلية لتحديد ومكافحة الأنشطة مثل غسل الأموال وتمويل الإرهاب والاحتيال والفساد والرشوة."
-          : "Regarding AML/CFT measures, Bin Dowal Bank has a dedicated compliance team appointed by the Board of Directors. The Bank has also established comprehensive internal procedures and policies to identify and combat activities such as money laundering, terrorism financing, fraud, corruption, and bribery.",
+          ? [
+              "يطبق البنك برنامجاً قائماً على المخاطر لمنع استخدام منتجاته وخدماته وحساباته وقنواته في غسل الأموال، أو تمويل الإرهاب، أو تمويل انتشار أسلحة الدمار الشامل، أو الاحتيال، أو الرشوة، أو الفساد، أو التحايل على العقوبات، أو غيرها من الأنشطة غير المشروعة. ويستند البرنامج إلى التشريعات اليمنية النافذة، بما فيها القانون رقم (1) لسنة 2010 بشأن مكافحة غسل الأموال وتمويل الإرهاب وتعديلاته، بما في ذلك القانون رقم (17) لسنة 2013، وتعليمات البنك المركزي اليمني، وتوصيات مجموعة العمل المالي (FATF)، والمعايير الدولية ذات الصلة."
+            ]
+          : [
+              "The Bank maintains a risk-based programme designed to prevent its products, services, accounts and channels from being used for money laundering, terrorist financing, proliferation financing, fraud, bribery, corruption, sanctions evasion or other unlawful activity. The programme is based on applicable Yemeni legislation, including Law No. 1 of 2010 concerning Anti-Money Laundering and Counter-Terrorist Financing, as amended, including by Law No. 17 of 2013; instructions of the Central Bank of Yemen; the Financial Action Task Force (FATF) Recommendations; and other relevant international standards."
+            ]
       },
       {
-        title: isAr ? "التوافق مع القوانين اليمنية والجهات الرقابية" : "Alignment with Yemeni Laws & Regulatory Bodies",
+        title: isAr ? "التعرف على العملاء والعناية الواجبة:" : "KYC and Due Diligence:",
         content: isAr
-          ? "تتوافق هذه الجهود مع القانون اليمني رقم (1) لسنة 2010 بشأن مكافحة غسل الأموال ومكافحة تمويل الإرهاب والذي دخل حيز التنفيذ في 1 يناير 2010 في اليمن. تم إصدار هذا القانون في البداية وفقاً لتوصيات مجموعة العمل المالي (FATF)، وقد خضع لتعديلات بموجب القانون رقم (17) لسنة 2013. تم تقديم المبادئ التوجيهية المقابلة من قبل وحدة المعلومات المالية (FIU) والبنك المركزي اليمني، لتوضيح الواجبات القانونية المرتبطة بالامتثال لمكافحة غسل الأموال وتمويل الإرهاب."
-          : "These efforts align with Yemeni Law No. (1) of 2010 concerning Anti-Money Laundering and Combating the Financing of Terrorism, which entered into force on January 1, 2010, in Yemen. Originally issued in accordance with FATF recommendations, this law underwent amendments under Law No. (17) of 2013. Corresponding guidelines have been provided by the Financial Information Unit (FIU) and the Central Bank of Yemen to clarify the legal duties associated with AML/CFT compliance.",
+          ? [
+              "يطبق البنك إجراءات «اعرف عميلك» (KYC)، والعناية الواجبة تجاه العملاء (CDD)، والعناية الواجبة المعززة (EDD) بما يتناسب مع طبيعة العلاقة ومستوى مخاطرها. وتشمل هذه الإجراءات، بحسب ما ينطبق:"
+            ]
+          : [
+              "The Bank applies Know Your Customer (KYC), Customer Due Diligence (CDD) and Enhanced Due Diligence (EDD) measures proportionate to the nature and risk of each relationship. As applicable, these measures include:"
+            ],
+        list: isAr
+          ? [
+              "التحقق من هوية العميل والأشخاص المفوضين، وتحديد المستفيد الحقيقي والأشخاص المسيطرين والتحقق منهم باستخدام مصادر موثوقة.",
+              "فهم الغرض من العلاقة المصرفية وطبيعتها المتوقعة، وتقييم مخاطر العميل والمنتج والقناة والمنطقة الجغرافية.",
+              "الحصول على معلومات عن مصدر الأموال أو مصدر الثروة والتحقق منها متى استدعت المخاطر أو المتطلبات الرقابية ذلك.",
+              "تطبيق ضوابط معززة على الأشخاص المعرضين سياسياً (PEPs) وأفراد عائلاتهم والمقربين منهم، بما في ذلك الموافقات الإدارية المطلوبة والمراقبة المعززة.",
+              "تحديث بيانات العملاء وإجراء العناية الواجبة والمراقبة المستمرة طوال مدة العلاقة."
+            ]
+          : [
+              "Verifying customers and authorized persons, and identifying and verifying beneficial owners and controlling persons using reliable sources.",
+              "Understanding the purpose and expected nature of the relationship and assessing customer, product, channel and geographic risk.",
+              "Obtaining and, where required by risk or regulation, verifying information on source of funds or source of wealth.",
+              "Applying enhanced controls to Politically Exposed Persons (PEPs), their family members and close associates, including required management approvals and enhanced monitoring.",
+              "Keeping customer information current and conducting ongoing due diligence and monitoring throughout the relationship."
+            ]
       },
       {
-        title: isAr ? "قانون الامتثال الضريبي الأمريكي للحسابات الأجنبية (FATCA)" : "Foreign Account Tax Compliance Act (FATCA)",
+        title: isAr ? "مراقبة العمليات والعقوبات والإبلاغ:" : "Transaction Monitoring, Sanctions and Reporting:",
         content: isAr
-          ? "قانون الامتثال الضريبي الامريكي للحسابات الأجنبية: تم تسجيل بنك بن دول كمؤسسة مالية أجنبية مشاركة."
-          : "Foreign Account Tax Compliance Act: Bin Dowal Bank is registered as a Participating Foreign Financial Institution (PFFI).",
-        hasGiin: true,
-      },
-    ],
-
-    pillarsTitle: isAr ? "ركائز منظومة الامتثال في بنك بن دول" : "Pillars of Compliance at Bin Dowal Bank",
-    pillars: [
-      {
-        title: isAr ? "فريق التزام متخصص:" : "Dedicated Compliance Team:",
-        desc: isAr
-          ? "فريق مستقل ومتخصص معين مباشرة من قبل مجلس الإدارة لضمان تطبيق أعلى معايير الحوكمة والنزاهة المصرفية."
-          : "An independent, specialized team appointed directly by the Board of Directors to ensure the highest standards of governance.",
+          ? [
+              "يطبق البنك أنظمة وضوابط قائمة على المخاطر لمراقبة العمليات وفحص الأطراف، بهدف اكتشاف الأنشطة غير الاعتيادية أو التي قد تنطوي على اشتباه. وقد يشمل الفحص، بحسب طبيعة العملية، العملاء والمستفيدين الحقيقيين والأشخاص المسيطرين والأطراف المقابلة والمستفيدين وبيانات المدفوعات والسفن وغيرها من الأطراف ذات الصلة، مقابل قوائم العقوبات والتدابير التقييدية المحلية والدولية المطبقة.",
+              "تخضع التنبيهات للمراجعة والتحقيق وفق الإجراءات المعتمدة، ويتخذ البنك التدابير المناسبة قبل تنفيذ العمليات أو أثناءها أو بعدها بحسب مستوى المخاطر والمتطلبات النظامية. ويتم إبلاغ وحدة جمع المعلومات المالية أو الجهات المختصة، بسرية ودون تنبيه الأطراف المعنية، عن العمليات أو الأنشطة المشبوهة متى كان ذلك مطلوباً بموجب القوانين والتعليمات النافذة."
+            ]
+          : [
+              "The Bank applies risk-based systems and controls to monitor transactions and screen relevant parties for unusual or potentially suspicious activity. Depending on the transaction, screening may cover customers, beneficial owners, controlling persons, counterparties, beneficiaries, payment data, vessels and other relevant parties against applicable domestic and international sanctions lists and restrictive measures.",
+              "Alerts are reviewed and investigated under approved procedures, and appropriate measures may be taken before, during or after a transaction according to the risk and applicable requirements. Where required by law or regulation, suspicious transactions or activities are reported confidentially to the Financial Intelligence Unit or other competent authorities, without tipping off the parties concerned."
+            ]
       },
       {
-        title: isAr ? "إجراءات رقابية صارمة:" : "Strict Internal Controls:",
-        desc: isAr
-          ? "أنظمة وسياسات داخلية متطورة لرصد ومكافحة غسل الأموال وتمويل الإرهاب والاحتيال والرشوة بفعالية عالية."
-          : "Advanced internal systems and policies to monitor and combat money laundering, terrorism financing, fraud, and bribery.",
+        title: isAr ? "العلاقات المصرفية المحظورة والبنوك المراسلة:" : "Prohibited Relationships and Correspondent Banking:",
+        content: isAr
+          ? [
+              "يحظر البنك فتح أو الاحتفاظ بحسابات مجهولة الهوية أو وهمية، أو إنشاء علاقات مع بنوك وهمية، ويتخذ إجراءات معقولة للتأكد من أن البنوك المراسلة التي يتعامل معها لا تسمح لبنوك وهمية باستخدام حساباتها. كما تخضع علاقات البنوك والمؤسسات المالية المراسلة للعناية الواجبة والموافقات والمراقبة المستمرة على أساس المخاطر.",
+              "لا يقدم البنك حسابات مراسلة قابلة للدفع من خلالها (Payable-through Accounts) بما يتيح لعملاء أو أطراف ثالثة استخدام حسابات البنك المراسلة بصورة مباشرة. ولا ينفذ البنك، عن علم، معاملات تخالف القوانين أو المتطلبات الرقابية أو التزامات العقوبات المطبقة."
+            ]
+          : [
+              "The Bank prohibits anonymous or fictitious accounts and relationships with shell banks. It takes reasonable measures to ensure that respondent or correspondent institutions with which it deals do not permit shell banks to use their accounts. Relationships with correspondent banks and other financial institutions are subject to risk-based due diligence, approval and ongoing monitoring.",
+              "The Bank does not offer payable-through accounts that allow customers or other third parties to access the Bank's correspondent accounts directly. The Bank does not knowingly process transactions that breach applicable laws, regulatory requirements or sanctions obligations."
+            ]
       },
       {
-        title: isAr ? "اعتراف وتسجيل دولي:" : "International Recognition:",
-        desc: isAr
-          ? "الامتثال الكامل للمبادئ التوجيهية للبنك المركزي اليمني ووحدة المعلومات المالية والتسجيل في نظام FATCA الأمريكي."
-          : "Full compliance with Central Bank of Yemen and FIU guidelines, as well as registration in the U.S. FATCA system.",
+        title: isAr ? "التدريب، حفظ السجلات والمراجعة المستقلة:" : "Training, Record Keeping and Independent Assurance:",
+        content: isAr
+          ? [
+              "ينفذ البنك برامج تدريب وتوعية دورية قائمة على المخاطر ومتناسبة مع مهام الموظفين ومسؤولياتهم. وتشمل موضوعات التدريب مكافحة غسل الأموال وتمويل الإرهاب وتمويل الانتشار، وإجراءات التعرف على العملاء والعناية الواجبة والعناية الواجبة المعززة، والمستفيد الحقيقي، والأشخاص المعرضين سياسياً، والعقوبات، ومراقبة العمليات، والإبلاغ عن الأنشطة المشبوهة، ومكافحة الاحتيال والرشوة والفساد، والسلوك المهني، ومتطلبات قانون فاتكا المطبقة.",
+              "يحتفظ البنك بسجلات العملاء والعمليات والعناية الواجبة والتحقيقات والبلاغات والتدريب والامتثال بصورة آمنة وللمدد التي تحددها القوانين والتعليمات الرقابية، وبما لا يقل عن الحد الأدنى القانوني المطبق خمس سنوات. كما يتعامل مع المعلومات وفق متطلبات السرية المصرفية وحماية البيانات وأمن المعلومات. يخضع إطار الامتثال ومكافحة الجرائم المالية للمراقبة المستمرة والتقييم الدوري للمخاطر، وللمراجعة المستقلة من إدارة التدقيق الداخلي، ومن المراجع الخارجي أو جهة مستقلة متخصصة متى كان ذلك مطلوباً أو ملائماً، وتتابع الإدارة المعنية معالجة الملاحظات ضمن مدد محددة."
+            ]
+          : [
+              "The Bank provides periodic, risk-based training and awareness appropriate to employees' roles and responsibilities. Training covers AML/CFT and proliferation financing, KYC, CDD and EDD, beneficial ownership, PEPs, sanctions, transaction monitoring, suspicious activity reporting, fraud, bribery and corruption, professional conduct, and applicable FATCA requirements.",
+              "Customer, transaction, due diligence, investigation, reporting, training and compliance records are securely retained for the periods prescribed by applicable laws and regulatory instructions and not less than the applicable legal minimum five years. Information is handled in accordance with applicable banking secrecy, data protection and information security requirements.",
+              "The compliance and financial crime framework is subject to ongoing monitoring, periodic risk assessment and independent review by Internal Audit, and by the external auditor or another qualified independent party where required or appropriate. Identified findings are tracked to remediation within defined timeframes."
+            ]
       },
+      {
+        title: isAr ? "الامتثال لقانون فاتكا:" : "FATCA Compliance:",
+        content: isAr
+          ? [
+              "بنك بن دول للتمويل الأصغر الإسلامي مسجل بموجب قانون الامتثال الضريبي للحسابات الأجنبية الأمريكي (FATCA) بصفته مؤسسة مالية أجنبية مشاركة منفردة (PFFI).",
+              "يطبق البنك إجراءات لتحديد العملاء والحسابات الخاضعة لمتطلبات FATCA، والحصول على الإقرارات الضريبية والوثائق المؤيدة، والوفاء بمتطلبات التوثيق والتصنيف والإبلاغ والاستقطاع وحفظ السجلات متى انطبقت. وقد يُطلب من العملاء تقديم معلومات عن الجنسية أو الإقامة الضريبية أو الوضع الضريبي الأمريكي أو أرقام التعريف الضريبي أو الأشخاص المسيطرين، والإبلاغ عن أي تغير في الظروف قد يؤثر على تصنيفهم."
+            ]
+          : [
+              "Bin Dowal Islamic Microfinance Bank is registered under the United States Foreign Account Tax Compliance Act (FATCA) as a Single Participating Foreign Financial Institution (PFFI).",
+              "The Bank maintains procedures to identify customers and accounts subject to FATCA, obtain required tax self-certifications and supporting documents, and meet applicable documentation, classification, reporting, withholding and record-keeping obligations. Customers may be required to provide information on nationality, tax residence, U.S. tax status, taxpayer identification numbers, controlling persons, and any change in circumstances that may affect their FATCA classification."
+            ],
+        hasGiin: true
+      }
     ],
 
     giinLabel: isAr ? "الرقم التعريفي لبيان الامتثال (GIIN):" : "Compliance Identification Number (GIIN):",
@@ -136,11 +194,6 @@ export function ComplianceStatementPageContent() {
 
             {/* Narrative Content */}
             <div className="space-y-8 text-[#334155] font-cairo text-lg leading-loose text-justify">
-              
-              {/* Introduction */}
-              <p className="font-medium text-[#1e293b]">
-                {text.intro}
-              </p>
 
               {/* Sections mapped without block separations, styled as continuous narrative */}
               {text.sections.map((sec, idx) => (
@@ -149,9 +202,22 @@ export function ComplianceStatementPageContent() {
                     <span className="text-[#ed1c24] text-3xl leading-none">•</span>
                     {sec.title}
                   </h3>
-                  <p>
-                    {sec.content}
-                  </p>
+                  
+                  {sec.content.map((paragraph, pIdx) => (
+                    <p key={pIdx} className={pIdx > 0 ? "mt-4" : ""}>
+                      {paragraph}
+                    </p>
+                  ))}
+
+                  {sec.list && (
+                    <ul className="list-disc list-outside ml-6 mr-6 space-y-3 text-lg mt-4 text-[#334155]">
+                      {sec.list.map((item, iIdx) => (
+                        <li key={iIdx}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   
                   {sec.hasGiin && (
                     <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50 border border-slate-200 p-5 rounded-2xl">
@@ -185,20 +251,6 @@ export function ComplianceStatementPageContent() {
                   )}
                 </div>
               ))}
-
-              <div className="pt-4">
-                <h3 className="text-xl sm:text-2xl font-bold text-[#262b80] mb-4 flex items-center gap-2">
-                  <span className="text-[#ed1c24] text-3xl leading-none">•</span>
-                  {text.pillarsTitle}
-                </h3>
-                <ul className="list-disc list-outside ml-6 mr-6 space-y-3 text-lg">
-                  {text.pillars.map((pillar, idx) => (
-                    <li key={idx}>
-                      <span className="font-bold text-[#1e293b]">{pillar.title}</span> {pillar.desc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
 
             </div>
 
