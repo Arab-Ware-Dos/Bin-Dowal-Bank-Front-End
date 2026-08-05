@@ -165,7 +165,6 @@ export function FinancingServices() {
                       fill
                       className="object-cover"
                       style={{ filter: `brightness(${cfg.brightness})` }}
-                      priority={Math.abs(pos) <= 1}
                     />
                   </div>
 

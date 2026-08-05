@@ -152,6 +152,7 @@ export function HeroSection() {
           fill
           className="object-cover object-center"
           priority
+          fetchPriority="high"
         />
       </div>
 
@@ -199,13 +200,13 @@ export function HeroSection() {
       <div className="container mx-auto px-4 py-14 md:py-20 lg:py-24">
         <div className="grid min-h-[620px] items-center gap-12 lg:grid-cols-[1.02fr_0.98fr]">
           {/* Content */}
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`content-${slide.id ?? currentSlide}`}
               initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
               animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
               exit={shouldReduceMotion ? undefined : { opacity: 0, y: -18 }}
-              transition={{ duration: 0.45, ease: "easeOut" }}
+              transition={{ duration: 0.20, ease: "easeOut" }}
               className="max-w-3xl text-start"
             >
               {eyebrow ? (
@@ -333,7 +334,7 @@ function HeroVisual({
     locale === "ar" ? visual.stat?.labelAr : visual.stat?.labelEn
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       <motion.div
         key={`visual-${slide.id ?? currentSlide}`}
         initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.96, x: 18 }}
@@ -360,7 +361,6 @@ function HeroVisual({
                 alt={alt}
                 width={560}
                 height={430}
-                priority={currentSlide === 0}
                 className="max-h-[430px] w-full object-contain drop-shadow-2xl"
               />
             </div>

@@ -123,6 +123,7 @@ export function NewsSection() {
                           <img
                             src={news.image}
                             alt={title}
+                            loading="lazy"
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 to-transparent" />

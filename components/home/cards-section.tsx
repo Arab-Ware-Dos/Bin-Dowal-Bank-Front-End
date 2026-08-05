@@ -235,7 +235,6 @@ export function CardsSection() {
                       src={card.front}
                       alt={t(card.titleKey)}
                       fill
-                      priority
                       sizes="(max-width: 768px) 100vw, 500px"
                       className="object-cover"
                     />
