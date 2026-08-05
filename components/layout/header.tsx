@@ -468,12 +468,12 @@ export function Header(props: HeaderProps) {
                                 <p className="mb-6 text-sm leading-relaxed text-slate-200">
                                   {locale === "ar" ? activeDesktopItem.imageDesc?.ar : activeDesktopItem.imageDesc?.en}
                                 </p>
-                                <Button asChild variant="secondary" className="rounded-full px-6 font-semibold w-full bg-white/20 backdrop-blur-md hover:bg-white text-white hover:text-slate-900 border-0">
+                                {/* <Button asChild variant="secondary" className="rounded-full px-6 font-semibold w-full bg-white/20 backdrop-blur-md hover:bg-white text-white hover:text-slate-900 border-0">
                                   <Link href={resolveHref(activeDesktopItem.imageLink || activeDesktopItem.href)}>
                                     <span>{copy.exploreAll}</span>
                                     <ArrowUpRight className="ms-2 h-4 w-4" />
                                   </Link>
-                                </Button>
+                                </Button> */}
                               </div>
                             </div>
                           )}

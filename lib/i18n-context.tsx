@@ -91,6 +91,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Digital Channels Sub-items
     "nav.mobileApp": "تطبيق الجوال",
     "nav.internetBanking": "الخدمات المصرفية عبر الإنترنت",
+    "nav.internetBank": "منصة بن دول اعمال",
     "nav.atms": "أجهزة الصراف الآلي",
 
     // About Sub-items
@@ -392,6 +393,7 @@ const translations: Record<Locale, Record<string, string>> = {
     // Digital Channels Sub-items
     "nav.mobileApp": "Mobile App",
     "nav.internetBanking": "Internet Banking",
+    "nav.internetBank": "Bin Dowal Business Platform",
     "nav.atms": "ATMs",
 
     // About Sub-items
