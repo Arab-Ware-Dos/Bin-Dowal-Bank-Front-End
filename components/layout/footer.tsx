@@ -19,17 +19,10 @@ import {
 } from "lucide-react"
 
 const quickLinks: { key: string; href: string }[] = [
-  // { key: "expat", href: "/accounts/expat" },
-  // { key: "businessBanking", href: "/business-banking" },
-  // { key: "cards", href: "/cards" },
-  // { key: "financing", href: "/financing" },
-]
-
-const productLinks = [
-  { key: "accounts", href: "/personal-banking#accounts" },
-  { key: "debitCards", href: "/cards#debit" },
-  // { key: "autoFinancing", href: "/financing#auto" },
-  { key: "mobileApp", href: "/digital-channels#mobile" },
+  { key: "currentAccount", href: "/personal/current-account" },
+  { key: "investmentDeposit", href: "/personal/investment-deposit" },
+  { key: "corporateCurrentAccount", href: "/business/corporate-current-account" },
+  { key: "cards", href: "/cards" },
 ]
 
 const supportLinks = [
@@ -204,33 +197,6 @@ export function Footer() {
 
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <motion.li
-                  key={link.key}
-                  variants={itemVariants}
-                  transition={{ delay: index * 0.02 }}
-                >
-                  <Link
-                    href={resolveHref(link.href)}
-                    className="group inline-flex items-center text-sm text-white/70 transition-all duration-300 hover:text-white"
-                  >
-                    <span className="h-[1px] w-0 bg-white transition-all duration-300 group-hover:me-2 group-hover:w-4" />
-                    {t(`nav.${link.key}`)}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-gradient-to-r from-white/50 to-transparent" />
-              <h3 className="text-base font-semibold text-white">
-                {t("eServices.title")}
-              </h3>
-            </div>
-
-            <ul className="space-y-3">
-              {productLinks.map((link, index) => (
                 <motion.li
                   key={link.key}
                   variants={itemVariants}
