@@ -32,6 +32,7 @@ export interface NewsArticle {
   categoryAr?: string;
   categoryEn?: string;
   categorySlug?: string;
+  isFeatured?: boolean;
   image?: string;
   imageAltAr?: string;
   imageAltEn?: string;
