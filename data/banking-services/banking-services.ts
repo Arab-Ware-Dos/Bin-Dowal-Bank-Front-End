@@ -9169,8 +9169,8 @@ export const bankingServicesData: ServicePageData[] = [
       en: "UPT Money Transfer Service | Bindowal Bank"
     },
     subtitle: {
-      ar: "الآن تقدر ترسل وتستقبل حوالاتك بكل سهولة وأمان مع خدمة UPT - يو بي تي العالمية أموالك تعبر الحدود بكل ثقة💸",
-      en: "Now you can send and receive your remittances with complete ease and security. With UPT global service, your money crosses borders with confidence 💸"
+      ar: "الآن تقدر ترسل وتستقبل حوالاتك بكل سهولة وأمان مع خدمة UPT - يو بي تي العالمية أموالك تعبر الحدود بكل",
+      en: "Now you can send and receive your remittances with complete ease and security. With UPT global service, your money crosses borders with confidence"
     },
     heroImage: "/images/partners/international/Asset 44@3x.png",
     breadcrumbs: [
