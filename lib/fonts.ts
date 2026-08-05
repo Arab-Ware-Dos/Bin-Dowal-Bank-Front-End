@@ -11,5 +11,6 @@ export const somarSans = localFont({
   ],
   variable: '--font-somar-sans',
   display: 'swap',
+  preload: false,
   fallback: ['Arial', 'sans-serif'],
 })
