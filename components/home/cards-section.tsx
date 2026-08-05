@@ -12,59 +12,59 @@ const cards = [
   {
     id: 1,
     front: "/images/cards/debit_desert-compressed.webp",
-    title: "بطاقة كلاسيك",
-    subtitle: "حلول يومية بمرونة أعلى",
+    titleKey: "cardsSection.card1.title",
+    subtitleKey: "cardsSection.card1.subtitle",
     tag: "CLASSIC",
     color: "#f9d9b6",
-    features: [
-      "مقبولة محلياً وعالمياً في جميع نقاط البيع",
-      "أمان عالي باستخدام تقنية الشريحة الذكية",
-      "سحوبات نقدية ومشتريات مرنة وميسرة",
+    featuresKeys: [
+      "cardsSection.card1.feature1",
+      "cardsSection.card1.feature2",
+      "cardsSection.card1.feature3",
     ],
   },
   {
     id: 2,
     front: "/images/cards/debit-noor.webp",
-    title: "بطاقة نور",
-    subtitle: "مزايا أكثر وتجربة مصرفية أذكى",
+    titleKey: "cardsSection.card2.title",
+    subtitleKey: "cardsSection.card2.subtitle",
     tag: "NOUR",
     color: "#e78979",
-    features: [
-      "تسهيلات دفع مرنة ومتوافقة مع الشريعة",
-      "عروض وخصومات حصرية لدى شركائنا",
-      "إدارة ذكية ومباشرة عبر تطبيق البنك",
+    featuresKeys: [
+      "cardsSection.card2.feature1",
+      "cardsSection.card2.feature2",
+      "cardsSection.card2.feature3",
     ],
   },
   {
     id: 3,
     front: "/images/cards/gold-credit.webp",
-    title: "بطاقة جولد",
-    subtitle: "تصميم راقٍ ومزايا مميزة",
+    titleKey: "cardsSection.card3.title",
+    subtitleKey: "cardsSection.card3.subtitle",
     tag: "GOLD",
     color: "#f59e0b",
-    features: [
-      "أولوية في الخدمة عبر جميع الفروع",
-      "خدمة عملاء مخصصة على مدار الساعة",
-      "حد ائتماني مرن ومناسب لتطلعاتك",
+    featuresKeys: [
+      "cardsSection.card3.feature1",
+      "cardsSection.card3.feature2",
+      "cardsSection.card3.feature3",
     ],
   },
   {
     id: 4,
     front: "/images/cards/shopping-prepaid.webp",
-    title: "بطاقة تسوق",
-    subtitle: "تصميم راقٍ ومزايا مميزة",
+    titleKey: "cardsSection.card4.title",
+    subtitleKey: "cardsSection.card4.subtitle",
     tag: "SHOPPING",
     color: "#c0c0c0",
-    features: [
-      "أولوية في الخدمة عبر جميع الفروع",
-      "خدمة عملاء مخصصة على مدار الساعة",
-      "حد ائتماني مرن ومناسب لتطلعاتك",
+    featuresKeys: [
+      "cardsSection.card4.feature1",
+      "cardsSection.card4.feature2",
+      "cardsSection.card4.feature3",
     ],
   },
 ]
 
 export function CardsSection() {
-  const { mode, locale } = useI18n()
+  const { mode, locale, t, direction } = useI18n()
   const [active, setActive] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
 
@@ -86,22 +86,22 @@ export function CardsSection() {
   const card = cards[active]
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-10" dir="rtl">
+    <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-10" dir={direction}>
       <div className="relative z-10 mx-auto max-w-[1320px]">
         <SectionHeader
-          badge="بطاقاتنا المصرفية"
+          badge={t("cardsSection.badge")}
           badgeClassName="border-white/10 bg-white/8 text-white/80 shadow-[0_8px_30px_rgba(255,255,255,0.05)] tracking-wider"
           title={
             <>
-              اختر{" "}
+              {t("cardsSection.title1")}{" "}
               <span className="bg-gradient-to-l from-white via-indigo-200 to-purple-300 bg-clip-text text-transparent">
-                البطاقة
+                {t("cardsSection.titleHighlight")}
               </span>{" "}
-              التي تناسبك
+              {t("cardsSection.title2")}
             </>
           }
           titleClassName="text-white"
-          description="مجموعة متكاملة من البطاقات المصرفية المصممة لتلبية كل احتياجاتك اليومية والمميزة بأعلى معايير الأمان والراحة."
+          description={t("cardsSection.description")}
           descriptionClassName="text-white/60"
           showDivider={true}
           dividerClassName="via-white/30"
@@ -137,14 +137,14 @@ export function CardsSection() {
                 {/* Title */}
                 <div>
                   <h3 className="font-cairo text-4xl font-bold text-white md:text-5xl">
-                    {card.title}
+                    {t(card.titleKey)}
                   </h3>
-                  <p className="mt-3 font-cairo text-lg text-white/55">{card.subtitle}</p>
+                  <p className="mt-3 font-cairo text-lg text-white/55">{t(card.subtitleKey)}</p>
                 </div>
 
                 {/* Features */}
                 <ul className="flex flex-col gap-4">
-                  {card.features.map((f, i) => (
+                  {card.featuresKeys.map((fKey, i) => (
                     <motion.li
                       key={i}
                       initial={{ opacity: 0, x: 20 }}
@@ -164,7 +164,7 @@ export function CardsSection() {
                         ✦
                       </span>
                       <span className="font-cairo text-[15px] leading-relaxed text-white/80">
-                        {f}
+                        {t(fKey)}
                       </span>
                     </motion.li>
                   ))}
@@ -180,9 +180,9 @@ export function CardsSection() {
                       boxShadow: `0 0 24px ${card.color}44`,
                     }}
                   >
-                    <span className="relative z-10">طلب البطاقة</span>
-                    <span className="relative z-10 transition-transform duration-300 group-hover:-translate-x-1">
-                      ←
+                    <span className="relative z-10">{t("cardsSection.requestCard")}</span>
+                    <span className={`relative z-10 transition-transform duration-300 ${direction === 'ltr' ? 'group-hover:translate-x-1' : 'group-hover:-translate-x-1'}`}>
+                      {direction === 'ltr' ? "→" : "←"}
                     </span>
                     <div className="absolute inset-0 translate-x-full bg-white/15 transition-transform duration-500 group-hover:translate-x-0" />
                   </Link>
@@ -190,7 +190,7 @@ export function CardsSection() {
                     href={mode === "url" ? getLocalizedHref("/cards", locale) : "/cards"}
                     className="font-cairo text-sm font-medium text-white/50 underline underline-offset-4 transition-colors duration-200 hover:text-white/90"
                   >
-                    تعرف على المزيد
+                    {t("cardsSection.learnMore")}
                   </Link>
                 </div>
               </motion.div>
@@ -233,9 +233,8 @@ export function CardsSection() {
                   <div className="relative aspect-[85.6/53.98] w-full">
                     <Image
                       src={card.front}
-                      alt={card.title}
+                      alt={t(card.titleKey)}
                       fill
-                      priority
                       sizes="(max-width: 768px) 100vw, 500px"
                       className="object-cover"
                     />
@@ -254,7 +253,7 @@ export function CardsSection() {
                     style={{ background: card.color, boxShadow: `0 0 8px ${card.color}` }}
                   />
                   <span className="font-cairo text-xs font-semibold text-white/90">
-                    {card.subtitle}
+                    {t(card.subtitleKey)}
                   </span>
                 </motion.div>
               </motion.div>

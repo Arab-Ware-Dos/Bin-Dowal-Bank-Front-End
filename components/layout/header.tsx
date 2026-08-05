@@ -302,7 +302,7 @@ export function Header(props: HeaderProps) {
         >
           <div className="container mx-auto px-4">
             <div className="flex h-11 items-center justify-between text-slate-600">
-              <div className="flex items-center">
+              <div className="flex items-center gap-3 sm:gap-0">
                 <Link
                   href={resolveHref("/atm-and-branches")}
                   className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
@@ -323,12 +323,12 @@ export function Header(props: HeaderProps) {
               </div>
 
               <div className="flex items-center gap-2 lg:gap-4">
-                <div className="hidden md:block">
-                  <Suspense fallback={<div className="h-8 w-40 bg-slate-100 rounded-full animate-pulse" />}>
-                    <SearchInput className="h-8" />
+                <div className="block">
+                  <Suspense fallback={<div className="h-8 w-24 sm:w-32 md:w-40 bg-slate-100 rounded-full animate-pulse" />}>
+                    <SearchInput className="h-8 w-24 sm:w-32 md:w-40" />
                   </Suspense>
                 </div>
-                <span className="hidden md:block h-4 w-px bg-slate-300" />
+                <span className="hidden sm:block h-4 w-px bg-slate-300" />
                 
                 <a
                   href="/documents/Bin-Dowal-Bank-Profile.pdf"
@@ -339,7 +339,7 @@ export function Header(props: HeaderProps) {
                   <Download className="h-4 w-4" />
                   <span className="hidden sm:inline">{t("topbar.download")}</span>
                 </a>
-                <span className="mx-2 sm:mx-4 h-4 w-px bg-slate-300" />
+                <span className="mx-1 sm:mx-4 h-4 w-px bg-slate-300" />
 
                 {localeMode === "url" ? (
                   <Suspense fallback={
@@ -502,12 +502,12 @@ export function Header(props: HeaderProps) {
                                 <p className="mb-6 text-sm leading-relaxed text-slate-200">
                                   {locale === "ar" ? activeDesktopItem.imageDesc?.ar : activeDesktopItem.imageDesc?.en}
                                 </p>
-                                <Button asChild variant="secondary" className="rounded-full px-6 font-semibold w-full bg-white/20 backdrop-blur-md hover:bg-white text-white hover:text-slate-900 border-0">
+                                {/* <Button asChild variant="secondary" className="rounded-full px-6 font-semibold w-full bg-white/20 backdrop-blur-md hover:bg-white text-white hover:text-slate-900 border-0">
                                   <Link href={resolveHref(activeDesktopItem.imageLink || activeDesktopItem.href)}>
                                     <span>{copy.exploreAll}</span>
                                     <ArrowUpRight className="ms-2 h-4 w-4" />
                                   </Link>
-                                </Button>
+                                </Button> */}
                               </div>
                             </div>
                           )}
@@ -743,13 +743,6 @@ export function Header(props: HeaderProps) {
                   </AnimatePresence>
                 </div> */}
 
-                {/* Mobile Search - Visible only on small screens */}
-                <div className="md:hidden">
-                  <Suspense fallback={<div className="h-10 w-40 bg-slate-100 rounded-full animate-pulse" />}>
-                    <SearchInput className="w-40" />
-                  </Suspense>
-                </div>
-
                 {/* Mobile Menu Trigger */}
                 <Sheet
                   open={mobileMenuOpen}
@@ -786,7 +779,7 @@ export function Header(props: HeaderProps) {
                       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
                       <Link href={resolveHref("/")} onClick={() => setMobileMenuOpen(false)} className="inline-flex transition-transform hover:scale-105 active:scale-95">
                         <Image
-                          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bank%20Logo-sQ4ejPvlaY9DvzUZ11CkmGwd9hycOG.png"
+                          src="/images/logo.png"
                           alt="Bin Dowal Islamic Microfinance Bank"
                           width={180}
                           height={52}
@@ -973,7 +966,7 @@ export function Header(props: HeaderProps) {
                     </div>
 
                     {/* Mobile Login Button Area */}
-                    <div className="border-t border-slate-200 bg-white p-5 shrink-0">
+                    {/* <div className="border-t border-slate-200 bg-white p-5 shrink-0">
                       <div className={`overflow-hidden rounded-2xl border transition-colors duration-300 ${mobileLoginMenuOpen ? 'border-[#2d3185] ring-2 ring-[#2d3185]/10' : 'border-slate-200'}`}>
                         <button
                           type="button"
@@ -1025,7 +1018,7 @@ export function Header(props: HeaderProps) {
                           )}
                         </AnimatePresence>
                       </div>
-                    </div>
+                    </div> */}
                   </SheetContent>
                 </Sheet>
               </div>

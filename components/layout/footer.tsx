@@ -19,17 +19,10 @@ import {
 } from "lucide-react"
 
 const quickLinks: { key: string; href: string }[] = [
-  // { key: "expat", href: "/accounts/expat" },
-  // { key: "businessBanking", href: "/business-banking" },
-  // { key: "cards", href: "/cards" },
-  // { key: "financing", href: "/financing" },
-]
-
-const productLinks = [
-  { key: "accounts", href: "/personal-banking#accounts" },
-  { key: "debitCards", href: "/cards#debit" },
-  // { key: "autoFinancing", href: "/financing#auto" },
-  { key: "mobileApp", href: "/digital-channels#mobile" },
+  { key: "currentAccount", href: "/personal/current-account" },
+  { key: "investmentDeposit", href: "/personal/investment-deposit" },
+  { key: "corporateCurrentAccount", href: "/business/corporate-current-account" },
+  { key: "cards", href: "/cards" },
 ]
 
 const supportLinks = [
@@ -204,33 +197,6 @@ export function Footer() {
 
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
-                <motion.li
-                  key={link.key}
-                  variants={itemVariants}
-                  transition={{ delay: index * 0.02 }}
-                >
-                  <Link
-                    href={resolveHref(link.href)}
-                    className="group inline-flex items-center text-sm text-white/70 transition-all duration-300 hover:text-white"
-                  >
-                    <span className="h-[1px] w-0 bg-white transition-all duration-300 group-hover:me-2 group-hover:w-4" />
-                    {t(`nav.${link.key}`)}
-                  </Link>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="lg:col-span-2">
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-gradient-to-r from-white/50 to-transparent" />
-              <h3 className="text-base font-semibold text-white">
-                {t("eServices.title")}
-              </h3>
-            </div>
-
-            <ul className="space-y-3">
-              {productLinks.map((link, index) => (
                 <motion.li
                   key={link.key}
                   variants={itemVariants}
@@ -435,6 +401,30 @@ export function Footer() {
               {t("footer.terms")}
             </Link>
           </div>
+        </motion.div>
+
+        {/* Developer Credit */}
+        <motion.div
+          variants={itemVariants}
+          className="mt-8 flex justify-center text-center"
+        >
+          <a
+            href="https://arabwdos.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
+          >
+            <Image
+              src="/images/arab_ware_dos_logo_white.png"
+              alt="Arabware Dos Company"
+              width={200}
+              height={50}
+              className="h-18 w-auto object-contain opacity-70 transition-opacity group-hover:opacity-100"
+            />
+            <span className="text-[11px] text-white/40 md:text-xs transition-colors group-hover:text-white/70">
+              {isArabic ? "تطوير شركة عرب وير دوز" : "Development by Arab Ware Dos"}
+            </span>
+          </a>
         </motion.div>
       </motion.div>
     </footer>

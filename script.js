@@ -1,0 +1,1 @@
+const fs = require('fs'); const t = fs.readFileSync('jotform_embed.js', 'utf8'); console.log('window attributes:', t.match(/window\.[a-zA-Z0-9_]+/g)?.filter(x => x.includes('Agent') || x.includes('Jot'))); console.log('postMessage:', t.includes('postMessage')); console.log('events:', t.match(/addEventListener\(['\x22]([^'\x22]+)['\x22]/g));

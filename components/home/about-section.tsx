@@ -2,17 +2,16 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useMemo } from "react"
-import { motion, useReducedMotion } from "framer-motion"
+import { useMemo, useState } from "react"
 import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowUpRight, Play } from "lucide-react"
 
 export function AboutSection() {
   const { locale, direction } = useI18n()
-  const reduceMotion = useReducedMotion()
   const isAr = locale === "ar"
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   const ArrowIcon = isAr ? ChevronLeft : ChevronRight
   const videoId = "obOvMpV9dS4"
@@ -43,14 +42,7 @@ export function AboutSection() {
     [isAr]
   )
 
-  const reveal = reduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 18 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, amount: 0.2 },
-        transition: { duration: 0.7, ease: "easeOut" },
-      }
+
 
   return (
     <section
@@ -68,7 +60,7 @@ export function AboutSection() {
         {/* Main composition */}
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Content */}
-          <motion.div {...reveal} className="lg:col-span-5">
+          <div className="lg:col-span-5">
             <div className="mb-5 inline-flex items-center gap-3">
               <span className="h-[1.5px] w-10 bg-[#b91c1c]" />
               <span className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#2d3185]">
@@ -124,20 +116,38 @@ export function AboutSection() {
                 </Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
           {/* Visual panel with embedded YouTube */}
-          <motion.div {...reveal} className="lg:col-span-7">
+          <div className="lg:col-span-7">
             <div className="overflow-hidden rounded-[2rem] border border-slate-200 bg-[#0f172a] shadow-[0_24px_70px_rgba(15,23,42,0.12)]">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#0b1120]">
-                <iframe
-                  src={embedUrl}
-                  title={isAr ? "الفيديو المؤسسي للبنك" : "Bank corporate video"}
-                  className="absolute inset-0 h-full w-full scale-[1.08]"
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen={false}
-                />
+                {!isVideoLoaded ? (
+                  <button
+                    onClick={() => setIsVideoLoaded(true)}
+                    className="absolute inset-0 z-20 flex h-full w-full cursor-pointer items-center justify-center group"
+                    aria-label={isAr ? "تشغيل الفيديو" : "Play video"}
+                  >
+                    <Image
+                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                      alt={isAr ? "صورة الفيديو" : "Video thumbnail"}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-80"
+                    />
+                    <div className="absolute z-30 flex h-16 w-16 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-all duration-300 group-hover:scale-110 group-hover:bg-[#b91c1c]">
+                      <Play className="h-6 w-6 text-white ml-1" fill="currentColor" />
+                    </div>
+                  </button>
+                ) : (
+                  <iframe
+                    src={embedUrl}
+                    title={isAr ? "الفيديو المؤسسي للبنك" : "Bank corporate video"}
+                    className="absolute inset-0 h-full w-full scale-[1.08]"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen={false}
+                  />
+                )}
 
                 {/* overlays */}
                 <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgba(2,6,23,0.76),rgba(2,6,23,0.24),rgba(2,6,23,0.10))]" />
@@ -158,7 +168,7 @@ export function AboutSection() {
                 </div> */}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Premium image cards */}

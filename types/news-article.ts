@@ -28,6 +28,7 @@ export interface NewsArticle {
   excerptEn: string;
   contentAr: ArticleContent;
   contentEn: ArticleContent;
+  category?: import("@/data/media-categories").MediaCategory;
   categoryAr?: string;
   categoryEn?: string;
   categorySlug?: string;
@@ -36,6 +37,5 @@ export interface NewsArticle {
   imageAltEn?: string;
   date: string;
   publishedAt?: string;
-  isFeatured?: boolean;
   url?: string;
 }

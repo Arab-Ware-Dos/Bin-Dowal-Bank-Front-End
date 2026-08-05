@@ -1034,7 +1034,7 @@ export function AboutPageContent() {
       </section>
 
       {/* CTA */}
-      <section className="bg-muted/20 py-24 text-center">
+      {/* <section className="bg-muted/20 py-24 text-center">
         <div className="container mx-auto px-4">
           <motion.div {...FADE_IN_UP} className="mx-auto max-w-2xl">
             <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
@@ -1067,7 +1067,7 @@ export function AboutPageContent() {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   )
 }
