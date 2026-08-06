@@ -23,8 +23,10 @@ import {
   Building2,
   Globe,
   ArrowUpRight,
+  Loader2,
 } from "lucide-react"
-import { FormUnavailableNotice } from "../customer-service/form-unavailable-notice"
+import { submitContactMessage } from "@/services/contact-service"
+import type { ContactFormData } from "@/types/contact"
 
 const fadeInUp = {
   initial: { opacity: 0, y: 24 },
@@ -41,11 +43,38 @@ export function ContactPageContent() {
     return mode === 'url' ? getLocalizedHref(target, locale) : target;
   }
 
+  // Form state
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSuccess, setIsSuccess] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string[]>>({})
+
+  const handleInputChange = (field: keyof ContactFormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    // Clear field error on change
+    if (fieldErrors[field]) {
+      setFieldErrors(prev => {
+        const next = { ...prev }
+        delete next[field]
+        return next
+      })
+    }
+  }
+
   const inputClassName =
     "h-12 rounded-xl border-slate-200/80 bg-white/90 shadow-none transition-all duration-300 placeholder:text-slate-400 focus-visible:border-[#262b80]/40 focus-visible:ring-[3px] focus-visible:ring-[#262b80]/10"
 
   const textareaClassName =
     "min-h-[140px] rounded-xl border-slate-200/80 bg-white/90 shadow-none transition-all duration-300 placeholder:text-slate-400 focus-visible:border-[#262b80]/40 focus-visible:ring-[3px] focus-visible:ring-[#262b80]/10"
+
+  const errorClassName = "text-xs text-red-500 mt-1"
 
   const contactInfo = [
     {
@@ -96,15 +125,15 @@ export function ContactPageContent() {
       actionAr: "اتصل الآن",
       actionEn: "Call Now",
     },
-    {
-      icon: MessageSquare,
-      titleAr: "الدردشة المباشرة",
-      titleEn: "Live Chat",
-      descAr: "ابدأ محادثة مباشرة للحصول على رد سريع عبر الموقع.",
-      descEn: "Start a live conversation for a quick response عبر the website.",
-      actionAr: "ابدأ المحادثة",
-      actionEn: "Start Chat",
-    },
+    // {
+    //   icon: MessageSquare,
+    //   titleAr: "الدردشة المباشرة",
+    //   titleEn: "Live Chat",
+    //   descAr: "ابدأ محادثة مباشرة للحصول على رد سريع عبر الموقع.",
+    //   descEn: "Start a live conversation for a quick response عبر the website.",
+    //   actionAr: "ابدأ المحادثة",
+    //   actionEn: "Start Chat",
+    // },
     {
       icon: Building2,
       titleAr: "زيارة الفرع",
@@ -114,19 +143,53 @@ export function ContactPageContent() {
       actionAr: "ابحث عن فرع",
       actionEn: "Find Branch",
     },
-    {
-      icon: Globe,
-      titleAr: "الخدمات الإلكترونية",
-      titleEn: "Online Services",
-      descAr: "أنجز عملياتك اليومية بسهولة عبر القنوات الرقمية للبنك.",
-      descEn: "Complete your daily banking tasks through the bank’s digital services.",
-      actionAr: "تسجيل الدخول",
-      actionEn: "Login",
-    },
+    // {
+    //   icon: Globe,
+    //   titleAr: "الخدمات الإلكترونية",
+    //   titleEn: "Online Services",
+    //   descAr: "أنجز عملياتك اليومية بسهولة عبر القنوات الرقمية للبنك.",
+    //   descEn: "Complete your daily banking tasks through the bank's digital services.",
+    //   actionAr: "تسجيل الدخول",
+    //   actionEn: "Login",
+    // },
   ]
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    
+    // Reset states
+    setError(null)
+    setFieldErrors({})
+    setIsSubmitting(true)
+
+    try {
+      const response = await submitContactMessage(formData, locale)
+      setIsSuccess(true)
+      // Reset form
+      setFormData({ name: "", phone: "", email: "", subject: "", message: "" })
+    } catch (err: unknown) {
+      // Handle validation errors
+      if (err instanceof Error) {
+        try {
+          // Try to parse validation errors from the error message
+          const errorResponse = JSON.parse(err.message)
+          if (errorResponse.errors) {
+            setFieldErrors(errorResponse.errors)
+          }
+          setError(errorResponse.message || err.message)
+        } catch {
+          setError(err.message)
+        }
+      } else {
+        setError(
+          locale === "ar"
+            ? "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة لاحقاً."
+            : "An error occurred while sending your message. Please try again later."
+        )
+      }
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -236,55 +299,153 @@ export function ContactPageContent() {
                 </CardHeader>
 
                 <CardContent className="relative">
-                  <FormUnavailableNotice locale={locale} contactHref={resolveHref('/contact')} />
-                  <form onSubmit={handleSubmit} className="space-y-6 opacity-60">
+                  {/* Success Message */}
+                  {isSuccess && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="mb-8 rounded-[20px] border border-emerald-200/60 bg-emerald-50/80 p-6 shadow-sm"
+                    >
+                      <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-start">
+                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-emerald-100/80 text-emerald-600">
+                          <CheckCircle className="h-7 w-7" />
+                        </div>
+                        <div className="space-y-2">
+                          <h3 className="text-lg font-bold text-emerald-900">
+                            {locale === "ar" ? "تم إرسال رسالتك بنجاح!" : "Message sent successfully!"}
+                          </h3>
+                          <p className="text-sm leading-6 text-emerald-800/90">
+                            {locale === "ar"
+                              ? "شكراً لتواصلك معنا. سيقوم فريقنا بالرد عليك في أقرب وقت ممكن."
+                              : "Thank you for contacting us. Our team will respond to you as soon as possible."}
+                          </p>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setIsSuccess(false)}
+                            className="mt-2 rounded-full bg-emerald-100 px-5 text-sm font-semibold text-emerald-900 hover:bg-emerald-200"
+                          >
+                            {locale === "ar" ? "إرسال رسالة أخرى" : "Send another message"}
+                          </Button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Error Message */}
+                  {error && !isSuccess && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mb-6 rounded-xl border border-red-200/60 bg-red-50/80 p-4"
+                    >
+                      <p className="text-sm font-medium text-red-700">{error}</p>
+                    </motion.div>
+                  )}
+
+                  {/* Form */}
+                  {!isSuccess && (
+                    <form onSubmit={handleSubmit} className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2.5">
                           <Label htmlFor="name" className="text-sm font-medium text-[#0b0d36]">
-                            {locale === "ar" ? "الاسم الكامل" : "Full Name"}
+                            {locale === "ar" ? "الاسم الكامل" : "Full Name"} *
                           </Label>
-                          <Input id="name" required disabled className={inputClassName} />
+                          <Input
+                            id="name"
+                            required
+                            value={formData.name}
+                            onChange={(e) => handleInputChange("name", e.target.value)}
+                            placeholder={locale === "ar" ? "أدخل اسمك الكامل" : "Enter your full name"}
+                            className={inputClassName}
+                          />
+                          {fieldErrors.name && <p className={errorClassName}>{fieldErrors.name[0]}</p>}
                         </div>
 
                         <div className="space-y-2.5">
                           <Label htmlFor="phone" className="text-sm font-medium text-[#0b0d36]">
-                            {locale === "ar" ? "رقم الجوال" : "Phone Number"}
+                            {locale === "ar" ? "رقم الجوال" : "Phone Number"} *
                           </Label>
-                          <Input id="phone" type="tel" required disabled className={inputClassName} />
+                          <Input
+                            id="phone"
+                            type="tel"
+                            required
+                            value={formData.phone}
+                            onChange={(e) => handleInputChange("phone", e.target.value)}
+                            placeholder={locale === "ar" ? "مثال: 777123456" : "e.g. 777123456"}
+                            className={inputClassName}
+                          />
+                          {fieldErrors.phone && <p className={errorClassName}>{fieldErrors.phone[0]}</p>}
                         </div>
                       </div>
 
                       <div className="space-y-2.5">
                         <Label htmlFor="email" className="text-sm font-medium text-[#0b0d36]">
-                          {locale === "ar" ? "البريد الإلكتروني" : "Email Address"}
+                          {locale === "ar" ? "البريد الإلكتروني" : "Email Address"} *
                         </Label>
-                        <Input id="email" type="email" required disabled className={inputClassName} />
+                        <Input
+                          id="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={(e) => handleInputChange("email", e.target.value)}
+                          placeholder={locale === "ar" ? "example@email.com" : "example@email.com"}
+                          className={inputClassName}
+                        />
+                        {fieldErrors.email && <p className={errorClassName}>{fieldErrors.email[0]}</p>}
                       </div>
 
                       <div className="space-y-2.5">
                         <Label htmlFor="subject" className="text-sm font-medium text-[#0b0d36]">
-                          {locale === "ar" ? "الموضوع" : "Subject"}
+                          {locale === "ar" ? "الموضوع" : "Subject"} *
                         </Label>
-                        <Input id="subject" required disabled className={inputClassName} />
+                        <Input
+                          id="subject"
+                          required
+                          value={formData.subject}
+                          onChange={(e) => handleInputChange("subject", e.target.value)}
+                          placeholder={locale === "ar" ? "موضوع رسالتك" : "Your message subject"}
+                          className={inputClassName}
+                        />
+                        {fieldErrors.subject && <p className={errorClassName}>{fieldErrors.subject[0]}</p>}
                       </div>
 
                       <div className="space-y-2.5">
                         <Label htmlFor="message" className="text-sm font-medium text-[#0b0d36]">
-                          {locale === "ar" ? "الرسالة" : "Message"}
+                          {locale === "ar" ? "الرسالة" : "Message"} *
                         </Label>
-                        <Textarea id="message" rows={6} required disabled className={textareaClassName} />
+                        <Textarea
+                          id="message"
+                          rows={6}
+                          required
+                          value={formData.message}
+                          onChange={(e) => handleInputChange("message", e.target.value)}
+                          placeholder={locale === "ar" ? "اكتب رسالتك هنا..." : "Write your message here..."}
+                          className={textareaClassName}
+                        />
+                        {fieldErrors.message && <p className={errorClassName}>{fieldErrors.message[0]}</p>}
                       </div>
 
                       <Button
                         type="submit"
                         size="lg"
-                        disabled
-                        className="h-13 w-full rounded-xl bg-slate-300 text-slate-500 shadow-none"
+                        disabled={isSubmitting}
+                        className="h-13 w-full rounded-xl bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#3b43a8] text-white shadow-[0_16px_30px_-16px_rgba(38,43,128,0.5)] transition-all duration-300 hover:shadow-[0_20px_40px_-16px_rgba(38,43,128,0.6)] disabled:opacity-70"
                       >
-                        <Send className="me-2 h-4 w-4 opacity-50" />
-                        {locale === "ar" ? "الإرسال غير متاح حاليًا" : "Submission currently unavailable"}
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="me-2 h-4 w-4 animate-spin" />
+                            {locale === "ar" ? "جاري الإرسال..." : "Sending..."}
+                          </>
+                        ) : (
+                          <>
+                            <Send className="me-2 h-4 w-4" />
+                            {locale === "ar" ? "إرسال الرسالة" : "Send Message"}
+                          </>
+                        )}
                       </Button>
                     </form>
+                  )}
                 </CardContent>
               </Card>
             </motion.div>

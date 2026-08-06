@@ -26,10 +26,18 @@ export async function fetchAPI<T>(endpoint: string, options: FetchOptions = {}):
     let errorMessage = `API Error [${response.status}]: ${response.statusText}`;
     try {
       const errorData = await response.json();
+      if (errorData?.errors) {
+        // Throw the full error object as JSON for validation errors (422)
+        throw new Error(JSON.stringify(errorData));
+      }
       if (errorData?.message) {
         errorMessage = errorData.message;
       }
-    } catch {
+    } catch (parseError) {
+      // Re-throw if already processed (JSON.stringify error)
+      if (parseError instanceof Error && parseError.message.startsWith('{')) {
+        throw parseError;
+      }
       // Ignore JSON parse error on non-JSON response
     }
     throw new Error(errorMessage);
