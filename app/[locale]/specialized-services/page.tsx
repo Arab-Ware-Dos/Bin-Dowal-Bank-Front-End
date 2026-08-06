@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { locales, isLocale } from "@/i18n/config";
-import { CustomServicesPageContent } from "@/components/custom-services/custom-services-page-content";
+import { SpecializedServicesPageContent } from "@/components/specialized-services/specialized-services-page-content";
 import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedPageProps = {
@@ -17,13 +17,13 @@ export async function generateMetadata({ params }: LocalizedPageProps) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
-    return { alternates: buildLocalizedAlternates({ pathname: "/custom-services", locale: locale as "ar" | "en" }),
+    return { alternates: buildLocalizedAlternates({ pathname: "/specialized-services", locale: locale as "ar" | "en" }),
     title: "Not Found" };
   }
 
   const isAr = locale === "ar";
   return {
-    alternates: buildLocalizedAlternates({ pathname: "/custom-services", locale: locale as "ar" | "en" }),
+    alternates: buildLocalizedAlternates({ pathname: "/specialized-services", locale: locale as "ar" | "en" }),
     title: `${isAr ? "خدمات مخصصة" : "Specialized Services"} | Bin Dowal Bank`,
     description: isAr
       ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة"
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: LocalizedPageProps) {
   };
 }
 
-export default async function LocalizedCustomServicesPage({ params }: LocalizedPageProps) {
+export default async function LocalizedSpecializedServicesPage({ params }: LocalizedPageProps) {
   const { locale } = await params;
 
   if (!isLocale(locale)) {
@@ -45,8 +45,8 @@ export default async function LocalizedCustomServicesPage({ params }: LocalizedP
   }
 
   return (
-    <div data-localized-route="custom-services" data-locale={locale}>
-      <CustomServicesPageContent />
+    <div data-localized-route="specialized-services" data-locale={locale}>
+      <SpecializedServicesPageContent />
     </div>
   );
 }

@@ -23,26 +23,26 @@ const item = {
   show: { opacity: 1, y: 0 },
 }
 
-export function CustomServicesPageContent() {
+export function SpecializedServicesPageContent() {
   const { locale, direction } = useI18n()
   const isAr = locale === "ar"
   const Arrow = direction === "rtl" ? ArrowLeft : ArrowRight
 
-  // Find the custom services category from navigationData
-  const customServicesCategory = navigationData.find((nav) => nav.key === "customServices")
-  const groups = customServicesCategory?.groups || []
+  // Find the specialized services category from navigationData
+  const specializedServicesCategory = navigationData.find((nav) => nav.key === "specializedServices")
+  const groups = specializedServicesCategory?.groups || []
 
-  const heroTitle = isAr ? customServicesCategory?.label.ar || "خدمات مخصصة" : customServicesCategory?.label.en || "Custom Services"
+  const heroTitle = isAr ? specializedServicesCategory?.label.ar || "خدمات مخصصة" : specializedServicesCategory?.label.en || "Specialized Services"
   const heroSubtitle = isAr 
     ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة" 
-    : "Customized banking solutions to meet your unique needs"
+    : "Specialized banking solutions to meet your unique needs"
 
   return (
     <>
       <PageHero
         title={heroTitle}
         subtitle={heroSubtitle}
-        breadcrumbs={[{ labelKey: "nav.customServices" }]}
+        breadcrumbs={[{ labelKey: "nav.specializedServices" }]}
       />
 
       <section className="py-16">

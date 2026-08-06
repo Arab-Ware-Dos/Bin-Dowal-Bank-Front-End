@@ -137,8 +137,8 @@
       "statusCode": 301
     },
     {
-      "source": "/custom-services",
-      "destination": "/ar/custom-services",
+      "source": "/specialized-services",
+      "destination": "/ar/specialized-services",
       "statusCode": 301
     },
     {

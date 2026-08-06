@@ -56,7 +56,7 @@ function resolveSitemapPolicy(pathname: string): Omit<SitemapRouteFamily, "pathn
     pathname.startsWith("/business-banking") ||
     pathname.startsWith("/personal-banking") ||
     pathname.startsWith("/digital-channels") ||
-    pathname.startsWith("/custom-services")
+    pathname.startsWith("/specialized-services")
   ) {
     return {
       changeFrequency: "monthly",

@@ -199,7 +199,7 @@ export const navigationData: NavItem[] = [
     ]
   },
   {
-    key: "customServices",
+    key: "specializedServices",
     href: "",
     label: { ar: "خدمات مخصصة", en: "Specialized Services" },
     groups: [
