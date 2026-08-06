@@ -24,15 +24,15 @@ export async function generateMetadata({ params }: LocalizedPageProps) {
   const isAr = locale === "ar";
   return {
     alternates: buildLocalizedAlternates({ pathname: "/custom-services", locale: locale as "ar" | "en" }),
-    title: `${isAr ? "خدمات مخصصة" : "Custom Services"} | Bin Dowal Bank`,
-    description: isAr 
-      ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة" 
-      : "Customized banking solutions to meet your unique needs",
+    title: `${isAr ? "خدمات مخصصة" : "Specialized Services"} | Bin Dowal Bank`,
+    description: isAr
+      ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة"
+      : "Specialized banking solutions to meet your unique needs",
     openGraph: {
-      title: `${isAr ? "خدمات مخصصة" : "Custom Services"} | Bin Dowal Bank`,
-      description: isAr 
-        ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة" 
-        : "Customized banking solutions to meet your unique needs",
+      title: `${isAr ? "خدمات مخصصة" : "Specialized Services"} | Bin Dowal Bank`,
+      description: isAr
+        ? "حلول مصرفية مخصصة لتلبي احتياجاتك الفريدة"
+        : "Specialized banking solutions to meet your unique needs",
     },
   };
 }
