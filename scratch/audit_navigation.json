@@ -1,0 +1,470 @@
+[
+  {
+    "id": "aboutUs",
+    "nameAr": "نبذة عن البنك",
+    "nameEn": "About the Bank",
+    "parent": "About Us",
+    "expectedPath": "/about/about",
+    "currentHref": "/about",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "vision",
+    "nameAr": "التوجهات الإستراتيجية",
+    "nameEn": "Strategic Directions",
+    "parent": "About Us",
+    "expectedPath": "/about/about#vision",
+    "currentHref": "/about#vision",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "board",
+    "nameAr": "مجلس الإدارة",
+    "nameEn": "Board of Directors",
+    "parent": "About Us",
+    "expectedPath": "/about/board-of-directors",
+    "currentHref": "/about/board-of-directors",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "management",
+    "nameAr": "الإدارة التنفيذية",
+    "nameEn": "Executive Management",
+    "parent": "About Us",
+    "expectedPath": "/about/about#management",
+    "currentHref": "/about#management",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "partners",
+    "nameAr": "الشركاء",
+    "nameEn": "Partners",
+    "parent": "About Us",
+    "expectedPath": "/about/partners",
+    "currentHref": "/about/partners",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "social",
+    "nameAr": "المسؤولية المجتمعية",
+    "nameEn": "Social Responsibility",
+    "parent": "About Us",
+    "expectedPath": "/about/social-responsibility",
+    "currentHref": "/about/social-responsibility",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "compliance",
+    "nameAr": "بيان الامتثال",
+    "nameEn": "Compliance Statement",
+    "parent": "About Us",
+    "expectedPath": "/about/compliance-statement",
+    "currentHref": "/about/compliance-statement",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "governance",
+    "nameAr": "إدارة المخاطر",
+    "nameEn": "Risk Management",
+    "parent": "About Us",
+    "expectedPath": "/about/risk-management",
+    "currentHref": "/about/risk-management",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "currentAccount",
+    "nameAr": "الحساب الجاري",
+    "nameEn": "Current Account",
+    "parent": "Personal Banking -> Accounts",
+    "expectedPath": "/personal-banking/current-account",
+    "currentHref": "/personal/current-account",
+    "type": "حساب"
+  },
+  {
+    "id": "savingsAccount",
+    "nameAr": "حساب التوفير",
+    "nameEn": "Savings Account",
+    "parent": "Personal Banking -> Accounts",
+    "expectedPath": "/personal-banking/savings-account",
+    "currentHref": "/personal/savings-account",
+    "type": "حساب"
+  },
+  {
+    "id": "investmentDeposits",
+    "nameAr": "الودائع الاستثمارية",
+    "nameEn": "Investment Deposits",
+    "parent": "Personal Banking -> Accounts",
+    "expectedPath": "/personal-banking/investment-deposit",
+    "currentHref": "/personal/investment-deposit",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "localTransfers",
+    "nameAr": "التحويلات المحلية",
+    "nameEn": "Local Transfers",
+    "parent": "Personal Banking -> Financial Services",
+    "expectedPath": "/personal-banking/local-transfers",
+    "currentHref": "/personal/local-transfers",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "doolExpress",
+    "nameAr": "دول إكسبرس",
+    "nameEn": "Dool Express",
+    "parent": "Personal Banking -> Financial Services -> Local Transfers",
+    "expectedPath": "/personal-banking/dool-express",
+    "currentHref": "/personal/dool-express",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "unifiedNetwork",
+    "nameAr": "الشبكة الموحدة",
+    "nameEn": "UNMoney",
+    "parent": "Personal Banking -> Financial Services -> Local Transfers",
+    "expectedPath": "/personal-banking/unified-network",
+    "currentHref": "/personal/unified-network",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "expressRemittances",
+    "nameAr": "الحوالات السريعة",
+    "nameEn": "Express Remittances",
+    "parent": "Personal Banking -> Financial Services",
+    "expectedPath": "/personal-banking/fast-money-transfers",
+    "currentHref": "/personal/fast-money-transfers",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "moneygram",
+    "nameAr": "موني جرام",
+    "nameEn": "MoneyGram",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/moneygram",
+    "currentHref": "/personal/moneygram",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "shift",
+    "nameAr": "شفت",
+    "nameEn": "Shift",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/shift",
+    "currentHref": "/personal/shift",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "upt",
+    "nameAr": "UPT",
+    "nameEn": "UPT",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/upt",
+    "currentHref": "/personal/upt",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "bin-yaala",
+    "nameAr": "بن يعلا",
+    "nameEn": "Bin Yaala",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/bin-yaala",
+    "currentHref": "/personal/bin-yaala",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "alawneh",
+    "nameAr": "العلاونة",
+    "nameEn": "Alawneh",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/alawneh",
+    "currentHref": "/personal/alawneh",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "zamzam",
+    "nameAr": "زمزم",
+    "nameEn": "Zamzam",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/zamzam",
+    "currentHref": "/personal/zamzam",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "swift",
+    "nameAr": "سويفت",
+    "nameEn": "Swift",
+    "parent": "Personal Banking -> Financial Services -> Express Remittances",
+    "expectedPath": "/personal-banking/swift",
+    "currentHref": "/personal/swift",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "corpCurrent",
+    "nameAr": "حسابات مصرفية",
+    "nameEn": "Bank Accounts",
+    "parent": "Bin Dowal Business -> Large Corporate",
+    "expectedPath": "/business-banking/corporate-current-account",
+    "currentHref": "/business/corporate-current-account",
+    "type": "حساب"
+  },
+  {
+    "id": "corpInvestments",
+    "nameAr": "الودائع الاستثمارية",
+    "nameEn": "Investment Deposits",
+    "parent": "Bin Dowal Business -> Large Corporate",
+    "expectedPath": "/business-banking/corporate-investment-deposits",
+    "currentHref": "/business/corporate-investment-deposits",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "swift",
+    "nameAr": "حوالات السويفت",
+    "nameEn": "SWIFT Transfers",
+    "parent": "Bin Dowal Business -> Large Corporate",
+    "expectedPath": "/business-banking/swift-transfers",
+    "currentHref": "/business/swift-transfers",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "guarantees",
+    "nameAr": "خطابات الضمان",
+    "nameEn": "Letters of Guarantees",
+    "parent": "Bin Dowal Business -> Large Corporate",
+    "expectedPath": "/business-banking/bank-guarantees",
+    "currentHref": "/business/bank-guarantees",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "payroll",
+    "nameAr": "تحويل الرواتب",
+    "nameEn": "Payroll Management",
+    "parent": "Bin Dowal Business -> Large Corporate",
+    "expectedPath": "/business-banking/business-banking-payroll",
+    "currentHref": "/business/business-banking-payroll",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "smallProjects",
+    "nameAr": "تمويل المشاريع",
+    "nameEn": "Projects Financing",
+    "parent": "Bin Dowal Business -> Small Businesses",
+    "expectedPath": "/business-banking/financing",
+    "currentHref": "/financing",
+    "type": "تمويل"
+  },
+  {
+    "id": "smallAccounts",
+    "nameAr": "حسابات الأعمال",
+    "nameEn": "Business Accounts",
+    "parent": "Bin Dowal Business -> Small Businesses",
+    "expectedPath": "/business-banking/corporate-current-account",
+    "currentHref": "/business/corporate-current-account",
+    "type": "حساب"
+  },
+  {
+    "id": "expatCurrent",
+    "nameAr": "حساب المغتربين",
+    "nameEn": "Expatriate Account",
+    "parent": "Specialized Services -> Expatriate Account",
+    "expectedPath": "/specialized-services/expat",
+    "currentHref": "/accounts/expat",
+    "type": "حساب"
+  },
+  {
+    "id": "minorSavings",
+    "nameAr": "حساب القاصر",
+    "nameEn": "Minors Account",
+    "parent": "Specialized Services -> Minors Account",
+    "expectedPath": "/specialized-services/minors-account",
+    "currentHref": "/personal/minors-account",
+    "type": "حساب"
+  },
+  {
+    "id": "noorCurrent",
+    "nameAr": "حساب نور للسيدات",
+    "nameEn": "Noor Account (Ladies)",
+    "parent": "Specialized Services -> Noor Account (Ladies)",
+    "expectedPath": "/specialized-services/noor",
+    "currentHref": "/accounts/noor",
+    "type": "حساب"
+  },
+  {
+    "id": "noorCard",
+    "nameAr": "بطاقة نور للسيدات",
+    "nameEn": "Noor Ladies Card",
+    "parent": "Specialized Services -> Noor Account (Ladies)",
+    "expectedPath": "/specialized-services/noor-ladies-card",
+    "currentHref": "/accounts/noor-ladies-card",
+    "type": "حساب"
+  },
+  {
+    "id": "financingTakamul",
+    "nameAr": "تكامل",
+    "nameEn": "Takamul",
+    "parent": "Specialized Services -> Financing",
+    "expectedPath": "/specialized-services/financing-takamul",
+    "currentHref": "/personal/financing-takamul",
+    "type": "تمويل"
+  },
+  {
+    "id": "financingThimar",
+    "nameAr": "ثمار",
+    "nameEn": "Thimar",
+    "parent": "Specialized Services -> Financing",
+    "expectedPath": "/specialized-services/financing-thimar",
+    "currentHref": "/personal/financing-thimar",
+    "type": "تمويل"
+  },
+  {
+    "id": "financingTaameer",
+    "nameAr": "تعمير",
+    "nameEn": "Ta'meer",
+    "parent": "Specialized Services -> Financing",
+    "expectedPath": "/specialized-services/financing-taameer",
+    "currentHref": "/personal/financing-taameer",
+    "type": "تمويل"
+  },
+  {
+    "id": "financingNoor",
+    "nameAr": "نور",
+    "nameEn": "Noor",
+    "parent": "Specialized Services -> Financing",
+    "expectedPath": "/specialized-services/financing-noor",
+    "currentHref": "/personal/financing-noor",
+    "type": "تمويل"
+  },
+  {
+    "id": "financingZad",
+    "nameAr": "زاد",
+    "nameEn": "Zad",
+    "parent": "Specialized Services -> Financing",
+    "expectedPath": "/specialized-services/financing-zad",
+    "currentHref": "/personal/financing-zad",
+    "type": "تمويل"
+  },
+  {
+    "id": "bankApp",
+    "nameAr": "التطبيق البنكي",
+    "nameEn": "Mobile Banking",
+    "parent": "E-Services",
+    "expectedPath": "/e-services/mobile-banking",
+    "currentHref": "/e-services/mobile-banking",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "internetBank",
+    "nameAr": "منصة بن دول اعمال",
+    "nameEn": "Internet Banking",
+    "parent": "E-Services",
+    "expectedPath": "/e-services/internet-banking",
+    "currentHref": "/e-services/internet-banking",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "eWallet",
+    "nameAr": "المحفظة الإلكترونية",
+    "nameEn": "e-Wallet",
+    "parent": "E-Services",
+    "expectedPath": "/e-services/e-wallet",
+    "currentHref": "/e-services/e-wallet",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "posNet",
+    "nameAr": "شبكة مشترياتي",
+    "nameEn": "Mushtarayati Network",
+    "parent": "E-Services",
+    "expectedPath": "/e-services/mushtarayati-network",
+    "currentHref": "/e-services/mushtarayati-network",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "bankCards",
+    "nameAr": "البطاقات البنكية",
+    "nameEn": "Bank Cards",
+    "parent": "E-Services",
+    "expectedPath": "/e-services/cards",
+    "currentHref": "/cards",
+    "type": "خدمة مصرفية"
+  },
+  {
+    "id": "faq",
+    "nameAr": "الأسئلة الشائعة",
+    "nameEn": "FAQ",
+    "parent": "Knowledge Center",
+    "expectedPath": "/knowledge-center/faq",
+    "currentHref": "/knowledge-center/faq",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "reports",
+    "nameAr": "التقارير السنوية",
+    "nameEn": "Annual Reports",
+    "parent": "Knowledge Center",
+    "expectedPath": "/knowledge-center/annual-reports",
+    "currentHref": "/knowledge-center/annual-reports",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "bankNews",
+    "nameAr": "المركز الإعلامي",
+    "nameEn": "Media Center",
+    "parent": "Knowledge Center",
+    "expectedPath": "/knowledge-center/news",
+    "currentHref": "/news",
+    "type": "خبر"
+  },
+  {
+    "id": "careers",
+    "nameAr": "الوظائف",
+    "nameEn": "Careers",
+    "parent": "Knowledge Center",
+    "expectedPath": "/knowledge-center/careers",
+    "currentHref": "/knowledge-center/careers",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "contactUs",
+    "nameAr": "تواصل معنا",
+    "nameEn": "Contact Us",
+    "parent": "Customer Service",
+    "expectedPath": "/contact/contact",
+    "currentHref": "/contact",
+    "type": "صفحة ثابتة"
+  },
+  {
+    "id": "complaint",
+    "nameAr": "تقديم شكوى",
+    "nameEn": "Submit a Complaint",
+    "parent": "Customer Service",
+    "expectedPath": "/contact/complaints",
+    "currentHref": "/customer-service/complaints",
+    "type": "أخرى"
+  },
+  {
+    "id": "requestService",
+    "nameAr": "طلب خدمة",
+    "nameEn": "Request a Service",
+    "parent": "Customer Service",
+    "expectedPath": "/contact/service-request",
+    "currentHref": "/customer-service/service-request",
+    "type": "أخرى"
+  },
+  {
+    "id": "creditCardRequest",
+    "nameAr": "طلب بطاقة بنكية",
+    "nameEn": "Credit Card Request",
+    "parent": "Customer Service",
+    "expectedPath": "/contact/bank-cards-request",
+    "currentHref": "/customer-service/bank-cards-request",
+    "type": "أخرى"
+  },
+  {
+    "id": "forms",
+    "nameAr": "نماذج البنك",
+    "nameEn": "Bank Forms",
+    "parent": "Customer Service",
+    "expectedPath": "/contact/forms",
+    "currentHref": "/customer-service/forms",
+    "type": "أخرى"
+  }
+]
