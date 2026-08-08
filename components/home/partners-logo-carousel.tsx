@@ -3,8 +3,8 @@
 import React, { useMemo } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n-context";
-import { partnersData } from "@/data/partners";
 import type { Partner } from "@/data/partners";
+import { usePartners } from "@/hooks/use-partners";
 import { useReducedMotion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ViewAllButton } from "@/components/ui/view-all-button";
@@ -13,17 +13,18 @@ import { getLocalizedHref } from "@/lib/localized-routes";
 export function PartnersLogoCarousel() {
   const { t, locale, direction } = useI18n();
   const shouldReduceMotion = useReducedMotion();
+  const { partners } = usePartners();
 
   // Filter and sort partners
   const activePartners = useMemo(() => {
-    return partnersData
+    return partners
       .filter((p) => p.showInCarousel)
       .sort(
         (a, b) =>
           (a.carouselOrder ?? Number.MAX_SAFE_INTEGER) -
           (b.carouselOrder ?? Number.MAX_SAFE_INTEGER)
       );
-  }, []);
+  }, [partners]);
 
   // Triple the items to ensure enough coverage for the infinite scroll
   const duplicatedPartners = useMemo(() => {

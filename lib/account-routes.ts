@@ -9,7 +9,7 @@ export const ACCOUNT_SLUGS = [
 export type AccountSlug = (typeof ACCOUNT_SLUGS)[number];
 
 export const ACCOUNT_ROUTE_PATHS = ACCOUNT_SLUGS.map(
-  (slug) => `/accounts/${slug}` as const
+  (slug) => `/services/${slug}` as const
 );
 
 export function isAccountSlug(slug: string): slug is AccountSlug {

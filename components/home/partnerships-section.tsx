@@ -5,10 +5,10 @@ import Image from "next/image"
 import Link from "next/link"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
-import { partnersData } from "@/data/partners"
 import type { Partner, PartnerCategory } from "@/data/partners"
+import { usePartners } from "@/hooks/use-partners"
 
 type Category = PartnerCategory;
 
@@ -16,31 +16,32 @@ export function PartnershipsSection() {
   const { t, direction, locale } = useI18n()
   const shouldReduceMotion = useReducedMotion()
   const [activeCategory, setActiveCategory] = useState<Category>("local")
+  const { partners, loading } = usePartners()
 
   const categories = useMemo(
     () => [
       {
         id: "local" as const,
         label: t("partnerships.local"),
-        count: partnersData.filter((p) => p.category === "local").length,
+        count: partners.filter((p) => p.category === "local").length,
       },
       {
         id: "international" as const,
         label: t("partnerships.international"),
-        count: partnersData.filter((p) => p.category === "international").length,
+        count: partners.filter((p) => p.category === "international").length,
       },
       {
         id: "correspondent" as const,
         label: t("partnerships.correspondent"),
-        count: partnersData.filter((p) => p.category === "correspondent").length,
+        count: partners.filter((p) => p.category === "correspondent").length,
       },
     ],
-    [t]
+    [t, partners]
   )
 
   const filteredPartners = useMemo(
-    () => partnersData.filter((p) => p.category === activeCategory),
-    [activeCategory]
+    () => partners.filter((p) => p.category === activeCategory),
+    [partners, activeCategory]
   )
 
   const sectionReveal = shouldReduceMotion
@@ -199,34 +200,42 @@ export function PartnershipsSection() {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0c2246]/[0.02] to-transparent" />
 
           <div className="min-h-[340px] md:min-h-[380px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeCategory}
-                variants={gridVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-              >
-                {filteredPartners.map((partner) => (
-                  <LogoCard
-                    key={partner.id}
-                    partner={partner}
-                    direction={direction}
-                    variants={cardVariants}
-                  />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-
-            {filteredPartners.length === 0 && (
+            {loading ? (
               <div className="flex min-h-[280px] items-center justify-center">
-                <p className="font-cairo text-sm text-[#6b7280] md:text-base">
-                  {direction === "rtl"
-                    ? "لا توجد شعارات متاحة ضمن هذا التصنيف حاليًا."
-                    : "No partner logos are available in this category yet."}
-                </p>
+                <Loader2 className="h-8 w-8 animate-spin text-[#081a36]" />
               </div>
+            ) : (
+              <>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeCategory}
+                    variants={gridVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+                  >
+                    {filteredPartners.map((partner) => (
+                      <LogoCard
+                        key={partner.id}
+                        partner={partner}
+                        direction={direction}
+                        variants={cardVariants}
+                      />
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+
+                {filteredPartners.length === 0 && (
+                  <div className="flex min-h-[280px] items-center justify-center">
+                    <p className="font-cairo text-sm text-[#6b7280] md:text-base">
+                      {direction === "rtl"
+                        ? "لا توجد شعارات متاحة ضمن هذا التصنيف حاليًا."
+                        : "No partner logos are available in this category yet."}
+                    </p>
+                  </div>
+                )}
+              </>
             )}
           </div>
         </motion.div>

@@ -28,7 +28,11 @@ export interface NewsArticle {
   excerptEn: string;
   contentAr: ArticleContent;
   contentEn: ArticleContent;
-  category: import("@/data/media-categories").MediaCategory;
+  category?: import("@/data/media-categories").MediaCategory;
+  categoryAr?: string;
+  categoryEn?: string;
+  categorySlug?: string;
+  isFeatured?: boolean;
   image?: string;
   imageAltAr?: string;
   imageAltEn?: string;

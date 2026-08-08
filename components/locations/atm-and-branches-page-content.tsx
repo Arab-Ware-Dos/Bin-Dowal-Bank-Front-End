@@ -9,7 +9,7 @@ import { LocationFilters } from "@/components/locations/location-filters"
 import { LocationList } from "@/components/locations/location-list"
 import { LocationMap } from "@/components/locations/location-map"
 import { useLocations } from "@/hooks/use-locations"
-import { locationStats } from "@/data/locations"
+
 import { useState } from "react"
 
 // ─── Stat strip item ─────────────────────────────────────
@@ -68,6 +68,8 @@ export function AtmAndBranchesPageContent() {
     setFilter,
     resetFilters,
     hasActiveFilters,
+    stats,
+    cities,
   } = useLocations()
 
   // Mobile view toggle: "list" | "map"
@@ -138,7 +140,7 @@ export function AtmAndBranchesPageContent() {
             <div className="relative grid grid-cols-3">
               <StatItem
                 icon={Building2}
-                value={locationStats.branches}
+                value={stats.branches}
                 labelAr="فرع"
                 labelEn="Branches"
                 isAr={isAr}
@@ -147,7 +149,7 @@ export function AtmAndBranchesPageContent() {
               />
               <StatItem
                 icon={CreditCard}
-                value={locationStats.atms}
+                value={stats.atms}
                 labelAr="صراف آلي"
                 labelEn="ATMs"
                 isAr={isAr}
@@ -156,7 +158,7 @@ export function AtmAndBranchesPageContent() {
               />
               <StatItem
                 icon={MapPin}
-                value={locationStats.cities}
+                value={stats.cities}
                 labelAr="مدينة"
                 labelEn="Cities"
                 isAr={isAr}
@@ -225,6 +227,7 @@ export function AtmAndBranchesPageContent() {
                 hasActiveFilters={hasActiveFilters}
                 isAr={isAr}
                 resultCount={filteredLocations.length}
+                cities={cities}
               />
             </div>
 

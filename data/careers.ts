@@ -1,21 +1,31 @@
 export interface JobData {
   id: string;
+  slug?: string;
   title: { ar: string; en: string };
   startDate: string;
   endDate: string;
   location: { ar: string; en: string };
+  department?: { ar: string; en: string };
+  employmentType?: string;
+  applicationEmail?: string;
   qualifications: { ar: string[]; en: string[] };
   responsibilities: { ar: string[]; en: string[] };
   conditions: { ar: string[]; en: string[] };
+  description?: { ar: string; en: string };
+  isActive?: boolean;
 }
 
 export const careersData: JobData[] = [
   {
-    id: "customer-service-rep",
+    id: "1",
+    slug: "customer-service-representative",
     title: { ar: "ممثل خدمة عملاء", en: "Customer Service Representative" },
     startDate: "2026-08-01",
     endDate: "2026-08-30",
-    location: { ar: "عدن، اليمن", en: "Sanaa, Yemen" },
+    location: { ar: "عدن، اليمن", en: "Aden, Yemen" },
+    department: { ar: "خدمة العملاء", en: "Customer Service" },
+    employmentType: "دوام كامل",
+    applicationEmail: "careers@bindowalbank.com",
     qualifications: {
       ar: [
         "درجة البكالوريوس في إدارة الأعمال أو مجال ذي صلة.",
@@ -55,51 +65,59 @@ export const careersData: JobData[] = [
         "Tact and good appearance.",
         "Full-time commitment."
       ]
-    }
+    },
+    description: {
+      ar: "يسر بنك بن دول للتمويل الأصغر الإسلامي الإعلان عن فتح باب التقديم لوظيفة ممثل خدمة عملاء في الفرع الرئيسي لمدينة عدن.",
+      en: "Bin Dowal Bank for Islamic Microfinance is pleased to announce a job vacancy for a Customer Service Representative in Aden main branch."
+    },
+    isActive: true
   },
   {
-    id: "it-support-specialist",
+    id: "2",
+    slug: "it-support-specialist",
     title: { ar: "أخصائي دعم تقنية المعلومات", en: "IT Support Specialist" },
-    startDate: "2026-08-05",
+    startDate: "2026-08-01",
     endDate: "2026-09-05",
     location: { ar: "عدن، اليمن", en: "Aden, Yemen" },
+    department: { ar: "تقنية المعلومات", en: "Information Technology" },
+    employmentType: "دوام كامل",
+    applicationEmail: "careers@bindowalbank.com",
     qualifications: {
       ar: [
-        "بكالوريوس في علوم الحاسوب أو تقنية المعلومات.",
-        "خبرة سابقة في الدعم الفني والشبكات.",
-        "شهادات مهنية في مجال تقنية المعلومات (مثل CompTIA A+، CCNA)."
+        "بكالوريوس تقنية معلومات أو علوم حاسوب.",
+        "خبرة لا تقل عن 3 سنوات في الدعم الفني المصرفي."
       ],
       en: [
-        "Bachelor's degree in Computer Science or Information Technology.",
-        "Previous experience in technical support and networking.",
-        "Professional IT certifications (e.g., CompTIA A+, CCNA)."
+        "Bachelor's degree in IT or Computer Science.",
+        "At least 3 years experience in banking IT support."
       ]
     },
     responsibilities: {
       ar: [
-        "تقديم الدعم الفني لموظفي البنك وحل مشاكل الأجهزة والبرامج.",
-        "صيانة أجهزة الحاسوب والشبكات وملحقاتها.",
-        "تثبيت وتحديث البرامج وأنظمة التشغيل.",
-        "المساهمة في تنفيذ مشاريع تقنية المعلومات في البنك."
+        "متابعة وصيانة شبكات البنك وأجهزة الحاسوب.",
+        "تقديم الدعم الفني لموظفي الفروع.",
+        "إدارة الأنظمة المصرفية وحل المشكلات الفنية."
       ],
       en: [
-        "Providing technical support to bank employees and resolving hardware/software issues.",
-        "Maintaining computers, networks, and peripherals.",
-        "Installing and updating software and operating systems.",
-        "Contributing to the implementation of IT projects in the bank."
+        "Monitor and maintain bank networks and computer equipment.",
+        "Provide technical support to branch staff.",
+        "Manage banking systems and solve technical issues."
       ]
     },
     conditions: {
       ar: [
-        "مهارات تحليلية وقدرة على حل المشكلات التقنية.",
-        "القدرة على العمل ضمن فريق.",
-        "استعداد للعمل في أوقات مرنة أو خارج أوقات الدوام الرسمي عند الحاجة."
+        "إجادة الشبكات والأنظمة التشغيلية.",
+        "التفرغ التام وإمكانية التنقل."
       ],
       en: [
-        "Analytical skills and ability to solve technical problems.",
-        "Ability to work in a team.",
-        "Willingness to work flexible hours or outside official working hours when necessary."
+        "Proficiency in networks and operating systems.",
+        "Full-time commitment and mobility."
       ]
-    }
+    },
+    description: {
+      ar: "إعلان عن توفر فرصة عمل لأخصائي دعم تقنية المعلومات.",
+      en: "Job opportunity announcement for IT Support Specialist."
+    },
+    isActive: true
   }
 ];

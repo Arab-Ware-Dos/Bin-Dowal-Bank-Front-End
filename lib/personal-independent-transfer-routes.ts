@@ -8,7 +8,7 @@ export type PersonalIndependentTransferSlug =
 
 export const PERSONAL_INDEPENDENT_TRANSFER_ROUTE_PATHS =
   PERSONAL_INDEPENDENT_TRANSFER_SLUGS.map(
-    (slug) => `/personal/${slug}` as const,
+    (slug) => `/services/${slug}` as const,
   );
 
 export function isPersonalIndependentTransferSlug(

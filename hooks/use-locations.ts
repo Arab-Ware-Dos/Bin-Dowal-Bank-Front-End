@@ -1,7 +1,11 @@
 "use client"
 
 import { useState, useEffect, useCallback, useMemo } from "react"
-import { fetchLocations } from "@/services/locations-service"
+import {
+  fetchLocations,
+  computeStats,
+  extractCities,
+} from "@/services/locations-service"
 import type {
   LocationItem,
   LocationFilters,
@@ -38,6 +42,10 @@ export interface UseLocationsReturn {
   resetFilters: () => void
   /** Whether any filter is currently active */
   hasActiveFilters: boolean
+  /** Computed stats from API data */
+  stats: { branches: number; atms: number; cities: number }
+  /** Available cities from API data */
+  cities: { ar: string; en: string }[]
 }
 
 export function useLocations(): UseLocationsReturn {
@@ -72,6 +80,12 @@ export function useLocations(): UseLocationsReturn {
       cancelled = true
     }
   }, [])
+
+  // Compute stats from fetched data
+  const stats = useMemo(() => computeStats(allLocations), [allLocations])
+
+  // Extract available cities from fetched data
+  const cities = useMemo(() => extractCities(allLocations), [allLocations])
 
   // Client-side filtering
   const filteredLocations = useMemo(() => {
@@ -132,5 +146,7 @@ export function useLocations(): UseLocationsReturn {
     setFilter,
     resetFilters,
     hasActiveFilters,
+    stats,
+    cities,
   }
 }
