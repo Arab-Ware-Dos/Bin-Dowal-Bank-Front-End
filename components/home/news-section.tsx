@@ -9,7 +9,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { ViewAllButton } from "@/components/ui/view-all-button"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { useNews } from "@/hooks/use-news"
+import { newsItems } from "@/data/news"
 import {
   Calendar,
   Newspaper,
@@ -49,7 +49,6 @@ function getArticleHref(article: NewsArticle) {
 
 export function NewsSection() {
   const { t, locale, direction, mode } = useI18n()
-  const { news: allNews } = useNews()
   
   const resolveHref = useCallback(
     (target: string) => {
@@ -62,10 +61,10 @@ export function NewsSection() {
   )
 
   const displayedNews = useMemo(() => {
-    return [...allNews]
+    return [...(newsItems as NewsArticle[])]
       .sort((a, b) => parseDate(b.date) - parseDate(a.date))
       .slice(0, 3)
-  }, [allNews])
+  }, [])
 
   const dateFormatter = useMemo(() => {
     return new Intl.DateTimeFormat(locale === "ar" ? "ar-YE" : "en-US", {

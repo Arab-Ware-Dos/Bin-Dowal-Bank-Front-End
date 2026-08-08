@@ -1,20 +1,19 @@
 import { notFound } from "next/navigation";
+import { newsItems } from "@/data/news";
 import NewsArticleClient from "@/components/news/news-article-client";
 import { Locale, locales } from "@/i18n/config";
-import { buildLocalizedAlternates } from "@/lib/seo/alternates";
-import { fetchNewsBySlug, fetchAllNewsSlugs } from "@/services/news-service";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 function isLocale(locale: string): locale is Locale {
   return locale === "ar" || locale === "en";
 }
 
-export async function generateStaticParams() {
-  const slugs = await fetchAllNewsSlugs();
+export function generateStaticParams() {
   return locales.flatMap((locale) =>
-    slugs.map((slug) => ({
+    newsItems.map((article) => ({
       locale,
-      slug,
-    }))
+      slug: article.slug || article.id.toString()
+}))
   );
 }
 
@@ -32,12 +31,12 @@ export async function generateMetadata({ params }: LocalizedNewsArticlePageProps
     notFound();
   }
 
-  const article = await fetchNewsBySlug(slug);
+  const article = newsItems.find(
+    (item) => item.slug === slug || item.id.toString() === slug
+  );
 
   if (!article) {
-    return {
-      title: locale === "ar" ? "الخبر غير موجود" : "Article Not Found",
-    };
+    notFound();
   }
 
   const title = locale === "ar" ? article.titleAr : article.titleEn;
@@ -50,9 +49,9 @@ export async function generateMetadata({ params }: LocalizedNewsArticlePageProps
     openGraph: {
       title,
       description,
-      images: article.image ? [article.image] : [],
-    },
-  };
+      images: article.image ? [article.image] : []
+}
+};
 }
 
 export default async function LocalizedNewsArticlePage({ params }: LocalizedNewsArticlePageProps) {
@@ -62,7 +61,9 @@ export default async function LocalizedNewsArticlePage({ params }: LocalizedNews
     notFound();
   }
 
-  const article = await fetchNewsBySlug(slug);
+  const article = newsItems.find(
+    (item) => item.slug === slug || item.id.toString() === slug
+  );
 
   if (!article) {
     notFound();

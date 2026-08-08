@@ -9,7 +9,7 @@ export const BUSINESS_SLUGS = [
 export type BusinessSlug = (typeof BUSINESS_SLUGS)[number];
 
 export const BUSINESS_ROUTE_PATHS = BUSINESS_SLUGS.map(
-  (slug) => `/services/${slug}` as const
+  (slug) => `/business/${slug}` as const
 );
 
 export function isBusinessSlug(slug: string): slug is BusinessSlug {

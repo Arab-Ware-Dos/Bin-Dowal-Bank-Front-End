@@ -12,7 +12,7 @@ export const PERSONAL_FINANCING_SLUGS = [
 export type PersonalFinancingSlug = (typeof PERSONAL_FINANCING_SLUGS)[number];
 
 export const PERSONAL_FINANCING_ROUTE_PATHS = PERSONAL_FINANCING_SLUGS.map(
-  (slug) => `/services/${slug}` as const
+  (slug) => `/personal/${slug}` as const
 );
 
 export function isPersonalFinancingSlug(slug: string): slug is PersonalFinancingSlug {

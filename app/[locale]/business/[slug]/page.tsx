@@ -1,9 +1,11 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { isLocale, locales } from "@/i18n/config";
 import { isBusinessSlug, BUSINESS_SLUGS } from "@/lib/business-routes";
 import { getBankingServiceBySlug } from "@/services/banking-service-pages";
+import { BankingServicePageTemplate } from "@/components/service-page/BankingServicePageTemplate";
+import { ServicePageData } from "@/types/banking-service-page";
 import { Metadata } from "next";
-import { buildLocalizedAlternates } from "@/lib/seo/alternates";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedBusinessPageProps = {
   params: Promise<{
@@ -16,8 +18,8 @@ export function generateStaticParams() {
   return locales.flatMap((locale: string) =>
     BUSINESS_SLUGS.map((slug) => ({
       locale,
-      slug,
-    }))
+      slug
+}))
   );
 }
 
@@ -26,18 +28,18 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
 
   if (!isLocale(locale) || !isBusinessSlug(slug)) {
     return {
-      alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
-      title: "Not Found",
-    };
+      alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found"
+};
   }
 
   const service = await getBankingServiceBySlug("business", slug);
 
-  if (!service) {
+  if (!service || service.section !== "business") {
     return {
-      alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
-      title: "Not Found",
-    };
+      alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found"
+};
   }
 
   const isArabic = locale === "ar";
@@ -45,18 +47,36 @@ export async function generateMetadata({ params }: LocalizedBusinessPageProps): 
   const description = isArabic ? service.subtitle.ar : service.subtitle.en;
 
   return {
-    alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
+    alternates: buildLocalizedAlternates({ pathname: `/business/${slug}`, locale: locale as "ar" | "en" }),
     title,
-    description,
-  };
+    description
+};
 }
 
 export default async function LocalizedBusinessPage({ params }: LocalizedBusinessPageProps) {
   const { locale, slug } = await params;
 
-  if (!isLocale(locale) || !isBusinessSlug(slug)) {
+  if (!isLocale(locale)) {
     notFound();
   }
 
-  redirect(`/${locale}/services/${slug}`);
+  if (!isBusinessSlug(slug)) {
+    notFound();
+  }
+
+  const service = await getBankingServiceBySlug("business", slug);
+
+  if (!service || service.section !== "business") {
+    notFound();
+  }
+
+  return (
+    <div
+      data-localized-route={`business/[slug]`}
+      data-business-slug={slug}
+      data-locale={locale}
+    >
+      <BankingServicePageTemplate data={service as ServicePageData} />
+    </div>
+  );
 }

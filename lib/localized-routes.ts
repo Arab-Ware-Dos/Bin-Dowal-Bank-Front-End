@@ -83,14 +83,8 @@ export function getLocalizedHref(href: string, locale: Locale): string {
     pathname = segments.join("/") || "/";
   }
 
-  // Match exact static routes or dynamic routes (/services/*, /news/*, /customer-service/*, etc.)
-  const isLocalized =
-    LOCALIZED_STATIC_ROUTES.some((route) => pathname === route) ||
-    pathname.startsWith("/services/") ||
-    pathname.startsWith("/news/") ||
-    pathname.startsWith("/customer-service/") ||
-    pathname.startsWith("/knowledge-center/") ||
-    pathname.startsWith("/about/");
+  // Exact match only against the allowed localized routes
+  const isLocalized = LOCALIZED_STATIC_ROUTES.some((route) => pathname === route);
 
   if (isLocalized) {
     const newPath = pathname === "/" ? `/${locale}` : `/${locale}${pathname}`;

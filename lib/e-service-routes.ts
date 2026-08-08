@@ -8,5 +8,5 @@ export const E_SERVICE_SLUGS = [
 export type EServiceSlug = (typeof E_SERVICE_SLUGS)[number];
 
 export const E_SERVICE_ROUTE_PATHS = E_SERVICE_SLUGS.map(
-  (slug) => `/services/${slug}` as const
+  (slug) => `/e-services/${slug}` as const
 );
