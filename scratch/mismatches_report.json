@@ -1,0 +1,290 @@
+[
+  {
+    "labelEn": "Current Account",
+    "labelAr": "الحساب الجاري",
+    "key": "currentAccount",
+    "currentHref": "/personal/current-account",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Accounts -> Current Account"
+  },
+  {
+    "labelEn": "Savings Account",
+    "labelAr": "حساب التوفير",
+    "key": "savingsAccount",
+    "currentHref": "/personal/savings-account",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Accounts -> Savings Account"
+  },
+  {
+    "labelEn": "Investment Deposits",
+    "labelAr": "الودائع الاستثمارية",
+    "key": "investmentDeposits",
+    "currentHref": "/personal/investment-deposit",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Accounts -> Investment Deposits"
+  },
+  {
+    "labelEn": "Local Transfers",
+    "labelAr": "التحويلات المحلية",
+    "key": "localTransfers",
+    "currentHref": "/personal/local-transfers",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Local Transfers"
+  },
+  {
+    "labelEn": "Dool Express",
+    "labelAr": "دول إكسبرس",
+    "key": "doolExpress",
+    "currentHref": "/personal/dool-express",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Local Transfers -> Dool Express"
+  },
+  {
+    "labelEn": "UNMoney",
+    "labelAr": "الشبكة الموحدة",
+    "key": "unifiedNetwork",
+    "currentHref": "/personal/unified-network",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Local Transfers -> UNMoney"
+  },
+  {
+    "labelEn": "Express Remittances",
+    "labelAr": "الحوالات السريعة",
+    "key": "expressRemittances",
+    "currentHref": "/personal/fast-money-transfers",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances"
+  },
+  {
+    "labelEn": "MoneyGram",
+    "labelAr": "موني جرام",
+    "key": "moneygram",
+    "currentHref": "/personal/moneygram",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> MoneyGram"
+  },
+  {
+    "labelEn": "Shift",
+    "labelAr": "شفت",
+    "key": "shift",
+    "currentHref": "/personal/shift",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> Shift"
+  },
+  {
+    "labelEn": "UPT",
+    "labelAr": "UPT",
+    "key": "upt",
+    "currentHref": "/personal/upt",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> UPT"
+  },
+  {
+    "labelEn": "Bin Yaala",
+    "labelAr": "بن يعلا",
+    "key": "bin-yaala",
+    "currentHref": "/personal/bin-yaala",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> Bin Yaala"
+  },
+  {
+    "labelEn": "Alawneh",
+    "labelAr": "العلاونة",
+    "key": "alawneh",
+    "currentHref": "/personal/alawneh",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> Alawneh"
+  },
+  {
+    "labelEn": "Zamzam",
+    "labelAr": "زمزم",
+    "key": "zamzam",
+    "currentHref": "/personal/zamzam",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> Zamzam"
+  },
+  {
+    "labelEn": "Swift",
+    "labelAr": "سويفت",
+    "key": "swift",
+    "currentHref": "/personal/swift",
+    "expectedBasePath": "/personal-banking",
+    "context": "Personal Banking -> Financial Services -> Express Remittances -> Swift"
+  },
+  {
+    "labelEn": "Bank Accounts",
+    "labelAr": "حسابات مصرفية",
+    "key": "corpCurrent",
+    "currentHref": "/business/corporate-current-account",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Large Corporate -> Bank Accounts"
+  },
+  {
+    "labelEn": "Investment Deposits",
+    "labelAr": "الودائع الاستثمارية",
+    "key": "corpInvestments",
+    "currentHref": "/business/corporate-investment-deposits",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Large Corporate -> Investment Deposits"
+  },
+  {
+    "labelEn": "SWIFT Transfers",
+    "labelAr": "حوالات السويفت",
+    "key": "swift",
+    "currentHref": "/business/swift-transfers",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Large Corporate -> SWIFT Transfers"
+  },
+  {
+    "labelEn": "Letters of Guarantees",
+    "labelAr": "خطابات الضمان",
+    "key": "guarantees",
+    "currentHref": "/business/bank-guarantees",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Large Corporate -> Letters of Guarantees"
+  },
+  {
+    "labelEn": "Payroll Management",
+    "labelAr": "تحويل الرواتب",
+    "key": "payroll",
+    "currentHref": "/business/business-banking-payroll",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Large Corporate -> Payroll Management"
+  },
+  {
+    "labelEn": "Projects Financing",
+    "labelAr": "تمويل المشاريع",
+    "key": "smallProjects",
+    "currentHref": "/financing",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Small Businesses -> Projects Financing"
+  },
+  {
+    "labelEn": "Business Accounts",
+    "labelAr": "حسابات الأعمال",
+    "key": "smallAccounts",
+    "currentHref": "/business/corporate-current-account",
+    "expectedBasePath": "/business-banking",
+    "context": "Bin Dowal Business -> Small Businesses -> Business Accounts"
+  },
+  {
+    "labelEn": "Expatriate Account",
+    "labelAr": "حساب المغتربين",
+    "key": "expatCurrent",
+    "currentHref": "/accounts/expat",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Expatriate Account -> Expatriate Account"
+  },
+  {
+    "labelEn": "Minors Account",
+    "labelAr": "حساب القاصر",
+    "key": "minorSavings",
+    "currentHref": "/personal/minors-account",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Minors Account -> Minors Account"
+  },
+  {
+    "labelEn": "Noor Account (Ladies)",
+    "labelAr": "حساب نور للسيدات",
+    "key": "noorCurrent",
+    "currentHref": "/accounts/noor",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Noor Account (Ladies) -> Noor Account (Ladies)"
+  },
+  {
+    "labelEn": "Noor Ladies Card",
+    "labelAr": "بطاقة نور للسيدات",
+    "key": "noorCard",
+    "currentHref": "/accounts/noor-ladies-card",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Noor Account (Ladies) -> Noor Ladies Card"
+  },
+  {
+    "labelEn": "Takamul",
+    "labelAr": "تكامل",
+    "key": "financingTakamul",
+    "currentHref": "/personal/financing-takamul",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Financing -> Takamul"
+  },
+  {
+    "labelEn": "Thimar",
+    "labelAr": "ثمار",
+    "key": "financingThimar",
+    "currentHref": "/personal/financing-thimar",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Financing -> Thimar"
+  },
+  {
+    "labelEn": "Ta'meer",
+    "labelAr": "تعمير",
+    "key": "financingTaameer",
+    "currentHref": "/personal/financing-taameer",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Financing -> Ta'meer"
+  },
+  {
+    "labelEn": "Noor",
+    "labelAr": "نور",
+    "key": "financingNoor",
+    "currentHref": "/personal/financing-noor",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Financing -> Noor"
+  },
+  {
+    "labelEn": "Zad",
+    "labelAr": "زاد",
+    "key": "financingZad",
+    "currentHref": "/personal/financing-zad",
+    "expectedBasePath": "/specialized-services",
+    "context": "Specialized Services -> Financing -> Zad"
+  },
+  {
+    "labelEn": "Bank Cards",
+    "labelAr": "البطاقات البنكية",
+    "key": "bankCards",
+    "currentHref": "/cards",
+    "expectedBasePath": "/e-services",
+    "context": "E-Services -> Bank Cards"
+  },
+  {
+    "labelEn": "Media Center",
+    "labelAr": "المركز الإعلامي",
+    "key": "bankNews",
+    "currentHref": "/news",
+    "expectedBasePath": "/knowledge-center",
+    "context": "Knowledge Center -> Media Center"
+  },
+  {
+    "labelEn": "Submit a Complaint",
+    "labelAr": "تقديم شكوى",
+    "key": "complaint",
+    "currentHref": "/customer-service/complaints",
+    "expectedBasePath": "/contact",
+    "context": "Customer Service -> Submit a Complaint"
+  },
+  {
+    "labelEn": "Request a Service",
+    "labelAr": "طلب خدمة",
+    "key": "requestService",
+    "currentHref": "/customer-service/service-request",
+    "expectedBasePath": "/contact",
+    "context": "Customer Service -> Request a Service"
+  },
+  {
+    "labelEn": "Credit Card Request",
+    "labelAr": "طلب بطاقة بنكية",
+    "key": "creditCardRequest",
+    "currentHref": "/customer-service/bank-cards-request",
+    "expectedBasePath": "/contact",
+    "context": "Customer Service -> Credit Card Request"
+  },
+  {
+    "labelEn": "Bank Forms",
+    "labelAr": "نماذج البنك",
+    "key": "forms",
+    "currentHref": "/customer-service/forms",
+    "expectedBasePath": "/contact",
+    "context": "Customer Service -> Bank Forms"
+  }
+]

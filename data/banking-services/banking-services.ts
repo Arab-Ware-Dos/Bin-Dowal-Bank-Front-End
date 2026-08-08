@@ -2281,13 +2281,13 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/customer-services/minors-account.webp",
     breadcrumbs: [
       {
-        labelKey: "nav.personalBanking",
-        href: "/personal-banking"
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
       },
       {
         labelKey: "nav.minorsAccount",
         label: {
-          ar: "حساب القصر",
+          ar: "حساب القاصر",
           en: "Minors Account"
         }
       }
@@ -2330,7 +2330,7 @@ export const bankingServicesData: ServicePageData[] = [
       ],
     },
     featureCards: {
-      title: { ar: "مميزات حساب القصر", en: "Minors Account Features" },
+      title: { ar: "مميزات حساب القاصر", en: "Minors Account Features" },
       items: [
         { id: "fc-ma-1", title: { ar: "إدارة آمنة من قبل ولي الأمر", en: "Legal Guardian Supervision" }, description: { ar: "يتم فتح الحساب وإدارته بواسطة ولي الأمر أو الوصي النظامي وفق سياسة البنك.", en: "The account is opened and managed by the guardian or legal custodian in accordance with the bank's policy." } },
         { id: "fc-ma-2", title: { ar: "تعزيز ثقافة الادخار", en: "Promoting Saving Culture" }, description: { ar: "يساعد الأبناء على اكتساب عادات مالية إيجابية منذ سن مبكرة.", en: "Helps children develop positive financial habits from an early age." } },
@@ -2347,7 +2347,7 @@ export const bankingServicesData: ServicePageData[] = [
       ],
     },
     requirementsSection: {
-      title: { ar: "شروط فتح حساب القصر", en: "Minors Account Opening Requirements" },
+      title: { ar: "شروط فتح حساب القاصر", en: "Minors Account Opening Requirements" },
       items: [
         { id: "req-ma-1", text: { ar: "هوية سارية لولي الأمر أو الوصي.", en: "Valid ID of the guardian." } },
         { id: "req-ma-2", text: { ar: "وثيقة تثبت صلة القرابة أو الولاية (مثل شهادة الميلاد أو وثيقة الولاية).", en: "Document proving guardianship or kinship (birth certificate/guardianship document)." } },
@@ -2356,7 +2356,7 @@ export const bankingServicesData: ServicePageData[] = [
       ],
     },
     // stepsSection: {
-    //   title: { ar: "خطوات فتح حساب القصر", en: "Steps to Open a Minors Account" },
+    //   title: { ar: "خطوات فتح حساب القاصر", en: "Steps to Open a Minors Account" },
     //   steps: [
     //     { id: "step-ma-1", title: { ar: "تجهيز وثائق ولي الأمر والقاصر", en: "Prepare Guardian and Minor Documents" }, description: { ar: "أحضر هوية ولي الأمر ووثائق إثبات الولاية والصلة بالقاصر.", en: "Bring the guardian's ID and documents proving guardianship." } },
     //     { id: "step-ma-2", title: { ar: "التقديم في الفرع", en: "Apply at the Branch" }, description: { ar: "توجه لأحد فروع البنك واستكمل نموذج فتح الحساب.", en: "Visit a bank branch and complete the account opening form." } },
@@ -2383,11 +2383,11 @@ export const bankingServicesData: ServicePageData[] = [
     },
     details: {
       title: {
-        ar: "ما الذي يقدمه حساب القصر؟",
+        ar: "ما الذي يقدمه حساب القاصر؟",
         en: "What Does the Minors Account Offer?"
       },
       subtitle: {
-        ar: "يساعد حساب القصر ولي الأمر على حفظ أموال الأبناء وإدارتها ضمن إطار مصرفي منظم إلى حين اكتمال الأهلية أو حسب سياسة البنك.",
+        ar: "يساعد حساب القاصر ولي الأمر على حفظ أموال الأبناء وإدارتها ضمن إطار مصرفي منظم إلى حين اكتمال الأهلية أو حسب سياسة البنك.",
         en: "The minors account helps guardians hold and manage children’s funds within an organized banking framework until eligibility is met or according to bank policy."
       },
       features: [
@@ -2568,7 +2568,7 @@ export const bankingServicesData: ServicePageData[] = [
         en: "Start Saving for Your Children Today"
       },
       description: {
-        ar: "تواصل مع البنك لمعرفة الوثائق المطلوبة لحساب القصر وآلية إدارة الحساب.",
+        ar: "تواصل مع البنك لمعرفة الوثائق المطلوبة لحساب القاصر وآلية إدارة الحساب.",
         en: "Contact the bank to learn about required documents for a minors account and how the account is managed."
       }
     },
@@ -3243,7 +3243,7 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-bg-4", text: { ar: "توفير الضمانات .", en: "Providing guarantees." } },
         { id: "why-bg-5", text: { ar: "الاستفادة من حلول مصرفية تناسب احتياجات أعمالك.", en: "Benefit from banking solutions that meet your business needs." } },
 
-        
+
       ],
     },
     serviceTypes: {
@@ -3532,8 +3532,8 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/personalCover.png",
     breadcrumbs: [
       {
-        labelKey: "nav.customServices",
-        href: "/custom-services"
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
       },
       {
         labelKey: "nav.premiumServices",
@@ -3834,8 +3834,8 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
       {
-        labelKey: "nav.customServices",
-        href: "/custom-services"
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
       },
       {
         labelKey: "nav.noorAccount",
@@ -4143,8 +4143,8 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/personalCover.png",
     breadcrumbs: [
       {
-        labelKey: "nav.customServices",
-        href: "/custom-services"
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
       },
       {
         labelKey: "nav.youthAccount",
@@ -4445,8 +4445,8 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/personalCover.png",
     breadcrumbs: [
       {
-        labelKey: "nav.customServices",
-        href: "/custom-services"
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
       },
       {
         labelKey: "nav.expatAccount",
@@ -4504,7 +4504,7 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "fc-expat-3", title: { ar: "خدمات مصرفية رقمية", en: "Digital Banking Services" }, description: { ar: "الاستفادة من تطبيق البنك والخدمات الإلكترونية لمتابعة الحساب وإجراء العمليات.", en: "Benefit from the bank's app and electronic services to monitor your account and perform operations." } },
         { id: "fc-expat-4", title: { ar: "حساب متعدد العملات", en: "Multi-Currency Account" }, description: { ar: "الاستفادة من إمكانية فتح الحساب والإيداع بعملات متعددة.", en: "Benefit from the ability to open an account and deposit funds in multiple currencies." } },
         { id: "fc-expat-5", title: { ar: "خدمة متوافقة مع الشريعة الإسلامية", en: "Sharia-Compliant Service" }, description: { ar: "جميع الخدمات المقدمة تتم وفق أحكام الشريعة الإسلامية.", en: "All services provided are in accordance with the provisions of Islamic Sharia." } },
-      
+
       ],
     },
     audience: {
@@ -8147,12 +8147,12 @@ export const bankingServicesData: ServicePageData[] = [
     },
     heroImage: "/images/financing-services/3.webp",
     breadcrumbs: [
-      { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.financingTakamul" }
+      { labelKey: "nav.specializedServices", href: "/specialized-services" },
+      { labelKey: "nav.financingTakamul", lable: { ar: "تمويل تكامل", en: "Takamul" } }
     ],
     tagline: {
-      ar: "منتجات التمويل",
-      en: "Financing Products"
+      ar: "تمويل تكامل",
+      en: "Takamul Financing"
     },
     primaryCta: {
       label: { ar: "قدّم طلبك الآن", en: "Apply Now" },
@@ -8276,8 +8276,8 @@ export const bankingServicesData: ServicePageData[] = [
     },
     heroImage: "/images/financing-services/2.webp",
     breadcrumbs: [
-      { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.financingThimar" }
+      { labelKey: "nav.specializedServices", href: "/specialized-services" },
+      { labelKey: "nav.financingThimar", lable: { ar: "تمويل ثمار", en: "Thimar" } }
     ],
     tagline: {
       ar: "دعم المنشآت والأعمال",
@@ -8312,7 +8312,7 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-th-5", text: { ar: "متوافق مع أحكام الشريعة الإسلامية بما يمنحك راحة وطمأنينة في التعامل.", en: "Compliant with Islamic Sharia principles, giving you peace of mind in dealings." } }
       ]
     },
-     serviceTypes: {
+    serviceTypes: {
       title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
       description: { ar: "يمكنك التقدم بطلب تمويل ثمار باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Thimar financing using one of the guarantees approved by the bank:" },
       items: [
@@ -8453,8 +8453,8 @@ export const bankingServicesData: ServicePageData[] = [
     },
     heroImage: "/images/financing-services/6.webp",
     breadcrumbs: [
-      { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.financingTaameer" }
+      { labelKey: "nav.specializedServices", href: "/specialized-services" },
+      { labelKey: "nav.financingTaameer", lable: { ar: "تمويل تعمير", en: "Ta'meer" } }
     ],
     tagline: {
       ar: "التمويل العقاري والإنشائي",
@@ -8489,7 +8489,7 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-tm-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
       ]
     },
-     serviceTypes: {
+    serviceTypes: {
       title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
       description: { ar: "يمكنك التقدم بطلب تمويل تعمير باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Ta'meer financing using one of the guarantees approved by the bank:" },
       items: [
@@ -8629,8 +8629,8 @@ export const bankingServicesData: ServicePageData[] = [
     },
     heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
-      { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.financingNoor" }
+      { labelKey: "nav.specializedServices", href: "/specialized-services" },
+      { labelKey: "nav.financingNoor", lable: { ar: "تمويل نور", en: "Noor" } }
     ],
     tagline: {
       ar: "تمكين المرأة اقتصادياً",
@@ -8665,7 +8665,7 @@ export const bankingServicesData: ServicePageData[] = [
         { id: "why-no-5", text: { ar: "خدمة متوفرة عبر فروع بنك بن دول.", en: "Service available through Bin Dowal Bank branches." } }
       ]
     },
-     serviceTypes: {
+    serviceTypes: {
       title: { ar: "الضمانات المقبولة", en: "Accepted Guarantees" },
       description: { ar: "يمكنك التقدم بطلب تمويل ثمار باستخدام إحدى الضمانات المعتمدة لدى البنك:", en: "You can apply for Thimar financing using one of the guarantees approved by the bank:" },
       items: [
@@ -8805,8 +8805,8 @@ export const bankingServicesData: ServicePageData[] = [
     },
     heroImage: "/images/financing-services/5.webp",
     breadcrumbs: [
-      { labelKey: "nav.personalBanking", href: "/personal-banking" },
-      { labelKey: "nav.financingZad" }
+      { labelKey: "nav.specializedServices", href: "/specialized-services" },
+      { labelKey: "nav.financingZad", lable: { ar: "تمويل زاد", en: "Zad" } }
     ],
     tagline: {
       ar: "التمويل التعليمي الميسر",
@@ -9787,9 +9787,18 @@ export const bankingServicesData: ServicePageData[] = [
       en: "Direct control over your money and easier payments wherever you are"
     },
     heroImage: "/images/cards/debit-noor.webp",
-    breadcrumbs: [
-      { labelKey: "nav.customServices", href: "/custom-services" },
-      { label: { ar: "بطاقة نور للسيدات", en: "Noor Ladies Card" } }
+   breadcrumbs: [
+      {
+        labelKey: "nav.specializedServices",
+        href: "/specialized-services"
+      },
+      {
+        labelKey: "nav.noorCard",
+        label: {
+          ar: "بطاقة نور",
+          en: "Noor Card"
+        }
+      }
     ],
     tagline: {
       ar: "بطاقة نور للسيدات",

@@ -45,7 +45,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.currentAccount": "الحساب الجاري",
     "nav.savingsAccount": "حساب التوفير",
     "nav.investmentDeposit": "الوديعة الاستثمارية",
-    "nav.minorsAccount": "حساب القصر",
+    "nav.minorsAccount": "حساب القاصر",
     "nav.localTransfers": "التحويلات المحلية",
     "nav.intlTransfers": "التحويلات الدولية",
     "nav.expressRemittances": "الحوالات السريعة",
@@ -123,6 +123,19 @@ const translations: Record<Locale, Record<string, string>> = {
     "eServices.title": "الخدمات الإلكترونية",
     "eServices.subtitle": "حلول مصرفية رقمية ذكية تلبي طموحاتك",
     "eServices.learnMore": "اعرف المزيد",
+
+    // Specialized services
+    "nav.specializedServices": "خدمات مخصصة",
+    "nav.noorAccount": "حساب نور",
+    "nav.expatAccount": "حساب المغتربين",
+    "nav.taameerAccount": "حساب تعمير",
+    "nav.zadAccount": "حساب زاد",
+    "nav.thimarAccount": "حساب ثمار",
+    "nav.takamulAccount": "حساب تكامل",
+
+
+
+
 
     // Calculator
     "calculator.title": "احسب تمويلك",
@@ -268,7 +281,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "partnerships.international": "شراكات دولية",
     "partnerships.correspondent": "بنوك مراسلة",
     "partnerships.viewAll": "مشاهدة جميع الشركاء",
-    
+
     // Cards Section
     "cardsSection.badge": "بطاقاتنا المصرفية",
     "cardsSection.title1": "اختر",
@@ -312,7 +325,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "discoverProducts.prod1.title": "الحساب الجاري",
     "discoverProducts.prod2.title": "حساب التوفير",
     "discoverProducts.prod3.title": "حساب الوديعة الاستثمارية",
-    "discoverProducts.prod4.title": "حساب القصر",
+    "discoverProducts.prod4.title": "حساب القاصر",
     "discoverProducts.prod5.title": "الحساب الجاري للشركات",
     "discoverProducts.prod6.title": "الودائع الاستثمارية للشركات",
     "discoverProducts.prod7.title": "حوالة السويفت",
@@ -425,6 +438,19 @@ const translations: Record<Locale, Record<string, string>> = {
     "eServices.title": "E-Services",
     "eServices.subtitle": "Smart digital banking solutions that meet your ambitions",
     "eServices.learnMore": "Learn More",
+
+    // Specialized services
+    "nav.specializedServices": "Specialized Services",
+    "specializedServices.title": "Specialized Services",
+    "specializedServices.subtitle": "Smart digital banking solutions that meet your ambitions",
+    "specializedServices.learnMore": "Learn More",
+    "nav.noorAccount": "Noor Account",
+    "nav.expatAccount": "Expat Account",
+    "nav.taameerAccount": "Taameer Account",
+    "nav.zadAccount": "Zad Account",
+    "nav.thimarAccount": "Thimar Account",
+    "nav.takamulAccount": "Takamul Account",
+
 
     // Calculator
     "calculator.title": "Calculate Your Financing",
@@ -570,7 +596,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "partnerships.international": "International Partnerships",
     "partnerships.correspondent": "Correspondent Banks",
     "partnerships.viewAll": "View All Partners",
-    
+
     // Cards Section
     "cardsSection.badge": "Our Bank Cards",
     "cardsSection.title1": "Choose",
@@ -650,7 +676,7 @@ export function I18nProvider(props: I18nProviderProps) {
   const { children } = props;
 
   const [legacyLocale, setLegacyLocale] = useState<Locale>(initialLocale)
-  
+
   const currentLocale = mode === "url" ? initialLocale : legacyLocale
   const direction: Direction = currentLocale === "ar" ? "rtl" : "ltr"
 

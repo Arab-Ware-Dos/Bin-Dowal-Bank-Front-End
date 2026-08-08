@@ -6,7 +6,7 @@ import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
 import { CheckCircle2 } from "lucide-react"
 
-export function CorporateGovernancePageContent() {
+export function RiskManagementPageContent() {
   const { locale, direction } = useI18n()
   const isAr = locale === "ar"
 
@@ -17,15 +17,15 @@ export function CorporateGovernancePageContent() {
       : "Effective risk management is a key element of good governance, protecting the bank and its stability",
     home: isAr ? "الرئيسية" : "Home",
     about: isAr ? "عن البنك" : "About Us",
-    
-    docTitle: isAr 
+
+    docTitle: isAr
       ? "إدارة المخاطر في بنك بن دول للتمويل الأصغر الإسلامي"
       : "Risk Management in Bin Dowal Islamic Microfinance Bank",
 
     intro1: isAr
       ? "يؤمن بنك بن دول للتمويل الأصغر الإسلامي بأن الإدارة الفعّالة للمخاطر تمثل عنصراً أساسياً في الحوكمة الرشيدة، وحماية أموال المودعين والعملاء والمساهمين، والمحافظة على سلامة البنك واستقراره واستمرارية أعماله. ولذلك يتبنى البنك إطاراً متكاملاً لإدارة المخاطر، يتناسب مع طبيعة وحجم أعماله، ويرتبط باستراتيجيته وأهدافه وخططه التشغيلية، وفقاً للتشريعات والتعليمات الرقابية النافذة من البنك المركزي اليمني وغيره، وأحكام ومبادئ الشريعة الإسلامية، وأفضل الممارسات المصرفية العالمية."
       : "Bin Dowal Islamic Microfinance Bank believes that effective risk management is an essential element of good governance, protecting the funds of depositors, customers, and shareholders, and maintaining the Bank's soundness, stability, and business continuity. Therefore, the Bank adopts an integrated risk management framework that suits the nature and size of its operations, and is linked to its strategy, objectives, and operational plans, in accordance with the applicable legislation and regulatory instructions of the Central Bank of Yemen and others, the provisions and principles of Islamic Sharia, and best global banking practices.",
-    
+
     intro2: isAr
       ? "يهدف إطار إدارة المخاطر إلى تحقيق التوازن بين النمو والعائد ومستوى المخاطر المقبول، ودعم اتخاذ القرارات السليمة، وتعزيز قدرة البنك على مواجهة الأزمات والتغيرات الاقتصادية والتقنية والتشغيلية، بما يضمن تقديم خدمات مالية إسلامية آمنة ومسؤولة ومستدامة."
       : "The risk management framework aims to balance growth, return, and acceptable risk levels, support sound decision-making, and enhance the Bank's ability to face economic, technical, and operational crises and changes, ensuring the provision of safe, responsible, and sustainable Islamic financial services.",
@@ -74,7 +74,7 @@ export function CorporateGovernancePageContent() {
       {/* Main Content Section */}
       <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
-          
+
           <motion.article
             className="bg-white rounded-3xl shadow-[0_16px_50px_rgba(11,13,54,0.07)] border border-slate-200/80 p-8 sm:p-12 md:p-16 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -105,7 +105,7 @@ export function CorporateGovernancePageContent() {
 
             {/* Narrative Content */}
             <div className="space-y-8 text-[#334155] font-cairo text-lg leading-loose text-justify">
-              
+
               {/* Introduction Paragraphs */}
               <p className="font-medium text-[#1e293b]">
                 {text.intro1}

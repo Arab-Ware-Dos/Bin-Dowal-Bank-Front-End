@@ -83,7 +83,7 @@ export const navigationData: NavItem[] = [
       { key: "partners", href: "/about/partners", label: { ar: "الشركاء", en: "Partners" }, icon: HeartHandshake },
       { key: "social", href: "/about/social-responsibility", label: { ar: "المسؤولية المجتمعية", en: "Social Responsibility" }, icon: HeartHandshake },
       { key: "compliance", href: "/about/compliance-statement", label: { ar: "بيان الامتثال", en: "Compliance Statement" }, icon: ShieldCheck },
-      { key: "governance", href: "/about/corporate-governance", label: { ar: "الحوكمة المؤسسية", en: "Corporate Governance" }, icon: Scale },
+      { key: "governance", href: "/about/risk-management", label: { ar: "إدارة المخاطر", en: "Risk Management" }, icon: Scale },
     ]
   },
   {
@@ -200,9 +200,9 @@ export const navigationData: NavItem[] = [
     ]
   },
   {
-    key: "customServices",
+    key: "specializedServices",
     href: "",
-    label: { ar: "خدمات مخصصة", en: "Custom Services" },
+    label: { ar: "خدمات مخصصة", en: "Specialized Services" },
     groups: [
       {
         title: { ar: "حساب المغتربين", en: "Expatriate Account" },

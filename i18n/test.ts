@@ -357,8 +357,8 @@ async function runTests() {
     { input: ["/personal/account-product-unknown", "en"], expected: "/personal/account-product-unknown" },
     { input: ["/en/personal/account-product-unknown", "ar"], expected: "/personal/account-product-unknown" },
     // O. Custom Services and Knowledge Hubs (Batch 18B)
-    { input: ["/custom-services", "en"], expected: "/en/custom-services" },
-    { input: ["/ar/custom-services", "en"], expected: "/en/custom-services" },
+    { input: ["/specialized-services", "en"], expected: "/en/specialized-services" },
+    { input: ["/ar/specialized-services", "en"], expected: "/en/specialized-services" },
     { input: ["/knowledge", "en"], expected: "/en/knowledge" },
     { input: ["/en/knowledge", "ar"], expected: "/ar/knowledge" },
     { input: ["/en/knowledge?source=header#top", "ar"], expected: "/ar/knowledge?source=header#top" },

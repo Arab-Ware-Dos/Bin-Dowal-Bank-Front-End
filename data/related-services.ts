@@ -35,7 +35,7 @@ export const accountsRelatedServices: RelatedService[] = [
   },
   {
     id: "minors",
-    titleAr: "حساب القصر",
+    titleAr: "حساب القاصر",
     titleEn: "Minors Account",
     descriptionAr: "حساب مصمم خصيصاً لتأمين وتنمية أموال الأطفال وضمان مستقبلهم.",
     descriptionEn: "Specially designed to secure and grow children's funds for their future.",

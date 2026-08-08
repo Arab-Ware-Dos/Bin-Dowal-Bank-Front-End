@@ -45,14 +45,14 @@ const hasLegacyInvalidRoutes = allLinks.some((link) =>
 assert(!hasLegacyInvalidRoutes, "No active links to /personal, /business, /e-services, or /digital");
 
 // 3. Ensure required hubs exist
-const requiredHubs = ["/personal-banking", "/business-banking", "/digital-channels", "/custom-services", "/knowledge"];
+const requiredHubs = ["/personal-banking", "/business-banking", "/digital-channels", "/specialized-services", "/knowledge"];
 requiredHubs.forEach((hub) => {
   const exists = navigationData.some((nav) => nav.href === hub);
   assert(exists, `Hub ${hub} must exist as a top-level href in navigationData`);
 });
 
-// 4. /custom-services and /knowledge in LOCALIZED_STATIC_ROUTES
-assert(LOCALIZED_STATIC_ROUTES.includes("/custom-services"), "/custom-services is registered in LOCALIZED_STATIC_ROUTES");
+// 4. /specialized-services and /knowledge in LOCALIZED_STATIC_ROUTES
+assert(LOCALIZED_STATIC_ROUTES.includes("/specialized-services"), "/specialized-services is registered in LOCALIZED_STATIC_ROUTES");
 assert(LOCALIZED_STATIC_ROUTES.includes("/knowledge"), "/knowledge is registered in LOCALIZED_STATIC_ROUTES");
 
 // 5. No active links to deferred knowledge items

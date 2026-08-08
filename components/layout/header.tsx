@@ -290,16 +290,7 @@ export function Header(props: HeaderProps) {
       >
         <div className="h-[2px] w-full bg-gradient-to-r from-[#2d3185] via-[#763169] to-[#ed1c24]" />
 
-        <motion.div
-          initial={false}
-          animate={{
-            height: isScrolled ? 0 : "auto",
-            opacity: isScrolled ? 0 : 1,
-            marginBottom: isScrolled ? 0 : 0
-          }}
-          transition={{ duration: 0.28, ease: "easeInOut" }}
-          className="overflow-hidden border-b border-slate-200/70 bg-slate-50/70"
-        >
+        <div className="border-b border-slate-200/70 bg-slate-50/70">
           <div className="container mx-auto px-4">
             <div className="flex h-11 items-center justify-between text-slate-600">
               <div className="flex items-center gap-3 sm:gap-0">
@@ -364,7 +355,7 @@ export function Header(props: HeaderProps) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <nav className="relative">
           <div className="container mx-auto px-4">
