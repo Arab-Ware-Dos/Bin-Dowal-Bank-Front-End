@@ -11,7 +11,7 @@ export const PERSONAL_REMITTANCE_SLUGS = [
 export type PersonalRemittanceSlug = (typeof PERSONAL_REMITTANCE_SLUGS)[number];
 
 export const PERSONAL_REMITTANCE_ROUTE_PATHS = PERSONAL_REMITTANCE_SLUGS.map(
-  (slug) => `/services/${slug}` as const
+  (slug) => `/personal/${slug}` as const
 );
 
 export function isPersonalRemittanceSlug(slug: string): slug is PersonalRemittanceSlug {

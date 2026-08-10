@@ -1,5 +1,7 @@
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { getBankingServiceBySlug } from "@/services/banking-service-pages";
+import { BankingServicePageTemplate } from "@/components/service-page/BankingServicePageTemplate";
+import { ServicePageData } from "@/types/banking-service-page";
 import { isLocale, locales } from "@/i18n/config";
 import { PERSONAL_FINANCING_SLUGS, isPersonalFinancingSlug } from "@/lib/personal-financing-routes";
 import { PERSONAL_REMITTANCE_SLUGS, isPersonalRemittanceSlug } from "@/lib/personal-remittance-routes";
@@ -7,7 +9,7 @@ import { PERSONAL_INDEPENDENT_TRANSFER_SLUGS, isPersonalIndependentTransferSlug 
 import { PERSONAL_CORE_TRANSFER_SLUGS, isPersonalCoreTransferSlug } from "@/lib/personal-core-transfer-routes";
 import { PERSONAL_ACCOUNT_DEPOSIT_SLUGS, isPersonalAccountDepositSlug } from "@/lib/personal-account-deposit-routes";
 import { TransferServicePage } from "@/components/personal/transfers/transfer-service-page";
-import { buildLocalizedAlternates } from "@/lib/seo/alternates";
+import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 
 type LocalizedPersonalFinancingPageProps = {
   params: Promise<{
@@ -18,7 +20,7 @@ type LocalizedPersonalFinancingPageProps = {
 
 export async function generateStaticParams() {
   const params: Array<{ locale: string; slug: string }> = [];
-
+  
   for (const locale of locales) {
     for (const slug of PERSONAL_FINANCING_SLUGS) {
       params.push({ locale, slug });
@@ -36,7 +38,7 @@ export async function generateStaticParams() {
       params.push({ locale, slug });
     }
   }
-
+  
   return params;
 }
 
@@ -44,28 +46,35 @@ export async function generateMetadata({ params }: LocalizedPersonalFinancingPag
   const { locale, slug } = await params;
 
   if (!isLocale(locale)) {
-    return {
-      alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
-      title: "Not Found",
-    };
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found" };
+  }
+
+  const isFinancing = isPersonalFinancingSlug(slug);
+  const isRemittance = isPersonalRemittanceSlug(slug);
+  const isIndependent = isPersonalIndependentTransferSlug(slug);
+  const isCoreTransfer = isPersonalCoreTransferSlug(slug);
+  const isAccountDeposit = isPersonalAccountDepositSlug(slug);
+
+  if (!isFinancing && !isRemittance && !isIndependent && !isCoreTransfer && !isAccountDeposit) {
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Not Found" };
   }
 
   const service = await getBankingServiceBySlug("personal", slug);
 
-  if (!service) {
-    return {
-      alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
-      title: "Service Not Found",
-    };
+  if (!service || service.section !== "personal") {
+    return { alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
+    title: "Service Not Found" };
   }
 
   const title = locale === "ar" ? service.title.ar : service.title.en;
   const description = locale === "ar" ? service.subtitle.ar : service.subtitle.en;
 
   return {
-    alternates: buildLocalizedAlternates({ pathname: `/services/${slug}`, locale: locale as "ar" | "en" }),
+    alternates: buildLocalizedAlternates({ pathname: `/personal/${slug}`, locale: locale as "ar" | "en" }),
     title: `${title} | Bin Dowal Bank`,
-    description,
+    description
   };
 }
 
@@ -76,11 +85,27 @@ export default async function LocalizedPersonalFinancingPage({ params }: Localiz
     notFound();
   }
 
+  const personalSegment = isPersonalFinancingSlug(slug)
+    ? "financing"
+    : isPersonalRemittanceSlug(slug)
+      ? "remittance"
+      : isPersonalIndependentTransferSlug(slug)
+        ? "independent-transfer"
+        : isPersonalCoreTransferSlug(slug)
+          ? "core-transfer"
+          : isPersonalAccountDepositSlug(slug)
+            ? "account-deposit"
+            : null;
+
+  if (!personalSegment) {
+    notFound();
+  }
+
   if (isPersonalCoreTransferSlug(slug)) {
     return (
       <div
         data-localized-route="personal/[slug]"
-        data-personal-segment="core-transfer"
+        data-personal-segment={personalSegment}
         data-locale={locale}
       >
         <TransferServicePage slug={slug} locale={locale as "ar" | "en"} />
@@ -88,6 +113,20 @@ export default async function LocalizedPersonalFinancingPage({ params }: Localiz
     );
   }
 
-  // Redirect to unified /services/[slug] route
-  redirect(`/${locale}/services/${slug}`);
+  const service = await getBankingServiceBySlug("personal", slug);
+
+  if (!service || service.section !== "personal") {
+    notFound();
+  }
+
+  return (
+    <div 
+      data-localized-route="personal/[slug]"
+      data-personal-segment={personalSegment}
+      data-personal-slug={slug}
+      data-locale={locale}
+    >
+      <BankingServicePageTemplate data={service as ServicePageData} />
+    </div>
+  );
 }

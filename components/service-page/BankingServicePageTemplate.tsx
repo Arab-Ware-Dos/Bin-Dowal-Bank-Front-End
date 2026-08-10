@@ -23,7 +23,6 @@ import { allRelatedServices } from "@/data/related-services"
 import { ServicePageData, LocalizedText, ServiceFeature } from "@/types/banking-service-page"
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion"
 import { CustomSectionRenderer } from "./custom-section-registry"
-import DynamicIcon from "@/components/ui/dynamic-icon"
 
 const viewport = { once: true, amount: 0.18 }
 
@@ -109,25 +108,9 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
     [locale, mode]
   );
 
-  const apiRelatedServices = (data.relatedServicesData && data.relatedServicesData.length > 0)
-    ? data.relatedServicesData.map((item, idx) => ({
-        id: item.service_slug || item.service_id || idx,
-        titleAr: item.title_ar || "",
-        titleEn: item.title_en || item.title_ar || "",
-        descriptionAr: item.summary_ar || "",
-        descriptionEn: item.summary_en || item.summary_ar || "",
-        image: item.image_url || "/images/company-header-cover.png",
-        categoryAr: item.category_ar || (isArabic ? "خدمات البنك" : "Bank Services"),
-        categoryEn: item.category_en || "Bank Services",
-        href: item.link_url || `/services/${item.service_slug}`
-      }))
+  const relatedServices = data.relatedServicesKeys 
+    ? allRelatedServices.filter((s) => data.relatedServicesKeys?.includes(s.id.toString()))
     : []
-
-  const relatedServices = apiRelatedServices.length > 0
-    ? apiRelatedServices
-    : (data.relatedServicesKeys 
-        ? allRelatedServices.filter((s) => data.relatedServicesKeys?.includes(s.id.toString()))
-        : [])
 
   const sectionLinks = [
     data.overview ? { id: "overview", ar: "نبذة تعريفية", en: "Overview" } : (data.details ? { id: "details", ar: "تفاصيل الخدمة", en: "Service Details" } : null),
@@ -150,7 +133,8 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
         title={getText(data.title, isArabic)}
         subtitle={getText(data.subtitle, isArabic)}
         breadcrumbs={data.breadcrumbs.map(b => ({
-          labelKey: b.label ? getText(b.label, isArabic) : (b.labelKey || ""),
+          labelKey: b.labelKey || "",
+          label: b.label ? getText(b.label, isArabic) : undefined,
           href: b.href
         }))}
         tagline={data.tagline ? getText(data.tagline, isArabic) : undefined}
@@ -260,14 +244,16 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                         <div className="relative w-full">
                           <div className="relative mx-auto aspect-square w-full max-w-[320px] sm:max-w-[380px] md:max-w-[420px]">
                             <motion.div
-                              className="absolute inset-0 flex items-center justify-center drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
+                              className="absolute inset-0 drop-shadow-[0_24px_32px_rgba(0,0,0,0.4)]"
                               whileHover={shouldReduceMotion ? undefined : { scale: 1.035, y: -5 }}
                               transition={{ duration: 0.45, ease: "easeOut" }}
                             >
-                              <DynamicIcon
-                                name={data.iconConfig?.value || data.heroImage || "/images/company-header-cover.png"}
-                                className="max-h-full max-w-full object-contain"
+                              <Image
+                                src={data.heroImage}
                                 alt={isArabic ? "صورة توضيحية للخدمة" : "Service illustration"}
+                                fill
+                                className="object-contain"
+                                priority
                               />
                             </motion.div>
                           </div>

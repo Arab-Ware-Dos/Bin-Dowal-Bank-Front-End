@@ -3,6 +3,7 @@
 import { useRef, useEffect, useCallback } from "react"
 import { Search, X, ChevronDown, RotateCcw } from "lucide-react"
 import type { LocationFilters, LocationTypeFilter } from "@/types/locations"
+import { availableCities } from "@/data/locations"
 
 interface LocationFiltersProps {
   filters: LocationFilters
@@ -13,7 +14,6 @@ interface LocationFiltersProps {
   hasActiveFilters: boolean
   isAr: boolean
   resultCount: number
-  cities: { ar: string; en: string }[]
 }
 
 const TYPE_OPTIONS: { value: LocationTypeFilter; arLabel: string; enLabel: string }[] = [
@@ -31,7 +31,6 @@ export function LocationFilters({
   hasActiveFilters,
   isAr,
   resultCount,
-  cities,
 }: LocationFiltersProps) {
   const searchRef = useRef<HTMLInputElement>(null)
 
@@ -121,7 +120,7 @@ export function LocationFilters({
           <option value="">
             {isAr ? "جميع المدن" : "All Cities"}
           </option>
-          {cities.map((city) => (
+          {availableCities.map((city) => (
             <option key={city.en} value={city.en}>
               {isAr ? city.ar : city.en}
             </option>

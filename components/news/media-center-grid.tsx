@@ -112,10 +112,7 @@ export function MediaCenterGrid({ items }: { items: NewsArticle[] }) {
         <>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visibleArticles.map((article) => {
-              const categoryObj = article.category ? MEDIA_CATEGORIES[article.category] : null;
-              const categoryText = categoryObj
-                ? (isArabic ? categoryObj.ar : categoryObj.en)
-                : (isArabic ? article.categoryAr : article.categoryEn) || "";
+              const categoryLabel = MEDIA_CATEGORIES[article.category];
               return (
                 <motion.div key={article.id} {...fadeInUp}>
                   <Card className="group h-full flex flex-col overflow-hidden border bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg rounded-2xl">
@@ -140,11 +137,9 @@ export function MediaCenterGrid({ items }: { items: NewsArticle[] }) {
 
                       <CardContent className="flex h-full flex-col p-6">
                         <div className="mb-4 flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                          {categoryText && (
-                            <span className="inline-flex rounded-md bg-[#262b80]/10 px-2.5 py-1 font-medium text-[#262b80]">
-                              {categoryText}
-                            </span>
-                          )}
+                          <span className="inline-flex rounded-md bg-[#262b80]/10 px-2.5 py-1 font-medium text-[#262b80]">
+                            {isArabic ? categoryLabel.ar : categoryLabel.en}
+                          </span>
                           <div className="flex items-center gap-1.5">
                             <Calendar className="h-3.5 w-3.5" />
                             <span>{formatDate(article.date, locale)}</span>

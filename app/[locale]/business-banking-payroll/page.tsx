@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: LocalizedBusinessPayrollPageP
     };
   }
 
-  const service = await getBankingServiceBySlug("business-banking-payroll", locale);
+  const service = await getBankingServiceBySlug("business", "business-banking-payroll");
 
   if (!service) {
     return {
@@ -55,7 +55,7 @@ export default async function LocalizedBusinessPayrollPage({ params }: Localized
     notFound();
   }
 
-  const service = await getBankingServiceBySlug("business-banking-payroll", locale);
+  const service = await getBankingServiceBySlug("business", "business-banking-payroll");
 
   if (!service) {
     notFound();

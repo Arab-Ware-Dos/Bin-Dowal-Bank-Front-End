@@ -266,7 +266,7 @@ export function CalculatorSection() {
           >
             <div className="group relative h-[360px] overflow-hidden rounded-[30px] border border-white/70 bg-white shadow-[0_24px_80px_rgba(15,23,42,0.08)] md:h-[460px] lg:h-full lg:min-h-[680px]">
               <Image
-                src="/images/Financing Services Section Picture.png"
+                src="/images/Financing Services Section Picture.jpg"
                 alt={isArabic ? "خدمات التمويل" : "Financing services"}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -349,11 +349,10 @@ export function CalculatorSection() {
                         >
                           <div className="flex items-center gap-2.5">
                             <div
-                              className={`flex h-8 w-8 items-center justify-center rounded-full transition-all ${
-                                isActive
+                              className={`flex h-8 w-8 items-center justify-center rounded-full transition-all ${isActive
                                   ? "bg-[#1d4ed8]/10 text-[#1d4ed8]"
                                   : "bg-slate-200/70 text-slate-600"
-                              }`}
+                                }`}
                             >
                               <Icon className="h-4 w-4" />
                             </div>
