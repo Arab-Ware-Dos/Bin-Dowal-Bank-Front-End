@@ -540,8 +540,8 @@ export const heroSlides = [
       "تابع حساباتك ونفّذ عملياتك المصرفية بسهولة وأمان عبر القنوات الرقمية لبنك بن دول.",
     subtitleEn:
       "Manage your accounts and banking transactions easily and securely through Bin Dowal Bank digital channels.",
-    primaryHref: "/e-services/mobile-banking",
-    secondaryHref: "/e-services/e-wallet",
+    primaryHref: "/services/mobile-banking",
+    secondaryHref: "/services/e-wallet",
     primaryCtaAr: "تطبيق بنك بن دول",
     primaryCtaEn: "Bin Dowal Bank App",
     secondaryCtaAr: "محفظة بن دول باي",
