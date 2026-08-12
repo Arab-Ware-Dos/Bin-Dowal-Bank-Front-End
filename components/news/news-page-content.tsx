@@ -73,7 +73,8 @@ export function NewsPageContent({ locale: propLocale }: NewsPageContentProps = {
   const filteredNews = useMemo(() => {
     if (activeCategory === "all") return sortedNews
     return sortedNews.filter((article) => {
-      const catKey = (article.categoryAr || article.categoryEn || "").toLowerCase()
+      const catObj = article.category ? MEDIA_CATEGORIES[article.category] : undefined
+      const catKey = (catObj ? `${catObj.ar} ${catObj.en}` : "").toLowerCase()
       return catKey.includes(activeCategory.toLowerCase()) || article.category === activeCategory
     })
   }, [sortedNews, activeCategory])
@@ -157,9 +158,10 @@ export function NewsPageContent({ locale: propLocale }: NewsPageContentProps = {
             <>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {visibleArticles.map((article) => {
+                  const catObj = article.category ? MEDIA_CATEGORIES[article.category] : undefined
                   const categoryTitle = isArabic
-                    ? article.categoryAr || "أخبار البنك"
-                    : article.categoryEn || "Bank News"
+                    ? (catObj?.ar || "أخبار البنك")
+                    : (catObj?.en || "Bank News")
 
                   return (
                     <motion.div key={article.id} {...fadeInUp}>

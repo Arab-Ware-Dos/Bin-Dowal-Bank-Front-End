@@ -59,7 +59,7 @@ export function NewsSection() {
   )
 
   const displayedNews = useMemo(() => {
-    return [...allNews]
+    return [...(allNews || [])]
       .sort((a, b) => parseDate(b.date) - parseDate(a.date))
       .slice(0, 3)
   }, [allNews])
