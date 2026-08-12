@@ -2,18 +2,20 @@
 
 import { useState, useMemo } from "react"
 import { motion } from "framer-motion"
-import { FileText, TrendingDown } from "lucide-react"
+import { FileText, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
 import { FeaturedAnnualReport } from "@/components/knowledge-center/annual-reports/FeaturedAnnualReport"
 import { AnnualReportsFilters, type SortOrder } from "@/components/knowledge-center/annual-reports/AnnualReportsFilters"
 import { AnnualReportCard } from "@/components/knowledge-center/annual-reports/AnnualReportCard"
 import { PdfPreviewModal } from "@/components/knowledge-center/annual-reports/PdfPreviewModal"
-import { annualReports, type AnnualReport } from "@/data/annual-reports"
+import { type AnnualReport } from "@/data/annual-reports"
+import { useAnnualReports } from "@/hooks/use-annual-reports"
 
 export function AnnualReportsPageContent() {
   const { locale } = useI18n()
   const isAr = locale === "ar"
+  const { reports: annualReports, loading } = useAnnualReports()
 
   // State
   const [selectedYear, setSelectedYear] = useState<number | null>(null)
@@ -25,15 +27,15 @@ export function AnnualReportsPageContent() {
   const years = useMemo(
     () =>
       [...new Set(annualReports.map((r) => r.year))].sort((a, b) => b - a),
-    []
+    [annualReports]
   )
 
   const featuredReport = useMemo(
     () => annualReports.find((r) => r.featured) ?? annualReports[0],
-    []
+    [annualReports]
   )
 
-  const nonFeaturedReports = useMemo(() => annualReports.filter((r) => !r.featured), [])
+  const nonFeaturedReports = useMemo(() => annualReports.filter((r) => !r.featured), [annualReports])
 
   const filteredAndSorted = useMemo(() => {
     let result = nonFeaturedReports
@@ -93,26 +95,34 @@ export function AnnualReportsPageContent() {
           ]}
         />
 
-        {/* Featured Report */}
-        {featuredReport && (
-          <FeaturedAnnualReport
-            report={featuredReport}
-            onPreview={setPreviewReport}
-          />
-        )}
+        {loading ? (
+          <div className="flex items-center justify-center py-24">
+            <Loader2 className="h-10 w-10 animate-spin text-[#262b80]" />
+          </div>
+        ) : (
+          <>
+            {/* Featured Report */}
+            {featuredReport && (
+              <FeaturedAnnualReport
+                report={featuredReport}
+                onPreview={setPreviewReport}
+              />
+            )}
 
-        {/* Filters */}
-        <AnnualReportsFilters
-          years={years}
-          selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
-          sortOrder={sortOrder}
-          onSortChange={setSortOrder}
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          totalCount={nonFeaturedReports.length}
-          filteredCount={filteredAndSorted.length}
-        />
+            {/* Filters */}
+            <AnnualReportsFilters
+              years={years}
+              selectedYear={selectedYear}
+              onYearChange={setSelectedYear}
+              sortOrder={sortOrder}
+              onSortChange={setSortOrder}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              totalCount={nonFeaturedReports.length}
+              filteredCount={filteredAndSorted.length}
+            />
+          </>
+        )}
 
         {/* Archive Grid */}
         <section className="relative bg-[linear-gradient(180deg,#f8f9fc_0%,#ffffff_100%)] py-16 md:py-20">
@@ -191,7 +201,7 @@ export function AnnualReportsPageContent() {
                   labelEn: "Annual Reports",
                 },
                 {
-                  value: `${Math.min(...years)}`,
+                  value: years.length > 0 ? `${Math.min(...years)}` : "2021",
                   labelAr: "منذ عام",
                   labelEn: "Since",
                 },

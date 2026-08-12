@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { isLocale } from "@/i18n/config"
 import { JobDetailsPageContent } from "@/components/careers/job-details-page-content"
-import { careersData } from "@/data/careers"
 import { buildLocalizedAlternates } from "@/lib/seo/alternates"
+import { fetchJobBySlug, fetchAllJobSlugs } from "@/services/careers-service"
 
 type LocalizedJobDetailsPageProps = {
   params: Promise<{
@@ -13,11 +13,12 @@ type LocalizedJobDetailsPageProps = {
 
 export async function generateStaticParams() {
   const locales = ["ar", "en"]
+  const slugs = await fetchAllJobSlugs()
   const params: { locale: string; id: string }[] = []
 
   locales.forEach((locale) => {
-    careersData.forEach((job) => {
-      params.push({ locale, id: job.id })
+    slugs.forEach((slug) => {
+      params.push({ locale, id: slug })
     })
   })
 
@@ -33,10 +34,12 @@ export async function generateMetadata({
     return {}
   }
 
-  const job = careersData.find((j) => j.id === id)
+  const job = await fetchJobBySlug(id)
 
   if (!job) {
-    return {}
+    return {
+      title: locale === "ar" ? "الوظيفة غير موجودة" : "Job Not Found",
+    }
   }
 
   return {
@@ -61,7 +64,7 @@ export default async function LocalizedJobDetailsPage({
     notFound()
   }
 
-  const job = careersData.find((j) => j.id === id)
+  const job = await fetchJobBySlug(id)
 
   if (!job) {
     notFound()

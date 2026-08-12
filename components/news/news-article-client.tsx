@@ -264,11 +264,15 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
   const publishedDate = formatArticleDate(article?.publishedAt || article?.date, currentLocale)
   const articleDateTime = article?.publishedAt || article?.date || undefined
 
-  const content = useMemo(() => {
+  const rawContent = useMemo(() => {
     const preferred = currentLocale === "ar" ? article?.contentAr : article?.contentEn
     const secondary = currentLocale === "ar" ? article?.contentEn : article?.contentAr
-    return normalizeContent(preferred ?? secondary ?? null)
+    return preferred ?? secondary ?? null
   }, [article?.contentAr, article?.contentEn, currentLocale])
+
+  const content = useMemo(() => {
+    return normalizeContent(rawContent)
+  }, [rawContent])
 
   const shareLinks = useMemo(() => {
     if (!shareUrl) {
@@ -357,6 +361,33 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
   ]
 
   const renderContent = () => {
+    if (!rawContent) {
+      return (
+        <p className="text-base leading-8 text-muted-foreground md:text-lg">
+          {isArabic
+            ? "لا يوجد محتوى متاح لهذا الخبر حاليًا."
+            : "No content is currently available for this article."}
+        </p>
+      )
+    }
+
+    if (typeof rawContent === "string" && (rawContent.includes("<p>") || rawContent.includes("<h") || rawContent.includes("<ul>") || rawContent.includes("<ol>") || rawContent.includes("<div>"))) {
+      return (
+        <div
+          className="news-article-html-content text-base leading-8 text-muted-foreground md:text-[1.08rem]
+                     [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h2]:mt-8 [&_h2]:mb-4
+                     [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-foreground [&_h3]:mt-6 [&_h3]:mb-3
+                     [&_h4]:text-lg [&_h4]:font-bold [&_h4]:text-foreground [&_h4]:mt-6 [&_h4]:mb-3
+                     [&_p]:mb-5 [&_p]:leading-8
+                     [&_ul]:my-5 [&_ul]:list-disc [&_ul]:ps-6 [&_ul]:space-y-2.5
+                     [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2.5
+                     [&_li]:leading-7
+                     [&_blockquote]:border-s-4 [&_blockquote]:border-[#262b80] [&_blockquote]:ps-4 [&_blockquote]:italic [&_blockquote]:my-6"
+          dangerouslySetInnerHTML={{ __html: rawContent }}
+        />
+      )
+    }
+
     if (!content.length) {
       return (
         <p className="text-base leading-8 text-muted-foreground md:text-lg">
