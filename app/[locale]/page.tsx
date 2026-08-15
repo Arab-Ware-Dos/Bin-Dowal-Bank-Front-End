@@ -1,6 +1,6 @@
 import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { HomePageContent } from "@/components/home/home-page-content"
-import { isLocale } from "@/i18n/config"
+import { isLocale, locales } from "@/i18n/config"
 import { notFound } from "next/navigation"
 
 type LocalizedHomePageProps = {
@@ -8,6 +8,10 @@ type LocalizedHomePageProps = {
     locale: string;
   }>;
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: LocalizedHomePageProps) {
   const { locale } = await params;

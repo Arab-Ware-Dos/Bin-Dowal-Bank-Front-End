@@ -59,10 +59,10 @@ export function NewsSection() {
   )
 
   const displayedNews = useMemo(() => {
-    return [...(newsItems as NewsArticle[])]
+    return [...allNews]
       .sort((a, b) => parseDate(b.date) - parseDate(a.date))
       .slice(0, 3)
-  }, [])
+  }, [allNews])
 
   const dateFormatter = useMemo(() => {
     return new Intl.DateTimeFormat(locale === "ar" ? "ar-YE" : "en-US", {

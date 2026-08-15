@@ -32,7 +32,8 @@ import {
   Plane,
   Calculator,
   Laptop,
-  GraduationCap
+  GraduationCap,
+  Search
 } from "lucide-react";
 
 
@@ -324,5 +325,10 @@ export const navigationData: NavItem[] = [
       },
       // { key: "callCenter", href: "/contact#call-center", label: { ar: "مركز الاتصال", en: "Call Center" }, icon: UserCog },
     ]
+  },
+  {
+    key: "unclaimedRemittances",
+    href: "/unclaimed-remittances",
+    label: { ar: "الحوالات غير المستلمة", en: "Unclaimed Remittances" }
   }
 ];

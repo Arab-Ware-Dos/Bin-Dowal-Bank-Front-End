@@ -8148,7 +8148,7 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/3.webp",
     breadcrumbs: [
       { labelKey: "nav.specializedServices", href: "/specialized-services" },
-      { labelKey: "nav.financingTakamul", lable: { ar: "تمويل تكامل", en: "Takamul" } }
+      { labelKey: "nav.financingTakamul", label: { ar: "تمويل تكامل", en: "Takamul" } }
     ],
     tagline: {
       ar: "تمويل تكامل",
@@ -8277,7 +8277,7 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/2.webp",
     breadcrumbs: [
       { labelKey: "nav.specializedServices", href: "/specialized-services" },
-      { labelKey: "nav.financingThimar", lable: { ar: "تمويل ثمار", en: "Thimar" } }
+      { labelKey: "nav.financingThimar", label: { ar: "تمويل ثمار", en: "Thimar" } }
     ],
     tagline: {
       ar: "دعم المنشآت والأعمال",
@@ -8454,7 +8454,7 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/6.webp",
     breadcrumbs: [
       { labelKey: "nav.specializedServices", href: "/specialized-services" },
-      { labelKey: "nav.financingTaameer", lable: { ar: "تمويل تعمير", en: "Ta'meer" } }
+      { labelKey: "nav.financingTaameer", label: { ar: "تمويل تعمير", en: "Ta'meer" } }
     ],
     tagline: {
       ar: "التمويل العقاري والإنشائي",
@@ -8630,7 +8630,7 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/4.webp",
     breadcrumbs: [
       { labelKey: "nav.specializedServices", href: "/specialized-services" },
-      { labelKey: "nav.financingNoor", lable: { ar: "تمويل نور", en: "Noor" } }
+      { labelKey: "nav.financingNoor", label: { ar: "تمويل نور", en: "Noor" } }
     ],
     tagline: {
       ar: "تمكين المرأة اقتصادياً",
@@ -8806,7 +8806,7 @@ export const bankingServicesData: ServicePageData[] = [
     heroImage: "/images/financing-services/5.webp",
     breadcrumbs: [
       { labelKey: "nav.specializedServices", href: "/specialized-services" },
-      { labelKey: "nav.financingZad", lable: { ar: "تمويل زاد", en: "Zad" } }
+      { labelKey: "nav.financingZad", label: { ar: "تمويل زاد", en: "Zad" } }
     ],
     tagline: {
       ar: "التمويل التعليمي الميسر",
