@@ -1,6 +1,6 @@
 import { buildLocalizedAlternates } from "@/lib/seo/alternates"
 import { ContactPageContent } from "@/components/contact/contact-page-content"
-import { isLocale } from "@/i18n/config"
+import { isLocale, locales } from "@/i18n/config"
 import { notFound } from "next/navigation"
 import { Metadata } from "next"
 
@@ -9,6 +9,10 @@ type LocalizedContactPageProps = {
     locale: string;
   }>;
 };
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params

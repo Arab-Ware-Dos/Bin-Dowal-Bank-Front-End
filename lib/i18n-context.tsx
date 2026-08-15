@@ -39,6 +39,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.contact": "اتصل بنا",
     "nav.branches": "الفروع و الصرافات",
     "nav.login": "تسجيل الدخول",
+    "nav.unclaimedRemittances": "الحوالات غير المستلمة",
 
     // Personal Banking Sub-items
     "nav.accounts": "الحسابات",
@@ -354,6 +355,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.contact": "Contact",
     "nav.branches": "Branches & ATMs",
     "nav.login": "Login",
+    "nav.unclaimedRemittances": "Unclaimed Remittances",
 
     // Personal Banking Sub-items
     "nav.accounts": "Accounts",

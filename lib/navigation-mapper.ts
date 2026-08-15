@@ -11,6 +11,9 @@ const KEY_ALIASES: Record<string, string> = {
   knowledge_center: 'knowledgeCenter',
   news_center: 'newsCenter',
   customer_service: 'customerService',
+  unclaimed_remittances: 'unclaimedRemittances',
+  unclaimed_remittance: 'unclaimedRemittances',
+  'unclaimed-remittances': 'unclaimedRemittances',
 };
 
 export function mapApiToNavItems(sections: NavigationSection[], locale: string = 'ar'): NavItem[] {
@@ -27,9 +30,21 @@ export function mapApiToNavItems(sections: NavigationSection[], locale: string =
     const titleAr = section.title_ar || (locale === 'ar' ? section.title : staticMatch?.label.ar) || section.title;
     const titleEn = section.title_en || (locale === 'en' ? section.title : staticMatch?.label.en) || section.title;
 
+    // تحديد رابط التبويب إذا كان رابطاً مباشراً أو مطابقاً للبيانات الثابتة
+    let computedHref = staticMatch?.href || section.url;
+    if (!computedHref) {
+      if (section.key) {
+        computedHref = section.key.startsWith('/')
+          ? section.key
+          : `/${section.key.replace(/_/g, '-')}`;
+      } else {
+        computedHref = '#';
+      }
+    }
+
     const navItem: NavItem = {
       key: section.key || `nav_${section.id}`,
-      href: staticMatch?.href || '#',
+      href: computedHref,
       label: {
         ar: titleAr,
         en: titleEn,

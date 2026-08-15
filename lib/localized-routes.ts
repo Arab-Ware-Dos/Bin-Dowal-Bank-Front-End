@@ -43,6 +43,7 @@ export const LOCALIZED_STATIC_ROUTES = [
   "/news/saba-african-bank-on-an-official-visit-to-bank-bin-dowal-for-islamic-microfinance",
   "/news/conclusion-of-the-financial-and-credit-analysis-course",
   "/news/conclusion-of-the-two-courses-on-financial-and-credit-analysis",
+  "/unclaimed-remittances",
   ...ACCOUNT_ROUTE_PATHS,
   ...E_SERVICE_ROUTE_PATHS,
   ...BUSINESS_ROUTE_PATHS,

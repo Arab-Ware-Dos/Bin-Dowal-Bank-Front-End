@@ -21,8 +21,9 @@ export interface NavigationSection {
   title_ar?: string | null;
   title_en?: string | null;
   lang: string;
+  url?: string | null;
   order_index: number;
-  items: NavigationItem[];
+  items?: NavigationItem[] | null;
 }
 
 export interface NavigationApiResponse {
