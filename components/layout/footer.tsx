@@ -241,6 +241,29 @@ export function Footer() {
             </ul>
           </motion.div>
 
+          {/* Group Logo */}
+          <motion.div variants={itemVariants} className="order-last lg:order-none lg:col-span-2 flex items-center justify-center -mt-8 lg:-mt-13">
+            <motion.div
+              whileHover={shouldReduceMotion ? undefined : { y: -2 }}
+              transition={{ duration: 0.25 }}
+            >
+              <a
+            href="https://bindowalgroup.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
+          >
+              <Image
+                src="/images/bindowal-group.png"
+                alt="Bin Dowal Group"
+                width={200}
+                height={100}
+                className="h-24 sm:h-20 md:h-32 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+              />
+              </a>
+            </motion.div>
+          </motion.div>
+
           {/* Brand / Info */}
           <motion.div variants={itemVariants} className="lg:col-span-5 lg:col-start-8 w-fit text-end ">
             <motion.div
@@ -260,7 +283,7 @@ export function Footer() {
 
             <motion.p
               variants={itemVariants}
-              className="mt-5 max-w-xl text-sm leading-7 text-white/72 md:text-[15px] text-balance"
+              className="mt-5 max-w-xll text-sm leading-7 text-white/72 md:text-[15px] text-balance"
             >
               {isArabic
                 ? "بنك بن دول للتمويل الأصغر الإسلامي، تجربة مصرفية أكثر وضوحًا وموثوقية، مصممة لخدمة الأفراد وقطاع الأعمال ضمن إطار احترافي متوافق مع أحكام الشريعة الإسلامية."
