@@ -248,14 +248,14 @@ export function Footer() {
               transition={{ duration: 0.25 }}
             >
               <a
-            href="https://bindowalgroup.com/"
+            // href="https://bindowalgroup.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
           >
               <Image
-                src="/images/bindowal-group.png"
-                alt="Bin Dowal Group"
+                  src="/images/dowal.png"
+                  alt="Dowal"
                 width={200}
                 height={100}
                 className="h-24 sm:h-20 md:h-32 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
