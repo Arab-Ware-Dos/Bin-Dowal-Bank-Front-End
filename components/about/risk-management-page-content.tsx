@@ -1,12 +1,27 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import { getSection, type BankSectionRaw } from "@/services/sections-service"
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
 import { CheckCircle2 } from "lucide-react"
 
 export function RiskManagementPageContent() {
+  const [riskHero, setRiskHero] = useState<BankSectionRaw | null>(null)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const s = await getSection('risk_management_hero', 'ar')
+        if (s) setRiskHero(s)
+      } catch (e) {
+        console.warn('Failed to load risk management section', e)
+      }
+    }
+    load()
+  }, [])
   const { locale, direction } = useI18n()
   const isAr = locale === "ar"
 

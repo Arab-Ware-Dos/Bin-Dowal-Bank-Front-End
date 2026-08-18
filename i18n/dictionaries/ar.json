@@ -133,8 +133,8 @@
   "page.personalBanking.subtitle": "حلول مصرفية شاملة تلبي جميع احتياجاتك",
   "page.businessBanking.title": "الخدمات المصرفية للأعمال",
   "page.businessBanking.subtitle": "شريكك المصرفي لنجاح أعمالك",
-  "page.cards.title": "البطاقات",
-  "page.cards.subtitle": "اختر البطاقة المناسبة لأسلوب حياتك",
+  "page.cards.title": "البطاقات المصرفية",
+  "page.cards.subtitle": "حلول دفع عصرية وآمنة تلبي متطلباتك اليومية والتجارية",
   "page.financing.title": "التمويل",
   "page.financing.subtitle": "حقق أحلامك مع حلول التمويل المرنة",
   "page.digitalChannels.title": "القنوات الرقمية",
@@ -245,5 +245,7 @@
   "discoverProducts.prod5.title": "الحساب الجاري للشركات",
   "discoverProducts.prod6.title": "الودائع الاستثمارية للشركات",
   "discoverProducts.prod7.title": "حوالة السويفت",
-  "discoverProducts.prod8.title": "خطابات الضمان"
+  "discoverProducts.prod8.title": "خطابات الضمان",
+  "cardsSection.title": "اختر البطاقة التي تناسبك",
+  "cardsSection.subtitle": "مجموعة متكاملة من البطاقات المصرفية المصممة لتلبية كل احتياجاتك اليومية والمميزة بأعلى معايير الأمان والراحة."
 }

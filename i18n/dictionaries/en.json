@@ -133,8 +133,8 @@
   "page.personalBanking.subtitle": "Comprehensive banking solutions for all your needs",
   "page.businessBanking.title": "Business Banking",
   "page.businessBanking.subtitle": "Your banking partner for business success",
-  "page.cards.title": "Cards",
-  "page.cards.subtitle": "Choose the card that fits your lifestyle",
+  "page.cards.title": "Banking Cards",
+  "page.cards.subtitle": "Modern and secure payment solutions that meet your daily and business needs",
   "page.financing.title": "Financing",
   "page.financing.subtitle": "Achieve your dreams with flexible financing",
   "page.digitalChannels.title": "Digital Channels",
@@ -245,5 +245,7 @@
   "discoverProducts.prod5.title": "Corporate Current Account",
   "discoverProducts.prod6.title": "Corporate Investment Deposits",
   "discoverProducts.prod7.title": "SWIFT Transfer",
-  "discoverProducts.prod8.title": "Letters of Guarantee"
+  "discoverProducts.prod8.title": "Letters of Guarantee",
+  "cardsSection.title": "Choose the card that suits you",
+  "cardsSection.subtitle": "An integrated set of bank cards designed to meet all your daily needs, featuring the highest standards of security and convenience."
 }

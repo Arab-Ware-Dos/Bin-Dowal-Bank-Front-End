@@ -40,6 +40,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.branches": "الفروع و الصرافات",
     "nav.login": "تسجيل الدخول",
     "nav.unclaimedRemittances": "الحوالات غير المستلمة",
+    "nav.boardOfDirectors" : "مجلس الإدارة",
 
     // Personal Banking Sub-items
     "nav.accounts": "الحسابات",
@@ -199,8 +200,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "page.personalBanking.subtitle": "حلول مصرفية شاملة تلبي جميع احتياجاتك",
     "page.businessBanking.title": "الخدمات المصرفية للأعمال",
     "page.businessBanking.subtitle": "شريكك المصرفي لنجاح أعمالك",
-    "page.cards.title": "البطاقات",
-    "page.cards.subtitle": "اختر البطاقة المناسبة لأسلوب حياتك",
+    "page.cards.title": "البطاقات المصرفية",
+    "page.cards.subtitle": "حلول دفع عصرية وآمنة تلبي متطلباتك اليومية والتجارية",
     "page.financing.title": "التمويل",
     "page.financing.subtitle": "حقق أحلامك مع حلول التمويل المرنة",
     "page.digitalChannels.title": "القنوات الرقمية",
@@ -356,6 +357,7 @@ const translations: Record<Locale, Record<string, string>> = {
     "nav.branches": "Branches & ATMs",
     "nav.login": "Login",
     "nav.unclaimedRemittances": "Unclaimed Remittances",
+    "nav.boardOfDirectors" : "board of directors",
 
     // Personal Banking Sub-items
     "nav.accounts": "Accounts",
@@ -515,8 +517,8 @@ const translations: Record<Locale, Record<string, string>> = {
     "page.personalBanking.subtitle": "Comprehensive banking solutions for all your needs",
     "page.businessBanking.title": "Business Banking",
     "page.businessBanking.subtitle": "Your banking partner for business success",
-    "page.cards.title": "Cards",
-    "page.cards.subtitle": "Choose the card that fits your lifestyle",
+    "page.cards.title": "Bank cards",
+    "page.cards.subtitle": "Modern and secure payment solutions that meet your daily and business needs.",
     "page.financing.title": "Financing",
     "page.financing.subtitle": "Achieve your dreams with flexible financing",
     "page.digitalChannels.title": "Digital Channels",

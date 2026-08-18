@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { getPageSections, type BankSectionRaw } from "@/services/sections-service"
 import Link from "next/link"
 import { motion, useInView, useReducedMotion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
@@ -435,6 +436,23 @@ function GoalCard({
 }
 
 export function AboutPageContent() {
+  const [sectionsData, setSectionsData] = useState<Record<string, BankSectionRaw>>({})
+
+  useEffect(() => {
+    async function loadSections() {
+      try {
+        const list = await getPageSections('about', 'ar')
+        const map: Record<string, BankSectionRaw> = {}
+        list.forEach((s) => {
+          map[s.section_code] = s
+        })
+        setSectionsData(map)
+      } catch (e) {
+        console.warn('Failed to load about sections', e)
+      }
+    }
+    loadSections()
+  }, [])
   const { locale } = useI18n()
   const isAr = locale === "ar"
   const shouldReduceMotion = useReducedMotion()
@@ -551,8 +569,8 @@ export function AboutPageContent() {
   return (
     <div className="min-h-screen bg-background font-sans">
       <PageHero
-        title={text.heroTitle}
-        subtitle={text.heroSubtitle}
+        title={sectionsData["about_hero"]?.title_ar || text.heroTitle}
+        subtitle={sectionsData["about_hero"]?.description_ar || text.heroSubtitle}
         breadcrumbs={[
           { labelKey: text.home, href: "/" },
           { labelKey: text.heroTitle },
@@ -647,7 +665,7 @@ export function AboutPageContent() {
               </div>
 
               <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
-                <p>{text.establishmentParagraph1}</p>
+                <p>{(sectionsData["about_foundation"]?.description_ar) || text.establishmentParagraph1}</p>
                 <p>{text.establishmentParagraph2}</p>
                 <p>{text.establishmentParagraph3}</p>
                 <p>{text.establishmentParagraph4}</p>
@@ -825,7 +843,7 @@ export function AboutPageContent() {
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {text.visionDesc}
+                    {(sectionsData["about_vision"]?.items?.[0]?.description_ar) || text.visionDesc}
                   </p>
                 </div>
               </div>
@@ -853,7 +871,7 @@ export function AboutPageContent() {
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {text.missionDesc}
+                    {(sectionsData["about_vision"]?.items?.[1]?.description_ar) || text.missionDesc}
                   </p>
                 </div>
               </div>

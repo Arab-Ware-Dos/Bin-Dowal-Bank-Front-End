@@ -1,13 +1,28 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
+
+import { getSection, type BankSectionRaw } from "@/services/sections-service"
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
 import { CheckCircle2, Copy, Check } from "lucide-react"
 
 export function ComplianceStatementPageContent() {
+  const [compHero, setCompHero] = useState<BankSectionRaw | null>(null)
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const s = await getSection('compliance_hero', 'ar')
+        if (s) setCompHero(s)
+      } catch (e) {
+        console.warn('Failed to load compliance hero', e)
+      }
+    }
+    load()
+  }, [])
   const { locale, direction } = useI18n()
   const isAr = locale === "ar"
   const [copied, setCopied] = useState(false)

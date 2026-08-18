@@ -71,7 +71,7 @@ export function PageHero({
             {children}
           </motion.div>
 
-          <div className="flex justify-center rtl:lg:justify-end ltr:lg:justify-start">
+          <div className="flex justify-center lg:justify-end">
             <img
               src="/logo-2.png"
               alt={title}

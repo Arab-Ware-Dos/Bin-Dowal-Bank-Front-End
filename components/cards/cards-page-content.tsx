@@ -1,9 +1,9 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { useI18n } from "@/lib/i18n-context"
+import { useI18n } from "@/lib/i18n-context";
 import { getLocalizedHref } from "@/lib/localized-routes";
 import { PageHero } from "@/components/ui/page-hero";
 import { FAQAccordion } from "@/components/ui/faq-accordion";
@@ -17,6 +17,8 @@ import {
   PaginationLink,
 } from "@/components/ui/pagination";
 import { cards, faqs, type Card as CardType } from "@/data/mock-data";
+import { getBankCards } from "@/services/cards-service";
+import { getBankFaqs } from "@/services/faqs-service";
 import {
   Banknote,
   Check,
@@ -52,6 +54,18 @@ type CardTypeMeta = {
   shortEn: string;
   gradient: string;
 };
+
+function resolveCardImage(url?: string | null): string {
+  if (!url) return "/images/cards/debit-card.png";
+  if (url.startsWith("http://") || url.startsWith("https://")) {
+    return url;
+  }
+  if (url.startsWith("/")) {
+    const apiBase = process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, "") || "http://127.0.0.1:8000";
+    return apiBase + url;
+  }
+  return url;
+}
 
 const bankCards = cards as BankCard[];
 
@@ -91,13 +105,6 @@ const cardTypeMeta: Record<string, CardTypeMeta> = {
 };
 
 const filterOrder = ["debit", "credit", "prepaid", "virtual"];
-
-const CARD_CATEGORIES = ["debit", "credit", "prepaid"] as const;
-type CardCategory = typeof CARD_CATEGORIES[number];
-
-function isCardCategory(value: string): value is CardCategory {
-  return (CARD_CATEGORIES as readonly string[]).includes(value);
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -150,8 +157,8 @@ function getCardImageSrc(card: BankCard, locale: string) {
 
 function getCardImageAlt(card: BankCard, locale: string) {
   return locale === "ar"
-    ? card.imageAltAr ?? `صورة ${card.nameAr}`
-    : card.imageAltEn ?? `${card.nameEn} card image`;
+    ? card.imageAltAr ?? ("صورة " + card.nameAr)
+    : card.imageAltEn ?? (card.nameEn + " card image");
 }
 
 function getCardBenefits(card: BankCard, locale: string) {
@@ -193,7 +200,7 @@ function formatAnnualFee(card: BankCard, locale: string) {
   const currency =
     locale === "ar" ? card.currencyAr ?? "ر.ي" : card.currencyEn ?? "YER";
 
-  return `${amount} ${currency}`;
+  return amount + " " + currency;
 }
 
 function CardImagePreview({
@@ -211,7 +218,8 @@ function CardImagePreview({
         <div className="relative mx-auto w-full">
           <div className="relative aspect-[1.586/1] w-full overflow-hidden">
             <Image
-              src={imageSrc}
+              src={resolveCardImage(imageSrc)}
+              unoptimized
               alt={getCardImageAlt(card, locale)}
               fill
               sizes="(min-width: 1280px) 420px, (min-width: 768px) 45vw, 92vw"
@@ -242,20 +250,73 @@ function CardImagePreview({
 
 export function CardsPageContent() {
   const router = useRouter();
-  const { t, locale, mode } = useI18n()
+  const { t, locale, mode } = useI18n();
   const resolveHref = (target: string) => mode === "url" ? getLocalizedHref(target, locale) : target;
   const [filter, setFilter] = useState("all");
   const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [cardsState, setCardsState] = useState<BankCard[]>(bankCards);
+  const [dynamicFaqs, setDynamicFaqs] = useState<{ id: string; category: string; questionAr: string; questionEn: string; answerAr: string; answerEn: string }[]>([]);
+  
   const ITEMS_PER_PAGE = 3;
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const [apiCards, apiFaqs] = await Promise.all([
+          getBankCards(locale),
+          getBankFaqs('cards', locale),
+        ]);
+
+        if (apiCards && apiCards.length > 0) {
+          const mapped: BankCard[] = apiCards.map((c) => ({
+            id: String(c.slug || c.id),
+            nameAr: c.name_ar,
+            nameEn: c.name_en || c.name_ar,
+            type: c.type,
+            annualFee: Number(c.annual_fee) || 0,
+            descAr: c.desc_ar || '',
+            descEn: c.desc_en || '',
+            benefitsAr: c.benefits_ar || [],
+            benefitsEn: c.benefits_en || [],
+            requirementsAr: c.requirements_ar || [],
+            requirementsEn: c.requirements_en || [],
+            currencyAr: c.currency_ar,
+            currencyEn: c.currency_en,
+            highlightAr: c.highlight_ar,
+            highlightEn: c.highlight_en,
+            imageSrc: resolveCardImage(c.image_url || c.image_path),
+            imageUrl: resolveCardImage(c.image_url || c.image_path) || '/images/cards/debit-card.png',
+          }));
+          setCardsState(mapped);
+        }
+
+        if (apiFaqs && apiFaqs.length > 0) {
+          setDynamicFaqs(
+            apiFaqs.map((f) => ({
+              id: String(f.id),
+              category: f.category,
+              questionAr: f.question_ar,
+              questionEn: f.question_en,
+              answerAr: f.answer_ar,
+              answerEn: f.answer_en,
+            }))
+          );
+        }
+      } catch (err) {
+        console.warn('[CardsPageContent] Error fetching remote data', err);
+      }
+    }
+    loadData();
+  }, [locale]);
 
   const filterItems = useMemo(() => {
     const existingTypes = Array.from(
-      new Set(bankCards.map((card) => card.type)),
+      new Set(cardsState.map((card) => card.type)),
     );
 
     const orderedTypes = filterOrder.filter((type) =>
-      isCardCategory(type) ? existingTypes.includes(type) : false,
+      (existingTypes as string[]).includes(type),
     );
 
     const extraTypes = existingTypes.filter(
@@ -267,13 +328,13 @@ export function CardsPageContent() {
     );
 
     return [{ id: "all", labelAr: "الكل", labelEn: "All" }, ...typeItems];
-  }, []);
+  }, [cardsState]);
 
   const filteredCards = useMemo(() => {
     return filter === "all"
-      ? bankCards
-      : bankCards.filter((card) => card.type === filter);
-  }, [filter]);
+      ? cardsState
+      : cardsState.filter((card) => card.type === filter);
+  }, [cardsState, filter]);
 
   const totalPages = Math.ceil(filteredCards.length / ITEMS_PER_PAGE);
 
@@ -282,10 +343,12 @@ export function CardsPageContent() {
     return filteredCards.slice(startIndex, startIndex + ITEMS_PER_PAGE);
   }, [filteredCards, currentPage]);
 
-  const cardsFaqs = useMemo(
-    () => faqs.filter((faq) => faq.category === "cards"),
-    [],
-  );
+  const cardsFaqs = useMemo(() => {
+    if (dynamicFaqs.length > 0) {
+      return dynamicFaqs;
+    }
+    return faqs.filter((faq) => faq.category === "cards");
+  }, [dynamicFaqs]);
 
   function handleFilterChange(typeId: string) {
     setFilter(typeId);
@@ -300,8 +363,8 @@ export function CardsPageContent() {
   return (
     <>
       <PageHero
-        title={t("page.cards.title")}
-        subtitle={t("page.cards.subtitle")}
+        title={locale === "ar" ? "البطاقات المصرفية" : "Banking Cards"}
+        subtitle={locale === "ar" ? "حلول دفع عصرية وآمنة تلبي متطلباتك اليومية والتجارية" : "Modern and secure payment solutions that meet your daily and business needs"}
         breadcrumbs={[{ labelKey: "nav.cards" }]}
       />
 
@@ -332,8 +395,8 @@ export function CardsPageContent() {
                     onClick={() => handleFilterChange(type.id)}
                     className={
                       isActive
-                        ? "rounded-full bg-[#324198] px-5 text-white shadow-sm shadow-[#324198]/25 hover:bg-[#263477]"
-                        : "rounded-full border-[#324198]/15 bg-white/70 px-5 text-[#324198] hover:bg-[#324198]/5 dark:bg-slate-950/40"
+                        ? "rounded-full bg-[#324198] px-5 text-white shadow-sm shadow-[#324198]/25 hover:bg-[#263477] hover:text-white"
+                        : "rounded-full border-[#324198]/15 bg-white/70 px-5 text-[#324198] hover:bg-[#324198]/10 hover:text-[#324198] dark:bg-slate-950/40 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
                     }
                   >
                     {locale === "ar" ? type.labelAr : type.labelEn}
@@ -409,8 +472,8 @@ export function CardsPageContent() {
 
                     <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
                       {locale === "ar"
-                        ? "جرّب اختيار تصنيف آخر أو أضف بطاقة جديدة من ملف البيانات ليتم عرضها تلقائيًا هنا."
-                        : "Try another filter or add a new card to the data file to display it here automatically."}
+                        ? "جرّب اختيار تصنيف آخر أو أضف بطاقة جديدة ليتم عرضها تلقائيًا هنا."
+                        : "Try another filter or add a new card to display it here automatically."}
                     </p>
                   </div>
                 </motion.div>
@@ -422,9 +485,8 @@ export function CardsPageContent() {
                   const requirements = getCardRequirements(card, locale);
                   const visibleBenefits = benefits.slice(0, 3);
                   const hiddenBenefits = benefits.slice(3);
-                  const hiddenBenefitsCount = hiddenBenefits.length;
                   const isExpanded = expandedCardId === card.id;
-                  const detailsId = `card-details-${card.id}`;
+                  const detailsId = "card-details-" + card.id;
 
                   return (
                     <motion.div
@@ -434,83 +496,58 @@ export function CardsPageContent() {
                       exit={{ opacity: 0, scale: 0.96 }}
                     >
                       <UICard className="group overflow-hidden rounded-[2rem] border-[#324198]/10 bg-white/85 shadow-sm shadow-[#324198]/5 transition-all duration-300 hover:-translate-y-1 hover:border-[#324198]/25 hover:shadow-xl hover:shadow-[#324198]/10 dark:bg-slate-950/70">
-                      
-
-                        <div className="px-6">
+                        <div className="px-6 pt-6">
                           <CardImagePreview card={card} locale={locale} />
                         </div>
 
                         <CardContent className="space-y-5 p-6">
-                          <div className="space-y-3">
-                            {/* <div className="flex items-center justify-between gap-3">
-                              <Badge className="rounded-full border-[#324198]/15 bg-[#324198]/5 text-[#324198] shadow-none hover:bg-[#324198]/10">
-                                {locale === "ar" ? meta.shortAr : meta.shortEn}
-                              </Badge>
+                          <div className="flex items-center justify-between gap-3">
+                            <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                              {formatAnnualFee(card, locale)}
+                            </span>
+                            <Badge
+                              variant="secondary"
+                              className="rounded-lg bg-[#324198]/10 px-2.5 py-1 text-xs font-semibold text-[#324198] dark:bg-white/10 dark:text-slate-300"
+                            >
+                              {locale === "ar" ? meta.labelAr : meta.labelEn}
+                            </Badge>
+                          </div>
 
-                              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
-                                <CreditCard className="h-4 w-4" />
-                              </span>
-                            </div> */}
-
+                          <div className="space-y-2">
                             <h3 className="text-xl font-bold tracking-tight text-slate-950 transition-colors group-hover:text-[#324198] dark:text-white">
                               {cardName}
                             </h3>
 
                             <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                              {getCardDescription(card, locale)}
+                              {getCardHighlight(card, locale) || getCardDescription(card, locale)}
                             </p>
                           </div>
 
-                          {/* <div className="flex flex-wrap gap-2">
-                            <span className="inline-flex items-center gap-2 rounded-full border border-[#324198]/10 bg-[#324198]/5 px-3 py-1.5 text-xs font-semibold text-[#324198]">
-                              <Banknote className="h-3.5 w-3.5" />
-                              {locale === "ar" ? "الرسوم:" : "Fee:"}{" "}
-                              {formatAnnualFee(card, locale)}
-                            </span>
-
-                            <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200">
-                              <ShieldCheck className="h-3.5 w-3.5 text-[#324198]" />
-                              {getCardHighlight(card, locale)}
-                            </span>
-                          </div> */}
-
-                          <div className="p-4 dark:bg-slate-950/50">
-                            <h4 className="mb-3 flex items-center gap-2 text-sm font-semibold text-[#324198]">
-                              <Sparkles className="h-4 w-4" />
-                              {locale === "ar"
-                                ? "أبرز المميزات"
-                                : "Key benefits"}
-                            </h4>
-
+                          <div className="space-y-2.5 rounded-2xl bg-slate-50/70 p-4 dark:bg-slate-900/40">
+                            <p className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                              {locale === "ar" ? "أبرز المزايا:" : "Key Benefits:"}
+                            </p>
                             {visibleBenefits.length > 0 ? (
-                              <ul className="space-y-2.5">
+                              <ul className="space-y-2">
                                 {visibleBenefits.map((benefit, index) => (
                                   <li
-                                    key={`${card.id}-visible-benefit-${index}`}
-                                    className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground"
+                                    key={card.id + "-visible-benefit-" + index}
+                                    className="flex items-start gap-2 text-sm leading-5 text-slate-700 dark:text-slate-300"
                                   >
-                                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
-                                      <Check className="h-3.5 w-3.5" />
+                                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                                      <Check className="h-3 w-3" />
                                     </span>
                                     <span>{benefit}</span>
                                   </li>
                                 ))}
                               </ul>
                             ) : (
-                              <p className="text-sm leading-6 text-muted-foreground">
+                              <p className="text-xs text-muted-foreground">
                                 {locale === "ar"
                                   ? "لم تتم إضافة مميزات لهذه البطاقة بعد."
-                                  : "No benefits have been added for this card yet."}
+                                  : "No benefits added yet."}
                               </p>
                             )}
-
-                            {/* {hiddenBenefitsCount > 0 && !isExpanded ? (
-                              <p className="mt-3 text-xs font-semibold text-[#324198]">
-                                {locale === "ar"
-                                  ? `+ ${hiddenBenefitsCount} مميزات أخرى`
-                                  : `+ ${hiddenBenefitsCount} more benefits`}
-                              </p>
-                            ) : null} */}
                           </div>
 
                           <AnimatePresence initial={false}>
@@ -525,7 +562,7 @@ export function CardsPageContent() {
                                   duration: 0.24,
                                   ease: "easeInOut",
                                 }}
-                                className="overflow-hidden"
+                                className="overflow-hidden border-t border-[#324198]/10 pt-4 dark:border-white/5"
                               >
                                 <div className="space-y-4">
                                   <div>
@@ -540,7 +577,7 @@ export function CardsPageContent() {
                                       {requirements.map(
                                         (requirement, index) => (
                                           <li
-                                            key={`${card.id}-requirement-${index}`}
+                                            key={card.id + "-requirement-" + index}
                                             className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground"
                                           >
                                             <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
@@ -565,7 +602,7 @@ export function CardsPageContent() {
                                         {hiddenBenefits.map(
                                           (benefit, index) => (
                                             <li
-                                              key={`${card.id}-hidden-benefit-${index}`}
+                                              key={card.id + "-hidden-benefit-" + index}
                                               className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground"
                                             >
                                               <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
@@ -579,7 +616,7 @@ export function CardsPageContent() {
                                     </div>
                                   ) : null}
 
-                                  <div className="grid gap-3 rounded-2xl bg-white/75 p-4 dark:bg-slate-950/50">
+                                  <div className="grid gap-3 rounded-2xl bg-slate-50/80 p-4 dark:bg-slate-950/50">
                                     <div className="flex items-center justify-between gap-3">
                                       <span className="text-sm text-muted-foreground">
                                         {locale === "ar"
@@ -610,7 +647,7 @@ export function CardsPageContent() {
                               aria-expanded={isExpanded}
                               aria-controls={detailsId}
                               onClick={() => toggleCardDetails(card.id)}
-                              className="h-12 rounded-2xl border-[#324198]/15 bg-white/70 text-[#324198] hover:bg-red-500 dark:bg-slate-950/40"
+                              className="h-12 rounded-2xl border-[#324198]/15 bg-white/70 text-[#324198] hover:bg-[#324198]/10 hover:text-[#324198] dark:bg-slate-950/40 dark:text-slate-200 dark:hover:bg-slate-800 dark:hover:text-white"
                             >
                               {isExpanded
                                 ? locale === "ar"
@@ -621,18 +658,16 @@ export function CardsPageContent() {
                                   : "View details"}
 
                               <ChevronDown
-                                className={`ms-2 h-4 w-4 transition-transform duration-300 ${
-                                  isExpanded ? "rotate-180" : ""
-                                }`}
+                                className={"ms-2 h-4 w-4 transition-transform duration-300 " + (isExpanded ? "rotate-180" : "")}
                               />
                             </Button>
 
                             <Button
                               className="h-12 rounded-2xl bg-[#324198] text-white hover:bg-[#263477]"
                               size="lg"
-                              onClick={() => router.push("/customer-service/bank-cards-request")}
+                              onClick={() => router.push(resolveHref("/customer-service/bank-cards-request"))}
                             >
-                              {t("common.apply")}
+                              {locale === "ar" ? "طلب البطاقة" : "Apply for Card"}
                             </Button>
                           </div>
                         </CardContent>
@@ -645,7 +680,7 @@ export function CardsPageContent() {
           </motion.div>
 
           {totalPages > 1 && (
-            <div className="mt-12">
+            <div className="mt-12 flex justify-center">
               <Pagination>
                 <PaginationContent>
                   <PaginationItem>
@@ -697,7 +732,7 @@ export function CardsPageContent() {
         </div>
       </section>
 
-      <FAQAccordion faqs={cardsFaqs} />
+      <FAQAccordion faqs={cardsFaqs as any} />
     </>
   );
 }
