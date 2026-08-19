@@ -33,8 +33,10 @@ import {
 import { navigationData, NavItem } from "@/data/navigation"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { DynamicIcon } from "@/components/ui/dynamic-icon"
+import { Skeleton } from "@/components/ui/skeleton"
 import { getNavigationData } from "@/services/navigation-service"
 import { mapApiToNavItems } from "@/lib/navigation-mapper"
+import { getCompanyProfile } from "@/services/company-profile-service"
 
 
 const DESKTOP_MEGA_MENU_MAX_WIDTH = 1150
@@ -133,6 +135,20 @@ export function Header(props: HeaderProps) {
   )
 
   const [navItems, setNavItems] = useState<NavItem[]>(navigationData)
+  const [isNavLoading, setIsNavLoading] = useState<boolean>(true)
+  const [companyProfileUrl, setCompanyProfileUrl] = useState<string>("/documents/Bin-Dowal-Bank-Profile.pdf")
+  const [companyProfileFileName, setCompanyProfileFileName] = useState<string>("Bin-Dowal-Bank-Profile.pdf")
+
+  useEffect(() => {
+    let isMounted = true;
+    getCompanyProfile().then((data) => {
+      if (isMounted && (data?.download_url || data?.file_url)) {
+        setCompanyProfileUrl(data.download_url || data.file_url);
+        if (data.file_name) setCompanyProfileFileName(data.file_name);
+      }
+    }).catch(() => {});
+    return () => { isMounted = false; };
+  }, []);
 
   useEffect(() => {
     let isMounted = true
@@ -145,6 +161,8 @@ export function Header(props: HeaderProps) {
         }
       } catch (err) {
         console.warn("[Header] Failed to fetch dynamic navigation:", err)
+      } finally {
+        if (isMounted) setIsNavLoading(false)
       }
     }
     loadDynamicNav()
@@ -322,10 +340,12 @@ export function Header(props: HeaderProps) {
                 <span className="hidden sm:block h-4 w-px bg-slate-300" />
                 
                 <a
-                  href="/documents/Bin-Dowal-Bank-Profile.pdf"
-                  download="Bin-Dowal-Bank-Profile.pdf"
+                  href={companyProfileUrl}
+                  download={companyProfileFileName}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={t("topbar.download")}
-                  className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900"
+                  className="flex items-center gap-2 text-sm transition-colors hover:text-slate-900 cursor-pointer"
                 >
                   <Download className="h-4 w-4" />
                   <span className="hidden sm:inline">{t("topbar.download")}</span>
@@ -376,78 +396,85 @@ export function Header(props: HeaderProps) {
                 className="relative hidden lg:flex lg:items-center lg:gap-1"
                 onMouseLeave={() => activeDesktopMenu && closeDesktopMenu()}
               >
-                {navItems.map((item) => {
-                  const hasSubmenu = !!(item.groups || item.singleLinks)
-                  const isOpen = activeDesktopMenu === item.key
+                {isNavLoading ? (
+                  <div className="flex items-center gap-2 py-2">
+                    <Skeleton className="h-8 w-20 rounded-full" />
+                    <Skeleton className="h-8 w-28 rounded-full" />
+                    <Skeleton className="h-8 w-28 rounded-full" />
+                    <Skeleton className="h-8 w-32 rounded-full" />
+                    <Skeleton className="h-8 w-24 rounded-full" />
+                    <Skeleton className="h-8 w-24 rounded-full" />
+                  </div>
+                ) : (
+                  navItems.map((item) => {
+                    const hasSubmenu = !!(item.groups || item.singleLinks)
+                    const isOpen = activeDesktopMenu === item.key
 
-
-                  return (
-                    <div
-                      key={item.key}
-                      ref={(node) => {
-                        desktopTriggerRefs.current[item.key] = node
-                      }}
-                      className="relative"
-                      onMouseEnter={() => hasSubmenu && openDesktopMenu(item.key)}
-                    >
+                    return (
                       <div
-                        className={[
-                          "group flex items-center rounded-full px-1 transition-all duration-200",
-                          isOpen ? "bg-slate-100" : "hover:bg-slate-50",
-                        ].join(" ")}
+                        key={item.key}
+                        ref={(node) => {
+                          desktopTriggerRefs.current[item.key] = node
+                        }}
+                        className="relative"
+                        onMouseEnter={() => hasSubmenu && openDesktopMenu(item.key)}
                       >
-                        <Link
-                          href={resolveHref(item.href)}
-                          className={`relative inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] ${
-                            locale === "ar"
-                              ? "whitespace-nowrap"
-                              : "text-center leading-tight max-w-[120px] whitespace-normal"
-                          }`}
-                        >
-                          {locale === "ar" ? item.label.ar : item.label.en}
-                        </Link>
-
-
-
-
-                        {hasSubmenu && (
-                          <button
-                            type="button"
-                            aria-expanded={isOpen}
-                            aria-label={locale === "ar" ? item.label.ar : item.label.en}
-                            onClick={() =>
-                              setActiveDesktopMenu((prev) => {
-                                const nextValue = prev === item.key ? null : item.key
-                                setLoginMenuOpen(false)
-
-                                if (nextValue) {
-                                  requestAnimationFrame(() =>
-                                    calculateDesktopMenuPosition(nextValue)
-                                  )
-                                }
-                                return nextValue
-                              })
-                            }
-                            className="pe-2 text-slate-500 transition-colors hover:text-[#2d3185]"
-                          >
-                            <ChevronDown
-                              className={`h-4 w-4 transition-transform duration-200 ${
-                                isOpen ? "rotate-180" : ""
-                              }`}
-                            />
-                          </button>
-                        )}
-
-                        <span
+                        <div
                           className={[
-                            "absolute inset-x-3 bottom-0.5 h-[2px] origin-center z-10 bg-[#2d3185] transition-all duration-200",
-                            isOpen ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0",
+                            "group flex items-center rounded-full px-1 transition-all duration-200",
+                            isOpen ? "bg-slate-100" : "hover:bg-slate-50",
                           ].join(" ")}
-                        />
+                        >
+                          <Link
+                            href={resolveHref(item.href)}
+                            className={`relative inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] ${
+                              locale === "ar"
+                                ? "whitespace-nowrap"
+                                : "text-center leading-tight max-w-[120px] whitespace-normal"
+                            }`}
+                          >
+                            {locale === "ar" ? item.label.ar : item.label.en}
+                          </Link>
+
+                          {hasSubmenu && (
+                            <button
+                              type="button"
+                              aria-expanded={isOpen}
+                              aria-label={locale === "ar" ? item.label.ar : item.label.en}
+                              onClick={() =>
+                                setActiveDesktopMenu((prev) => {
+                                  const nextValue = prev === item.key ? null : item.key
+                                  setLoginMenuOpen(false)
+
+                                  if (nextValue) {
+                                    requestAnimationFrame(() =>
+                                      calculateDesktopMenuPosition(nextValue)
+                                    )
+                                  }
+                                  return nextValue
+                                })
+                              }
+                              className="pe-2 text-slate-500 transition-colors hover:text-[#2d3185]"
+                            >
+                              <ChevronDown
+                                className={`h-4 w-4 transition-transform duration-200 ${
+                                  isOpen ? "rotate-180" : ""
+                                }`}
+                              />
+                            </button>
+                          )}
+
+                          <span
+                            className={[
+                              "absolute inset-x-3 bottom-0.5 h-[2px] origin-center z-10 bg-[#2d3185] transition-all duration-200",
+                              isOpen ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0",
+                            ].join(" ")}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  )
-                })}
+                    )
+                  })
+                )}
 
                 <AnimatePresence>
                   {activeDesktopItem && (activeDesktopItem.groups || activeDesktopItem.singleLinks) && (
@@ -1020,3 +1047,10 @@ export function Header(props: HeaderProps) {
     </header>
   )
 }
+
+
+
+
+
+
+

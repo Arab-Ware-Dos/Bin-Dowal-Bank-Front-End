@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
 
@@ -241,6 +241,12 @@ const translations: Record<Locale, Record<string, string>> = {
     "login.tooltip": "عرض توضيحي فقط",
 
     // Financing Services Section
+    "common.readMore": "اقرأ المزيد",
+    "common.previous": "السابق",
+    "common.next": "التالي",
+    "financingServices.badge": "برامج التمويل الإسلامي",
+    "financingServices.description": "حلول تمويلية مرنة ومبتكرة متوافقة مع أحكام الشريعة لتلبية كافة تطلعاتك بشفافية وموثوقية.",
+    "financingServices.islamicFinancing": "تمويل إسلامي",
     "financingServices.title": "خدمات التمويل",
     "financingServices.tameer": "تعمير",
     "financingServices.tameer.desc": "تمويل مخصص لبناء المنازل والمشاريع السكنية",
@@ -558,6 +564,12 @@ const translations: Record<Locale, Record<string, string>> = {
     "login.tooltip": "Frontend demo only",
 
     // Financing Services Section
+    "common.readMore": "Read More",
+    "common.previous": "Previous",
+    "common.next": "Next",
+    "financingServices.badge": "Islamic Financing Programs",
+    "financingServices.description": "Flexible and innovative Sharia-compliant financing solutions to meet all your aspirations with transparency and reliability.",
+    "financingServices.islamicFinancing": "Islamic Financing",
     "financingServices.title": "Financing Services",
     "financingServices.tameer": "Tameer",
     "financingServices.tameer.desc": "Financing dedicated to building homes and residential projects",
@@ -720,3 +732,4 @@ export function useI18n() {
   }
   return context
 }
+

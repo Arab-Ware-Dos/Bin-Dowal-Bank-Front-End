@@ -1,95 +1,92 @@
-"use client"
+﻿"use client"
 
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react"
-import { getSection, type BankSectionRaw } from "@/services/sections-service"
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
-import { CheckCircle2 } from "lucide-react"
+import { CheckCircle2, FileDown, ShieldCheck, Scale, Shield, Layers, Activity, Lock, CheckCircle } from "lucide-react"
+import { getRiskManagement, type RiskManagementData } from "@/services/risk-management-service"
 
-export function RiskManagementPageContent() {
-  const [riskHero, setRiskHero] = useState<BankSectionRaw | null>(null)
+export function RiskManagementPageContent({ initialData }: { initialData?: RiskManagementData | null }) {
+  const { locale, direction } = useI18n()
+  const isAr = locale === "ar"
+  const [data, setData] = useState<RiskManagementData | null>(initialData || null)
 
   useEffect(() => {
     async function load() {
       try {
-        const s = await getSection('risk_management_hero', 'ar')
-        if (s) setRiskHero(s)
+        const res = await getRiskManagement(locale as "ar" | "en")
+        if (res) setData(res)
       } catch (e) {
-        console.warn('Failed to load risk management section', e)
+        console.warn("Failed to load dynamic risk management data", e)
       }
     }
     load()
-  }, [])
-  const { locale, direction } = useI18n()
-  const isAr = locale === "ar"
+  }, [locale])
 
-  const text = {
-    heroTitle: isAr ? "إدارة المخاطر" : "Risk Management",
+  const staticFallback = {
+    heroTitle: isAr ? "إدارة المخاطر والحوكمة المؤسسية" : "Risk Management & Corporate Governance",
     heroSubtitle: isAr
-      ? "الإدارة الفعّالة للمخاطر عنصر أساسي في الحوكمة الرشيدة وحماية البنك واستقراره"
-      : "Effective risk management is a key element of good governance, protecting the bank and its stability",
+      ? "إطار متكامل لضمان الاستقرار المالي وتعزيز الشفافية والمساءلة وحماية مصالح المودعين والشركاء."
+      : "An integrated framework to ensure financial stability, promote transparency, and protect depositors' interests.",
     home: isAr ? "الرئيسية" : "Home",
     about: isAr ? "عن البنك" : "About Us",
-
     docTitle: isAr
       ? "إدارة المخاطر في بنك بن دول للتمويل الأصغر الإسلامي"
       : "Risk Management in Bin Dowal Islamic Microfinance Bank",
-
-    intro1: isAr
-      ? "يؤمن بنك بن دول للتمويل الأصغر الإسلامي بأن الإدارة الفعّالة للمخاطر تمثل عنصراً أساسياً في الحوكمة الرشيدة، وحماية أموال المودعين والعملاء والمساهمين، والمحافظة على سلامة البنك واستقراره واستمرارية أعماله. ولذلك يتبنى البنك إطاراً متكاملاً لإدارة المخاطر، يتناسب مع طبيعة وحجم أعماله، ويرتبط باستراتيجيته وأهدافه وخططه التشغيلية، وفقاً للتشريعات والتعليمات الرقابية النافذة من البنك المركزي اليمني وغيره، وأحكام ومبادئ الشريعة الإسلامية، وأفضل الممارسات المصرفية العالمية."
-      : "Bin Dowal Islamic Microfinance Bank believes that effective risk management is an essential element of good governance, protecting the funds of depositors, customers, and shareholders, and maintaining the Bank's soundness, stability, and business continuity. Therefore, the Bank adopts an integrated risk management framework that suits the nature and size of its operations, and is linked to its strategy, objectives, and operational plans, in accordance with the applicable legislation and regulatory instructions of the Central Bank of Yemen and others, the provisions and principles of Islamic Sharia, and best global banking practices.",
-
-    intro2: isAr
-      ? "يهدف إطار إدارة المخاطر إلى تحقيق التوازن بين النمو والعائد ومستوى المخاطر المقبول، ودعم اتخاذ القرارات السليمة، وتعزيز قدرة البنك على مواجهة الأزمات والتغيرات الاقتصادية والتقنية والتشغيلية، بما يضمن تقديم خدمات مالية إسلامية آمنة ومسؤولة ومستدامة."
-      : "The risk management framework aims to balance growth, return, and acceptable risk levels, support sound decision-making, and enhance the Bank's ability to face economic, technical, and operational crises and changes, ensuring the provision of safe, responsible, and sustainable Islamic financial services.",
-
+    intro: isAr
+      ? "تعتبر إدارة المخاطر ركيزة أساسية لضمان الاستقرار المالي وحماية أموال المودعين والمستثمرين، وتحقيق أهداف البنك الاستراتيجية. ويتبنى بنك بن دول للتمويل الأصغر الإسلامي إطاراً متكاملاً لإدارة المخاطر يرتكز على تحديد المخاطر وقياسها ومراقبتها والحد منها."
+      : "Risk management is a fundamental pillar for ensuring financial stability, protecting depositors' and investors' funds, and achieving the Bank's strategic objectives. Bin Dowal Islamic Microfinance Bank adopts an integrated risk management framework.",
     sections: [
       {
-        title: isAr ? "حوكمة إدارة المخاطر" : "Risk Management Governance",
+        title: isAr ? "إطار إدارة المخاطر" : "Risk Management Framework",
         content: isAr
-          ? "يتولى مجلس الإدارة المسؤولية العليا عن الإشراف على إدارة المخاطر، واعتماد سياسة إدارة المخاطر وإطار شهية المخاطر والحدود المرتبطة بها، ومتابعة مستوى تعرض البنك للمخاطر ومدى كفاية الإجراءات المتخذة لمعالجتها. وتقوم لجنة المخاطر بمراجعة المخاطر الجوهرية ومتابعتها ورفع التوصيات اللازمة إلى مجلس الإدارة، فيما تتولى الإدارة التنفيذية تطبيق السياسات والحدود المعتمدة، وتوفير الموارد اللازمة، ودمج اعتبارات المخاطر في القرارات والعمليات والمنتجات والخدمات والمشروعات الجديدة. وتعمل إدارة المخاطر مع جميع ملاك الخطر في الإدارات والفروع على تحديد المخاطر وقياسها وتقييمها ومراقبتها والإبلاغ عنها، وإعداد سجلات المخاطر ومؤشرات الإنذار المبكر والتقارير الدورية، ومتابعة التجاوزات وخطط المعالجة."
-          : "The Board of Directors holds the ultimate responsibility for overseeing risk management, approving the risk management policy, the risk appetite framework and associated limits, and monitoring the Bank's level of risk exposure and the adequacy of actions taken to address them. The Risk Committee reviews material risks, monitors them, and submits necessary recommendations to the Board of Directors, while Executive Management implements approved policies and limits, provides required resources, and integrates risk considerations into decisions, operations, new products, services, and projects. The Risk Management Department works with all risk owners in departments and branches to identify, measure, evaluate, monitor, and report risks, prepare risk registers, early warning indicators, and periodic reports, and monitor breaches and remediation plans."
+          ? "تعتبر إدارة المخاطر ركيزة أساسية لضمان الاستقرار المالي وحماية أموال المودعين والمستثمرين، وتحقيق أهداف البنك الاستراتيجية وفق معايير البنك المركزي اليمني والشريعة الإسلامية."
+          : "Risk management is a fundamental pillar for ensuring financial stability, protecting depositors' and investors' funds in accordance with Central Bank of Yemen standards and Islamic Sharia.",
       },
       {
         title: isAr ? "نطاق إدارة المخاطر" : "Risk Management Scope",
         content: isAr
-          ? "تشمل منظومة إدارة المخاطر في البنك مختلف أنواع المخاطر الحالية والمحتملة، ومن أبرزها مخاطر التمويل والائتمان والتعثر والتحصيل والتركز، ومخاطر السيولة والسوق وأسعار الصرف، والمخاطر التشغيلية، ومخاطر تقنية المعلومات والأمن السيبراني والخدمات المصرفية الإلكترونية، ومخاطر الاحتيال والجرائم المالية، ومخاطر الامتثال والمخاطر القانونية والاستراتيجية ومخاطر السمعة. كما تشمل المنظومة مخاطر الأطراف الخارجية والوكلاء ومقدمي الخدمات، ومخاطر استمرارية الأعمال والتعافي من الكوارث، ومخاطر عدم الالتزام بأحكام ومبادئ الشريعة الإسلامية، إضافة إلى المخاطر الناشئة المرتبطة بالتغيرات الاقتصادية والاجتماعية والتقنية والبيئية."
-          : "The Bank's risk management system encompasses various current and potential risks, most notably financing, credit, default, collection, and concentration risks; liquidity, market, and exchange rate risks; operational risks; IT, cybersecurity, and electronic banking risks; fraud and financial crime risks; compliance, legal, strategic, and reputational risks. The system also covers external parties, agents, and service providers risks; business continuity and disaster recovery risks; risks of non-compliance with Islamic Sharia principles; as well as emerging risks related to economic, social, technical, and environmental changes."
+          ? "تشمل منظومة إدارة المخاطر في البنك مختلف أنواع المخاطر الحالية والمحتملة، ومن أبرزها مخاطر التمويل والائتمان والسيولة والتشغيل والأمن السيبراني والالتزام الشرعي."
+          : "The Bank's risk management system encompasses various current and potential risks including credit, liquidity, operational, cybersecurity, and Sharia compliance risks.",
       },
       {
         title: isAr ? "منهجية إدارة المخاطر" : "Risk Management Methodology",
         content: isAr
-          ? "يعتمد البنك منهجية منظمة تبدأ بالتعرف المبكر على المخاطر وتحليل أسبابها واحتمالات وقوعها وآثارها المالية والتشغيلية والقانونية والرقابية والشرعية، ثم تقييم مستوى المخاطر قبل تطبيق الضوابط الرقابية وبعدها، ومقارنة المخاطر المتبقية بحدود شهية المخاطر ومستويات التحمل المعتمدة. وبناءً على نتائج التقييم، يتخذ البنك الإجراءات المناسبة لتجنب المخاطر أو تخفيضها أو نقلها أو قبولها ضمن حدود مدروسة ومعتمدة، مع متابعة تنفيذ الإجراءات التصحيحية والوقائية والتحقق من فاعليتها. ويستخدم البنك في ذلك سجلات المخاطر والحوادث والخسائر التشغيلية، ومؤشرات المخاطر الرئيسية والإنذار المبكر، واختبارات الضغط وتحليل السيناريوهات، وتقييم مخاطر المنتجات والأنظمة الجديدة، وخطط استمرارية الأعمال والتعافي من الكوارث."
-          : "The Bank adopts a structured methodology that begins with early risk identification and analysis of its causes, probabilities of occurrence, and its financial, operational, legal, regulatory, and Sharia impacts. It then assesses risk levels before and after applying controls, comparing residual risks with approved risk appetite limits and tolerance levels. Based on evaluation results, the Bank takes appropriate measures to avoid, reduce, transfer, or accept risks within calculated and approved limits, while monitoring the implementation of corrective and preventive measures and verifying their effectiveness. The Bank utilizes risk, incident, and operational loss registers, key risk indicators (KRIs), early warning signals, stress testing, scenario analysis, risk assessment of new products and systems, and business continuity and disaster recovery plans."
+          ? "يعتمد البنك منهجية منظمة تبدأ بالتعرف المبكر على المخاطر وتقييم مستوياتها ومقارنتها بحدود شهية المخاطر وتطبيق الضوابط الاحترازية ومؤشرات الإنذار المبكر."
+          : "The Bank adopts a structured methodology starting with early risk identification, assessing levels against risk appetite limits, and applying precautionary controls and KRIs.",
       },
       {
         title: isAr ? "ثقافة المخاطر والالتزام الشرعي" : "Risk Culture and Sharia Compliance",
         content: isAr
-          ? "يعمل البنك على ترسيخ ثقافة مؤسسية تقوم على النزاهة والشفافية والمساءلة والإبلاغ المبكر عن الأخطاء والحوادث والتجاوزات، ويؤكد أن إدارة المخاطر مسؤولية مشتركة بين مجلس الإدارة والإدارة التنفيذية وجميع الإدارات والفروع والموظفين. كما يلتزم البنك بتعزيز منظومة الحوكمة والرقابة والالتزام الشرعي، والتحقق من توافق منتجاته وخدماته وعقوده ومعاملاته مع أحكام ومبادئ الشريعة الإسلامية، وحماية حقوق العملاء وأصحاب المصلحة. ومن خلال هذا النهج، يسعى بنك بن دول للتمويل الأصغر الإسلامي إلى تعزيز الثقة والاستقرار، وحماية موارده وسمعته، ودعم النمو الآمن والمستدام، والمساهمة بفاعلية في تحقيق الشمول المالي والتنمية الاقتصادية والاجتماعية."
-          : "The Bank works to instill an institutional culture based on integrity, transparency, accountability, and early reporting of errors, incidents, and breaches, emphasizing that risk management is a shared responsibility among the Board of Directors, Executive Management, and all departments, branches, and employees. The Bank is also committed to strengthening the governance, control, and Sharia compliance system, verifying that its products, services, contracts, and transactions are consistent with Islamic Sharia principles, and protecting the rights of customers and stakeholders. Through this approach, Bin Dowal Islamic Microfinance Bank seeks to enhance trust and stability, protect its resources and reputation, support safe and sustainable growth, and actively contribute to achieving financial inclusion and socio-economic development."
-      }
-    ]
+          ? "يعمل البنك على ترسيخ ثقافة مؤسسية تقوم على النزاهة والشفافية والمساءلة، والتحقق من توافق كافة المنتجات والمعاملات مع أحكام ومبادئ الشريعة الإسلامية."
+          : "The Bank instills an institutional culture based on integrity, transparency, accountability, and verifying that all products and transactions align with Islamic Sharia principles.",
+      },
+    ],
   }
+
+  const heroTitle = data?.title || staticFallback.heroTitle
+  const heroSubtitle = data?.subtitle || staticFallback.heroSubtitle
+  const docTitle = data?.document_title || staticFallback.docTitle
+  const sections = data?.sections && data.sections.length > 0 ? data.sections : staticFallback.sections
 
   return (
     <div className="min-h-screen bg-[#f8f9fa] font-sans selection:bg-[#262b80] selection:text-white" dir={direction}>
       {/* Hero Section */}
       <PageHero
-        title={text.heroTitle}
-        subtitle={text.heroSubtitle}
+        title={heroTitle}
+        subtitle={heroSubtitle}
         breadcrumbs={[
-          { labelKey: text.home, href: "/" },
-          { labelKey: text.about, href: "/about" },
-          { labelKey: text.heroTitle },
+          { labelKey: staticFallback.home, href: "/" },
+          { labelKey: staticFallback.about, href: "/about" },
+          { labelKey: heroTitle },
         ]}
       />
 
       {/* Main Content Section */}
       <section className="py-16 md:py-24 relative overflow-hidden">
         <div className="container mx-auto px-4 max-w-4xl relative z-10">
-
           <motion.article
             className="bg-white rounded-3xl shadow-[0_16px_50px_rgba(11,13,54,0.07)] border border-slate-200/80 p-8 sm:p-12 md:p-16 relative overflow-hidden"
             initial={{ opacity: 0, y: 30 }}
@@ -100,7 +97,7 @@ export function RiskManagementPageContent() {
             {/* Header Document Style Accent */}
             <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-[#0b0d36] via-[#262b80] to-[#8b1e3f]" />
 
-            {/* Logo and Main Title */}
+            {/* Logo, Main Title & Meta */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center justify-center p-5 bg-white rounded-2xl shadow-sm border border-slate-100 mb-8">
                 <Image
@@ -113,36 +110,77 @@ export function RiskManagementPageContent() {
                 />
               </div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#0b0d36] tracking-tight font-cairo leading-snug">
-                {text.docTitle}
+                {docTitle}
               </h2>
+              {data?.document_version && (
+                <div className="mt-3 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500 font-cairo">
+                  <span className="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200">
+                    {isAr ? `إصدار: ${data.document_version}` : `Version: ${data.document_version}`}
+                  </span>
+                  {data.effective_date && (
+                    <span className="px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200">
+                      {isAr ? `تاريخ السريان: ${data.effective_date}` : `Effective: ${data.effective_date}`}
+                    </span>
+                  )}
+                </div>
+              )}
               <div className="w-20 h-1.5 bg-[#8b1e3f] mx-auto rounded-full mt-6" />
             </div>
 
             {/* Narrative Content */}
             <div className="space-y-8 text-[#334155] font-cairo text-lg leading-loose text-justify">
-
-              {/* Introduction Paragraphs */}
-              <p className="font-medium text-[#1e293b]">
-                {text.intro1}
-              </p>
-              <p className="font-medium text-[#1e293b]">
-                {text.intro2}
-              </p>
-
-              {/* Sections mapped without block separations, styled as continuous narrative */}
-              {text.sections.map((sec, idx) => (
-                <div key={idx} className="pt-4">
+              {sections.map((sec, idx) => (
+                <div key={idx} className="pt-4 border-t border-slate-100 first:border-0 first:pt-0">
                   <h3 className="text-xl sm:text-2xl font-bold text-[#262b80] mb-4 flex items-center gap-2">
                     <span className="text-[#ed1c24] text-3xl leading-none">•</span>
                     {sec.title}
                   </h3>
-                  <p>
+                  <p className="leading-relaxed">
                     {sec.content}
                   </p>
+
+                  {/* Points if available */}
+                  {"points" in sec && Array.isArray(sec.points) && sec.points.length > 0 && (
+                    <ul className="mt-4 space-y-2 pr-4 pl-4">
+                      {sec.points.map((pt: string, pIdx: number) => (
+                        <li key={pIdx} className="flex items-start gap-2.5 text-base text-slate-700">
+                          <CheckCircle className="w-4 h-4 text-[#8b1e3f] mt-1.5 flex-shrink-0" />
+                          <span>{pt}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
-
             </div>
+
+            {/* Download PDF button if attached */}
+            {data?.pdf_url && (
+              <div className="mt-12 p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-3 text-right">
+                  <div className="p-3 rounded-xl bg-primary/10 text-primary">
+                    <Scale className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900 font-cairo">
+                      {isAr ? "تحميل الوثيقة الرسمية المعتمدة" : "Download Official Policy Document"}
+                    </h4>
+                    <p className="text-xs text-slate-500 font-cairo">
+                      {data.pdf_file_name || (isAr ? "ملف PDF معتمد" : "Official PDF Document")}
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href={data.pdf_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#262b80] hover:bg-[#1c2066] text-white font-medium text-sm transition-colors shadow-sm font-cairo"
+                >
+                  <FileDown className="w-4 h-4" />
+                  <span>{isAr ? "تحميل PDF" : "Download PDF"}</span>
+                </a>
+              </div>
+            )}
 
             {/* Footer Verification */}
             <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm text-slate-500 font-cairo">
@@ -150,7 +188,6 @@ export function RiskManagementPageContent() {
               <span>{isAr ? "وثيقة رسمية صادرة عن بنك بن دول للتمويل الأصغر الإسلامي" : "Official document issued by Bin Dowal Islamic Microfinance Bank"}</span>
             </div>
           </motion.article>
-
         </div>
       </section>
     </div>
