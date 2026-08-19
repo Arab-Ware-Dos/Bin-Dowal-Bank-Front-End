@@ -1,16 +1,16 @@
-"use client"
+﻿"use client"
 
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect, useMemo } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { SectionHeader } from "@/components/ui/section-header"
-import { ViewAllButton } from "@/components/ui/view-all-button"
+import { getHomeFinancingServices, HomeFinancingService } from "@/services/financing-services"
+import { financingServices as fallbackFinancingData } from "@/data/financing-services"
 
-import { financingServices } from "@/data/financing-services"
 // Returns position index relative to active: -1 0 1 (side cards), ±2 (hidden)
 function getPosition(index: number, active: number, total: number) {
   let diff = index - active
@@ -27,11 +27,40 @@ export function FinancingServices() {
   const [dragging, setDragging] = useState(false)
   const [dragStart, setDragStart] = useState(0)
 
-  const homeServices = financingServices
-    .filter((service) => service.showOnHome)
-    .sort((a, b) => a.order - b.order)
+  // Initial fallback list mapped to HomeFinancingService shape
+  const initialFallbackServices: HomeFinancingService[] = useMemo(() => {
+    return fallbackFinancingData
+      .filter((service) => service.showOnHome)
+      .sort((a, b) => a.order - b.order)
+      .map((s) => ({
+        id: s.id,
+        title: s.titleKey,
+        description: s.descriptionKey,
+        image: s.image,
+        href: s.href,
+        order: s.order,
+      }))
+  }, [])
 
-  const total = homeServices.length
+  const [homeServices, setHomeServices] = useState<HomeFinancingService[]>(initialFallbackServices)
+
+  // Fetch live curated financing items from Navigation & Services API
+  useEffect(() => {
+    let isMounted = true
+    getHomeFinancingServices(locale).then((data) => {
+      if (isMounted && data && data.length > 0) {
+        setHomeServices(data)
+      }
+    }).catch((err) => {
+      console.warn("Error loading financing services from API:", err)
+    })
+
+    return () => {
+      isMounted = false
+    }
+  }, [locale])
+
+  const total = homeServices.length || 1
 
   const prev = useCallback(() => {
     setActive((a) => (a - 1 + total) % total)
@@ -53,11 +82,12 @@ export function FinancingServices() {
 
   // Auto-advance every 5 s
   useEffect(() => {
+    if (total <= 1) return
     const id = setInterval(() => {
       if (!dragging) next()
     }, 5000)
     return () => clearInterval(id)
-  }, [dragging, next])
+  }, [dragging, next, total])
 
   /* ─── card visual config per position ─── */
   const cardConfig = (pos: number) => {
@@ -78,14 +108,14 @@ export function FinancingServices() {
       return {
         x: `${sign * pos * 62}%`,
         scale: 0.82,
-        opacity: 0.72,
+        opacity: 0.65,
         zIndex: 20,
-        brightness: 0.75,
+        brightness: 0.72,
         visible: true,
       }
     }
     return {
-      x: `${sign * pos * 110}%`,
+      x: `${sign * (pos > 0 ? 1 : -1) * 110}%`,
       scale: 0.65,
       opacity: 0,
       zIndex: 10,
@@ -94,11 +124,26 @@ export function FinancingServices() {
     }
   }
 
+  const renderTitle = (service: HomeFinancingService) => {
+    if (service.title && service.title.startsWith("financingServices.")) {
+      return t(service.title as any)
+    }
+    return service.title
+  }
+
+  const renderDescription = (service: HomeFinancingService) => {
+    if (service.description && service.description.startsWith("financingServices.")) {
+      return t(service.description as any)
+    }
+    return service.description
+  }
+
   return (
-    <section className="relative py-10 bg-white overflow-hidden" dir={direction}>
-      <div className="container mx-auto px-4">
+    <section className="relative py-14 overflow-hidden" aria-label="Financing Services">
+      <div className="container mx-auto px-4 relative z-10">
+        {/* ─── Section Header ─── */}
         <SectionHeader
-          badge={isRTL ? "برامج التمويل الإسلامي" : "Islamic Financing"}
+          badge={t("financingServices.badge")}
           title={t("financingServices.title")}
           description={
             isRTL
@@ -139,10 +184,12 @@ export function FinancingServices() {
             {homeServices.map((service, i) => {
               const pos = getPosition(i, active, total)
               const cfg = cardConfig(pos)
+              const titleText = renderTitle(service)
+              const descText = renderDescription(service)
 
               return (
                 <motion.div
-                  key={service.id}
+                  key={service.id || i}
                   animate={{
                     x: cfg.x,
                     scale: cfg.scale,
@@ -161,7 +208,7 @@ export function FinancingServices() {
                   <div className="absolute inset-0">
                     <Image
                       src={service.image}
-                      alt={t(service.titleKey)}
+                      alt={titleText}
                       fill
                       className="object-cover"
                       style={{ filter: `brightness(${cfg.brightness})` }}
@@ -179,10 +226,10 @@ export function FinancingServices() {
                     <div className="absolute inset-0 z-30 flex flex-col justify-end p-7">
                       <span className="mb-3 inline-block h-[3px] w-14 rounded-full bg-[#ed1c24]" />
                       <h3 className="text-white text-[26px] md:text-[30px] font-bold font-cairo leading-tight mb-3">
-                        {t(service.titleKey as any)}
+                        {titleText}
                       </h3>
                       <p className="text-white/85 text-[14px] md:text-[15px] leading-7 font-cairo mb-5 line-clamp-3">
-                        {t(service.descriptionKey as any)}
+                        {descText}
                       </p>
                       <Link
                         href={mode === "url" ? getLocalizedHref(service.href, locale) : service.href}
@@ -200,7 +247,7 @@ export function FinancingServices() {
                       <div>
                         <span className="mb-2 inline-block h-[2px] w-10 rounded-full bg-[#ed1c24]" />
                         <h3 className="text-white/90 text-[18px] font-bold font-cairo leading-tight">
-                          {t(service.titleKey as any)}
+                          {titleText}
                         </h3>
                       </div>
                     </div>
@@ -246,12 +293,6 @@ export function FinancingServices() {
             />
           ))}
         </div>
-
-        {/* <ViewAllButton
-          label={isRTL ? "استكشف جميع الخدمات" : "Explore All Services"}
-          href={mode === "url" ? getLocalizedHref("/financing", locale) : "/financing"}
-          buttonClassName="border-[#324198]/12 text-[#324198] hover:border-[#324198]/20 hover:bg-[#324198]/[0.02]"
-        /> */}
       </div>
     </section>
   )

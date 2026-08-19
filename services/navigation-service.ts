@@ -1,4 +1,4 @@
-import { fetchAPI } from '@/lib/api-client';
+﻿import { fetchAPI } from '@/lib/api-client';
 import { NavigationApiResponse, NavigationSection } from '@/types/navigation';
 
 // Default Fallback Data matching the API schema to ensure the site never breaks offline
@@ -142,6 +142,72 @@ export const FALLBACK_NAVIGATION_DATA: NavigationSection[] = [
     ]
   },
   {
+    id: 4,
+    key: "special_services",
+    title: "خدمات مخصصة",
+    lang: "ar",
+    order_index: 4,
+    items: [
+      {
+        id: 35,
+        title: "حساب المغتربين",
+        subtitle: null,
+        url: null,
+        icon: null,
+        badge: null,
+        target: "_self",
+        order_index: 1,
+        children: [
+          { id: 36, title: "حساب المغتربين", subtitle: null, url: "/services/expat-account", icon: "Globe", badge: null, target: "_self", order_index: 1, children: [] }
+        ]
+      },
+      {
+        id: 37,
+        title: "حساب القاصر",
+        subtitle: null,
+        url: null,
+        icon: null,
+        badge: null,
+        target: "_self",
+        order_index: 2,
+        children: [
+          { id: 38, title: "حساب القاصر", subtitle: null, url: "/services/minors-account", icon: "UserCheck", badge: null, target: "_self", order_index: 1, children: [] }
+        ]
+      },
+      {
+        id: 39,
+        title: "حساب نور للسيدات",
+        subtitle: null,
+        url: null,
+        icon: null,
+        badge: null,
+        target: "_self",
+        order_index: 3,
+        children: [
+          { id: 40, title: "حساب نور للسيدات", subtitle: null, url: "/services/noor-ladies-account", icon: "Wallet", badge: null, target: "_self", order_index: 1, children: [] },
+          { id: 41, title: "بطاقة نور للسيدات", subtitle: null, url: "/services/noor-ladies-card", icon: "CreditCard", badge: null, target: "_self", order_index: 2, children: [] }
+        ]
+      },
+      {
+        id: 42,
+        title: "التمويلات",
+        subtitle: null,
+        url: null,
+        icon: null,
+        badge: null,
+        target: "_self",
+        order_index: 4,
+        children: [
+          { id: 43, title: "تكامل", subtitle: null, url: "/services/takamul-alternative-energy-financing", icon: "Lightbulb", badge: null, target: "_self", order_index: 1, children: [] },
+          { id: 44, title: "ثمار", subtitle: null, url: "/services/thimar-sme-financing", icon: "TrendingUp", badge: null, target: "_self", order_index: 2, children: [] },
+          { id: 45, title: "تعمير", subtitle: null, url: "/services/tameer-construction-financing", icon: "Building2", badge: null, target: "_self", order_index: 3, children: [] },
+          { id: 46, title: "نور", subtitle: null, url: "/services/noor-women-projects-financing", icon: "Heart", badge: null, target: "_self", order_index: 4, children: [] },
+          { id: 47, title: "زاد", subtitle: null, url: "/services/financing-zad", icon: "GraduationCap", badge: null, target: "_self", order_index: 5, children: [] }
+        ]
+      }
+    ]
+  },
+  {
     id: 5,
     key: "electronic_services",
     title: "الخدمات الإلكترونية",
@@ -260,4 +326,5 @@ export async function getNavigationData(locale: string = 'ar'): Promise<Navigati
 
   return FALLBACK_NAVIGATION_DATA;
 }
+
 
