@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import { FileText, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
+import { AnnualReportCardSkeleton } from "@/components/ui/loading-skeleton"
 import { FeaturedAnnualReport } from "@/components/knowledge-center/annual-reports/FeaturedAnnualReport"
 import { AnnualReportsFilters, type SortOrder } from "@/components/knowledge-center/annual-reports/AnnualReportsFilters"
 import { AnnualReportCard } from "@/components/knowledge-center/annual-reports/AnnualReportCard"
@@ -96,8 +97,15 @@ export function AnnualReportsPageContent() {
         />
 
         {loading ? (
-          <div className="flex items-center justify-center py-24">
-            <Loader2 className="h-10 w-10 animate-spin text-[#262b80]" />
+          <div className="container mx-auto px-4 py-8">
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <AnnualReportCardSkeleton />
+              <AnnualReportCardSkeleton />
+              <AnnualReportCardSkeleton />
+              <AnnualReportCardSkeleton />
+              <AnnualReportCardSkeleton />
+              <AnnualReportCardSkeleton />
+            </div>
           </div>
         ) : (
           <>

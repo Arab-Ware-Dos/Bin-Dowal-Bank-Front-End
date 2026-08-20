@@ -201,8 +201,17 @@ export function PartnershipsSection() {
 
           <div className="min-h-[340px] md:min-h-[380px]">
             {loading ? (
-              <div className="flex min-h-[280px] items-center justify-center">
-                <Loader2 className="h-8 w-8 animate-spin text-[#081a36]" />
+              <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
+                <PartnershipLogoSkeleton />
               </div>
             ) : (
               <>

@@ -6,6 +6,7 @@ import Link from "next/link"
 import { motion, useInView, useReducedMotion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
+import { FoundationSectionSkeleton, VisionMissionSkeleton } from "@/components/ui/loading-skeleton"
 import { SectionTitle } from "@/components/ui/section-title"
 import { Card, CardContent } from "@/components/ui/card"
 import type { LucideIcon } from "lucide-react"
@@ -436,12 +437,17 @@ function GoalCard({
 }
 
 export function AboutPageContent() {
+  const { locale } = useI18n()
+  const isAr = locale === "ar"
+  const shouldReduceMotion = useReducedMotion()
+  const [loading, setLoading] = useState(true)
   const [sectionsData, setSectionsData] = useState<Record<string, BankSectionRaw>>({})
 
   useEffect(() => {
     async function loadSections() {
+      setLoading(true)
       try {
-        const list = await getPageSections('about', 'ar')
+        const list = await getPageSections('about', locale || 'ar')
         const map: Record<string, BankSectionRaw> = {}
         list.forEach((s) => {
           map[s.section_code] = s
@@ -449,13 +455,12 @@ export function AboutPageContent() {
         setSectionsData(map)
       } catch (e) {
         console.warn('Failed to load about sections', e)
+      } finally {
+        setLoading(false)
       }
     }
     loadSections()
-  }, [])
-  const { locale } = useI18n()
-  const isAr = locale === "ar"
-  const shouldReduceMotion = useReducedMotion()
+  }, [locale])
 
   const text = {
     heroTitle: isAr ? "عن البنك" : "About Us",
@@ -512,12 +517,12 @@ export function AboutPageContent() {
       : "Clear foundations guiding our path toward growth and innovation",
     visionTitle: isAr ? "الرؤية" : "Vision",
     visionDesc: isAr
-      ? "نسعى لأن نكون مؤسسة رائدة في توظيف الشمول المالي، من خلال تقديم حلول مبتكرة وفعالة تسهم في تمكين عملائنا وتحقيق تحسين مستدام في مستوى معيشتهم. مبتكرة."
-      : "We strive to be a leading institution in the employment of financial inclusion, by providing innovative and effective solutions that contribute to empowering our clients and achieving sustainable improvement in their standard of living. Innovative.",
+      ? "نسعى لأن نكون مؤسسة رائدة في توظيف الشمول المالي، من خلال تقديم حلول مبتكرة وفعالة تسهم في تمكين عملائنا وتحقيق تحسين مستدام في مستوى معيشتهم."
+      : "We strive to be a leading institution in employing financial inclusion, by providing innovative and effective solutions that empower our clients and achieve sustainable improvement in their standard of living.",
     missionTitle: isAr ? "الرسالة" : "Mission",
     missionDesc: isAr
-      ? "نعمل كمؤسسة تنموية على توظيف مواردنا وإمكاناتنا بكفاءة، لخدمة المجتمع المحلي من خلال تطبيق أفضل الممارسات في مجال التمويل الأصغر. ونسعى إلى تقديم نموذج متكامل للشمول المالي يركز على تمكين المستفيدين اجتماعيًا واقتصاديًا، بما يسهم في تحسين جودة حياتهم، وذلك وفق أحكام الشريعة الإسلامية."
-      : "Investing in providing comprehensive and innovative financial and banking solutions for individuals and businesses, built on reliability and operational excellence, while meeting client aspirations and contributing to development.",
+      ? "نعمل كمؤسسة تنموية على توظيف مواردنا وإمكاناتنا بكفاءة، لخدمة المجتمع المحلي من خلال تطبيق أفضل الممارسات في مجال التمويل الأصغر. ونسعى إلى تقديم نموذج متكامل للشمول المالي يركز على تمكين المستفيدين اجتماعياً واقتصادياً، بما يسهم في تحسين جودة حياتهم، وذلك وفق أحكام الشريعة الإسلامية."
+      : "We operate as a developmental institution efficiently utilizing our resources and capabilities to serve the local community by applying best practices in microfinance. We seek to provide an integrated model for financial inclusion focused on empowering beneficiaries socially and economically, contributing to improving their quality of life in accordance with Islamic Sharia principles.",
     valuesTitle: isAr ? "قيمنا المؤسسية" : "Our Corporate Values",
     valuesSubtitle: isAr
       ? "قيم راسخة توجه أعمالنا وتعزز علاقتنا بعملائنا وشركائنا"
@@ -569,6 +574,7 @@ export function AboutPageContent() {
   return (
     <div className="min-h-screen bg-background font-sans">
       <PageHero
+        loading={loading}
         title={sectionsData["about_hero"]?.title_ar || text.heroTitle}
         subtitle={sectionsData["about_hero"]?.description_ar || text.heroSubtitle}
         breadcrumbs={[
@@ -639,7 +645,10 @@ export function AboutPageContent() {
 </section> */}
 
       {/* Establishment */}
-      <section className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28">
+      {loading ? (
+        <FoundationSectionSkeleton />
+      ) : (
+        <section id="foundation" className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28">
         {/* Background layers */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.06),transparent_28%)]" />
@@ -653,26 +662,40 @@ export function AboutPageContent() {
               <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-4 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
                 <span className="h-2 w-2 rounded-full bg-[#262b80]" />
                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#262b80]">
-                  {text.establishmentBadge}
+                  {(isAr ? (sectionsData["about_foundation"]?.subtitle_ar || sectionsData["about_foundation"]?.title_ar) : (sectionsData["about_foundation"]?.subtitle_en || sectionsData["about_foundation"]?.title_en)) || text.establishmentBadge}
                 </span>
               </div>
 
               <div className="mb-6 max-w-xl">
                 <div className="mb-3 h-px w-20 bg-gradient-to-r from-[#78182e] to-[#262b80]" />
                 <h3 className="text-3xl font-bold leading-[1.25] tracking-tight text-[#0f172a] md:text-4xl xl:text-[2.75rem]">
-                  {text.establishmentTitle}
+                  {(isAr ? (sectionsData["about_foundation"]?.title_ar || sectionsData["about_foundation"]?.title) : (sectionsData["about_foundation"]?.title_en || sectionsData["about_foundation"]?.title)) || text.establishmentTitle}
                 </h3>
               </div>
 
               <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
-                <p>{(sectionsData["about_foundation"]?.description_ar) || text.establishmentParagraph1}</p>
-                <p>{text.establishmentParagraph2}</p>
-                <p>{text.establishmentParagraph3}</p>
-                <p>{text.establishmentParagraph4}</p>
-                <p>{text.establishmentParagraph5}</p>
-              </div>
+                {(() => {
+                  const desc = (isAr
+                    ? (sectionsData["about_foundation"]?.description_ar || sectionsData["about_foundation"]?.description)
+                    : (sectionsData["about_foundation"]?.description_en || sectionsData["about_foundation"]?.description)) || text.establishmentParagraph1;
 
-             
+                  if (desc.includes('<') && desc.includes('>')) {
+                    return (
+                      <div
+                        className="prose prose-slate max-w-none text-[1.05rem] leading-8 text-slate-600 md:text-lg space-y-4"
+                        dangerouslySetInnerHTML={{ __html: desc }}
+                      />
+                    );
+                  }
+
+                  return desc
+                    .split('\n')
+                    .filter((p: string) => p.trim().length > 0)
+                    .map((p: string, pIdx: number) => (
+                      <p key={pIdx}>{p}</p>
+                    ));
+                })()}
+              </div>
             </motion.div>
 
             {/* Visual */}
@@ -687,19 +710,23 @@ export function AboutPageContent() {
                 <div className="absolute inset-0 rounded-[32px] " />
 
                 <Image
-                  src="/images/banking-experience.png"
+                  src={
+                    sectionsData["about_foundation"]?.image_url ||
+                    sectionsData["about_foundation"]?.image_path ||
+                    "/images/banking-experience.png"
+                  }
                   alt={text.establishmentImageAlt || "تأسيس بنك بن دول"}
                   width={700}
                   height={700}
                   className="relative z-[1] h-auto w-full object-contain"
                   priority
                 />
-
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+      )}
 
       {/* Reach */}
       <section className="bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 text-white">
@@ -804,18 +831,18 @@ export function AboutPageContent() {
               <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
                 <span className="h-2 w-2 rounded-full bg-[#262b80]" />
                 <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-                  {text.visionMissionTitle}
+                  {(isAr ? (sectionsData["about_vision"]?.title_ar || sectionsData["about_vision"]?.title) : (sectionsData["about_vision"]?.title_en || sectionsData["about_vision"]?.title)) || text.visionMissionTitle}
                 </span>
               </div>
 
               <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
-                {text.visionMissionTitle}
+                {(isAr ? (sectionsData["about_vision"]?.title_ar || sectionsData["about_vision"]?.title) : (sectionsData["about_vision"]?.title_en || sectionsData["about_vision"]?.title)) || text.visionMissionTitle}
               </h2>
 
               <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
 
               <p className="text-lg leading-8 text-slate-600 md:text-xl">
-                {text.visionMissionSubtitle}
+                {(isAr ? (sectionsData["about_vision"]?.subtitle_ar || sectionsData["about_vision"]?.subtitle) : (sectionsData["about_vision"]?.subtitle_en || sectionsData["about_vision"]?.subtitle)) || text.visionMissionSubtitle}
               </p>
             </motion.div>
           </div>
@@ -835,15 +862,15 @@ export function AboutPageContent() {
                   </div>
 
                   <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-                    {isAr ? "الرؤية المؤسسية" : "Corporate Vision"}
+                    {sectionsData["about_vision"]?.items?.[0]?.badge_text || (isAr ? "الرؤية المؤسسية" : "Corporate Vision")}
                   </div>
 
                   <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-                    {text.visionTitle}
+                    {(isAr ? (sectionsData["about_vision"]?.items?.[0]?.title_ar || sectionsData["about_vision"]?.items?.[0]?.title) : (sectionsData["about_vision"]?.items?.[0]?.title_en || sectionsData["about_vision"]?.items?.[0]?.title)) || text.visionTitle}
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {(sectionsData["about_vision"]?.items?.[0]?.description_ar) || text.visionDesc}
+                    {(isAr ? (sectionsData["about_vision"]?.items?.[0]?.description_ar || sectionsData["about_vision"]?.items?.[0]?.description) : (sectionsData["about_vision"]?.items?.[0]?.description_en || sectionsData["about_vision"]?.items?.[0]?.description)) || text.visionDesc}
                   </p>
                 </div>
               </div>
@@ -863,15 +890,15 @@ export function AboutPageContent() {
                   </div>
 
                   <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-                    {isAr ? "الرسالة المؤسسية" : "Corporate Mission"}
+                    {sectionsData["about_vision"]?.items?.[1]?.badge_text || (isAr ? "الرسالة المؤسسية" : "Corporate Mission")}
                   </div>
 
                   <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-                    {text.missionTitle}
+                    {(isAr ? (sectionsData["about_vision"]?.items?.[1]?.title_ar || sectionsData["about_vision"]?.items?.[1]?.title) : (sectionsData["about_vision"]?.items?.[1]?.title_en || sectionsData["about_vision"]?.items?.[1]?.title)) || text.missionTitle}
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {(sectionsData["about_vision"]?.items?.[1]?.description_ar) || text.missionDesc}
+                    {(isAr ? (sectionsData["about_vision"]?.items?.[1]?.description_ar || sectionsData["about_vision"]?.items?.[1]?.description) : (sectionsData["about_vision"]?.items?.[1]?.description_en || sectionsData["about_vision"]?.items?.[1]?.description)) || text.missionDesc}
                   </p>
                 </div>
               </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { PageHero } from "@/components/ui/page-hero"
+import { CareerCardSkeleton } from "@/components/ui/loading-skeleton"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -48,8 +49,11 @@ export function CareersPageContent() {
           </motion.div>
 
           {loading ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-10 w-10 animate-spin text-[#324198]" />
+            <div className="grid gap-6 md:grid-cols-2">
+              <CareerCardSkeleton />
+              <CareerCardSkeleton />
+              <CareerCardSkeleton />
+              <CareerCardSkeleton />
             </div>
           ) : careersData.length === 0 ? (
             <div className="mx-auto max-w-lg rounded-[28px] border border-slate-200 bg-white p-12 text-center shadow-sm">

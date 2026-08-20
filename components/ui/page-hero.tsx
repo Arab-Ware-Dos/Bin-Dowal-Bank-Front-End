@@ -2,14 +2,15 @@
 
 import { motion } from "framer-motion"
 import { Breadcrumbs } from "./breadcrumbs"
-// import { Building2 } from "lucide-react"
 import Image from "next/image"
+import { Skeleton } from "./skeleton"
 
 interface PageHeroProps {
-  title: string
-  subtitle: string
-  breadcrumbs: { labelKey: string; href?: string }[]
+  title?: string
+  subtitle?: string
+  breadcrumbs?: { labelKey: string; href?: string }[]
   tagline?: string
+  loading?: boolean
   children?: React.ReactNode
 }
 
@@ -18,6 +19,7 @@ export function PageHero({
   subtitle,
   breadcrumbs,
   tagline,
+  loading = false,
   children,
 }: PageHeroProps) {
   return (
@@ -43,39 +45,65 @@ export function PageHero({
         {/* Breadcrumbs */}
         <div className="mb-6 md:mb-8">
           <div className="inline-flex rounded-full border border-white/15 bg-white/8 px-4 py-2 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.12)]">
-            <Breadcrumbs items={breadcrumbs} />
+            {loading ? (
+              <div className="flex items-center gap-2">
+                <Skeleton className="h-4 w-12 rounded-full bg-white/20" />
+                <span className="text-white/40 text-xs">›</span>
+                <Skeleton className="h-4 w-20 rounded-full bg-white/20" />
+              </div>
+            ) : (
+              breadcrumbs && <Breadcrumbs items={breadcrumbs} />
+            )}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
-            {tagline && (
-              <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
-                {tagline}
-              </span>
-            )}
+          {loading ? (
+            <div className="max-w-3xl space-y-5">
+              <Skeleton className="h-6 w-32 rounded-full bg-white/20" />
+              <div className="space-y-3">
+                <Skeleton className="h-12 w-3/4 max-w-lg rounded-2xl bg-white/25" />
+                <Skeleton className="h-10 w-1/2 rounded-2xl bg-white/25" />
+              </div>
+              <div className="space-y-2 pt-2">
+                <Skeleton className="h-5 w-full rounded-md bg-white/15" />
+                <Skeleton className="h-5 w-5/6 rounded-md bg-white/15" />
+                <Skeleton className="h-5 w-2/3 rounded-md bg-white/15" />
+              </div>
+              <div className="pt-4 flex gap-4">
+                <Skeleton className="h-12 w-36 rounded-full bg-white/30" />
+              </div>
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-3xl"
+            >
+              {tagline && (
+                <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
+                  {tagline}
+                </span>
+              )}
 
-            <h1 className="mb-6 text-4xl font-bold leading-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl">
-              {title}
-            </h1>
+              <h1 className="mb-6 text-4xl font-bold leading-tight text-white drop-shadow-lg md:text-5xl lg:text-6xl">
+                {title}
+              </h1>
 
-            <p className="mb-8 text-lg leading-relaxed text-white/82 drop-shadow-md md:text-xl">
-              {subtitle}
-            </p>
+              <p className="mb-8 text-lg leading-relaxed text-white/82 drop-shadow-md md:text-xl">
+                {subtitle}
+              </p>
 
-            {children}
-          </motion.div>
+              {children}
+            </motion.div>
+          )}
 
           <div className="flex justify-center lg:justify-end">
             <img
               src="/logo-2.png"
-              alt={title}
-              className="h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 object-contain"
+              alt={title || "Bin Dowal Bank"}
+              className={"h-48 w-48 md:h-64 md:w-64 lg:h-72 lg:w-72 object-contain" + (loading ? " opacity-50 animate-pulse" : "")}
             />
           </div>
         </div>

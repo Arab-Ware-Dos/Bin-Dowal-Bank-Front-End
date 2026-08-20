@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { getLocalizedHref } from "@/lib/localized-routes"
 import { SectionHeader } from "@/components/ui/section-header"
+import { BankCardsSliderSkeleton } from "@/components/ui/loading-skeleton"
 import { getBankCards } from "@/services/cards-service"
 
 type CardItem = {
@@ -123,12 +124,14 @@ const defaultCards: CardItem[] = [
 export function CardsSection() {
   const { mode, locale, t, direction } = useI18n()
   const isAr = locale === "ar"
+  const [loading, setLoading] = useState(true)
   const [cardsList, setCardsList] = useState<CardItem[]>(defaultCards)
   const [active, setActive] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
 
   useEffect(() => {
     async function loadCards() {
+      setLoading(true)
       try {
         const apiCards = await getBankCards(locale)
         if (apiCards && apiCards.length > 0) {

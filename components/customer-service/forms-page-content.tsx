@@ -9,6 +9,7 @@ import {
 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
+import { FormCardSkeleton } from "@/components/ui/loading-skeleton"
 import { useForms } from "@/hooks/use-forms"
 
 export function FormsPageContent() {
@@ -46,11 +47,13 @@ export function FormsPageContent() {
 
         {/* Loading State */}
         {isLoading ? (
-          <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="w-10 h-10 text-[#262b80] animate-spin mb-4" />
-            <p className="text-slate-500 font-cairo text-sm">
-              {isAr ? "جاري تحميل النماذج البنكية..." : "Loading bank forms..."}
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
+            <FormCardSkeleton />
+            <FormCardSkeleton />
+            <FormCardSkeleton />
+            <FormCardSkeleton />
+            <FormCardSkeleton />
+            <FormCardSkeleton />
           </div>
         ) : isError ? (
           /* Error State */

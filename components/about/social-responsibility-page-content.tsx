@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react"
 import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
+import { CsrCardSkeleton } from "@/components/ui/loading-skeleton"
 import Image from "next/image"
 import Link from "next/link"
 import { getLocalizedHref } from "@/lib/localized-routes"
@@ -275,8 +276,13 @@ export function SocialResponsibilityPageContent() {
 
           {/* Initiatives Grid */}
           {loading ? (
-            <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-10 w-10 animate-spin text-[#262b80]" />
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <CsrCardSkeleton />
+              <CsrCardSkeleton />
+              <CsrCardSkeleton />
+              <CsrCardSkeleton />
+              <CsrCardSkeleton />
+              <CsrCardSkeleton />
             </div>
           ) : filteredInitiatives.length > 0 ? (
             <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
