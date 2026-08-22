@@ -139,7 +139,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative w-full h-[85vh] overflow-hidden"
+      className="relative w-full h-[86vh] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       aria-label="Hero section"

@@ -1,17 +1,26 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { getPageSections, type BankSectionRaw } from "@/services/sections-service"
-import Link from "next/link"
-import { motion, useInView, useReducedMotion } from "framer-motion"
-import { useI18n } from "@/lib/i18n-context"
-import { PageHero } from "@/components/ui/page-hero"
-import { FoundationSectionSkeleton, VisionMissionSkeleton } from "@/components/ui/loading-skeleton"
-import { SectionTitle } from "@/components/ui/section-title"
-import { Card, CardContent } from "@/components/ui/card"
-import type { LucideIcon } from "lucide-react"
-import { getLocalizedHref } from "@/lib/localized-routes"
-import Image from "next/image"
+import { useEffect, useRef, useState } from "react";
+import {
+  getPageSections,
+  type BankSectionRaw,
+} from "@/services/sections-service";
+import Link from "next/link";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { useI18n } from "@/lib/i18n-context";
+import { PageHero } from "@/components/ui/page-hero";
+import {
+  FoundationSectionSkeleton,
+  VisionMissionSkeleton,
+  ValuesSectionSkeleton,
+  StrategicGoalsSectionSkeleton,
+  DigitalSectionSkeleton,
+} from "@/components/ui/loading-skeleton";
+import { SectionTitle } from "@/components/ui/section-title";
+import { Card, CardContent } from "@/components/ui/card";
+import type { LucideIcon } from "lucide-react";
+import { getLocalizedHref } from "@/lib/localized-routes";
+import Image from "next/image";
 import {
   ArrowLeft,
   ArrowRight,
@@ -30,37 +39,37 @@ import {
   Smartphone,
   Target,
   Users,
-} from "lucide-react"
+} from "lucide-react";
 
 type LocalizedItem = {
-  titleAr: string
-  titleEn: string
-  descAr: string
-  descEn: string
-}
+  titleAr: string;
+  titleEn: string;
+  descAr: string;
+  descEn: string;
+};
 
 type LocalizedIconItem = LocalizedItem & {
-  icon: LucideIcon
-}
+  icon: LucideIcon;
+};
 
 type MetricItem = {
-  icon: LucideIcon
-  labelAr: string
-  labelEn: string
-  valueAr?: string
-  valueEn?: string
-  animatedValue?: number
-  suffix?: string
-  descAr: string
-  descEn: string
-}
+  icon: LucideIcon;
+  labelAr: string;
+  labelEn: string;
+  valueAr?: string;
+  valueEn?: string;
+  animatedValue?: number;
+  suffix?: string;
+  descAr: string;
+  descEn: string;
+};
 
 const FADE_IN_UP = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-50px" },
   transition: { duration: 0.6, ease: "easeOut" },
-}
+};
 
 const STAGGER_CONTAINER = {
   hidden: { opacity: 0 },
@@ -70,7 +79,7 @@ const STAGGER_CONTAINER = {
       staggerChildren: 0.1,
     },
   },
-}
+};
 
 const STAGGER_ITEM = {
   hidden: { opacity: 0, y: 24 },
@@ -79,103 +88,127 @@ const STAGGER_ITEM = {
     y: 0,
     transition: { duration: 0.55, ease: "easeOut" },
   },
-}
+};
 
 const aboutHighlights: LocalizedIconItem[] = [
   {
     icon: Building2,
     titleAr: "مؤسسة مصرفية وطنية حديثة",
     titleEn: "A Modern National Banking Institution",
-    descAr: "تأسس البنك عام 2021م ليقدم نموذجاً مصرفياً يجمع بين الموثوقية والحداثة.",
-    descEn: "Established in 2021 to deliver a banking model that combines reliability and modernity.",
+    descAr:
+      "تأسس البنك عام 2021م ليقدم نموذجاً مصرفياً يجمع بين الموثوقية والحداثة.",
+    descEn:
+      "Established in 2021 to deliver a banking model that combines reliability and modernity.",
   },
   {
     icon: Users,
     titleAr: "دعم الأفراد والمشاريع",
     titleEn: "Supporting Individuals & Enterprises",
     descAr: "حلول مالية ومصرفية موجّهة للأفراد والمشاريع الصغيرة والمتوسطة.",
-    descEn: "Financial and banking solutions designed for individuals and small and medium-sized enterprises.",
+    descEn:
+      "Financial and banking solutions designed for individuals and small and medium-sized enterprises.",
   },
   {
     icon: Shield,
     titleAr: "ثقة وشفافية والتزام",
     titleEn: "Trust, Transparency & Commitment",
     descAr: "تجربة مصرفية تقوم على الأمان والوضوح والالتزام بالقيم الإسلامية.",
-    descEn: "A banking experience built on security, clarity, and commitment to Islamic values.",
+    descEn:
+      "A banking experience built on security, clarity, and commitment to Islamic values.",
   },
-]
+];
 
 const values: LocalizedIconItem[] = [
   {
     icon: Award,
     titleAr: "التميز",
     titleEn: "Excellence",
-    descAr: "نسعى إلى تقديم خدمات مصرفية عالية الجودة ترتكز على الكفاءة والاحترافية والتحسين المستمر.",
-    descEn: "We strive to deliver high-quality banking services built on efficiency, professionalism, and continuous improvement.",
+    descAr:
+      "نسعى إلى تقديم خدمات مصرفية عالية الجودة ترتكز على الكفاءة والاحترافية والتحسين المستمر.",
+    descEn:
+      "We strive to deliver high-quality banking services built on efficiency, professionalism, and continuous improvement.",
   },
   {
     icon: Scale,
     titleAr: "الالتزام",
     titleEn: "Commitment",
-    descAr: "نلتزم بمسؤولياتنا المهنية والمؤسسية، ونحرص على الوفاء بمعاييرنا ووعودنا في كل ما نقدمه.",
-    descEn: "We are committed to our professional and institutional responsibilities, upholding our standards and promises in everything we do.",
+    descAr:
+      "نلتزم بمسؤولياتنا المهنية والمؤسسية، ونحرص على الوفاء بمعاييرنا ووعودنا في كل ما نقدمه.",
+    descEn:
+      "We are committed to our professional and institutional responsibilities, upholding our standards and promises in everything we do.",
   },
   {
     icon: Lightbulb,
     titleAr: "الابتكار",
     titleEn: "Innovation",
-    descAr: "نطوّر حلولاً مالية ومصرفية حديثة تواكب المتغيرات وتمنح عملاءنا قيمة عملية حقيقية.",
-    descEn: "We develop modern financial and banking solutions that keep pace with change and deliver practical value to our clients.",
+    descAr:
+      "نطوّر حلولاً مالية ومصرفية حديثة تواكب المتغيرات وتمنح عملاءنا قيمة عملية حقيقية.",
+    descEn:
+      "We develop modern financial and banking solutions that keep pace with change and deliver practical value to our clients.",
   },
   {
     icon: Handshake,
     titleAr: "الشراكة",
     titleEn: "Partnership",
-    descAr: "نبني علاقات قائمة على التعاون والثقة المتبادلة بما يحقق المنفعة المشتركة ويعزز الأثر الإيجابي.",
-    descEn: "We build relationships based on collaboration and mutual trust to create shared value and positive impact.",
+    descAr:
+      "نبني علاقات قائمة على التعاون والثقة المتبادلة بما يحقق المنفعة المشتركة ويعزز الأثر الإيجابي.",
+    descEn:
+      "We build relationships based on collaboration and mutual trust to create shared value and positive impact.",
   },
   {
     icon: Shield,
     titleAr: "الثقة والأمان",
     titleEn: "Trust & Security",
-    descAr: "نضع موثوقية الخدمات وأمن التعاملات في صميم تجربتنا المصرفية بما يعزز ثقة العملاء واستقرار العلاقة معهم.",
-    descEn: "We place service reliability and transaction security at the heart of our banking experience to strengthen trust and long-term confidence.",
+    descAr:
+      "نضع موثوقية الخدمات وأمن التعاملات في صميم تجربتنا المصرفية بما يعزز ثقة العملاء واستقرار العلاقة معهم.",
+    descEn:
+      "We place service reliability and transaction security at the heart of our banking experience to strengthen trust and long-term confidence.",
   },
   {
     icon: Heart,
     titleAr: "المسؤولية المجتمعية",
     titleEn: "Social Responsibility",
-    descAr: "نؤمن بدورنا في دعم المجتمع والمساهمة في التنمية المستدامة عبر مبادرات وشراكات ذات أثر ملموس.",
-    descEn: "We believe in our role in supporting society and contributing to sustainable development through meaningful initiatives and partnerships.",
+    descAr:
+      "نؤمن بدورنا في دعم المجتمع والمساهمة في التنمية المستدامة عبر مبادرات وشراكات ذات أثر ملموس.",
+    descEn:
+      "We believe in our role in supporting society and contributing to sustainable development through meaningful initiatives and partnerships.",
   },
-]
+];
 
 const strategicGoals: LocalizedItem[] = [
   {
     titleAr: "الريادة والابتكار",
     titleEn: "Leadership & Innovation",
-    descAr: "تمكين عملائنا من تحقيق تطلعاتهم المالية عبر تجربة مصرفية متطورة تضيف لهم قيمة حقيقية في حياتهم وأعمالهم.",
-    descEn: "Empowering our clients to achieve their financial aspirations through an advanced banking experience that adds real value to their lives and businesses.",
+    descAr:
+      "تمكين عملائنا من تحقيق تطلعاتهم المالية عبر تجربة مصرفية متطورة تضيف لهم قيمة حقيقية في حياتهم وأعمالهم.",
+    descEn:
+      "Empowering our clients to achieve their financial aspirations through an advanced banking experience that adds real value to their lives and businesses.",
   },
   {
     titleAr: "التمكين والشمول المالي",
     titleEn: "Empowerment & Financial Inclusion",
-    descAr: "إتاحة خدمات مالية ومصرفية تسهّل حياة الأفراد، وتساعد المشاريع الاقتصادية على النمو والاستقرار.",
-    descEn: "Providing financial and banking services that make life easier for individuals and help economic projects grow and remain stable.",
+    descAr:
+      "إتاحة خدمات مالية ومصرفية تسهّل حياة الأفراد، وتساعد المشاريع الاقتصادية على النمو والاستقرار.",
+    descEn:
+      "Providing financial and banking services that make life easier for individuals and help economic projects grow and remain stable.",
   },
   {
     titleAr: "الثقة والاستدامة",
     titleEn: "Trust & Sustainability",
-    descAr: "منح عملائنا والمساهمين طمأنينة دائمة من خلال تعامل شفاف يدعم نمواً مالياً طويل الأمد.",
-    descEn: "Providing lasting confidence to our clients and shareholders through transparent practices that support long-term financial growth.",
+    descAr:
+      "منح عملائنا والمساهمين طمأنينة دائمة من خلال تعامل شفاف يدعم نمواً مالياً طويل الأمد.",
+    descEn:
+      "Providing lasting confidence to our clients and shareholders through transparent practices that support long-term financial growth.",
   },
   {
     titleAr: "الشراكات والمسؤولية",
     titleEn: "Partnerships & Responsibility",
-    descAr: "خلق فرص تعاون مع شركاء محليين ودوليين بما يعود بالنفع على المجتمع ويعزز التنمية المستدامة.",
-    descEn: "Creating opportunities for cooperation with local and international partners in ways that benefit society and advance sustainable development.",
+    descAr:
+      "خلق فرص تعاون مع شركاء محليين ودوليين بما يعود بالنفع على المجتمع ويعزز التنمية المستدامة.",
+    descEn:
+      "Creating opportunities for cooperation with local and international partners in ways that benefit society and advance sustainable development.",
   },
-]
+];
 
 const metrics: MetricItem[] = [
   {
@@ -214,46 +247,46 @@ const metrics: MetricItem[] = [
     descAr: "انتشار واسع عبر شبكة دول إكسبرس",
     descEn: "Wide reach through Dowal Express network",
   },
-]
+];
 
 function AnimatedNumber({ value }: { value: number }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement | null>(null)
-  const frameRef = useRef<number | null>(null)
-  const isInView = useInView(ref, { once: true, margin: "-50px" })
-  const shouldReduceMotion = useReducedMotion()
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const frameRef = useRef<number | null>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!isInView) return
+    if (!isInView) return;
 
     if (shouldReduceMotion) {
-      setCount(value)
-      return
+      setCount(value);
+      return;
     }
 
-    const duration = 2000
-    const startTime = performance.now()
+    const duration = 2000;
+    const startTime = performance.now();
 
     const update = (currentTime: number) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const easeOut = 1 - Math.pow(1 - progress, 4)
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 4);
 
-      setCount(Math.floor(easeOut * value))
+      setCount(Math.floor(easeOut * value));
 
       if (progress < 1) {
-        frameRef.current = requestAnimationFrame(update)
+        frameRef.current = requestAnimationFrame(update);
       }
-    }
+    };
 
-    frameRef.current = requestAnimationFrame(update)
+    frameRef.current = requestAnimationFrame(update);
 
     return () => {
-      if (frameRef.current) cancelAnimationFrame(frameRef.current)
-    }
-  }, [isInView, shouldReduceMotion, value])
+      if (frameRef.current) cancelAnimationFrame(frameRef.current);
+    };
+  }, [isInView, shouldReduceMotion, value]);
 
-  return <span ref={ref}>{count}</span>
+  return <span ref={ref}>{count}</span>;
 }
 
 function MetricCard({
@@ -261,9 +294,9 @@ function MetricCard({
   isAr,
   delay = 0,
 }: {
-  item: MetricItem
-  isAr: boolean
-  delay?: number
+  item: MetricItem;
+  isAr: boolean;
+  delay?: number;
 }) {
   const value =
     item.animatedValue !== undefined ? (
@@ -274,7 +307,7 @@ function MetricCard({
       </span>
     ) : (
       <span>{isAr ? item.valueAr : item.valueEn}</span>
-    )
+    );
 
   return (
     <motion.div
@@ -314,16 +347,10 @@ function MetricCard({
         </p>
       </div>
     </motion.div>
-  )
+  );
 }
 
-function InfoCard({
-  item,
-  isAr,
-}: {
-  item: LocalizedIconItem
-  isAr: boolean
-}) {
+function InfoCard({ item, isAr }: { item: LocalizedIconItem; isAr: boolean }) {
   return (
     <motion.div
       variants={STAGGER_ITEM}
@@ -337,7 +364,10 @@ function InfoCard({
         <div className="mb-6 flex items-start justify-between gap-4">
           <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#262b80]/10 bg-gradient-to-br from-[#f8f9fc] to-white shadow-[0_10px_25px_rgba(11,13,54,0.06)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_30px_rgba(11,13,54,0.10)]">
             <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,rgba(38,43,128,0.08),transparent_65%)]" />
-            <item.icon className="relative z-10 h-6 w-6 text-[#262b80]" strokeWidth={1.8} />
+            <item.icon
+              className="relative z-10 h-6 w-6 text-[#262b80]"
+              strokeWidth={1.8}
+            />
           </div>
 
           <div className="mt-2 h-px flex-1 bg-gradient-to-r from-[#262b80]/10 via-[#8b1e3f]/20 to-transparent" />
@@ -356,16 +386,10 @@ function InfoCard({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
-function ValueCard({
-  item,
-  isAr,
-}: {
-  item: LocalizedIconItem
-  isAr: boolean
-}) {
+function ValueCard({ item, isAr }: { item: LocalizedIconItem; isAr: boolean }) {
   return (
     <motion.div variants={STAGGER_ITEM}>
       <div className="group relative h-full overflow-hidden rounded-[28px] border border-[#dde3ef] bg-white p-7 shadow-[0_18px_50px_rgba(11,13,54,0.05)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(11,13,54,0.10)] md:p-8">
@@ -376,7 +400,10 @@ function ValueCard({
           <div className="mb-6 flex items-start justify-between gap-4">
             <div className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#262b80]/10 bg-gradient-to-br from-[#f8f9fc] to-white shadow-[0_10px_25px_rgba(11,13,54,0.06)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_30px_rgba(11,13,54,0.10)]">
               <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_top,rgba(38,43,128,0.08),transparent_65%)]" />
-              <item.icon className="relative z-10 h-6 w-6 text-[#262b80]" strokeWidth={1.8} />
+              <item.icon
+                className="relative z-10 h-6 w-6 text-[#262b80]"
+                strokeWidth={1.8}
+              />
             </div>
 
             <div className="mt-2 h-px flex-1 bg-gradient-to-r from-[#262b80]/10 via-[#8b1e3f]/20 to-transparent" />
@@ -396,7 +423,7 @@ function ValueCard({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
 function GoalCard({
@@ -404,9 +431,9 @@ function GoalCard({
   isAr,
   delay = 0,
 }: {
-  item: LocalizedItem
-  isAr: boolean
-  delay?: number
+  item: LocalizedItem;
+  isAr: boolean;
+  delay?: number;
 }) {
   return (
     <motion.div
@@ -433,34 +460,89 @@ function GoalCard({
         </div>
       </div>
     </motion.div>
-  )
+  );
 }
 
+
+const valueIconMap: Record<string, LucideIcon> = {
+  Award: Award,
+  award: Award,
+  Scale: Scale,
+  scale: Scale,
+  Lightbulb: Lightbulb,
+  lightbulb: Lightbulb,
+  Handshake: Handshake,
+  handshake: Handshake,
+  Shield: Shield,
+  shield: Shield,
+  Heart: Heart,
+  heart: Heart,
+};
+const defaultValuesIcons: LucideIcon[] = [
+  Award,
+  Scale,
+  Lightbulb,
+  Handshake,
+  Shield,
+  Heart,
+];
+
 export function AboutPageContent() {
-  const { locale } = useI18n()
-  const isAr = locale === "ar"
-  const shouldReduceMotion = useReducedMotion()
-  const [loading, setLoading] = useState(true)
-  const [sectionsData, setSectionsData] = useState<Record<string, BankSectionRaw>>({})
+  const { locale } = useI18n();
+  const isAr = locale === "ar";
+  const shouldReduceMotion = useReducedMotion();
+  const [loading, setLoading] = useState(true);
+  const [sectionsData, setSectionsData] = useState<
+    Record<string, BankSectionRaw>
+  >({});
 
   useEffect(() => {
     async function loadSections() {
-      setLoading(true)
+      setLoading(true);
       try {
-        const list = await getPageSections('about', locale || 'ar')
-        const map: Record<string, BankSectionRaw> = {}
+        const list = await getPageSections("about", locale || "ar");
+        const map: Record<string, BankSectionRaw> = {};
         list.forEach((s) => {
-          map[s.section_code] = s
-        })
-        setSectionsData(map)
+          map[s.section_code] = s;
+        });
+        setSectionsData(map);
       } catch (e) {
-        console.warn('Failed to load about sections', e)
+        console.warn("Failed to load about sections", e);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    loadSections()
-  }, [locale])
+    loadSections();
+  }, [locale]);
+
+  
+  const dynamicValues: LocalizedIconItem[] =
+    sectionsData["about_values"]?.items && sectionsData["about_values"].items.length > 0
+      ? sectionsData["about_values"].items.map((item, idx) => {
+          let icon = defaultValuesIcons[idx % defaultValuesIcons.length];
+          const badge = item.badge_text || "";
+          if (badge && valueIconMap[badge]) {
+            icon = valueIconMap[badge];
+          }
+          return {
+            icon,
+            titleAr: item.title_ar || item.title || "",
+            titleEn: item.title_en || item.title || "",
+            descAr: item.description_ar || item.description || "",
+            descEn: item.description_en || item.description || "",
+          };
+        })
+      : values;
+
+  const dynamicGoals: LocalizedItem[] =
+    sectionsData["about_goals"]?.items && sectionsData["about_goals"].items.length > 0
+      ? sectionsData["about_goals"].items.map((item) => ({
+          titleAr: item.title_ar || item.title || "",
+          titleEn: item.title_en || item.title || "",
+          descAr: item.description_ar || item.description || "",
+          descEn: item.description_en || item.description || "",
+        }))
+      : strategicGoals;
 
   const text = {
     heroTitle: isAr ? "عن البنك" : "About Us",
@@ -488,7 +570,7 @@ export function AboutPageContent() {
     establishmentParagraph5: isAr
       ? "وفي مواكبة للمتغيرات العالمية في تكريس مفهوم الاستدامة المالية ومن اداوتها تطبيق مفهوم الشمول المالي, قام بنك بن دول بإطلاق محفظة بن دول باي في خطوة سباقة لتوفير خدمات المالية ومصرفية للافراد والمؤسسات الصغيرة ومتناهية الصغر في خطوة تعكس رسالة البنك الهادفة لضم الفئات المختلفة في النظام المصرفي وتوفير خدمات مالية تلبي احتياجات المجتمع وتساهم في تقليل العرض النقدي و التضخم ضمن توجهات الدولة في تعزيز كفاءة الإدارة المالية للاقتصاد الوطني."
       : "In light of the global changes in consolidating the concept of financial sustainability and its tool for implementing the concept of financial inclusion, Bin Dowal Bank launched the Bin Dowal Pay wallet in a pioneering step to provide financial and banking services to individuals, small and micro enterprises, reflecting the bank's mission to include different groups in the banking system and provide financial services that meet the needs of society and help reduce the money supply and inflation in line with the state's directions to enhance the efficiency of financial management of the national economy.",
-      
+
     establishmentCardTitle: isAr
       ? "انطلاقة نحو تمكين مالي أوسع"
       : "A Launch Toward Broader Financial Empowerment",
@@ -558,8 +640,12 @@ export function AboutPageContent() {
       : "Explore our banking services, digital solutions, and broad branch network designed to serve individuals and businesses across different governorates.",
     exploreServices: isAr ? "تصفح خدماتنا" : "Explore Services",
     home: isAr ? "الرئيسية" : "Home",
-    establishmentBadge: isAr ? "تأسيس بنك بن دول" : "Bin Dowal Bank Establishment",
-    establishmentTitle: isAr ? "منذ 2021: بنك بن دول يطلق خدماته المصرفية المتكاملة" : "Since 2021: Bin Dowal Bank Launches Its Integrated Banking Services",
+    establishmentBadge: isAr
+      ? "تأسيس بنك بن دول"
+      : "Bin Dowal Bank Establishment",
+    establishmentTitle: isAr
+      ? "منذ 2021: بنك بن دول يطلق خدماته المصرفية المتكاملة"
+      : "Since 2021: Bin Dowal Bank Launches Its Integrated Banking Services",
     establishmentParagraph1: isAr
       ? "تاسس بنك بن دول للتمويل الأصغر الإسلامي في العام 2021م في مدينة المكلا بموجب ترخيص رقم  984/CBY/2022 وفقا لأحكام قانون البنك المركزي اليمني المنظمة لاعمال بنوك التمويل الأصغر الصادر برقم (15) للعام 2009م ومنذ التاسيس عمل بنك بن دول على تقديم خدمات مالية ومصرفية لدعم جهود التنمية والتمكين الاقتصادي في اطار الرسالة الذي أسس لها البنك."
       : "Established in 2021, in Dhowal Microfinance Bank was licensed by the Central Bank of Yemen under license number 984/CBY/2022, adhering to the Islamic microfinance law. From the outset, Dhowal has been committed to providing comprehensive financial and banking services, contributing to economic development and empowerment in line with its founding mission.",
@@ -568,15 +654,31 @@ export function AboutPageContent() {
     establishmentMetaValue2: isAr ? "مؤسسة مرخصة" : "Licensed Institution",
     establishmentMetaLabel2: isAr ? "مؤسسة مرخصة" : "Licensed Institution",
     establishmentMiniLabel: isAr ? "تأسس" : "Established",
-    establishmentImageAlt: isAr ? "تأسيس بنك بن دول" : "Bin Dowal Bank Establishment",
-  }
+    establishmentImageAlt: isAr
+      ? "تأسيس بنك بن دول"
+      : "Bin Dowal Bank Establishment",
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
       <PageHero
         loading={loading}
-        title={sectionsData["about_hero"]?.title_ar || text.heroTitle}
-        subtitle={sectionsData["about_hero"]?.description_ar || text.heroSubtitle}
+        title={
+          (isAr
+            ? sectionsData["about_hero"]?.title_ar ||
+              sectionsData["about_hero"]?.title
+            : sectionsData["about_hero"]?.title_en ||
+              sectionsData["about_hero"]?.title) || text.heroTitle
+        }
+        subtitle={
+          (isAr
+            ? sectionsData["about_hero"]?.subtitle_ar ||
+              sectionsData["about_hero"]?.description_ar ||
+              sectionsData["about_hero"]?.description
+            : sectionsData["about_hero"]?.subtitle_en ||
+              sectionsData["about_hero"]?.description_en ||
+              sectionsData["about_hero"]?.description) || text.heroSubtitle
+        }
         breadcrumbs={[
           { labelKey: text.home, href: "/" },
           { labelKey: text.heroTitle },
@@ -588,13 +690,14 @@ export function AboutPageContent() {
             className="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[#0b0d36] shadow-lg transition-all hover:-translate-y-0.5 hover:shadow-xl"
           >
             {text.contactUs}
-            {isAr ? <ArrowLeft className="h-4 w-4" /> : <ArrowRight className="h-4 w-4" />}
+            {isAr ? (
+              <ArrowLeft className="h-4 w-4" />
+            ) : (
+              <ArrowRight className="h-4 w-4" />
+            )}
           </Link>
         </div>
       </PageHero>
-
-
-
 
       {/* About */}
       {/* <section className="relative overflow-hidden bg-white py-20 lg:py-28">
@@ -648,84 +751,99 @@ export function AboutPageContent() {
       {loading ? (
         <FoundationSectionSkeleton />
       ) : (
-        <section id="foundation" className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28">
-        {/* Background layers */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.06),transparent_28%)]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/20 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#78182e]/20 to-transparent" />
+        <section
+          id="foundation"
+          className="relative overflow-hidden border-y border-[#d7dbea] bg-[linear-gradient(180deg,#f8f9fc_0%,#f3f5fa_100%)] py-24 md:py-28"
+        >
+          {/* Background layers */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.08),transparent_30%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.06),transparent_28%)]" />
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/20 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#78182e]/20 to-transparent" />
 
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
-            {/* Text Content */}
-            <motion.div {...FADE_IN_UP} className="order-2 lg:order-1">
-              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-4 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
-                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-                <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#262b80]">
-                  {(isAr ? (sectionsData["about_foundation"]?.subtitle_ar || sectionsData["about_foundation"]?.title_ar) : (sectionsData["about_foundation"]?.subtitle_en || sectionsData["about_foundation"]?.title_en)) || text.establishmentBadge}
-                </span>
-              </div>
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-24">
+              {/* Text Content */}
+              <motion.div {...FADE_IN_UP} className="order-2 lg:order-1">
+                <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-4 py-2 shadow-[0_8px_24px_rgba(15,23,42,0.04)]">
+                  <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                  <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#262b80]">
+                    {(isAr
+                      ? sectionsData["about_foundation"]?.subtitle_ar ||
+                        sectionsData["about_foundation"]?.title_ar
+                      : sectionsData["about_foundation"]?.subtitle_en ||
+                        sectionsData["about_foundation"]?.title_en) ||
+                      text.establishmentBadge}
+                  </span>
+                </div>
 
-              <div className="mb-6 max-w-xl">
-                <div className="mb-3 h-px w-20 bg-gradient-to-r from-[#78182e] to-[#262b80]" />
-                <h3 className="text-3xl font-bold leading-[1.25] tracking-tight text-[#0f172a] md:text-4xl xl:text-[2.75rem]">
-                  {(isAr ? (sectionsData["about_foundation"]?.title_ar || sectionsData["about_foundation"]?.title) : (sectionsData["about_foundation"]?.title_en || sectionsData["about_foundation"]?.title)) || text.establishmentTitle}
-                </h3>
-              </div>
+                <div className="mb-6 max-w-xl">
+                  <div className="mb-3 h-px w-20 bg-gradient-to-r from-[#78182e] to-[#262b80]" />
+                  <h3 className="text-3xl font-bold leading-[1.25] tracking-tight text-[#0f172a] md:text-4xl xl:text-[2.75rem]">
+                    {(isAr
+                      ? sectionsData["about_foundation"]?.title_ar ||
+                        sectionsData["about_foundation"]?.title
+                      : sectionsData["about_foundation"]?.title_en ||
+                        sectionsData["about_foundation"]?.title) ||
+                      text.establishmentTitle}
+                  </h3>
+                </div>
 
-              <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
-                {(() => {
-                  const desc = (isAr
-                    ? (sectionsData["about_foundation"]?.description_ar || sectionsData["about_foundation"]?.description)
-                    : (sectionsData["about_foundation"]?.description_en || sectionsData["about_foundation"]?.description)) || text.establishmentParagraph1;
+                <div className="max-w-2xl space-y-5 text-[1.05rem] leading-8 text-slate-600 md:text-lg">
+                  {(() => {
+                    const desc =
+                      (isAr
+                        ? sectionsData["about_foundation"]?.description_ar ||
+                          sectionsData["about_foundation"]?.description
+                        : sectionsData["about_foundation"]?.description_en ||
+                          sectionsData["about_foundation"]?.description) ||
+                      text.establishmentParagraph1;
 
-                  if (desc.includes('<') && desc.includes('>')) {
-                    return (
-                      <div
-                        className="prose prose-slate max-w-none text-[1.05rem] leading-8 text-slate-600 md:text-lg space-y-4"
-                        dangerouslySetInnerHTML={{ __html: desc }}
-                      />
-                    );
-                  }
+                    if (desc.includes("<") && desc.includes(">")) {
+                      return (
+                        <div
+                          className="prose prose-slate max-w-none text-[1.05rem] leading-8 text-slate-600 md:text-lg space-y-4"
+                          dangerouslySetInnerHTML={{ __html: desc }}
+                        />
+                      );
+                    }
 
-                  return desc
-                    .split('\n')
-                    .filter((p: string) => p.trim().length > 0)
-                    .map((p: string, pIdx: number) => (
-                      <p key={pIdx}>{p}</p>
-                    ));
-                })()}
-              </div>
-            </motion.div>
+                    return desc
+                      .split("\n")
+                      .filter((p: string) => p.trim().length > 0)
+                      .map((p: string, pIdx: number) => <p key={pIdx}>{p}</p>);
+                  })()}
+                </div>
+              </motion.div>
 
-            {/* Visual */}
-            <motion.div
-              {...FADE_IN_UP}
-              transition={{ delay: 0.15 }}
-              className="order-1 relative flex justify-center lg:order-2 lg:justify-end"
-            >
-              <div className="relative w-full max-w-[450px]">
-                {/* Soft visual glow */}
-                <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.08),transparent_35%)]" />
-                <div className="absolute inset-0 rounded-[32px] " />
+              {/* Visual */}
+              <motion.div
+                {...FADE_IN_UP}
+                transition={{ delay: 0.15 }}
+                className="order-1 relative flex justify-center lg:order-2 lg:justify-end"
+              >
+                <div className="relative w-full max-w-[450px]">
+                  {/* Soft visual glow */}
+                  <div className="absolute inset-0 rounded-[32px] bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.08),transparent_35%)]" />
+                  <div className="absolute inset-0 rounded-[32px] " />
 
-                <Image
-                  src={
-                    sectionsData["about_foundation"]?.image_url ||
-                    sectionsData["about_foundation"]?.image_path ||
-                    "/images/banking-experience.png"
-                  }
-                  alt={text.establishmentImageAlt || "تأسيس بنك بن دول"}
-                  width={700}
-                  height={700}
-                  className="relative z-[1] h-auto w-full object-contain"
-                  priority
-                />
-              </div>
-            </motion.div>
+                  <Image
+                    src={
+                      sectionsData["about_foundation"]?.image_url ||
+                      sectionsData["about_foundation"]?.image_path ||
+                      "/images/banking-experience.png"
+                    }
+                    alt={text.establishmentImageAlt || "تأسيس بنك بن دول"}
+                    width={700}
+                    height={700}
+                    className="relative z-[1] h-auto w-full object-contain"
+                    priority
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
       )}
 
       {/* Reach */}
@@ -733,12 +851,19 @@ export function AboutPageContent() {
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
             <motion.div {...FADE_IN_UP}>
-              <h2 className="mb-4 text-3xl font-bold md:text-4xl">{text.reachTitle}</h2>
+              <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+                {text.reachTitle}
+              </h2>
               <p className="mx-auto max-w-3xl text-lg leading-relaxed text-white/70">
                 {text.reachSubtitle}
               </p>
               <div className="mt-6 flex justify-center">
-                <Image src="/images/branches-map.png" alt="Reach" width={700} height={700} />
+                <Image
+                  src="/images/branches-map.png"
+                  alt="Reach"
+                  width={700}
+                  height={700}
+                />
               </div>
             </motion.div>
           </div>
@@ -822,7 +947,14 @@ export function AboutPageContent() {
       </section>
 
       {/* Vision & Mission */}
-      <section id="vision" className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f8f9fc_100%)] py-24 md:py-28">
+      {loading ? (
+        <VisionMissionSkeleton />
+      ) : (
+        
+      <section
+        id="vision"
+        className="relative overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f8f9fc_100%)] py-24 md:py-28"
+      >
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.06),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(120,24,46,0.05),transparent_24%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#262b80]/15 to-transparent" />
         <div className="container relative z-10 mx-auto px-4">
@@ -831,18 +963,33 @@ export function AboutPageContent() {
               <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
                 <span className="h-2 w-2 rounded-full bg-[#262b80]" />
                 <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-                  {(isAr ? (sectionsData["about_vision"]?.title_ar || sectionsData["about_vision"]?.title) : (sectionsData["about_vision"]?.title_en || sectionsData["about_vision"]?.title)) || text.visionMissionTitle}
+                  {(isAr
+                    ? sectionsData["about_vision"]?.title_ar ||
+                      sectionsData["about_vision"]?.title
+                    : sectionsData["about_vision"]?.title_en ||
+                      sectionsData["about_vision"]?.title) ||
+                    text.visionMissionTitle}
                 </span>
               </div>
 
               <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
-                {(isAr ? (sectionsData["about_vision"]?.title_ar || sectionsData["about_vision"]?.title) : (sectionsData["about_vision"]?.title_en || sectionsData["about_vision"]?.title)) || text.visionMissionTitle}
+                {(isAr
+                  ? sectionsData["about_vision"]?.title_ar ||
+                    sectionsData["about_vision"]?.title
+                  : sectionsData["about_vision"]?.title_en ||
+                    sectionsData["about_vision"]?.title) ||
+                  text.visionMissionTitle}
               </h2>
 
               <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
 
               <p className="text-lg leading-8 text-slate-600 md:text-xl">
-                {(isAr ? (sectionsData["about_vision"]?.subtitle_ar || sectionsData["about_vision"]?.subtitle) : (sectionsData["about_vision"]?.subtitle_en || sectionsData["about_vision"]?.subtitle)) || text.visionMissionSubtitle}
+                {(isAr
+                  ? sectionsData["about_vision"]?.subtitle_ar ||
+                    sectionsData["about_vision"]?.subtitle
+                  : sectionsData["about_vision"]?.subtitle_en ||
+                    sectionsData["about_vision"]?.subtitle) ||
+                  text.visionMissionSubtitle}
               </p>
             </motion.div>
           </div>
@@ -862,15 +1009,32 @@ export function AboutPageContent() {
                   </div>
 
                   <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-                    {sectionsData["about_vision"]?.items?.[0]?.badge_text || (isAr ? "الرؤية المؤسسية" : "Corporate Vision")}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[0]?.badge_text_ar ||
+                        sectionsData["about_vision"]?.items?.[0]?.badge_text
+                      : sectionsData["about_vision"]?.items?.[0]?.badge_text_en ||
+                        sectionsData["about_vision"]?.items?.[0]?.badge_text) ||
+                      (isAr ? "الرؤية المؤسسية" : "Corporate Vision")}
                   </div>
 
                   <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-                    {(isAr ? (sectionsData["about_vision"]?.items?.[0]?.title_ar || sectionsData["about_vision"]?.items?.[0]?.title) : (sectionsData["about_vision"]?.items?.[0]?.title_en || sectionsData["about_vision"]?.items?.[0]?.title)) || text.visionTitle}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[0]?.title_ar ||
+                        sectionsData["about_vision"]?.items?.[0]?.title
+                      : sectionsData["about_vision"]?.items?.[0]?.title_en ||
+                        sectionsData["about_vision"]?.items?.[0]?.title) ||
+                      text.visionTitle}
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {(isAr ? (sectionsData["about_vision"]?.items?.[0]?.description_ar || sectionsData["about_vision"]?.items?.[0]?.description) : (sectionsData["about_vision"]?.items?.[0]?.description_en || sectionsData["about_vision"]?.items?.[0]?.description)) || text.visionDesc}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[0]
+                          ?.description_ar ||
+                        sectionsData["about_vision"]?.items?.[0]?.description
+                      : sectionsData["about_vision"]?.items?.[0]
+                          ?.description_en ||
+                        sectionsData["about_vision"]?.items?.[0]
+                          ?.description) || text.visionDesc}
                   </p>
                 </div>
               </div>
@@ -890,15 +1054,32 @@ export function AboutPageContent() {
                   </div>
 
                   <div className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#78182e]/70">
-                    {sectionsData["about_vision"]?.items?.[1]?.badge_text || (isAr ? "الرسالة المؤسسية" : "Corporate Mission")}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[1]?.badge_text_ar ||
+                        sectionsData["about_vision"]?.items?.[1]?.badge_text
+                      : sectionsData["about_vision"]?.items?.[1]?.badge_text_en ||
+                        sectionsData["about_vision"]?.items?.[1]?.badge_text) ||
+                      (isAr ? "الرسالة المؤسسية" : "Corporate Mission")}
                   </div>
 
                   <h3 className="mb-5 text-2xl font-bold leading-snug text-[#0b0d36] md:text-[2rem]">
-                    {(isAr ? (sectionsData["about_vision"]?.items?.[1]?.title_ar || sectionsData["about_vision"]?.items?.[1]?.title) : (sectionsData["about_vision"]?.items?.[1]?.title_en || sectionsData["about_vision"]?.items?.[1]?.title)) || text.missionTitle}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[1]?.title_ar ||
+                        sectionsData["about_vision"]?.items?.[1]?.title
+                      : sectionsData["about_vision"]?.items?.[1]?.title_en ||
+                        sectionsData["about_vision"]?.items?.[1]?.title) ||
+                      text.missionTitle}
                   </h3>
 
                   <p className="text-lg leading-8 text-slate-600">
-                    {(isAr ? (sectionsData["about_vision"]?.items?.[1]?.description_ar || sectionsData["about_vision"]?.items?.[1]?.description) : (sectionsData["about_vision"]?.items?.[1]?.description_en || sectionsData["about_vision"]?.items?.[1]?.description)) || text.missionDesc}
+                    {(isAr
+                      ? sectionsData["about_vision"]?.items?.[1]
+                          ?.description_ar ||
+                        sectionsData["about_vision"]?.items?.[1]?.description
+                      : sectionsData["about_vision"]?.items?.[1]
+                          ?.description_en ||
+                        sectionsData["about_vision"]?.items?.[1]
+                          ?.description) || text.missionDesc}
                   </p>
                 </div>
               </div>
@@ -906,177 +1087,248 @@ export function AboutPageContent() {
           </div>
         </div>
       </section>
+      )}
 
       {/* Values */}
-      <section className="relative overflow-hidden bg-[#f8f9fc] py-24 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.05),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(120,24,46,0.05),transparent_20%)]" />
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.div {...FADE_IN_UP}>
-              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
-                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-                <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-                  {text.valuesTitle}
-                </span>
-              </div>
-
-              <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
-                {text.valuesTitle}
-              </h2>
-
-              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
-
-              <p className="text-lg leading-8 text-slate-600 md:text-xl">
-                {text.valuesSubtitle}
-              </p>
-            </motion.div>
-          </div>
-
-          <motion.div
-            className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
-            variants={STAGGER_CONTAINER}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-          >
-            {values.map((item) => (
-              <ValueCard key={item.titleEn} item={item} isAr={isAr} />
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Strategic Goals */}
-      <section className="relative overflow-hidden border-t border-[#d7dbea] bg-white py-24 md:py-28">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.05),transparent_30%)]" />
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
-            <motion.div {...FADE_IN_UP}>
-              <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-[#f8f9fc] px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
-                <span className="h-2 w-2 rounded-full bg-[#262b80]" />
-                <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
-                  {text.goalsTitle}
-                </span>
-              </div>
-
-              <h2 className="mb-5 text-3xl font-bold text-[#0b0d36] md:text-5xl">
-                {text.goalsTitle}
-              </h2>
-
-              <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
-
-              <p className="text-lg leading-8 text-slate-600 md:text-xl">
-                {text.goalsSubtitle}
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
-            {strategicGoals.map((item, index) => (
-              <GoalCard key={item.titleEn} item={item} isAr={isAr} delay={index * 0.08} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Digital Transformation */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 md:py-28">
-        <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-[0.035]" />
-
-        <div className="pointer-events-none absolute -right-24 top-[-80px] h-[340px] w-[340px] rounded-full bg-white/10 blur-3xl" />
-        <div className="pointer-events-none absolute bottom-[-120px] left-[-80px] h-[280px] w-[280px] rounded-full bg-primary/10 blur-3xl" />
-
-        <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
-
-        <div className="container relative z-10 mx-auto px-4">
-          <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
-            <motion.div {...FADE_IN_UP} className="text-white">
-              <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
-                  <Smartphone className="h-4 w-4" />
-                </span>
-                <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85">
-                  {text.digitalBadge}
-                </span>
-              </div>
-
-              <h2 className="mb-5 max-w-[620px] text-3xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl">
-                {text.digitalTitle}
-              </h2>
-
-              <div className="mb-6 h-px w-24 bg-gradient-to-r from-white/70 via-white/20 to-transparent" />
-
-              <p className="mb-9 max-w-[640px] text-base leading-8 text-white/72 md:text-xl md:leading-9">
-                {text.digitalDesc}
-              </p>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="group rounded-[26px] border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
-                    <Shield className="h-5 w-5 text-white" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-base font-semibold text-white">{text.digitalSecurity}</h3>
-                    <p className="text-sm leading-6 text-white/60">
-                      {text.digitalSecurityDesc}
-                    </p>
-                  </div>
+      {loading ? (
+        <ValuesSectionSkeleton />
+      ) : (
+        <section className="relative overflow-hidden bg-[#f8f9fc] py-24 md:py-28">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(38,43,128,0.05),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(120,24,46,0.05),transparent_20%)]" />
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mx-auto max-w-3xl text-center">
+              <motion.div {...FADE_IN_UP}>
+                <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-white px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
+                  <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
+                    {(isAr
+                      ? sectionsData["about_values"]?.title_ar || sectionsData["about_values"]?.title
+                      : sectionsData["about_values"]?.title_en || sectionsData["about_values"]?.title) || text.valuesTitle}
+                  </span>
                 </div>
 
-                <div className="group rounded-[26px] border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
-                    <Smartphone className="h-5 w-5 text-white" />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-base font-semibold text-white">{text.digitalSolutions}</h3>
-                    <p className="text-sm leading-6 text-white/60">
-                      {text.digitalSolutionsDesc}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+                <h2 className="mb-5 text-3xl font-bold leading-tight text-[#0b0d36] md:text-5xl">
+                  {(isAr
+                    ? sectionsData["about_values"]?.title_ar || sectionsData["about_values"]?.title
+                    : sectionsData["about_values"]?.title_en || sectionsData["about_values"]?.title) || text.valuesTitle}
+                </h2>
+
+                <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
+
+                <p className="text-lg leading-8 text-slate-600 md:text-xl">
+                  {(isAr
+                    ? sectionsData["about_values"]?.subtitle_ar || sectionsData["about_values"]?.subtitle
+                    : sectionsData["about_values"]?.subtitle_en || sectionsData["about_values"]?.subtitle) || text.valuesSubtitle}
+                </p>
+              </motion.div>
+            </div>
 
             <motion.div
-              {...FADE_IN_UP}
-              transition={{ delay: 0.15 }}
-              className="group relative"
+              className="mt-16 grid gap-6 sm:grid-cols-2 xl:grid-cols-3"
+              variants={STAGGER_CONTAINER}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-50px" }}
             >
-              <div className="relative overflow-hidden rounded-[32px] border border-white/12 bg-white/[0.05] p-3 shadow-[0_30px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))]" />
-                <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
-
-                <div className="relative z-10 flex items-center justify-center overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))]">
-                  <div className="absolute h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
-
-                  <motion.div
-                    animate={shouldReduceMotion ? { y: 0 } : { y: [0, -6, 0, 6, 0] }}
-                    transition={{
-                      duration: 7,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="relative z-10 flex items-center justify-center"
-                  >
-                    <Image
-                      src="/images/mockup-mobile-apps.png"
-                      alt="Digital banking applications"
-                      width={500}
-                      height={500}
-                      className="h-auto w-[70%] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.32)] transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* <div className="absolute -bottom-5 left-6 hidden rounded-2xl border border-white/12 bg-[#0b1236]/80 px-4 py-3 text-sm text-white/80 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl md:flex">
-                <span className="font-medium">{text.digitalBadge}</span>
-              </div> */}
+              {dynamicValues.map((item) => (
+                <ValueCard key={item.titleEn} item={item} isAr={isAr} />
+              ))}
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Strategic Goals */}
+      {loading ? (
+        <StrategicGoalsSectionSkeleton />
+      ) : (
+        <section className="relative overflow-hidden border-t border-[#d7dbea] bg-white py-24 md:py-28">
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(38,43,128,0.05),transparent_30%)]" />
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <motion.div {...FADE_IN_UP}>
+                <div className="mb-5 inline-flex items-center gap-3 rounded-full border border-[#262b80]/10 bg-[#f8f9fc] px-5 py-2 shadow-[0_10px_30px_rgba(11,13,54,0.04)]">
+                  <span className="h-2 w-2 rounded-full bg-[#262b80]" />
+                  <span className="text-xs font-bold uppercase tracking-[0.22em] text-[#262b80] md:text-sm">
+                    {(isAr
+                      ? sectionsData["about_goals"]?.title_ar || sectionsData["about_goals"]?.title
+                      : sectionsData["about_goals"]?.title_en || sectionsData["about_goals"]?.title) || text.goalsTitle}
+                  </span>
+                </div>
+
+                <h2 className="mb-5 text-3xl font-bold text-[#0b0d36] md:text-5xl">
+                  {(isAr
+                    ? sectionsData["about_goals"]?.title_ar || sectionsData["about_goals"]?.title
+                    : sectionsData["about_goals"]?.title_en || sectionsData["about_goals"]?.title) || text.goalsTitle}
+                </h2>
+
+                <div className="mx-auto mb-6 h-px w-24 bg-gradient-to-r from-transparent via-[#8b1e3f]/70 to-transparent" />
+
+                <p className="text-lg leading-8 text-slate-600 md:text-xl">
+                  {(isAr
+                    ? sectionsData["about_goals"]?.subtitle_ar || sectionsData["about_goals"]?.subtitle
+                    : sectionsData["about_goals"]?.subtitle_en || sectionsData["about_goals"]?.subtitle) || text.goalsSubtitle}
+                </p>
+              </motion.div>
+            </div>
+
+            <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+              {dynamicGoals.map((item, index) => (
+                <GoalCard
+                  key={item.titleEn}
+                  item={item}
+                  isAr={isAr}
+                  delay={index * 0.08}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Digital Transformation */}
+      {loading ? (
+        <DigitalSectionSkeleton />
+      ) : (
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 md:py-28">
+          <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-[0.035]" />
+
+          <div className="pointer-events-none absolute -right-24 top-[-80px] h-[340px] w-[340px] rounded-full bg-white/10 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-[-120px] left-[-80px] h-[280px] w-[280px] rounded-full bg-primary/10 blur-3xl" />
+
+          <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
+
+          <div className="container relative z-10 mx-auto px-4">
+            <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+              <motion.div {...FADE_IN_UP} className="text-white">
+                <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.08] px-4 py-2 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.18)]">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/10">
+                    <Smartphone className="h-4 w-4" />
+                  </span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/85">
+                    {(isAr
+                      ? sectionsData["about_digital"]?.subtitle_ar ||
+                        sectionsData["about_digital"]?.subtitle
+                      : sectionsData["about_digital"]?.subtitle_en ||
+                        sectionsData["about_digital"]?.subtitle) ||
+                      text.digitalBadge}
+                  </span>
+                </div>
+
+                <h2 className="mb-5 max-w-[620px] text-3xl font-bold leading-[1.15] tracking-tight text-white md:text-5xl">
+                  {(isAr
+                    ? sectionsData["about_digital"]?.title_ar ||
+                      sectionsData["about_digital"]?.title
+                    : sectionsData["about_digital"]?.title_en ||
+                      sectionsData["about_digital"]?.title) ||
+                    text.digitalTitle}
+                </h2>
+
+                <div className="mb-6 h-px w-24 bg-gradient-to-r from-white/70 via-white/20 to-transparent" />
+
+                <p className="mb-9 max-w-[640px] text-base leading-8 text-white/72 md:text-xl md:leading-9">
+                  {(isAr
+                    ? sectionsData["about_digital"]?.description_ar ||
+                      sectionsData["about_digital"]?.description
+                    : sectionsData["about_digital"]?.description_en ||
+                      sectionsData["about_digital"]?.description) ||
+                    text.digitalDesc}
+                </p>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="group rounded-[26px] border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
+                      <Shield className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-base font-semibold text-white">
+                        {(isAr
+                          ? sectionsData["about_digital"]?.items?.[0]?.title_ar ||
+                            sectionsData["about_digital"]?.items?.[0]?.title
+                          : sectionsData["about_digital"]?.items?.[0]?.title_en ||
+                            sectionsData["about_digital"]?.items?.[0]?.title) ||
+                          text.digitalSecurity}
+                      </h3>
+                      <p className="text-sm leading-6 text-white/60">
+                        {(isAr
+                          ? sectionsData["about_digital"]?.items?.[0]?.description_ar ||
+                            sectionsData["about_digital"]?.items?.[0]?.description
+                          : sectionsData["about_digital"]?.items?.[0]?.description_en ||
+                            sectionsData["about_digital"]?.items?.[0]?.description) ||
+                          text.digitalSecurityDesc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="group rounded-[26px] border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
+                      <Smartphone className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="space-y-1">
+                      <h3 className="text-base font-semibold text-white">
+                        {(isAr
+                          ? sectionsData["about_digital"]?.items?.[1]?.title_ar ||
+                            sectionsData["about_digital"]?.items?.[1]?.title
+                          : sectionsData["about_digital"]?.items?.[1]?.title_en ||
+                            sectionsData["about_digital"]?.items?.[1]?.title) ||
+                          text.digitalSolutions}
+                      </h3>
+                      <p className="text-sm leading-6 text-white/60">
+                        {(isAr
+                          ? sectionsData["about_digital"]?.items?.[1]?.description_ar ||
+                            sectionsData["about_digital"]?.items?.[1]?.description
+                          : sectionsData["about_digital"]?.items?.[1]?.description_en ||
+                            sectionsData["about_digital"]?.items?.[1]?.description) ||
+                          text.digitalSolutionsDesc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                {...FADE_IN_UP}
+                transition={{ delay: 0.15 }}
+                className="group relative"
+              >
+                <div className="relative overflow-hidden rounded-[32px] border border-white/12 bg-white/[0.05] p-3 shadow-[0_30px_80px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))]" />
+                  <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/20 to-transparent" />
+
+                  <div className="relative z-10 flex items-center justify-center overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))]">
+                    <div className="absolute h-56 w-56 rounded-full bg-primary/20 blur-3xl" />
+
+                    <motion.div
+                      animate={
+                        shouldReduceMotion ? { y: 0 } : { y: [0, -6, 0, 6, 0] }
+                      }
+                      transition={{
+                        duration: 7,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
+                      className="relative z-10 flex items-center justify-center"
+                    >
+                      <Image
+                        src={
+                          sectionsData["about_digital"]?.image_url ||
+                          sectionsData["about_digital"]?.image_path ||
+                          "/images/mockup-mobile-apps.png"
+                        }
+                        alt="Digital banking applications"
+                        width={500}
+                        height={500}
+                        className="h-auto w-[70%] object-contain drop-shadow-[0_24px_60px_rgba(0,0,0,0.32)] transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       {/* <section className="bg-muted/20 py-24 text-center">
@@ -1114,5 +1366,5 @@ export function AboutPageContent() {
         </div>
       </section> */}
     </div>
-  )
+  );
 }

@@ -9,6 +9,8 @@ export interface BankSectionItemRaw {
   description_ar?: string;
   description_en?: string;
   badge_text?: string;
+  badge_text_ar?: string;
+  badge_text_en?: string;
   icon_config?: { type?: string; value?: string } | string;
   image_url?: string;
   link_url?: string;
@@ -29,6 +31,8 @@ export interface BankSectionRaw {
   description?: string;
   description_ar?: string;
   description_en?: string;
+  image_path?: string;
+  image_url?: string;
   layout_type?: string;
   order_index?: number;
   is_active?: boolean;

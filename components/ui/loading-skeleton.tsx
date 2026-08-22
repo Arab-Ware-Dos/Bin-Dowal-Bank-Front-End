@@ -276,29 +276,65 @@ export function VisionMissionSkeleton() {
 
 export function BankCardsSliderSkeleton() {
   return (
-    <div className="relative mx-auto mt-10 w-full max-w-6xl px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div className="flex justify-center">
-          <Skeleton className="h-[240px] w-full max-w-[380px] rounded-2xl shadow-lg" />
+    <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-10">
+      <div className="relative z-10 mx-auto max-w-[1320px]">
+        {/* Header */}
+        <div className="mb-14 text-center space-y-4">
+          <Skeleton className="h-7 w-36 rounded-full mx-auto bg-white/20" />
+          <Skeleton className="h-10 w-3/4 max-w-md rounded-xl mx-auto bg-white/25" />
+          <Skeleton className="h-5 w-2/3 max-w-lg rounded-md mx-auto bg-white/15" />
         </div>
-        <div className="space-y-4">
-          <Skeleton className="h-6 w-28 rounded-full" />
-          <Skeleton className="h-8 w-3/4" />
-          <Skeleton className="h-4 w-full" />
-          <Skeleton className="h-4 w-5/6" />
-          <div className="space-y-2 pt-2">
-            <Skeleton className="h-5 w-2/3" />
-            <Skeleton className="h-5 w-3/4" />
-            <Skeleton className="h-5 w-1/2" />
+
+        {/* Main Card Showcase */}
+        <div className="flex flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
+          {/* Left: Info panel */}
+          <div className="w-full lg:w-[45%] space-y-6">
+            <Skeleton className="h-7 w-32 rounded-full bg-white/20" />
+            <div className="space-y-3">
+              <Skeleton className="h-10 w-4/5 rounded-xl bg-white/25" />
+              <Skeleton className="h-5 w-3/5 rounded-md bg-white/15" />
+            </div>
+            <div className="space-y-3 pt-2">
+              <Skeleton className="h-6 w-3/4 rounded-lg bg-white/20" />
+              <Skeleton className="h-6 w-4/5 rounded-lg bg-white/20" />
+              <Skeleton className="h-6 w-2/3 rounded-lg bg-white/20" />
+            </div>
+            <div className="flex items-center gap-4 pt-2">
+              <Skeleton className="h-12 w-40 rounded-xl bg-white/30" />
+              <Skeleton className="h-6 w-24 rounded-md bg-white/20" />
+            </div>
           </div>
-          <div className="pt-4 flex gap-3">
-            <Skeleton className="h-10 w-32 rounded-xl" />
-            <Skeleton className="h-10 w-32 rounded-xl" />
+
+          {/* Right: Hero card visual */}
+          <div className="relative flex w-full items-center justify-center lg:w-[55%]">
+            <div className="relative w-full max-w-[500px]">
+              <div className="aspect-[85.6/53.98] w-full rounded-[28px] border border-white/10 bg-white/10 p-6 flex flex-col justify-between shadow-2xl backdrop-blur-md">
+                <div className="flex justify-between items-start">
+                  <Skeleton className="h-8 w-24 rounded-lg bg-white/20" />
+                  <Skeleton className="h-10 w-14 rounded-lg bg-white/20" />
+                </div>
+                <div className="space-y-3">
+                  <Skeleton className="h-6 w-2/3 rounded-md bg-white/25" />
+                  <div className="flex justify-between items-center pt-2">
+                    <Skeleton className="h-4 w-32 rounded-md bg-white/20" />
+                    <Skeleton className="h-6 w-16 rounded-md bg-white/20" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom Pagination Dots */}
+        <div className="mt-8 flex items-center justify-center gap-2">
+          <Skeleton className="h-1.5 w-9 rounded-full bg-white/40" />
+          <Skeleton className="h-1.5 w-2 rounded-full bg-white/20" />
+          <Skeleton className="h-1.5 w-2 rounded-full bg-white/20" />
+          <Skeleton className="h-1.5 w-2 rounded-full bg-white/20" />
         </div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
 export function PageSkeleton() {
@@ -322,4 +358,106 @@ export function PageSkeleton() {
       </div>
     </div>
   )
+}
+
+export function ValuesSectionSkeleton() {
+  return (
+    <section className="bg-[#f8f9fc] py-24 md:py-28">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-3xl text-center space-y-4 mb-16">
+          <Skeleton className="h-7 w-36 rounded-full mx-auto" />
+          <Skeleton className="h-10 w-64 rounded-xl mx-auto" />
+          <Skeleton className="h-5 w-3/4 max-w-md rounded-md mx-auto" />
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={i}
+              className="rounded-[28px] border border-[#dde3ef] bg-white p-7 shadow-sm space-y-5 md:p-8"
+            >
+              <div className="flex items-center justify-between">
+                <Skeleton className="h-14 w-14 rounded-2xl" />
+                <Skeleton className="h-0.5 w-16" />
+              </div>
+              <Skeleton className="h-6 w-1/2" />
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-2/3" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function StrategicGoalsSectionSkeleton() {
+  return (
+    <section className="border-t border-[#d7dbea] bg-white py-24 md:py-28">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto mb-16 max-w-3xl text-center space-y-4">
+          <Skeleton className="h-7 w-36 rounded-full mx-auto" />
+          <Skeleton className="h-10 w-64 rounded-xl mx-auto" />
+          <Skeleton className="h-5 w-3/4 max-w-md rounded-md mx-auto" />
+        </div>
+        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div
+              key={i}
+              className="rounded-[28px] border border-[#dde3ef] bg-white p-7 shadow-sm space-y-4 md:p-8"
+            >
+              <div className="flex items-center gap-3">
+                <Skeleton className="h-10 w-10 rounded-2xl" />
+                <Skeleton className="h-6 w-2/5" />
+              </div>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-3/4" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function DigitalSectionSkeleton() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#0b0d36] py-24 md:py-28">
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
+          <div className="space-y-6">
+            <Skeleton className="h-8 w-36 rounded-full bg-white/20" />
+            <Skeleton className="h-12 w-4/5 max-w-lg rounded-xl bg-white/25" />
+            <div className="space-y-3 pt-2">
+              <Skeleton className="h-5 w-full rounded-md bg-white/15" />
+              <Skeleton className="h-5 w-full rounded-md bg-white/15" />
+              <Skeleton className="h-5 w-3/4 rounded-md bg-white/15" />
+            </div>
+            <div className="grid gap-4 pt-4 sm:grid-cols-2">
+              <div className="rounded-[26px] border border-white/12 bg-white/[0.06] p-5 space-y-3">
+                <Skeleton className="h-12 w-12 rounded-2xl bg-white/20" />
+                <Skeleton className="h-5 w-3/4 bg-white/20" />
+                <Skeleton className="h-4 w-full bg-white/15" />
+              </div>
+              <div className="rounded-[26px] border border-white/12 bg-white/[0.06] p-5 space-y-3">
+                <Skeleton className="h-12 w-12 rounded-2xl bg-white/20" />
+                <Skeleton className="h-5 w-3/4 bg-white/20" />
+                <Skeleton className="h-4 w-full bg-white/15" />
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <div className="h-[420px] w-full max-w-[460px] rounded-[32px] border border-white/12 bg-white/[0.05] p-6 flex items-center justify-center">
+              <Skeleton className="h-[340px] w-[70%] rounded-2xl bg-white/20" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

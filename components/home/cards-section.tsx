@@ -156,6 +156,8 @@ export function CardsSection() {
         }
       } catch (e) {
         console.warn('Failed to load home cards from API', e)
+      } finally {
+        setLoading(false)
       }
     }
     loadCards()
@@ -177,6 +179,10 @@ export function CardsSection() {
   }, [active, goTo, cardsList.length])
 
   const card = cardsList[active] || defaultCards[0]
+
+  if (loading) {
+    return <BankCardsSliderSkeleton />
+  }
 
   return (
     <section className="relative w-full overflow-hidden bg-[#324198] px-4 py-10" dir={direction}>
@@ -262,7 +268,7 @@ export function CardsSection() {
                 {/* CTAs */}
                 <div className="flex flex-wrap items-center gap-4 pt-2">
                   <Link
-                    href={mode === "url" ? getLocalizedHref("/customer-service/bank-cards-request", locale) : "/customer-service/bank-cards-request"}
+                    href={mode === "url" ? getLocalizedHref("/customer-service/forms", locale) : "/customer-service/forms"}
                     className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl px-6 py-3 font-cairo text-sm font-bold text-slate-900 shadow-lg transition-all duration-300 hover:scale-[1.03]"
                     style={{
                       background: "linear-gradient(135deg, " + card.color + "cc, " + card.color + "66)",

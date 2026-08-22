@@ -957,7 +957,7 @@ export function Header(props: HeaderProps) {
                                                   className="flex items-center gap-3.5 rounded-xl bg-white px-4 py-3.5 text-sm text-slate-700 shadow-sm border border-slate-100 transition-all active:scale-[0.98]"
                                                 >
                                                   <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2d3185]/5 text-[#2d3185]">
-                                                    {Icon && <Icon className="h-4.5 w-4.5" />}
+                                                    {Icon && (typeof Icon === "string" ? <DynamicIcon name={Icon} className="h-4.5 w-4.5" /> : <Icon className="h-4.5 w-4.5" />)}
                                                     {!Icon && subItem.logo && (
                                                       <div className="relative h-5 w-7 shrink-0 flex items-center justify-center">
                                                         <Image src={subItem.logo} alt={subItem.key} fill sizes="28px" className="object-contain" />

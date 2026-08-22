@@ -665,7 +665,7 @@ export function CardsPageContent() {
                             <Button
                               className="h-12 rounded-2xl bg-[#324198] text-white hover:bg-[#263477]"
                               size="lg"
-                              onClick={() => router.push(resolveHref("/customer-service/bank-cards-request"))}
+                              onClick={() => router.push(resolveHref("/customer-service/forms"))}
                             >
                               {locale === "ar" ? "طلب البطاقة" : "Apply for Card"}
                             </Button>

@@ -9,6 +9,7 @@ import { ArrowUpRight, Loader2 } from "lucide-react"
 import { useI18n } from "@/lib/i18n-context"
 import type { Partner, PartnerCategory } from "@/data/partners"
 import { usePartners } from "@/hooks/use-partners"
+import { PartnershipLogoSkeleton } from "@/components/ui/loading-skeleton"
 
 type Category = PartnerCategory;
 

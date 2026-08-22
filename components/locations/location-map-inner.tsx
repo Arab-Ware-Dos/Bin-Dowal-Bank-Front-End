@@ -85,12 +85,29 @@ export default function LocationMapInner({
 
   // Initialize map
   useEffect(() => {
-    if (!mapContainerRef.current || mapRef.current) return
+    if (!mapContainerRef.current) return
 
-    let L: typeof import("leaflet")
+    let isMounted = true
+    let mapInstance: LeafletMap | null = null
 
     const init = async () => {
-      L = (await import("leaflet")).default
+      const L = (await import("leaflet")).default
+
+      if (!isMounted || !mapContainerRef.current) return
+
+      const container = mapContainerRef.current
+
+      // Clean up previous instance if attached to DOM container
+      // @ts-ignore
+      if (container._leaflet_id) {
+        // @ts-ignore
+        container._leaflet_id = null
+      }
+
+      if (mapRef.current) {
+        mapRef.current.remove()
+        mapRef.current = null
+      }
 
       // Fix default icon paths for Next.js
       // @ts-ignore
@@ -101,12 +118,15 @@ export default function LocationMapInner({
         shadowUrl: "/leaflet/marker-shadow.png",
       })
 
-      const map = L.map(mapContainerRef.current!, {
+      const map = L.map(container, {
         center: [14.5322, 49.1255], // Mukalla
         zoom: 6,
         zoomControl: false,
         attributionControl: false,
       })
+
+      mapInstance = map
+      mapRef.current = map
 
       // CartoDB Positron tiles — clean, minimal, premium look
       L.tileLayer(
@@ -129,17 +149,26 @@ export default function LocationMapInner({
         .addTo(map)
         .setPrefix("© CartoDB | © OpenStreetMap")
 
-      mapRef.current = map
       renderMarkers(L, map)
+
+      // Invalidate size in case container size changed (e.g. mobile tab switch)
+      setTimeout(() => {
+        if (isMounted && map) {
+          map.invalidateSize()
+        }
+      }, 250)
     }
 
     init()
 
     return () => {
+      isMounted = false
       if (mapRef.current) {
         mapRef.current.remove()
         mapRef.current = null
         markersRef.current.clear()
+      } else if (mapInstance) {
+        (mapInstance as LeafletMap).remove()
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
