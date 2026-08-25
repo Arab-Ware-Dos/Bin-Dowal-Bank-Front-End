@@ -1226,14 +1226,31 @@ export function AboutPageContent() {
 
                 <div className="mb-6 h-px w-24 bg-gradient-to-r from-white/70 via-white/20 to-transparent" />
 
-                <p className="mb-9 max-w-[640px] text-base leading-8 text-white/72 md:text-xl md:leading-9">
-                  {(isAr
-                    ? sectionsData["about_digital"]?.description_ar ||
-                      sectionsData["about_digital"]?.description
-                    : sectionsData["about_digital"]?.description_en ||
-                      sectionsData["about_digital"]?.description) ||
-                    text.digitalDesc}
-                </p>
+                <div className="mb-9 max-w-[640px] text-base leading-8 text-white/72 md:text-xl md:leading-9">
+                  {(() => {
+                    const desc =
+                      (isAr
+                        ? sectionsData["about_digital"]?.description_ar ||
+                          sectionsData["about_digital"]?.description
+                        : sectionsData["about_digital"]?.description_en ||
+                          sectionsData["about_digital"]?.description) ||
+                      text.digitalDesc;
+
+                    if (desc.includes("<") && desc.includes(">")) {
+                      return (
+                        <div
+                          className="prose prose-invert max-w-none text-base leading-8 text-white/72 md:text-xl md:leading-9 space-y-3"
+                          dangerouslySetInnerHTML={{ __html: desc }}
+                        />
+                      );
+                    }
+
+                    return desc
+                      .split("\n")
+                      .filter((p: string) => p.trim().length > 0)
+                      .map((p: string, pIdx: number) => <p key={pIdx}>{p}</p>);
+                  })()}
+                </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="group rounded-[26px] border border-white/12 bg-white/[0.06] p-4 backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:shadow-[0_12px_40px_rgba(0,0,0,0.22)]">
