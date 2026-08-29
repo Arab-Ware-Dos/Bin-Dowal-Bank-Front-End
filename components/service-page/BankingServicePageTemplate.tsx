@@ -176,9 +176,9 @@ export function BankingServicePageTemplate({ data }: { data: ServicePageData }) 
                 className={`rounded-[28px] border border-slate-200/70 bg-white px-6 py-7 lg:sticky lg:top-24 lg:self-start lg:px-6 lg:py-8 ${sideBorderClass}`}
               >
                 <div className="mb-6">
-                  <p className="text-xs font-bold tracking-[0.18em] text-[#324198]">
+                  {/* <p className="text-xs font-bold tracking-[0.18em] text-[#324198]">
                     {isArabic ? "محتوى الصفحة" : "ON THIS PAGE"}
-                  </p>
+                  </p> */}
                 </div>
 
                 <nav aria-label={isArabic ? "أقسام الصفحة" : "Page sections"}>
