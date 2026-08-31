@@ -114,13 +114,13 @@ export function UnclaimedRemittancesContent() {
                       <p className="text-green-700 text-lg leading-relaxed font-medium">
                         {result.message}
                       </p>
-                      {result.matches_count && result.matches_count > 1 ? (
+                      {/* {result.matches_count && result.matches_count > 1 ? (
                         <p className="text-xs text-green-800/80 font-bold mt-2">
                           {isAr
                             ? `* تم العثور على ${result.matches_count} حوالات مسجلة بهذا الاسم.`
                             : `* Found ${result.matches_count} remittances registered under this name.`}
                         </p>
-                      ) : null}
+                      ) : null} */}
                     </div>
                   </div>
                 </Card>

@@ -25,13 +25,16 @@ export async function fetchAPI<T>(endpoint: string, options: FetchOptions = {}):
   if (!response.ok) {
     let errorMessage = `API Error [${response.status}]: ${response.statusText}`;
     try {
-      const errorData = await response.json();
-      if (errorData?.errors) {
-        // Throw the full error object as JSON for validation errors (422)
-        throw new Error(JSON.stringify(errorData));
-      }
-      if (errorData?.message) {
-        errorMessage = errorData.message;
+      const errorText = await response.text();
+      if (errorText && errorText.trim()) {
+        const errorData = JSON.parse(errorText);
+        if (errorData?.errors) {
+          // Throw the full error object as JSON for validation errors (422)
+          throw new Error(JSON.stringify(errorData));
+        }
+        if (errorData?.message) {
+          errorMessage = errorData.message;
+        }
       }
     } catch (parseError) {
       // Re-throw if already processed (JSON.stringify error)
@@ -43,5 +46,16 @@ export async function fetchAPI<T>(endpoint: string, options: FetchOptions = {}):
     throw new Error(errorMessage);
   }
 
-  return response.json();
+  const text = await response.text();
+  if (!text || !text.trim()) {
+    return {} as T;
+  }
+
+  try {
+    return JSON.parse(text) as T;
+  } catch (parseError) {
+    console.warn(`⚠️ [API Client] Failed to parse JSON response from ${url}:`, parseError);
+    throw new Error(`Invalid JSON response received from ${url}`);
+  }
 }
+
