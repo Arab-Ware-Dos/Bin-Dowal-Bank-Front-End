@@ -214,7 +214,7 @@ export function Footer() {
             </ul>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="lg:col-span-3">
+          <motion.div variants={itemVariants} className="lg:col-span-2">
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-8 bg-gradient-to-r from-white/50 to-transparent" />
               <h3 className="text-base font-semibold text-white">
@@ -242,24 +242,24 @@ export function Footer() {
           </motion.div>
 
           {/* Group Logo */}
-          <motion.div variants={itemVariants} className="order-last lg:order-none lg:col-span-2 flex items-center justify-center -mt-8 lg:-mt-13">
+          <motion.div variants={itemVariants} className="order-last lg:order-none lg:col-span-3 flex items-center justify-center">
             <motion.div
               whileHover={shouldReduceMotion ? undefined : { y: -2 }}
               transition={{ duration: 0.25 }}
             >
               <a
-            // href="https://bindowalgroup.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
-          >
-              <Image
-                  src="/images/dowal.png"
+                // href="https://bindowalgroup.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-2.5 transition-opacity hover:opacity-80"
+              >
+                <Image
+                  src="/images/dollw.png"
                   alt="Dowal"
-                width={200}
-                height={100}
-                className="h-24 sm:h-20 md:h-32 w-auto object-contain opacity-90 transition-opacity hover:opacity-100"
-              />
+                  width={533}
+                  height={102}
+                  className="w-64 sm:w-60 md:w-60 lg:w-64 xl:w-72 2xl:w-80 max-w-full h-auto object-contain opacity-90 transition-opacity hover:opacity-100"
+                />
               </a>
             </motion.div>
           </motion.div>
@@ -272,7 +272,7 @@ export function Footer() {
             >
               <Link href={resolveHref("/")} className="inline-flex items-center">
                 <Image
-                  src="/images/logo-white.png"
+                  src="/images/bankw.png"
                   alt="Bin Dowal Islamic Microfinance Bank"
                   width={100}
                   height={50}
