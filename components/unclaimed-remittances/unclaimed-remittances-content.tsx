@@ -109,7 +109,7 @@ export function UnclaimedRemittancesContent() {
                     </div>
                     <div className="text-center sm:text-start space-y-1">
                       <h3 className="text-xl font-bold text-green-800">
-                        {isAr ? "نتيجة البحث: تم العثور على حوالة" : "Search Result: Remittance Found"}
+                        {isAr ? "نتيجة البحث" : "Search Result"}
                       </h3>
                       <p className="text-green-700 text-lg leading-relaxed font-medium">
                         {result.message}
