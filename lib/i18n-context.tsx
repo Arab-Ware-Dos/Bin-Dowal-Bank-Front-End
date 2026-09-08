@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react"
 
@@ -182,8 +182,12 @@ const translations: Record<Locale, Record<string, string>> = {
     "footer.newsletterPlaceholder": "بريدك الإلكتروني",
     "footer.subscribe": "اشترك",
     "footer.rights": "جميع الحقوق محفوظة",
-    "footer.privacy": "سياسة الخصوصية",
+    "footer.privacy": "السياسة والخصوصية لـ بن دول باي",
+    "footer.bankAppPrivacy": "السياسة والخصوصية لتطبيق البنك",
     "footer.terms": "الشروط والأحكام",
+    "footer.mobileTerms": "الشروط والأحكام الخاصة بتطبيق الهاتف المحمول",
+    "footer.mobileSecurityPolicy": "سياسة أمن المعلومات لتطبيق الهاتف المحمول",
+    "footer.dataPrivacy": "خصوصية البيانات",
     "footer.address": "الجمهورية اليمنية - حضرموت - المكلا",
 
     // Common
@@ -505,8 +509,12 @@ const translations: Record<Locale, Record<string, string>> = {
     "footer.newsletterPlaceholder": "Your Email",
     "footer.subscribe": "Subscribe",
     "footer.rights": "All Rights Reserved",
-    "footer.privacy": "Privacy Policy",
+    "footer.privacy": "Bin Dowal Pay Policy & Privacy",
+    "footer.bankAppPrivacy": "Bank App Policy & Privacy",
     "footer.terms": "Terms & Conditions",
+    "footer.mobileTerms": "Mobile App Terms & Conditions",
+    "footer.mobileSecurityPolicy": "Mobile App Information Security Policy",
+    "footer.dataPrivacy": "Data Privacy",
     "footer.address": "Saudi Arabia, Riyadh",
 
     // Common

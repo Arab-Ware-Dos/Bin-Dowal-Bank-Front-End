@@ -40,6 +40,15 @@ const socialLinks = [
   { label: "YouTube", href: "#", icon: Youtube },
 ]
 
+const legalLinks = [
+  { key: "footer.privacy", href: "/policy" },
+  { key: "footer.bankAppPrivacy", href: "/terms_and_conditions_bank_account" },
+  { key: "footer.terms", href: "/terms" },
+  { key: "footer.mobileTerms", href: "/policy_mobil_app" },
+  { key: "footer.mobileSecurityPolicy", href: "/Information_security_mobil_app" },
+  { key: "footer.dataPrivacy", href: "/data_privacy_mobil_app" },
+]
+
 const createContainer = (reduced: boolean) => ({
   hidden: { opacity: 0 },
   show: {
@@ -403,33 +412,28 @@ export function Footer() {
           </motion.div>
         </motion.div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar: Legal Links */}
         <motion.div
           variants={itemVariants}
-          className="flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-white/55 md:flex-row md:items-center md:justify-between"
+          className="border-t border-white/10 pt-6"
         >
-          <p className="leading-6">
-            © {new Date().getFullYear()}{" "}
-            {isArabic
-              ? "بنك بن دول للتمويل الأصغر الإسلامي"
-              : "Bin Dowal Islamic Microfinance Bank"}
-            . {t("footer.rights")}
-          </p>
-
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-            <Link href="#" className="transition-colors duration-300 hover:text-white">
-              {t("footer.privacy")}
-            </Link>
-            <Link href="#" className="transition-colors duration-300 hover:text-white">
-              {t("footer.terms")}
-            </Link>
+          <div className="flex flex-wrap items-center justify-center gap-x-3.5 sm:gap-x-4 md:gap-x-5 lg:gap-x-6 gap-y-2.5 text-center text-xs text-white/60 sm:text-[13px]">
+            {legalLinks.map((item) => (
+              <Link
+                key={item.key}
+                href={resolveHref(item.href)}
+                className="whitespace-nowrap transition-colors duration-300 hover:text-white"
+              >
+                {t(item.key)}
+              </Link>
+            ))}
           </div>
         </motion.div>
 
-        {/* Developer Credit */}
+        {/* Developer Credit & Copyright */}
         <motion.div
           variants={itemVariants}
-          className="mt-8 flex justify-center text-center"
+          className="mt-8 flex flex-col items-center justify-center gap-3 text-center"
         >
           <a
             href="https://arabwdos.com/"
@@ -448,6 +452,14 @@ export function Footer() {
               {isArabic ? "تطوير شركة عرب وير دوز" : "Development by Arab Ware Dos"}
             </span>
           </a>
+
+          <p className="text-[11px] text-white/45 sm:text-xs leading-6">
+            © {new Date().getFullYear()}{" "}
+            {isArabic
+              ? "بنك بن دول للتمويل الأصغر الإسلامي"
+              : "Bin Dowal Islamic Microfinance Bank"}
+            . {t("footer.rights")}
+          </p>
         </motion.div>
       </motion.div>
     </footer>
