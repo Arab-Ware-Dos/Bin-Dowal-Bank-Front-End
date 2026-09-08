@@ -1,0 +1,75 @@
+name: Deploy Integration Release to Production
+
+run-name: Production Deployment - ${{ github.sha }}
+
+on:
+  push:
+    branches:
+      - integration-release
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: vercel-production-integration-release
+  cancel-in-progress: true
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  deploy-production:
+    name: Deploy to Vercel Production
+
+    # يمنع نشر أي فرع آخر إلى Production
+    if: github.ref == 'refs/heads/integration-release'
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    environment:
+      name: production
+
+    steps:
+      - name: Checkout integration-release
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Production Environment
+        run: |
+          vercel pull \
+            --yes \
+            --environment=production \
+            --token="${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Build Production Application
+        run: |
+          vercel build \
+            --prod \
+            --token="${{ secrets.VERCEL_TOKEN }}"
+
+      - name: Deploy to Vercel Production
+        id: deploy
+        run: |
+          DEPLOYMENT_URL=$(vercel deploy \
+            --prebuilt \
+            --prod \
+            --token="${{ secrets.VERCEL_TOKEN }}")
+
+          echo "deployment_url=$DEPLOYMENT_URL" >> "$GITHUB_OUTPUT"
+
+          echo "## Production Deployment Successful" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Branch: integration-release" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "- URL: $DEPLOYMENT_URL" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Display Production URL
+        run: |
+          echo "Production deployment completed."
+          echo "URL: ${{ steps.deploy.outputs.deployment_url }}"
