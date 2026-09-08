@@ -37,6 +37,12 @@ jobs:
       - name: Checkout integration-release
         uses: actions/checkout@v6
 
+      - name: Install pnpm
+        run: npm install --global pnpm@10.24.0
+
+      - name: Verify pnpm
+        run: pnpm --version
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
 
