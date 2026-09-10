@@ -31,8 +31,9 @@ export function mapApiToNavItems(sections: NavigationSection[], locale: string =
     const titleEn = section.title_en || (locale === 'en' ? section.title : staticMatch?.label.en) || section.title;
 
     // تحديد رابط التبويب إذا كان رابطاً مباشراً أو مطابقاً للبيانات الثابتة
-    let computedHref = staticMatch?.href || section.url;
-    if (!computedHref) {
+    const hasItems = !!(section.items && section.items.length > 0);
+    let computedHref = hasItems ? "" : (staticMatch?.href || section.url || "");
+    if (!computedHref && !hasItems) {
       if (section.key) {
         computedHref = section.key.startsWith('/')
           ? section.key

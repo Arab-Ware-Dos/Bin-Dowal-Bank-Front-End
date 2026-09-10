@@ -425,18 +425,7 @@ export function Header(props: HeaderProps) {
                             isOpen ? "bg-slate-100" : "hover:bg-slate-50",
                           ].join(" ")}
                         >
-                          <Link
-                            href={resolveHref(item.href)}
-                            className={`relative inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] ${
-                              locale === "ar"
-                                ? "whitespace-nowrap"
-                                : "text-center leading-tight max-w-[120px] whitespace-normal"
-                            }`}
-                          >
-                            {locale === "ar" ? item.label.ar : item.label.en}
-                          </Link>
-
-                          {hasSubmenu && (
+                          {hasSubmenu ? (
                             <button
                               type="button"
                               aria-expanded={isOpen}
@@ -454,14 +443,30 @@ export function Header(props: HeaderProps) {
                                   return nextValue
                                 })
                               }
-                              className="pe-2 text-slate-500 transition-colors hover:text-[#2d3185]"
+                              className={`relative inline-flex items-center gap-1.5 px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] cursor-pointer ${
+                                locale === "ar"
+                                  ? "whitespace-nowrap"
+                                  : "text-center leading-tight max-w-[120px] whitespace-normal"
+                              }`}
                             >
+                              <span>{locale === "ar" ? item.label.ar : item.label.en}</span>
                               <ChevronDown
-                                className={`h-4 w-4 transition-transform duration-200 ${
-                                  isOpen ? "rotate-180" : ""
+                                className={`h-4 w-4 text-slate-500 transition-transform duration-200 group-hover:text-[#2d3185] ${
+                                  isOpen ? "rotate-180 text-[#2d3185]" : ""
                                 }`}
                               />
                             </button>
+                          ) : (
+                            <Link
+                              href={resolveHref(item.href)}
+                              className={`relative inline-flex items-center px-2 lg:px-2.5 xl:px-3 py-2 font-semibold text-[#324198] transition-colors duration-200 hover:text-slate-950 text-[16px] xl:text-[14px] 2xl:text-[16px] ${
+                                locale === "ar"
+                                  ? "whitespace-nowrap"
+                                  : "text-center leading-tight max-w-[120px] whitespace-normal"
+                              }`}
+                            >
+                              {locale === "ar" ? item.label.ar : item.label.en}
+                            </Link>
                           )}
 
                           <span
@@ -829,15 +834,7 @@ export function Header(props: HeaderProps) {
                                 className={`overflow-hidden rounded-2xl transition-all duration-300 ${isOpen ? 'bg-white shadow-md border-transparent' : 'bg-white/60 border border-slate-200/80 hover:bg-white'}`}
                               >
                                 <div className="flex items-center justify-between px-5 py-4">
-                                  <Link
-                                    href={resolveHref(item.href)}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className={`text-[15.5px] font-bold ${isOpen ? 'text-[#2d3185]' : 'text-slate-800'}`}
-                                  >
-                                    {locale === "ar" ? item.label.ar : item.label.en}
-                                  </Link>
-
-                                  {hasSubmenu && (
+                                  {hasSubmenu ? (
                                     <button
                                       type="button"
                                       onClick={(e) => {
@@ -845,14 +842,25 @@ export function Header(props: HeaderProps) {
                                         toggleMobileSubmenu(item.key);
                                       }}
                                       aria-expanded={isOpen}
-                                      className={`rounded-full p-1.5 transition-colors ${isOpen ? 'bg-[#2d3185]/10 text-[#2d3185]' : 'text-slate-400 hover:bg-slate-100 hover:text-slate-900'}`}
+                                      className={`flex flex-1 items-center justify-between text-start text-[15.5px] font-bold cursor-pointer transition-colors ${isOpen ? 'text-[#2d3185]' : 'text-slate-800'}`}
                                     >
-                                      <ChevronDown
-                                        className={`h-4.5 w-4.5 transition-transform duration-300 ${
-                                          isOpen ? "rotate-180" : ""
-                                        }`}
-                                      />
+                                      <span>{locale === "ar" ? item.label.ar : item.label.en}</span>
+                                      <span className={`rounded-full p-1.5 transition-colors ${isOpen ? 'bg-[#2d3185]/10 text-[#2d3185]' : 'text-slate-400'}`}>
+                                        <ChevronDown
+                                          className={`h-4.5 w-4.5 transition-transform duration-300 ${
+                                            isOpen ? "rotate-180" : ""
+                                          }`}
+                                        />
+                                      </span>
                                     </button>
+                                  ) : (
+                                    <Link
+                                      href={resolveHref(item.href)}
+                                      onClick={() => setMobileMenuOpen(false)}
+                                      className={`text-[15.5px] font-bold ${isOpen ? 'text-[#2d3185]' : 'text-slate-800'}`}
+                                    >
+                                      {locale === "ar" ? item.label.ar : item.label.en}
+                                    </Link>
                                   )}
                                 </div>
 

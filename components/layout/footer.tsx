@@ -23,6 +23,7 @@ const quickLinks: { key: string; href: string }[] = [
   { key: "investmentDeposit", href: "/personal/investment-deposit" },
   { key: "corporateCurrentAccount", href: "/business/corporate-current-account" },
   { key: "cards", href: "/cards" },
+  { key: "unclaimedRemittances", href: "/unclaimed-remittances" },
 ]
 
 const supportLinks = [
