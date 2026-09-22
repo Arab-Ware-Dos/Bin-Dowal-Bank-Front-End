@@ -29,6 +29,7 @@ interface NewsArticleClientProps {
 }
 
 const DATE_ONLY_PATTERN = /^\d{4}-\d{2}-\d{2}$/
+const HTML_TAG_PATTERN = /<\/?[a-z][\s\S]*>/i
 
 const fadeUp = {
   hidden: { opacity: 0, y: 18 },
@@ -371,7 +372,7 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
       )
     }
 
-    if (typeof rawContent === "string" && (rawContent.includes("<p>") || rawContent.includes("<h") || rawContent.includes("<ul>") || rawContent.includes("<ol>") || rawContent.includes("<div>"))) {
+    if (typeof rawContent === "string" && HTML_TAG_PATTERN.test(rawContent)) {
       return (
         <div
           className="news-article-html-content text-base leading-8 text-muted-foreground md:text-[1.08rem]
@@ -382,6 +383,10 @@ export default function NewsArticleClient({ article }: NewsArticleClientProps) {
                      [&_ul]:my-5 [&_ul]:list-disc [&_ul]:ps-6 [&_ul]:space-y-2.5
                      [&_ol]:my-5 [&_ol]:list-decimal [&_ol]:ps-6 [&_ol]:space-y-2.5
                      [&_li]:leading-7
+                     [&_a]:text-primary [&_a]:underline [&_a:hover]:opacity-80
+                     [&_strong]:font-semibold [&_strong]:text-foreground
+                     [&_b]:font-semibold [&_b]:text-foreground
+                     [&_img]:rounded-2xl [&_img]:my-6 [&_img]:max-w-full [&_img]:h-auto
                      [&_blockquote]:border-s-4 [&_blockquote]:border-[#262b80] [&_blockquote]:ps-4 [&_blockquote]:italic [&_blockquote]:my-6"
           dangerouslySetInnerHTML={{ __html: rawContent }}
         />
