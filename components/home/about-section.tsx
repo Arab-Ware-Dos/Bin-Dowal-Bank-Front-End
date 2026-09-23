@@ -129,7 +129,7 @@ export function AboutSection() {
                     aria-label={isAr ? "تشغيل الفيديو" : "Play video"}
                   >
                     <Image
-                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                      src="/images/youtubethumb.jpg"
                       alt={isAr ? "صورة الفيديو" : "Video thumbnail"}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-80"
