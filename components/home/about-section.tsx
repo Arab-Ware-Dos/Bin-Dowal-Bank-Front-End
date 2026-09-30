@@ -14,7 +14,7 @@ export function AboutSection() {
   const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   const ArrowIcon = isAr ? ChevronLeft : ChevronRight
-  const videoId = "obOvMpV9dS4"
+  const videoId = "KQl4RejYmxE"
 
   const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&disablekb=1&fs=0&playsinline=1&rel=0`
 
@@ -129,7 +129,7 @@ export function AboutSection() {
                     aria-label={isAr ? "تشغيل الفيديو" : "Play video"}
                   >
                     <Image
-                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                      src="/images/youtubethumb.jpg"
                       alt={isAr ? "صورة الفيديو" : "Video thumbnail"}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105 opacity-80"

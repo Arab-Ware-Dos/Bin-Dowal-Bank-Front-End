@@ -34,18 +34,49 @@ jobs:
       name: production
 
     steps:
+      # ============================================================
+      # 1. Checkout
+      # ============================================================
       - name: Checkout integration-release
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
 
+      # ============================================================
+      # 2. Node.js
+      # ============================================================
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      # ============================================================
+      # 3. pnpm
+      # ============================================================
       - name: Install pnpm
         run: npm install --global pnpm@10.24.0
 
       - name: Verify pnpm
-        run: pnpm --version
+        run: |
+          echo "pnpm version:"
+          pnpm --version
 
+      # ============================================================
+      # 4. Vercel CLI
+      #
+      # تثبيت نسخة محددة يمنع تغير سلوك CI بشكل مفاجئ
+      # ============================================================
       - name: Install Vercel CLI
-        run: npm install --global vercel@latest
+        run: npm install --global vercel@59.25.4
 
+      - name: Verify Vercel CLI
+        run: |
+          echo "Vercel CLI version:"
+          vercel --version
+
+      # ============================================================
+      # 5. Pull Project Configuration + Production Environment
+      # ============================================================
       - name: Pull Production Environment
         run: |
           vercel pull \
@@ -53,29 +84,83 @@ jobs:
             --environment=production \
             --token="${{ secrets.VERCEL_TOKEN }}"
 
+      # ============================================================
+      # 6. Build Locally inside GitHub Actions
+      # ============================================================
       - name: Build Production Application
         run: |
           vercel build \
             --prod \
             --token="${{ secrets.VERCEL_TOKEN }}"
 
+      # ============================================================
+      # 7. Optional diagnostic
+      #
+      # يعرض حجم وعدد ملفات Build Output
+      # ولا يوقف النشر
+      # ============================================================
+      - name: Inspect Build Output
+        run: |
+          echo "Build output information:"
+          echo "----------------------------------------"
+
+          if [ -d ".vercel/output" ]; then
+            echo "Files:"
+            find .vercel/output -type f | wc -l
+
+            echo "Size:"
+            du -sh .vercel/output
+          else
+            echo ".vercel/output directory not found"
+          fi
+
+          echo "----------------------------------------"
+
+      # ============================================================
+      # 8. Deploy
+      #
+      # IMPORTANT:
+      # --archive=split-tgz يمنع رفع آلاف الملفات كطلبات مستقلة
+      # وهو الحل لمشكلة:
+      # api-upload-free / more than 5000
+      # ============================================================
       - name: Deploy to Vercel Production
         id: deploy
+        shell: bash
         run: |
+          set -euo pipefail
+
+          echo "Starting archived Vercel deployment..."
+
           DEPLOYMENT_URL=$(vercel deploy \
             --prebuilt \
             --prod \
+            --archive=split-tgz \
+            --yes \
             --token="${{ secrets.VERCEL_TOKEN }}")
+
+          echo "Deployment URL:"
+          echo "$DEPLOYMENT_URL"
 
           echo "deployment_url=$DEPLOYMENT_URL" >> "$GITHUB_OUTPUT"
 
-          echo "## Production Deployment Successful" >> "$GITHUB_STEP_SUMMARY"
-          echo "" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Branch: integration-release" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Commit: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
-          echo "- URL: $DEPLOYMENT_URL" >> "$GITHUB_STEP_SUMMARY"
+          {
+            echo "## Production Deployment Successful"
+            echo ""
+            echo "- Branch: integration-release"
+            echo "- Commit: ${{ github.sha }}"
+            echo "- URL: $DEPLOYMENT_URL"
+            echo "- Upload mode: split-tgz archive"
+          } >> "$GITHUB_STEP_SUMMARY"
 
+      # ============================================================
+      # 9. Display URL
+      # ============================================================
       - name: Display Production URL
         run: |
+          echo "=========================================="
           echo "Production deployment completed."
+          echo "Branch: integration-release"
+          echo "Commit: ${{ github.sha }}"
           echo "URL: ${{ steps.deploy.outputs.deployment_url }}"
+          echo "=========================================="
