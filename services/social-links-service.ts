@@ -1,4 +1,4 @@
-﻿import { fetchAPI } from "@/lib/api-client";
+import { fetchAPI } from "@/lib/api-client";
 import { SocialLinkItem, SocialLinksApiResponse } from "@/types/social-link";
 
 export const FALLBACK_SOCIAL_LINKS: SocialLinkItem[] = [
@@ -81,15 +81,15 @@ export async function getSocialLinks(locale = "ar"): Promise<SocialLinkItem[]> {
       next: { revalidate: 60 },
     });
 
-    if (res?.data && Array.isArray(res.data) && res.data.length > 0) {
+    if (res?.data && Array.isArray(res.data)) {
       return res.data;
     }
+    return [];
   } catch (error) {
     console.warn(
       "⚠️ [SocialLinksService] Using fallback social links:",
       error instanceof Error ? error.message : error
     );
+    return FALLBACK_SOCIAL_LINKS;
   }
-
-  return FALLBACK_SOCIAL_LINKS;
 }

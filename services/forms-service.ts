@@ -48,13 +48,13 @@ export async function getBankForms(locale?: string): Promise<BankFormItem[]> {
       next: { revalidate: 60 },
     });
 
-    if (response && Array.isArray(response.data) && response.data.length > 0) {
+    if (response && Array.isArray(response.data)) {
       return response.data.map(normalizeFormItem);
     }
+    return [];
   } catch (error) {
     console.warn('[Forms API] Failed to fetch bank forms, using fallback data:', error);
+    // Fallback to static data ONLY on network failure
+    return bankFormsData.map(normalizeFallbackFormItem);
   }
-
-  // Fallback to static data
-  return bankFormsData.map(normalizeFallbackFormItem);
 }

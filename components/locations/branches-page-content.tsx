@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { useI18n } from "@/lib/i18n-context"
 import { PageHero } from "@/components/ui/page-hero"
@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { branches } from "@/data/mock-data"
+import { fetchLocations } from "@/services/locations-service"
 import { 
   MapPin, 
   Phone, 
@@ -42,8 +43,43 @@ export function BranchesPageContent() {
   const [selectedBranch, setSelectedBranch] = useState<string | null>(null)
   const [notification, setNotification] = useState<{ type: string; message: string } | null>(null)
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null)
+  const [branchList, setBranchList] = useState<typeof branches>([])
+  const [loading, setLoading] = useState(true)
 
-  const filteredBranches = branches.filter(branch => {
+  useEffect(() => {
+    fetchLocations({ type: "branch" })
+      .then((data) => {
+        const mapped = data.map((l) => ({
+          id: l.id,
+          nameAr: l.nameAr,
+          nameEn: l.nameEn,
+          cityAr: l.cityAr,
+          cityEn: l.cityEn,
+          areaAr: l.districtAr || l.cityAr,
+          areaEn: l.districtEn || l.cityEn,
+          addressAr: l.addressAr,
+          addressEn: l.addressEn,
+          phone: l.phone || "",
+          hoursAr: l.workingHours?.ar || "",
+          hoursEn: l.workingHours?.en || "",
+          services: l.services || [],
+          region: l.cityEn.toLowerCase().replace(/['\s]/g, "-"),
+          isMainBranch: l.isMain,
+          lat: l.latitude,
+          lng: l.longitude,
+        }))
+        setBranchList(mapped)
+      })
+      .catch((err) => {
+        console.warn("[BranchesPageContent] Error fetching branches from API, using fallback:", err)
+        setBranchList(branches)
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }, [])
+
+  const filteredBranches = branchList.filter(branch => {
     const matchesSearch = searchQuery === "" || 
       branch.nameAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
       branch.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||

@@ -150,18 +150,19 @@ export function Footer() {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const shouldReduceMotion = useReducedMotion()
-  const [socialItems, setSocialItems] = useState<SocialLinkItem[]>(FALLBACK_SOCIAL_LINKS)
+  const [socialItems, setSocialItems] = useState<SocialLinkItem[]>([])
 
   useEffect(() => {
     let isMounted = true
     async function loadSocialLinks() {
       try {
         const data = await getSocialLinks(locale || "ar")
-        if (isMounted && Array.isArray(data) && data.length > 0) {
+        if (isMounted && Array.isArray(data)) {
           setSocialItems(data)
         }
       } catch (err) {
         console.warn("Failed to load social links", err)
+        if (isMounted) setSocialItems(FALLBACK_SOCIAL_LINKS)
       }
     }
     loadSocialLinks()

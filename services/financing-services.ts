@@ -1,4 +1,4 @@
-﻿import { fetchAPI } from "@/lib/api-client";
+import { fetchAPI } from "@/lib/api-client";
 import { getNavigationData } from "@/services/navigation-service";
 import { NavigationItem, NavigationSection } from "@/types/navigation";
 import { BankServiceItemData } from "@/types/banking-service-api";
@@ -153,62 +153,58 @@ export async function getHomeFinancingServices(locale: string = "ar"): Promise<H
     }
 
     // 3. If navigation items found under "التمويلات", map them with the Banking Services API
-    if (financingNavItems.length > 0) {
-      const mappedServices: HomeFinancingService[] = financingNavItems.map((navItem, index) => {
-        const url = navItem.url || "";
-        const slug = cleanSlug(url);
-        const matchedService = bankServicesMap.get(slug);
+    const mappedServices: HomeFinancingService[] = financingNavItems.map((navItem, index) => {
+      const url = navItem.url || "";
+      const slug = cleanSlug(url);
+      const matchedService = bankServicesMap.get(slug);
 
-        // Title: From Navigation item directly (e.g. "تكامل", "ثمار", "تعمير", "نور", "زاد")
-        const titleAr = navItem.title_ar || navItem.title || "";
-        const titleEn = navItem.title_en || navItem.title || titleAr;
-        const title = isAr ? titleAr : (titleEn || titleAr);
+      // Title: From Navigation item directly (e.g. "تكامل", "ثمار", "تعمير", "نور", "زاد")
+      const titleAr = navItem.title_ar || navItem.title || "";
+      const titleEn = navItem.title_en || navItem.title || titleAr;
+      const title = isAr ? titleAr : (titleEn || titleAr);
 
-        // Description: From BankService summary
-        const descAr = matchedService?.summary_ar || matchedService?.about_content_ar || "";
-        const descEn = matchedService?.summary_en || matchedService?.about_content_en || descAr;
-        const description = isAr
-          ? (descAr || "حلول تمويلية إسلامية متميزة تلبي تطلعاتك.")
-          : (descEn || "Distinctive Islamic financing solutions tailored for you.");
+      // Description: From BankService summary
+      const descAr = matchedService?.summary_ar || matchedService?.about_content_ar || "";
+      const descEn = matchedService?.summary_en || matchedService?.about_content_en || descAr;
+      const description = isAr
+        ? (descAr || "حلول تمويلية إسلامية متميزة تلبي تطلعاتك.")
+        : (descEn || "Distinctive Islamic financing solutions tailored for you.");
 
-        // Image: From BankService icon_config or fallback image
-        const image = resolveServiceImage(matchedService?.icon_config, slug);
+      // Image: From BankService icon_config or fallback image
+      const image = resolveServiceImage(matchedService?.icon_config, slug);
 
-        return {
-          id: slug || `financing-${index + 1}`,
-          title,
-          title_ar: titleAr,
-          title_en: titleEn,
-          description,
-          description_ar: descAr,
-          description_en: descEn,
-          image,
-          href: url || `/services/${slug}`,
-          order: navItem.order_index ?? (index + 1),
-        };
-      });
+      return {
+        id: slug || `financing-${index + 1}`,
+        title,
+        title_ar: titleAr,
+        title_en: titleEn,
+        description,
+        description_ar: descAr,
+        description_en: descEn,
+        image,
+        href: url || `/services/${slug}`,
+        order: navItem.order_index ?? (index + 1),
+      };
+    });
 
-      console.log(`🟢 [Financing API Connected] Loaded ${mappedServices.length} dynamic financing services from Navigation & Services API.`);
-      return mappedServices;
-    }
+    return mappedServices;
   } catch (error) {
     console.warn(
       "⚠️ [Financing API Fallback Active] Failed to fetch dynamic financing services from API. Using local fallback data.",
       error instanceof Error ? error.message : error
     );
+    // 4. Fallback to local data ONLY on network failure
+    return fallbackFinancingData
+      .filter((s) => s.showOnHome)
+      .sort((a, b) => a.order - b.order)
+      .map((s) => ({
+        id: s.id,
+        title: s.titleKey,
+        description: s.descriptionKey,
+        image: s.image,
+        href: s.href,
+        order: s.order,
+      }));
   }
-
-  // 4. Fallback to local data
-  return fallbackFinancingData
-    .filter((s) => s.showOnHome)
-    .sort((a, b) => a.order - b.order)
-    .map((s) => ({
-      id: s.id,
-      title: s.titleKey,
-      description: s.descriptionKey,
-      image: s.image,
-      href: s.href,
-      order: s.order,
-    }));
 }
 

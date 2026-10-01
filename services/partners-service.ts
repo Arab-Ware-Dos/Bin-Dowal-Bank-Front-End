@@ -87,9 +87,6 @@ export async function fetchPartners(): Promise<Partner[]> {
   try {
     const response = await fetchAPI<PartnersListApiResponse>("/partners")
     const rawList = response.data ?? []
-    if (rawList.length === 0) {
-      return fallbackPartners
-    }
     return rawList.map(normalizePartner)
   } catch (error) {
     console.error("[partners-service] API fetch failed, using local fallback partners:", error)

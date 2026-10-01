@@ -80,6 +80,10 @@ export function NewsSection() {
     return dateFormatter.format(new Date(parsed))
   }
 
+  if (!loading && displayedNews.length === 0) {
+    return null
+  }
+
   return (
     <section className="relative overflow-hidden py-10 md:py-10">
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.08),_transparent_35%),linear-gradient(to_bottom,_rgba(255,255,255,0.98),_rgba(248,250,252,1))]" />

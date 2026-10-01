@@ -97,9 +97,6 @@ export async function fetchAnnualReports(): Promise<AnnualReport[]> {
   try {
     const response = await fetchAPI<AnnualReportsListApiResponse>("/annual-reports")
     const rawList = response.data ?? []
-    if (rawList.length === 0) {
-      return fallbackReports
-    }
     return rawList.map((item, index) => normalizeAnnualReport(item, index))
   } catch (error) {
     console.error("[annual-reports-service] API fetch failed, using local fallback reports:", error)

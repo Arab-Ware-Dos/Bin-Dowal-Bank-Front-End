@@ -34,32 +34,32 @@ export async function getBankCards(locale = "ar"): Promise<ApiBankCard[]> {
       locale,
       next: { revalidate: 60 },
     });
-    if (res?.data && res.data.length > 0) {
+    if (res?.data) {
       return res.data;
     }
+    return [];
   } catch (e) {
     console.warn("[CardsService] Falling back to local cards data", e);
+    // Fallback to local mock data ONLY on network failure
+    return fallbackCards.map((c) => ({
+      id: c.id,
+      slug: c.id,
+      name_ar: c.nameAr,
+      name_en: c.nameEn,
+      name: locale === "ar" ? c.nameAr : c.nameEn,
+      type: c.type,
+      annual_fee: String(c.annualFee),
+      desc_ar: c.descAr,
+      desc_en: c.descEn,
+      benefits_ar: c.benefitsAr,
+      benefits_en: c.benefitsEn,
+      image_path: c.imageUrl,
+      image_url: c.imageUrl,
+      is_featured: true,
+      is_active: true,
+      order_index: 0,
+    }));
   }
-
-  // Fallback to local mock data
-  return fallbackCards.map((c) => ({
-    id: c.id,
-    slug: c.id,
-    name_ar: c.nameAr,
-    name_en: c.nameEn,
-    name: locale === "ar" ? c.nameAr : c.nameEn,
-    type: c.type,
-    annual_fee: String(c.annualFee),
-    desc_ar: c.descAr,
-    desc_en: c.descEn,
-    benefits_ar: c.benefitsAr,
-    benefits_en: c.benefitsEn,
-    image_path: c.imageUrl,
-    image_url: c.imageUrl,
-    is_featured: true,
-    is_active: true,
-    order_index: 0,
-  }));
 }
 
 export async function getBankCardBySlug(slug: string, locale = "ar"): Promise<ApiBankCard | null> {

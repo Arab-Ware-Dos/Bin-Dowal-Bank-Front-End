@@ -1,4 +1,4 @@
-﻿import { fetchAPI } from "@/lib/api-client";
+import { fetchAPI } from "@/lib/api-client";
 import { getNavigationData } from "@/services/navigation-service";
 import { NavigationItem, NavigationSection } from "@/types/navigation";
 import { BankServiceItemData } from "@/types/banking-service-api";
@@ -276,19 +276,12 @@ export async function getDiscoverProducts(locale: string = "ar"): Promise<Discov
     const finalPersonal = personalItems.map((item, idx) => mapNavToProduct(item, idx, "personal"));
     const finalBusiness = businessItems.map((item, idx) => mapNavToProduct(item, idx, "business"));
 
-    if (finalPersonal.length > 0 || finalBusiness.length > 0) {
-      console.log(`🟢 [DiscoverProducts API Connected] Loaded ${finalPersonal.length} Personal and ${finalBusiness.length} Business products from Navigation & Services.`);
-      return [
-        ...(finalPersonal.length > 0 ? finalPersonal : FALLBACK_DISCOVER_PRODUCTS.filter(p => p.category === "personal")),
-        ...(finalBusiness.length > 0 ? finalBusiness : FALLBACK_DISCOVER_PRODUCTS.filter(p => p.category === "business")),
-      ];
-    }
+    return [...finalPersonal, ...finalBusiness];
   } catch (error) {
     console.warn(
       "⚠️ [DiscoverProducts Fallback Active] Failed to fetch products from API. Using local fallback data.",
       error instanceof Error ? error.message : error
     );
+    return FALLBACK_DISCOVER_PRODUCTS;
   }
-
-  return FALLBACK_DISCOVER_PRODUCTS;
 }

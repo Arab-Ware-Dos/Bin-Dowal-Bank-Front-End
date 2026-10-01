@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import Image from "next/image"
 import { useI18n } from "@/lib/i18n-context"
@@ -44,7 +44,7 @@ export function FinancingServices() {
       }))
   }, [])
 
-  const [homeServices, setHomeServices] = useState<HomeFinancingService[]>(initialFallbackServices)
+  const [homeServices, setHomeServices] = useState<HomeFinancingService[]>([])
 
   // Fetch live curated financing items from Navigation & Services API
   useEffect(() => {
@@ -53,12 +53,13 @@ export function FinancingServices() {
 
     getHomeFinancingServices(locale)
       .then((data) => {
-        if (isMounted && data && data.length > 0) {
+        if (isMounted && data) {
           setHomeServices(data)
         }
       })
       .catch((err) => {
         console.warn("Error loading financing services from API:", err)
+        if (isMounted) setHomeServices(initialFallbackServices)
       })
       .finally(() => {
         if (isMounted) setLoading(false)
@@ -145,6 +146,10 @@ export function FinancingServices() {
       return t(service.description as any)
     }
     return service.description
+  }
+
+  if (!loading && homeServices.length === 0) {
+    return null
   }
 
   return (

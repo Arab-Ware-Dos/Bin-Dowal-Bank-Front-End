@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useMemo, useState, useEffect } from "react"
 import Image from "next/image"
@@ -31,7 +31,7 @@ const MAX_VISIBLE_PRODUCTS = 4
 export function DiscoverProductsSection() {
   const { mode, locale, t, direction } = useI18n()
   const [activeCategory, setActiveCategory] = useState<Category>("personal")
-  const [allProducts, setAllProducts] = useState<DiscoverProduct[]>(FALLBACK_DISCOVER_PRODUCTS)
+  const [allProducts, setAllProducts] = useState<DiscoverProduct[]>([])
   const [loading, setLoading] = useState(true)
 
   // Fetch curated products from Navigation & Banking Services API
@@ -41,12 +41,13 @@ export function DiscoverProductsSection() {
 
     getDiscoverProducts(locale)
       .then((data) => {
-        if (isMounted && data && data.length > 0) {
+        if (isMounted && data) {
           setAllProducts(data)
         }
       })
       .catch((err) => {
         console.warn("Error loading discover products:", err)
+        if (isMounted) setAllProducts(FALLBACK_DISCOVER_PRODUCTS)
       })
       .finally(() => {
         if (isMounted) setLoading(false)
@@ -56,6 +57,10 @@ export function DiscoverProductsSection() {
       isMounted = false
     }
   }, [locale])
+
+  if (!loading && allProducts.length === 0) {
+    return null
+  }
 
   const activeMeta = CATEGORY_CONFIG[activeCategory]
 

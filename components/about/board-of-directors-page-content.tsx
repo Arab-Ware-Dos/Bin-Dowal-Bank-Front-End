@@ -148,9 +148,10 @@ function ChairmanMessageSection({
   member,
   isAr,
 }: {
-  member: BoardMember
+  member?: BoardMember
   isAr: boolean
 }) {
+  if (!member) return null
   const message = isAr ? member.messageAr : member.messageEn
   const title = isAr ? member.titleAr : member.titleEn
   const name = isAr ? member.nameAr : member.nameEn
@@ -312,8 +313,8 @@ function HierarchySection({
   regularList,
 }: {
   isAr: boolean
-  chairmanMember: BoardMember
-  viceChairmanMember: BoardMember
+  chairmanMember?: BoardMember
+  viceChairmanMember?: BoardMember
   regularList: BoardMember[]
 }) {
   return (
@@ -336,51 +337,61 @@ function HierarchySection({
         </motion.div>
 
         <div className="flex flex-col items-center">
-          <motion.div {...FADE_UP} className="w-full max-w-sm">
-            <HierarchyCard member={chairmanMember} isAr={isAr} featured />
-          </motion.div>
+          {chairmanMember && (
+            <motion.div {...FADE_UP} className="w-full max-w-sm">
+              <HierarchyCard member={chairmanMember} isAr={isAr} featured />
+            </motion.div>
+          )}
 
-          <div className="flex flex-col items-center py-3">
-            <div className="h-8 w-px bg-gradient-to-b from-[#262b80]/40 to-[#262b80]/15" />
-            <div className="h-2 w-2 rounded-full bg-[#262b80]/40" />
-            <div className="h-4 w-px bg-gradient-to-b from-[#262b80]/15 to-[#262b80]/40" />
-          </div>
+          {chairmanMember && viceChairmanMember && (
+            <div className="flex flex-col items-center py-3">
+              <div className="h-8 w-px bg-gradient-to-b from-[#262b80]/40 to-[#262b80]/15" />
+              <div className="h-2 w-2 rounded-full bg-[#262b80]/40" />
+              <div className="h-4 w-px bg-gradient-to-b from-[#262b80]/15 to-[#262b80]/40" />
+            </div>
+          )}
 
-          <motion.div {...FADE_UP} transition={{ delay: 0.1 }} className="w-full max-w-xs">
-            <HierarchyCard member={viceChairmanMember} isAr={isAr} />
-          </motion.div>
+          {viceChairmanMember && (
+            <motion.div {...FADE_UP} transition={{ delay: 0.1 }} className="w-full max-w-xs">
+              <HierarchyCard member={viceChairmanMember} isAr={isAr} />
+            </motion.div>
+          )}
 
-          <div className="flex flex-col items-center py-3">
-            <div className="h-8 w-px bg-gradient-to-b from-[#262b80]/30 to-[#262b80]/10" />
-            <div className="h-2 w-2 rounded-full bg-[#262b80]/30" />
-            <div className="h-4 w-px bg-gradient-to-b from-[#262b80]/10 to-transparent" />
-          </div>
+          {regularList.length > 0 && (
+            <>
+              <div className="flex flex-col items-center py-3">
+                <div className="h-8 w-px bg-gradient-to-b from-[#262b80]/30 to-[#262b80]/10" />
+                <div className="h-2 w-2 rounded-full bg-[#262b80]/30" />
+                <div className="h-4 w-px bg-gradient-to-b from-[#262b80]/10 to-transparent" />
+              </div>
 
-          <motion.div
-            {...FADE_UP}
-            transition={{ delay: 0.15 }}
-            className="mb-8 flex items-center gap-4 w-full max-w-3xl"
-          >
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#262b80]/20" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#262b80]">
-              {isAr ? "أعضاء مجلس الإدارة" : "Board Members"}
-            </span>
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#262b80]/20" />
-          </motion.div>
-
-          <motion.div
-            variants={STAGGER}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-40px" }}
-            className="grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
-          >
-            {regularList.map((member) => (
-              <motion.div key={member.id} variants={STAGGER_ITEM}>
-                <HierarchyCard member={member} isAr={isAr} />
+              <motion.div
+                {...FADE_UP}
+                transition={{ delay: 0.15 }}
+                className="mb-8 flex items-center gap-4 w-full max-w-3xl"
+              >
+                <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#262b80]/20" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#262b80]">
+                  {isAr ? "أعضاء مجلس الإدارة" : "Board Members"}
+                </span>
+                <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#262b80]/20" />
               </motion.div>
-            ))}
-          </motion.div>
+
+              <motion.div
+                variants={STAGGER}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-40px" }}
+                className="grid w-full max-w-5xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              >
+                {regularList.map((member) => (
+                  <motion.div key={member.id} variants={STAGGER_ITEM}>
+                    <HierarchyCard member={member} isAr={isAr} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </>
+          )}
         </div>
       </div>
     </section>
@@ -521,24 +532,29 @@ function GovernanceValuesSection({ isAr }: { isAr: boolean }) {
 export function BoardOfDirectorsPageContent() {
   const { locale } = useI18n()
   const isAr = locale === "ar"
-  const [membersState, setMembersState] = useState<BoardMember[]>(boardMembers)
+  const [membersState, setMembersState] = useState<BoardMember[]>([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function loadData() {
+      setLoading(true)
       try {
         const dynamicMembers = await getBoardMembers(locale)
-        if (dynamicMembers && dynamicMembers.length > 0) {
+        if (dynamicMembers) {
           setMembersState(dynamicMembers)
         }
       } catch (e) {
         console.warn('Failed to load dynamic board data', e)
+        setMembersState(boardMembers)
+      } finally {
+        setLoading(false)
       }
     }
     loadData()
   }, [locale])
 
-  const chairmanMember = membersState.find((m) => m.category === "chairman") || chairman
-  const viceChairmanMember = membersState.find((m) => m.category === "vice-chairman") || viceChairman
+  const chairmanMember = membersState.find((m) => m.category === "chairman")
+  const viceChairmanMember = membersState.find((m) => m.category === "vice-chairman")
   const regularList = membersState.filter((m) => m.category === "member")
 
   return (
@@ -553,16 +569,24 @@ export function BoardOfDirectorsPageContent() {
         ]}
       />
 
-      <ChairmanMessageSection member={chairmanMember} isAr={isAr} />
+      {chairmanMember && <ChairmanMessageSection member={chairmanMember} isAr={isAr} />}
 
-      <HierarchySection
-        isAr={isAr}
-        chairmanMember={chairmanMember}
-        viceChairmanMember={viceChairmanMember}
-        regularList={regularList.length > 0 ? regularList : regularMembers}
-      />
+      {(chairmanMember || viceChairmanMember || regularList.length > 0) && (
+        <HierarchySection
+          isAr={isAr}
+          chairmanMember={chairmanMember}
+          viceChairmanMember={viceChairmanMember}
+          regularList={regularList}
+        />
+      )}
 
-      <MembersGridSection isAr={isAr} membersList={membersState} />
+      {membersState.length > 0 ? (
+        <MembersGridSection isAr={isAr} membersList={membersState} />
+      ) : !loading ? (
+        <div className="py-20 text-center text-slate-500 font-cairo">
+          {isAr ? "لا يوجد أعضاء مجلس إدارة مسجلين حالياً." : "No board members registered at the moment."}
+        </div>
+      ) : null}
 
       <GovernanceValuesSection isAr={isAr} />
     </div>

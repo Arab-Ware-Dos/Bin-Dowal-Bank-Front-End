@@ -136,17 +136,14 @@ function getCardName(card: BankCard, locale: string) {
   return locale === "ar" ? card.nameAr : card.nameEn;
 }
 
-function getCardDescription(card: BankCard, locale: string) {
-  return locale === "ar" ? card.descAr : card.descEn;
+function getCardDescription(card: BankCard, locale: string): string {
+  const desc = locale === "ar" ? card.descAr : card.descEn;
+  return desc?.trim() || "";
 }
 
-function getCardHighlight(card: BankCard, locale: string) {
-  const fallback =
-    locale === "ar" ? "حل مصرفي مرن وآمن" : "Flexible and secure banking";
-
-  return locale === "ar"
-    ? card.highlightAr ?? fallback
-    : card.highlightEn ?? fallback;
+function getCardHighlight(card: BankCard, locale: string): string {
+  const highlight = locale === "ar" ? card.highlightAr : card.highlightEn;
+  return highlight?.trim() || "";
 }
 
 function getCardImageSrc(card: BankCard, locale: string) {
@@ -165,25 +162,11 @@ function getCardBenefits(card: BankCard, locale: string) {
   return locale === "ar" ? card.benefitsAr : card.benefitsEn;
 }
 
-function getCardRequirements(card: BankCard, locale: string) {
-  const fallbackAr = [
-    "حساب جاري أو توفير لدى البنك.",
-    "وجود رصيد بالحساب.",
-  ];
-
-  const fallbackEn = [
-    "A current or savings account with the bank.",
-    "Available balance in the account.",
-  ];
-
+function getCardRequirements(card: BankCard, locale: string): string[] {
   const requirements =
     locale === "ar" ? card.requirementsAr : card.requirementsEn;
 
-  return requirements && requirements.length > 0
-    ? requirements
-    : locale === "ar"
-      ? fallbackAr
-      : fallbackEn;
+  return Array.isArray(requirements) ? requirements : [];
 }
 
 function formatAnnualFee(card: BankCard, locale: string) {
@@ -255,7 +238,7 @@ export function CardsPageContent() {
   const [filter, setFilter] = useState("all");
   const [expandedCardId, setExpandedCardId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [cardsState, setCardsState] = useState<BankCard[]>(bankCards);
+  const [cardsState, setCardsState] = useState<BankCard[]>([]);
   const [dynamicFaqs, setDynamicFaqs] = useState<{ id: string; category: string; questionAr: string; questionEn: string; answerAr: string; answerEn: string }[]>([]);
   
   const ITEMS_PER_PAGE = 3;
@@ -268,7 +251,7 @@ export function CardsPageContent() {
           getBankFaqs('cards', locale),
         ]);
 
-        if (apiCards && apiCards.length > 0) {
+        if (apiCards) {
           const mapped: BankCard[] = apiCards.map((c) => ({
             id: String(c.slug || c.id),
             nameAr: c.name_ar,
@@ -291,7 +274,7 @@ export function CardsPageContent() {
           setCardsState(mapped);
         }
 
-        if (apiFaqs && apiFaqs.length > 0) {
+        if (apiFaqs) {
           setDynamicFaqs(
             apiFaqs.map((f) => ({
               id: String(f.id),
@@ -305,6 +288,31 @@ export function CardsPageContent() {
         }
       } catch (err) {
         console.warn('[CardsPageContent] Error fetching remote data', err);
+        setCardsState(
+          bankCards.map((c) => ({
+            ...c,
+            requirementsAr: c.requirementsAr || [
+              "حساب جاري أو توفير لدى البنك.",
+              "وجود رصيد بالحساب.",
+            ],
+            requirementsEn: c.requirementsEn || [
+              "A current or savings account with the bank.",
+              "Available balance in the account.",
+            ],
+          }))
+        );
+        setDynamicFaqs(
+          faqs
+            .filter((faq) => faq.category === "cards")
+            .map((f) => ({
+              id: String(f.id),
+              category: "cards",
+              questionAr: f.questionAr,
+              questionEn: f.questionEn,
+              answerAr: f.answerAr,
+              answerEn: f.answerEn,
+            }))
+        );
       }
     }
     loadData();
@@ -344,10 +352,7 @@ export function CardsPageContent() {
   }, [filteredCards, currentPage]);
 
   const cardsFaqs = useMemo(() => {
-    if (dynamicFaqs.length > 0) {
-      return dynamicFaqs;
-    }
-    return faqs.filter((faq) => faq.category === "cards");
+    return dynamicFaqs;
   }, [dynamicFaqs]);
 
   function handleFilterChange(typeId: string) {
@@ -481,6 +486,8 @@ export function CardsPageContent() {
                 paginatedCards.map((card) => {
                   const meta = getTypeMeta(card.type);
                   const cardName = getCardName(card, locale);
+                  const cardHighlight = getCardHighlight(card, locale);
+                  const cardDesc = getCardDescription(card, locale);
                   const benefits = getCardBenefits(card, locale) ?? [];
                   const requirements = getCardRequirements(card, locale);
                   const visibleBenefits = benefits.slice(0, 3);
@@ -518,9 +525,17 @@ export function CardsPageContent() {
                               {cardName}
                             </h3>
 
-                            <p className="line-clamp-2 text-sm leading-6 text-muted-foreground">
-                              {getCardHighlight(card, locale) || getCardDescription(card, locale)}
-                            </p>
+                            {cardHighlight && (
+                              <p className="text-xs font-semibold text-[#324198] dark:text-indigo-400">
+                                {cardHighlight}
+                              </p>
+                            )}
+
+                            {cardDesc && (
+                              <p className={(isExpanded ? "" : "line-clamp-2 ") + "text-sm leading-6 text-muted-foreground"}>
+                                {cardDesc}
+                              </p>
+                            )}
                           </div>
 
                           <div className="space-y-2.5 rounded-2xl bg-slate-50/70 p-4 dark:bg-slate-900/40">
@@ -565,30 +580,32 @@ export function CardsPageContent() {
                                 className="overflow-hidden border-t border-[#324198]/10 pt-4 dark:border-white/5"
                               >
                                 <div className="space-y-4">
-                                  <div>
-                                    <h4 className="mb-3 flex items-center gap-2 font-semibold text-slate-950 dark:text-white">
-                                      <ShieldCheck className="h-5 w-5 text-[#324198]" />
-                                      {locale === "ar"
-                                        ? "المتطلبات"
-                                        : "Requirements"}
-                                    </h4>
+                                  {requirements.length > 0 && (
+                                    <div>
+                                      <h4 className="mb-3 flex items-center gap-2 font-semibold text-slate-950 dark:text-white">
+                                        <ShieldCheck className="h-5 w-5 text-[#324198]" />
+                                        {locale === "ar"
+                                          ? "المتطلبات"
+                                          : "Requirements"}
+                                      </h4>
 
-                                    <ul className="space-y-2.5">
-                                      {requirements.map(
-                                        (requirement, index) => (
-                                          <li
-                                            key={card.id + "-requirement-" + index}
-                                            className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground"
-                                          >
-                                            <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
-                                              <Check className="h-3.5 w-3.5" />
-                                            </span>
-                                            <span>{requirement}</span>
-                                          </li>
-                                        ),
-                                      )}
-                                    </ul>
-                                  </div>
+                                      <ul className="space-y-2.5">
+                                        {requirements.map(
+                                          (requirement, index) => (
+                                            <li
+                                              key={card.id + "-requirement-" + index}
+                                              className="flex items-start gap-2.5 text-sm leading-6 text-muted-foreground"
+                                            >
+                                              <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#324198]/10 text-[#324198]">
+                                                <Check className="h-3.5 w-3.5" />
+                                              </span>
+                                              <span>{requirement}</span>
+                                            </li>
+                                          ),
+                                        )}
+                                      </ul>
+                                    </div>
+                                  )}
 
                                   {hiddenBenefits.length > 0 ? (
                                     <div>
@@ -732,7 +749,7 @@ export function CardsPageContent() {
         </div>
       </section>
 
-      <FAQAccordion faqs={cardsFaqs as any} />
+      {cardsFaqs.length > 0 && <FAQAccordion faqs={cardsFaqs as any} />}
     </>
   );
 }

@@ -25,7 +25,7 @@ export async function getBoardMembers(locale = "ar"): Promise<BoardMember[]> {
       next: { revalidate: 60 },
     });
 
-    if (res?.data && res.data.length > 0) {
+    if (res?.data) {
       return res.data.map((m) => ({
         id: String(m.slug || m.id),
         order: m.order_index || 0,
@@ -40,9 +40,9 @@ export async function getBoardMembers(locale = "ar"): Promise<BoardMember[]> {
         messageEn: m.message_en || undefined,
       }));
     }
+    return [];
   } catch (e) {
     console.warn("[BoardService] Falling back to static board members", e);
+    return fallbackMembers;
   }
-
-  return fallbackMembers;
 }

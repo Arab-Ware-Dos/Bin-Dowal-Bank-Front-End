@@ -20,6 +20,7 @@ type CardItem = {
   featuresKeys: string[]
   customTitle?: string
   customSubtitle?: string
+  customDesc?: string
   customFeatures?: string[]
 }
 
@@ -125,7 +126,7 @@ export function CardsSection() {
   const { mode, locale, t, direction } = useI18n()
   const isAr = locale === "ar"
   const [loading, setLoading] = useState(true)
-  const [cardsList, setCardsList] = useState<CardItem[]>(defaultCards)
+  const [cardsList, setCardsList] = useState<CardItem[]>([])
   const [active, setActive] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
 
@@ -134,11 +135,12 @@ export function CardsSection() {
       setLoading(true)
       try {
         const apiCards = await getBankCards(locale)
-        if (apiCards && apiCards.length > 0) {
+        if (apiCards) {
           const mapped: CardItem[] = apiCards.map((c, index) => {
             const fallback = defaultCards[index % defaultCards.length]
             const title = isAr ? c.name_ar : c.name_en || c.name_ar
-            const subtitle = (isAr ? c.highlight_ar : c.highlight_en) || ''
+            const highlight = (isAr ? c.highlight_ar : c.highlight_en) || ''
+            const desc = (isAr ? c.desc_ar : c.desc_en) || ''
             const benefits = (isAr ? c.benefits_ar : c.benefits_en) || []
             const features = benefits.length > 0 ? benefits.slice(0, 3) : []
 
@@ -148,7 +150,8 @@ export function CardsSection() {
               front: resolveCardImage(c.image_url || c.image_path) || fallback.front,
               tag: c.type ? c.type.toUpperCase() : fallback.tag,
               customTitle: title,
-              customSubtitle: subtitle,
+              customSubtitle: highlight,
+              customDesc: desc,
               customFeatures: features,
             }
           })
@@ -156,6 +159,7 @@ export function CardsSection() {
         }
       } catch (e) {
         console.warn('Failed to load home cards from API', e)
+        setCardsList(defaultCards)
       } finally {
         setLoading(false)
       }
@@ -182,6 +186,10 @@ export function CardsSection() {
 
   if (loading) {
     return <BankCardsSliderSkeleton />
+  }
+
+  if (cardsList.length === 0) {
+    return null
   }
 
   return (
@@ -236,9 +244,22 @@ export function CardsSection() {
                   <h3 className="font-cairo text-2xl font-black text-white sm:text-3xl lg:text-4xl leading-tight">
                     {card.customTitle || t(card.titleKey)}
                   </h3>
-                  <p className="mt-2 font-cairo text-base font-normal text-white/70 sm:text-lg">
-                    {card.customSubtitle || t(card.subtitleKey)}
-                  </p>
+                  {card.customSubtitle && (
+                    <p className="mt-1 font-cairo text-sm font-semibold text-indigo-200">
+                      {card.customSubtitle}
+                    </p>
+                  )}
+                  {card.customDesc ? (
+                    <p className="mt-2 font-cairo text-base font-normal text-white/70 sm:text-lg">
+                      {card.customDesc}
+                    </p>
+                  ) : (
+                    !card.customTitle && (
+                      <p className="mt-2 font-cairo text-base font-normal text-white/70 sm:text-lg">
+                        {t(card.subtitleKey)}
+                      </p>
+                    )
+                  )}
                 </div>
 
                 {/* Feature bullets */}
@@ -338,20 +359,22 @@ export function CardsSection() {
                 </div>
 
                 {/* Floating badge */}
-                <motion.div
-                  initial={{ opacity: 0, y: 12, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  className="absolute -bottom-5 -left-4 flex items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-xl shadow-xl"
-                >
-                  <span
-                    className="h-2.5 w-2.5 rounded-full"
-                    style={{ background: card.color, boxShadow: "0 0 8px " + card.color }}
-                  />
-                  <span className="font-cairo text-xs font-semibold text-white/90">
-                    {card.customSubtitle || t(card.subtitleKey)}
-                  </span>
-                </motion.div>
+                {(card.customSubtitle || card.customDesc || (!card.customTitle && t(card.subtitleKey))) && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 12, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.3, duration: 0.4 }}
+                    className="absolute -bottom-5 -left-4 flex items-center gap-2 rounded-2xl border border-white/15 bg-white/10 px-4 py-2.5 backdrop-blur-xl shadow-xl"
+                  >
+                    <span
+                      className="h-2.5 w-2.5 rounded-full"
+                      style={{ background: card.color, boxShadow: "0 0 8px " + card.color }}
+                    />
+                    <span className="font-cairo text-xs font-semibold text-white/90">
+                      {card.customSubtitle || card.customDesc || t(card.subtitleKey)}
+                    </span>
+                  </motion.div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
