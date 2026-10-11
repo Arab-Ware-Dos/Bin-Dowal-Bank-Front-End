@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { branches } from "@/data/mock-data"
 import { fetchLocations } from "@/services/locations-service"
-import { 
-  MapPin, 
-  Phone, 
-  Clock, 
+import {
+  MapPin,
+  Phone,
+  Clock,
   Search,
   Navigation,
   Building2,
@@ -80,7 +80,7 @@ export function BranchesPageContent() {
   }, [])
 
   const filteredBranches = branchList.filter(branch => {
-    const matchesSearch = searchQuery === "" || 
+    const matchesSearch = searchQuery === "" ||
       branch.nameAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
       branch.nameEn.toLowerCase().includes(searchQuery.toLowerCase()) ||
       branch.addressAr.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -94,7 +94,7 @@ export function BranchesPageContent() {
     const R = 6371 // Earth's radius in km
     const dLat = (lat2 - lat1) * Math.PI / 180
     const dLng = (lng2 - lng1) * Math.PI / 180
-    const a = 
+    const a =
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
       Math.sin(dLng / 2) * Math.sin(dLng / 2)
@@ -108,7 +108,7 @@ export function BranchesPageContent() {
     window.open(mapsUrl, '_blank')
     setNotification({
       type: 'success',
-      message: locale === 'ar' 
+      message: locale === 'ar'
         ? `جاري الانتقال إلى خريطة جوجل للاتجاهات إلى ${branch.nameAr}`
         : `Opening directions to ${branch.nameEn}`
     })
@@ -119,7 +119,7 @@ export function BranchesPageContent() {
     window.location.href = `tel:${phone}`
     setNotification({
       type: 'success',
-      message: locale === 'ar' 
+      message: locale === 'ar'
         ? `جاري إجراء المكالمة إلى ${phone}`
         : `Calling ${phone}`
     })
@@ -134,7 +134,7 @@ export function BranchesPageContent() {
           setUserLocation({ lat: latitude, lng: longitude })
           setNotification({
             type: 'success',
-            message: locale === 'ar' 
+            message: locale === 'ar'
               ? 'تم الحصول على موقعك الحالي بنجاح'
               : 'Your location has been detected successfully'
           })
@@ -142,7 +142,7 @@ export function BranchesPageContent() {
         () => {
           setNotification({
             type: 'error',
-            message: locale === 'ar' 
+            message: locale === 'ar'
               ? 'فشل الحصول على موقعك. يرجى تفعيل خدمات الموقع'
               : 'Failed to get your location. Please enable location services'
           })
@@ -151,7 +151,7 @@ export function BranchesPageContent() {
     } else {
       setNotification({
         type: 'error',
-        message: locale === 'ar' 
+        message: locale === 'ar'
           ? 'متصفحك لا يدعم خدمات الموقع'
           : 'Your browser does not support location services'
       })
@@ -163,7 +163,7 @@ export function BranchesPageContent() {
     if (!userLocation) {
       setNotification({
         type: 'error',
-        message: locale === 'ar' 
+        message: locale === 'ar'
           ? 'يرجى تفعيل موقعك أولاً'
           : 'Please enable your location first'
       })
@@ -175,17 +175,17 @@ export function BranchesPageContent() {
       distance: parseFloat(calculateDistance(userLocation.lat, userLocation.lng, branch.lat, branch.lng))
     }))
 
-    const nearest = branchesWithDistance.reduce((prev, current) => 
+    const nearest = branchesWithDistance.reduce((prev, current) =>
       current.distance < prev.distance ? current : prev
     )
 
     setSelectedBranch(nearest.id)
     const element = document.getElementById(`branch-${nearest.id}`)
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    
+
     setNotification({
       type: 'success',
-      message: locale === 'ar' 
+      message: locale === 'ar'
         ? `أقرب فرع: ${nearest.nameAr} على بعد ${nearest.distance} كم`
         : `Nearest branch: ${nearest.nameEn} at ${nearest.distance} km away`
     })
@@ -195,7 +195,7 @@ export function BranchesPageContent() {
   const handleATMMap = () => {
     setNotification({
       type: 'success',
-      message: locale === 'ar' 
+      message: locale === 'ar'
         ? 'جاري فتح خريطة أجهزة الصراف الآلي'
         : 'Opening ATM locator map'
     })
@@ -204,11 +204,11 @@ export function BranchesPageContent() {
 
   // Handle contact
   const handleContact = () => {
-    const phoneNumber = "920000123"
+    const phoneNumber = "8000644"
     window.location.href = `tel:${phoneNumber}`
     setNotification({
       type: 'success',
-      message: locale === 'ar' 
+      message: locale === 'ar'
         ? `جاري الاتصال برقم دعم العملاء`
         : `Calling customer support`
     })
@@ -254,7 +254,7 @@ export function BranchesPageContent() {
                 className="ps-10 bg-background"
               />
             </div>
-            
+
             <div className="flex flex-wrap gap-2 justify-center">
               {regions.map((region) => (
                 <Button
@@ -277,13 +277,13 @@ export function BranchesPageContent() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-2xl font-bold text-foreground">
-              {locale === 'ar' 
+              {locale === 'ar'
                 ? `${filteredBranches.length} فرع`
                 : `${filteredBranches.length} Branches`}
             </h2>
             <div className="flex gap-2">
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 className="gap-2"
                 onClick={handleUseLocation}
               >
@@ -291,7 +291,7 @@ export function BranchesPageContent() {
                 {locale === 'ar' ? 'استخدم موقعي' : 'Use My Location'}
               </Button>
               {userLocation && (
-                <Button 
+                <Button
                   className="gap-2 bg-[#262b80] hover:bg-[#0b0d36] text-white"
                   onClick={handleNearestBranch}
                 >
@@ -313,10 +313,9 @@ export function BranchesPageContent() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Card 
-                    className={`h-full border border-slate-200/60 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ${
-                      selectedBranch === branch.id ? 'ring-2 ring-[#262b80]' : ''
-                    }`}
+                  <Card
+                    className={`h-full border border-slate-200/60 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer ${selectedBranch === branch.id ? 'ring-2 ring-[#262b80]' : ''
+                      }`}
                     onClick={() => setSelectedBranch(branch.id === selectedBranch ? null : branch.id)}
                   >
                     <CardContent className="p-6">
@@ -329,13 +328,13 @@ export function BranchesPageContent() {
                             <h3 className="font-bold text-foreground truncate">
                               {locale === 'ar' ? branch.nameAr : branch.nameEn}
                             </h3>
-                             {branch.isMainBranch && (
+                            {branch.isMainBranch && (
                               <span className="px-2 py-0.5 bg-[#262b80] text-white text-xs rounded-full shrink-0 font-medium">
                                 {locale === 'ar' ? 'رئيسي' : 'Main'}
                               </span>
                             )}
                           </div>
-                          
+
                           <div className="space-y-2 text-sm">
                             <div className="flex items-start gap-2 text-muted-foreground">
                               <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
@@ -356,7 +355,7 @@ export function BranchesPageContent() {
                           {/* Services */}
                           <div className="flex flex-wrap gap-1 mt-3">
                             {branch.services.slice(0, 3).map((service, idx) => (
-                              <span 
+                              <span
                                 key={idx}
                                 className="px-2 py-0.5 bg-muted text-muted-foreground text-xs rounded-full"
                               >
@@ -373,7 +372,7 @@ export function BranchesPageContent() {
                           {/* Distance if location available */}
                           {userLocation && (
                             <div className="text-xs text-muted-foreground mt-2">
-                              {locale === 'ar' 
+                              {locale === 'ar'
                                 ? `المسافة: ${calculateDistance(userLocation.lat, userLocation.lng, branch.lat, branch.lng)} كم`
                                 : `Distance: ${calculateDistance(userLocation.lat, userLocation.lng, branch.lat, branch.lng)} km`}
                             </div>
@@ -381,8 +380,8 @@ export function BranchesPageContent() {
 
                           {/* Actions */}
                           <div className="flex gap-2 mt-4">
-                            <Button 
-                              size="sm" 
+                            <Button
+                              size="sm"
                               className="flex-1 gap-1 bg-[#262b80] hover:bg-[#0b0d36] text-white transition-colors"
                               onClick={(e) => {
                                 e.stopPropagation()
@@ -392,9 +391,9 @@ export function BranchesPageContent() {
                               <Navigation className="h-3 w-3" />
                               {locale === 'ar' ? 'الاتجاهات' : 'Directions'}
                             </Button>
-                            <Button 
-                              size="sm" 
-                              variant="outline" 
+                            <Button
+                              size="sm"
+                              variant="outline"
                               className="flex-1 gap-1"
                               onClick={(e) => {
                                 e.stopPropagation()
@@ -436,28 +435,28 @@ export function BranchesPageContent() {
                   {locale === 'ar' ? 'ابحث عن أجهزة الصراف الآلي' : 'Find ATMs'}
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  {locale === 'ar' 
+                  {locale === 'ar'
                     ? 'أكثر من 500 جهاز صراف آلي منتشرة في جميع أنحاء المملكة لخدمتك على مدار الساعة'
                     : 'Over 500 ATMs spread across the Kingdom to serve you 24/7'}
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Button 
-                    size="lg" 
+                  <Button
+                    size="lg"
                     className="gap-2 bg-[#262b80] hover:bg-[#0b0d36] text-white transition-colors"
                     onClick={handleATMMap}
                   >
                     <MapPin className="h-5 w-5" />
                     {locale === 'ar' ? 'خريطة الصرافات' : 'ATM Map'}
                   </Button>
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
+                  <Button
+                    size="lg"
+                    variant="outline"
                     className="gap-2"
                     onClick={() => {
                       if (!userLocation) {
                         setNotification({
                           type: 'error',
-                          message: locale === 'ar' 
+                          message: locale === 'ar'
                             ? 'يرجى تفعيل موقعك أولاً'
                             : 'Please enable your location first'
                         })
@@ -497,19 +496,19 @@ export function BranchesPageContent() {
               {locale === 'ar' ? 'هل تحتاج مساعدة؟' : 'Need Help?'}
             </h2>
             <p className="text-lg opacity-90 max-w-2xl mx-auto mb-8">
-              {locale === 'ar' 
+              {locale === 'ar'
                 ? 'فريق خدمة العملاء لدينا جاهز لمساعدتك في أي وقت'
                 : 'Our customer service team is ready to help you anytime'}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button 
-                variant="secondary" 
-                size="lg" 
+              <Button
+                variant="secondary"
+                size="lg"
                 className="gap-2 bg-white text-[#0b0d36] hover:bg-slate-100"
                 onClick={handleContact}
               >
                 <Phone className="h-5 w-5" />
-                920000123
+                8000644
               </Button>
             </div>
           </motion.div>

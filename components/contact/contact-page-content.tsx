@@ -37,7 +37,7 @@ const fadeInUp = {
 
 export function ContactPageContent() {
   const { locale, mode } = useI18n()
-  
+
   const resolveHref = (target: string) => {
     if (!target.startsWith('/') || target.startsWith('//')) return target;
     return mode === 'url' ? getLocalizedHref(target, locale) : target;
@@ -81,8 +81,8 @@ export function ContactPageContent() {
       icon: Phone,
       titleAr: "الهاتف",
       titleEn: "Phone",
-      valueAr: "920000123",
-      valueEn: "920000123",
+      valueAr: "8000644",
+      valueEn: "8000644",
       descAr: "متاح من الأحد إلى الخميس",
       descEn: "Available Sunday to Thursday",
     },
@@ -156,7 +156,7 @@ export function ContactPageContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+
     // Reset states
     setError(null)
     setFieldErrors({})
@@ -525,114 +525,114 @@ export function ContactPageContent() {
         </div>
       </section>
 
-    {/* Map Section */}
-<section className="py-16 md:py-20">
-  <div className="container mx-auto px-4">
-    <SectionTitle
-      title={locale === "ar" ? "موقعنا" : "Our Location"}
-      subtitle={
-        locale === "ar"
-          ? "الفرع الرئيسي"
-          : "Head branch"
-      }
-    />
-
-    <motion.div
-      className="mt-10 overflow-hidden rounded-[32px] border border-slate-200/80 bg-white shadow-[0_26px_80px_-38px_rgba(15,23,42,0.32)]"
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55 }}
-    >
-      <div className="grid lg:grid-cols-[1.05fr_1.2fr]">
-        <div className="relative p-8 md:p-10">
-          <div className="absolute inset-y-0 right-0 hidden w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent lg:block" />
-
-          <div className="mb-4 inline-flex items-center rounded-full border border-[#262b80]/10 bg-[#262b80]/[0.04] px-4 py-2 text-xs font-semibold tracking-[0.22em] text-[#262b80]">
-            {locale === "ar" ? "الفرع الرئيسي" : "HEAD BRANCH"}
-          </div>
-
-          <h3 className="text-2xl font-bold text-[#0b0d36] md:text-3xl">
-            {locale === "ar"
-              ? "الفرع الرئيسي"
-              : "Head branch"}
-          </h3>
-
-          <p className="mt-4 max-w-xl text-base leading-8 text-slate-600">
-            {locale === "ar"
-              ? "اهلا وسهلا بكم في الفرع الرئيسي لبنك بن دول للتمويل الاصغر الاسلامي"
-              : "Welcome to the head branch of Bin Dowal Islamic Microfinance Bank"}
-          </p>
-
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#262b80] shadow-sm">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <p className="text-sm font-semibold text-[#0b0d36]">
-                {locale === "ar" ? "العنوان" : "Address"}
-              </p>
-              <p className="mt-2 text-sm leading-7 text-slate-600">
-                {locale === "ar"
-                  ? "جول مسحه - المكلا - حضرموت - اليمن"
-                  : "Ghul Masah - Mukalla - Hadhramaut - Yemen"}
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5">
-              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#262b80] shadow-sm">
-                <Clock className="h-5 w-5" />
-              </div>
-              <p className="text-sm font-semibold text-[#0b0d36]">
-                {locale === "ar" ? "ساعات العمل" : "Working Hours"}
-              </p>
-              <p className="mt-2 text-sm leading-7 text-slate-600">
-                {locale === "ar"
-                  ? "السبت - الخميس 8:00 ص - 3:30 م"
-                  : "Saturday - Thursday 8:00 AM - 3:30 PM"}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="relative min-h-[380px] bg-slate-100">
-          <iframe
-            title={locale === "ar" ? "موقع البنك على الخريطة" : "Bank location map"}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.198705067372!2d49.18829225581686!3d14.581992228989757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3de8e544e7159107%3A0x6ca670d6ab83c429!2sBin%20Dowal%20Islamic%20Microfinance%20Bank!5e0!3m2!1sar!2s!4v1775476729416!5m2!1sar!2s"
-            className="absolute inset-0 h-full w-full"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
+      {/* Map Section */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <SectionTitle
+            title={locale === "ar" ? "موقعنا" : "Our Location"}
+            subtitle={
+              locale === "ar"
+                ? "الفرع الرئيسي"
+                : "Head branch"
+            }
           />
 
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0d36]/30 via-transparent to-transparent" />
+          <motion.div
+            className="mt-10 overflow-hidden rounded-[32px] border border-slate-200/80 bg-white shadow-[0_26px_80px_-38px_rgba(15,23,42,0.32)]"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.55 }}
+          >
+            <div className="grid lg:grid-cols-[1.05fr_1.2fr]">
+              <div className="relative p-8 md:p-10">
+                <div className="absolute inset-y-0 right-0 hidden w-px bg-gradient-to-b from-transparent via-slate-200 to-transparent lg:block" />
 
-          <div className="absolute bottom-5 left-5 right-5 rounded-[22px] border border-white/20 bg-white/88 p-4 shadow-[0_16px_40px_-20px_rgba(15,23,42,0.35)] backdrop-blur-md md:left-6 md:right-6">
-            <div className="flex items-start gap-3">
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#3941a8] text-white shadow-[0_14px_28px_-16px_rgba(38,43,128,0.6)]">
-                <MapPin className="h-5 w-5" />
+                <div className="mb-4 inline-flex items-center rounded-full border border-[#262b80]/10 bg-[#262b80]/[0.04] px-4 py-2 text-xs font-semibold tracking-[0.22em] text-[#262b80]">
+                  {locale === "ar" ? "الفرع الرئيسي" : "HEAD BRANCH"}
+                </div>
+
+                <h3 className="text-2xl font-bold text-[#0b0d36] md:text-3xl">
+                  {locale === "ar"
+                    ? "الفرع الرئيسي"
+                    : "Head branch"}
+                </h3>
+
+                <p className="mt-4 max-w-xl text-base leading-8 text-slate-600">
+                  {locale === "ar"
+                    ? "اهلا وسهلا بكم في الفرع الرئيسي لبنك بن دول للتمويل الاصغر الاسلامي"
+                    : "Welcome to the head branch of Bin Dowal Islamic Microfinance Bank"}
+                </p>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5">
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#262b80] shadow-sm">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm font-semibold text-[#0b0d36]">
+                      {locale === "ar" ? "العنوان" : "Address"}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">
+                      {locale === "ar"
+                        ? "جول مسحه - المكلا - حضرموت - اليمن"
+                        : "Ghul Masah - Mukalla - Hadhramaut - Yemen"}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl border border-slate-200/80 bg-slate-50/70 p-5">
+                    <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-[#262b80] shadow-sm">
+                      <Clock className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm font-semibold text-[#0b0d36]">
+                      {locale === "ar" ? "ساعات العمل" : "Working Hours"}
+                    </p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">
+                      {locale === "ar"
+                        ? "السبت - الخميس 8:00 ص - 3:30 م"
+                        : "Saturday - Thursday 8:00 AM - 3:30 PM"}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-[#0b0d36]">
-                  {locale === "ar"
-                    ? "بنك بن دول للتمويل الأصغر الإسلامي"
-                    : "Bin Dowal Islamic Microfinance Bank"}
-                </p>
-                <p className="mt-1 text-sm leading-6 text-slate-600">
-                  {locale === "ar"
-                    ? "المكلا - حضرموت - اليمن"
-                    : "Mukalla - Hadhramaut - Yemen"}
-                </p>
+              <div className="relative min-h-[380px] bg-slate-100">
+                <iframe
+                  title={locale === "ar" ? "موقع البنك على الخريطة" : "Bank location map"}
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15445.198705067372!2d49.18829225581686!3d14.581992228989757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3de8e544e7159107%3A0x6ca670d6ab83c429!2sBin%20Dowal%20Islamic%20Microfinance%20Bank!5e0!3m2!1sar!2s!4v1775476729416!5m2!1sar!2s"
+                  className="absolute inset-0 h-full w-full"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0b0d36]/30 via-transparent to-transparent" />
+
+                <div className="absolute bottom-5 left-5 right-5 rounded-[22px] border border-white/20 bg-white/88 p-4 shadow-[0_16px_40px_-20px_rgba(15,23,42,0.35)] backdrop-blur-md md:left-6 md:right-6">
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0b0d36] via-[#262b80] to-[#3941a8] text-white shadow-[0_14px_28px_-16px_rgba(38,43,128,0.6)]">
+                      <MapPin className="h-5 w-5" />
+                    </div>
+
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-[#0b0d36]">
+                        {locale === "ar"
+                          ? "بنك بن دول للتمويل الأصغر الإسلامي"
+                          : "Bin Dowal Islamic Microfinance Bank"}
+                      </p>
+                      <p className="mt-1 text-sm leading-6 text-slate-600">
+                        {locale === "ar"
+                          ? "المكلا - حضرموت - اليمن"
+                          : "Mukalla - Hadhramaut - Yemen"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.div>
-  </div>
-</section>
+      </section>
 
       {/* FAQ CTA */}
       <section className="pb-16 pt-8 md:pb-20">
