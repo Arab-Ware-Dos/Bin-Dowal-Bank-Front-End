@@ -128,14 +128,11 @@ export default function LocationMapInner({
       mapInstance = map
       mapRef.current = map
 
-      // CartoDB Positron tiles — clean, minimal, premium look
-      L.tileLayer(
-        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-        {
-          subdomains: "abcd",
-          maxZoom: 19,
-        }
-      ).addTo(map)
+      // OpenStreetMap tiles — 100% free, no API key, reliable worldwide & Yemen coverage
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map)
 
       // Custom zoom control position
       L.control.zoom({ position: "bottomright" }).addTo(map)
@@ -147,7 +144,7 @@ export default function LocationMapInner({
           prefix: false,
         })
         .addTo(map)
-        .setPrefix("© CartoDB | © OpenStreetMap")
+        .setPrefix("© OpenStreetMap")
 
       renderMarkers(L, map)
 
